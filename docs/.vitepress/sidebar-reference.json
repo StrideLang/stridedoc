@@ -1,0 +1,670 @@
+[
+  {
+    "text": "Stride::Assertions",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "ExpectEqual",
+        "link": "/reference/library/assertions/expectequal"
+      },
+      {
+        "text": "ExpectFalse",
+        "link": "/reference/library/assertions/expectfalse"
+      },
+      {
+        "text": "ExpectGe",
+        "link": "/reference/library/assertions/expectge"
+      },
+      {
+        "text": "ExpectGt",
+        "link": "/reference/library/assertions/expectgt"
+      },
+      {
+        "text": "ExpectLe",
+        "link": "/reference/library/assertions/expectle"
+      },
+      {
+        "text": "ExpectLt",
+        "link": "/reference/library/assertions/expectlt"
+      },
+      {
+        "text": "ExpectMaxError",
+        "link": "/reference/library/assertions/expectmaxerror"
+      },
+      {
+        "text": "ExpectNear",
+        "link": "/reference/library/assertions/expectnear"
+      },
+      {
+        "text": "ExpectSnr",
+        "link": "/reference/library/assertions/expectsnr"
+      },
+      {
+        "text": "ExpectTrue",
+        "link": "/reference/library/assertions/expecttrue"
+      }
+    ]
+  },
+  {
+    "text": "Stride::BasicOperations",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Sum",
+        "link": "/reference/library/basicoperations/sum"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Callable",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_Callable",
+        "link": "/reference/library/callable/_callable"
+      },
+      {
+        "text": "_MainInputPort",
+        "link": "/reference/library/callable/_maininputport"
+      },
+      {
+        "text": "_MainOutputPort",
+        "link": "/reference/library/callable/_mainoutputport"
+      },
+      {
+        "text": "_Port",
+        "link": "/reference/library/callable/_port"
+      },
+      {
+        "text": "_PortAttributes",
+        "link": "/reference/library/callable/_portattributes"
+      },
+      {
+        "text": "_PropertyInputPort",
+        "link": "/reference/library/callable/_propertyinputport"
+      },
+      {
+        "text": "_PropertyOutputPort",
+        "link": "/reference/library/callable/_propertyoutputport"
+      }
+    ]
+  },
+  {
+    "text": "Stride::CodeGenerators",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_CodeGenerator",
+        "link": "/reference/library/codegenerators/_codegenerator"
+      },
+      {
+        "text": "_Loop",
+        "link": "/reference/library/codegenerators/_loop"
+      },
+      {
+        "text": "_Module",
+        "link": "/reference/library/codegenerators/_module"
+      },
+      {
+        "text": "_Reaction",
+        "link": "/reference/library/codegenerators/_reaction"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Comparisons",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Greater",
+        "link": "/reference/library/comparisons/greater"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Control",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "OnChange",
+        "link": "/reference/library/control/onchange"
+      }
+    ]
+  },
+  {
+    "text": "Stride::CoreTypes",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_Buffer",
+        "link": "/reference/library/coretypes/_buffer"
+      },
+      {
+        "text": "_Constant",
+        "link": "/reference/library/coretypes/_constant"
+      },
+      {
+        "text": "_GroupType",
+        "link": "/reference/library/coretypes/_grouptype"
+      },
+      {
+        "text": "_IteratorType",
+        "link": "/reference/library/coretypes/_iteratortype"
+      },
+      {
+        "text": "_SequenceType",
+        "link": "/reference/library/coretypes/_sequencetype"
+      },
+      {
+        "text": "_Signal",
+        "link": "/reference/library/coretypes/_signal"
+      },
+      {
+        "text": "_StreamType",
+        "link": "/reference/library/coretypes/_streamtype"
+      },
+      {
+        "text": "_String",
+        "link": "/reference/library/coretypes/_string"
+      },
+      {
+        "text": "_Switch",
+        "link": "/reference/library/coretypes/_switch"
+      },
+      {
+        "text": "_Table",
+        "link": "/reference/library/coretypes/_table"
+      },
+      {
+        "text": "_Trigger",
+        "link": "/reference/library/coretypes/_trigger"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Counter",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Counter",
+        "link": "/reference/library/counter/counter"
+      }
+    ]
+  },
+  {
+    "text": "Stride::DataTypes",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_TypeClass",
+        "link": "/reference/library/datatypes/_typeclass"
+      },
+      {
+        "text": "_TypeClassConversion",
+        "link": "/reference/library/datatypes/_typeclassconversion"
+      },
+      {
+        "text": "_Variadic",
+        "link": "/reference/library/datatypes/_variadic"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Debug",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "DebugPrint",
+        "link": "/reference/library/debug/debugprint"
+      },
+      {
+        "text": "Error",
+        "link": "/reference/library/debug/error"
+      },
+      {
+        "text": "Probe",
+        "link": "/reference/library/debug/probe"
+      },
+      {
+        "text": "Watch",
+        "link": "/reference/library/debug/watch"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Domain",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Exit",
+        "link": "/reference/library/domain/exit"
+      },
+      {
+        "text": "_DomainDefinition",
+        "link": "/reference/library/domain/_domaindefinition"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Filters",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "BandPass",
+        "link": "/reference/library/filters/bandpass"
+      },
+      {
+        "text": "BiQuad",
+        "link": "/reference/library/filters/biquad"
+      },
+      {
+        "text": "LowPass",
+        "link": "/reference/library/filters/lowpass"
+      },
+      {
+        "text": "Mix",
+        "link": "/reference/library/filters/mix"
+      },
+      {
+        "text": "Rectify",
+        "link": "/reference/library/filters/rectify"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Framework",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_ConnectionType",
+        "link": "/reference/library/framework/_connectiontype"
+      },
+      {
+        "text": "_FrameworkDescriptionType",
+        "link": "/reference/library/framework/_frameworkdescriptiontype"
+      },
+      {
+        "text": "_PlatformCodeType",
+        "link": "/reference/library/framework/_platformcodetype"
+      },
+      {
+        "text": "_PlatformEntityType",
+        "link": "/reference/library/framework/_platformentitytype"
+      },
+      {
+        "text": "_PlatformModulePortType",
+        "link": "/reference/library/framework/_platformmoduleporttype"
+      },
+      {
+        "text": "_PlatformModuleType",
+        "link": "/reference/library/framework/_platformmoduletype"
+      },
+      {
+        "text": "_PlatformOperatorType",
+        "link": "/reference/library/framework/_platformoperatortype"
+      },
+      {
+        "text": "_PlatformType",
+        "link": "/reference/library/framework/_platformtype"
+      },
+      {
+        "text": "_SystemType",
+        "link": "/reference/library/framework/_systemtype"
+      }
+    ]
+  },
+  {
+    "text": "Stride::FrameworkDataTypes",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_BufferType",
+        "link": "/reference/library/frameworkdatatypes/_buffertype"
+      },
+      {
+        "text": "_FrameworkDataType",
+        "link": "/reference/library/frameworkdatatypes/_frameworkdatatype"
+      },
+      {
+        "text": "_FrameworkTypeClass",
+        "link": "/reference/library/frameworkdatatypes/_frameworktypeclass"
+      },
+      {
+        "text": "_TableType",
+        "link": "/reference/library/frameworkdatatypes/_tabletype"
+      }
+    ]
+  },
+  {
+    "text": "Stride::FunctionTest",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_FunctionTest",
+        "link": "/reference/library/functiontest/_functiontest"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Generators",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "AD",
+        "link": "/reference/library/generators/ad"
+      },
+      {
+        "text": "BandLimitedSaw",
+        "link": "/reference/library/generators/bandlimitedsaw"
+      },
+      {
+        "text": "Oscillator",
+        "link": "/reference/library/generators/oscillator"
+      },
+      {
+        "text": "Sequencer",
+        "link": "/reference/library/generators/sequencer"
+      },
+      {
+        "text": "TableOscillator",
+        "link": "/reference/library/generators/tableoscillator"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Level",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Level",
+        "link": "/reference/library/level/level"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Literals",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_IntLiteral",
+        "link": "/reference/library/literals/_intliteral"
+      },
+      {
+        "text": "_MemberAccess",
+        "link": "/reference/library/literals/_memberaccess"
+      },
+      {
+        "text": "_NoneLiteral",
+        "link": "/reference/library/literals/_noneliteral"
+      },
+      {
+        "text": "_PortProperty",
+        "link": "/reference/library/literals/_portproperty"
+      },
+      {
+        "text": "_RealLiteral",
+        "link": "/reference/library/literals/_realliteral"
+      },
+      {
+        "text": "_StringLiteral",
+        "link": "/reference/library/literals/_stringliteral"
+      },
+      {
+        "text": "_SwitchLiteral",
+        "link": "/reference/library/literals/_switchliteral"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Logic",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Select",
+        "link": "/reference/library/logic/select"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Math",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Abs",
+        "link": "/reference/library/math/abs"
+      },
+      {
+        "text": "_E",
+        "link": "/reference/library/math/_e"
+      },
+      {
+        "text": "_Pi",
+        "link": "/reference/library/math/_pi"
+      },
+      {
+        "text": "_TwoPi",
+        "link": "/reference/library/math/_twopi"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Notes",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "C4",
+        "link": "/reference/library/notes/c4"
+      },
+      {
+        "text": "C5",
+        "link": "/reference/library/notes/c5"
+      },
+      {
+        "text": "E4",
+        "link": "/reference/library/notes/e4"
+      },
+      {
+        "text": "G4",
+        "link": "/reference/library/notes/g4"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Object",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_Alias",
+        "link": "/reference/library/object/_alias"
+      },
+      {
+        "text": "_Base",
+        "link": "/reference/library/object/_base"
+      },
+      {
+        "text": "_CodeGenerator",
+        "link": "/reference/library/object/_codegenerator"
+      },
+      {
+        "text": "_DomainMember",
+        "link": "/reference/library/object/_domainmember"
+      },
+      {
+        "text": "_Rated",
+        "link": "/reference/library/object/_rated"
+      },
+      {
+        "text": "_Resetable",
+        "link": "/reference/library/object/_resetable"
+      },
+      {
+        "text": "_Streamable",
+        "link": "/reference/library/object/_streamable"
+      },
+      {
+        "text": "_Typed",
+        "link": "/reference/library/object/_typed"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Osc",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "OSCOut",
+        "link": "/reference/library/osc/oscout"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Pan",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Pan",
+        "link": "/reference/library/pan/pan"
+      }
+    ]
+  },
+  {
+    "text": "Stride::QualityPolicy",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Accurate",
+        "link": "/reference/library/qualitypolicy/accurate"
+      },
+      {
+        "text": "Compact",
+        "link": "/reference/library/qualitypolicy/compact"
+      },
+      {
+        "text": "Fast",
+        "link": "/reference/library/qualitypolicy/fast"
+      },
+      {
+        "text": "Optimal",
+        "link": "/reference/library/qualitypolicy/optimal"
+      },
+      {
+        "text": "_DeviceType",
+        "link": "/reference/library/qualitypolicy/_devicetype"
+      },
+      {
+        "text": "_PolicyBinding",
+        "link": "/reference/library/qualitypolicy/_policybinding"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Resource",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_DomainResourceType",
+        "link": "/reference/library/resource/_domainresourcetype"
+      },
+      {
+        "text": "_ResourceConfigurationType",
+        "link": "/reference/library/resource/_resourceconfigurationtype"
+      },
+      {
+        "text": "_ResourceType",
+        "link": "/reference/library/resource/_resourcetype"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Schema",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_Any",
+        "link": "/reference/library/schema/_any"
+      },
+      {
+        "text": "_ConstrainedEntity",
+        "link": "/reference/library/schema/_constrainedentity"
+      },
+      {
+        "text": "_ConstrainedInt",
+        "link": "/reference/library/schema/_constrainedint"
+      },
+      {
+        "text": "_ConstrainedList",
+        "link": "/reference/library/schema/_constrainedlist"
+      },
+      {
+        "text": "_ConstrainedReal",
+        "link": "/reference/library/schema/_constrainedreal"
+      },
+      {
+        "text": "_ConstrainedString",
+        "link": "/reference/library/schema/_constrainedstring"
+      },
+      {
+        "text": "_Constraint",
+        "link": "/reference/library/schema/_constraint"
+      },
+      {
+        "text": "_Entity",
+        "link": "/reference/library/schema/_entity"
+      },
+      {
+        "text": "_List",
+        "link": "/reference/library/schema/_list"
+      },
+      {
+        "text": "_Type",
+        "link": "/reference/library/schema/_type"
+      },
+      {
+        "text": "_TypeProperty",
+        "link": "/reference/library/schema/_typeproperty"
+      }
+    ]
+  },
+  {
+    "text": "Stride::Serial",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "SerialPrint",
+        "link": "/reference/library/serial/serialprint"
+      }
+    ]
+  },
+  {
+    "text": "Stride::StateMachine",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "_StateType",
+        "link": "/reference/library/statemachine/_statetype"
+      },
+      {
+        "text": "_TransitionType",
+        "link": "/reference/library/statemachine/_transitiontype"
+      }
+    ]
+  },
+  {
+    "text": "Stride::tests",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "ClassicAccumulatorModule",
+        "link": "/reference/library/tests/classicaccumulatormodule"
+      },
+      {
+        "text": "ClassicScaleModule",
+        "link": "/reference/library/tests/classicscalemodule"
+      },
+      {
+        "text": "ClassicSumLoop",
+        "link": "/reference/library/tests/classicsumloop"
+      }
+    ]
+  }
+]

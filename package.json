@@ -1,0 +1,24 @@
+{
+  "name": "stridedoc",
+  "version": "1.0.0",
+  "description": "Official documentation and website for the Stride programming language",
+  "scripts": {
+    "docs:extract": "python scripts/docgen.py --output docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "keywords": [
+    "stride",
+    "dsl",
+    "audio",
+    "dsp",
+    "documentation",
+    "embedded"
+  ],
+  "author": "Stride Language Contributors",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  }
+}
