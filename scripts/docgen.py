@@ -423,14 +423,11 @@ def render_port_icon(kind: str) -> str:
     return '<span class="port-icon stream-in" title="Port">»</span>'
 
 
-def format_rate_domain(rate: str, domain: str) -> str:
-    """Combines rate and domain into a clean, compact representation."""
-    parts = []
-    if rate and rate != 'none':
-        parts.append(f"`{rate}`")
-    if domain:
-        parts.append(f"`{domain}`")
-    return " / ".join(parts) if parts else "—"
+def format_field(val: str) -> str:
+    """Formats an entity field (rate, domain, type) into markdown code or an em-dash."""
+    if not val or val.lower() == 'none':
+        return "—"
+    return f"`{val}`"
 
 
 def generate_markdown_for_declaration(
@@ -494,8 +491,8 @@ def generate_markdown_for_declaration(
     # 1. Streams Table (if any stream ports)
     if stream_ports:
         md.append("## Streams\n")
-        md.append("| | Stream | Type | Rate / Domain | Description |")
-        md.append("| :-: | :--- | :--- | :--- | :--- |")
+        md.append("| | Stream | Type | Rate | Domain | Description |")
+        md.append("| :-: | :--- | :--- | :--- | :--- | :--- |")
         for p in stream_ports:
             icon = render_port_icon(p['kind'])
             # Stream name
@@ -503,16 +500,17 @@ def generate_markdown_for_declaration(
             # Resolve from entity
             ent = entity_map.get(p['entity'], {})
             s_type = ent.get('type') or ent.get('kind') or 'signal'
-            rate_domain = format_rate_domain(ent.get('rate', ''), ent.get('domain', ''))
+            rate_str = format_field(ent.get('rate', '') or p.get('rate', ''))
+            domain_str = format_field(ent.get('domain', '') or p.get('domain', ''))
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
-            md.append(f"| {icon} | `{s_name}` | `{s_type}` | {rate_domain} | {desc} |")
+            md.append(f"| {icon} | `{s_name}` | `{s_type}` | {rate_str} | {domain_str} | {desc} |")
         md.append("")
 
     # 2. Properties Table (if any properties)
     if properties:
         md.append("## Properties\n")
-        md.append("| | Property | Type | Default | Rate / Domain | Description |")
-        md.append("| :-: | :--- | :--- | :--- | :--- | :--- |")
+        md.append("| | Property | Type | Default | Rate | Domain | Description |")
+        md.append("| :-: | :--- | :--- | :--- | :--- | :--- | :--- |")
         for p in properties:
             icon = render_port_icon(p['kind'])
             p_name = p['name'] if p['name'] else p['id']
@@ -521,9 +519,10 @@ def generate_markdown_for_declaration(
             p_def = p['default'] if p['default'] else ent.get('default', '')
             p_def_str = f"`{p_def}`" if p_def else "—"
             p_type = ent.get('type') or ent.get('kind') or 'signal'
-            rate_domain = format_rate_domain(ent.get('rate', ''), ent.get('domain', ''))
+            rate_str = format_field(ent.get('rate', '') or p.get('rate', ''))
+            domain_str = format_field(ent.get('domain', '') or p.get('domain', ''))
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
-            md.append(f"| {icon} | `{p_name}` | `{p_type}` | {p_def_str} | {rate_domain} | {desc} |")
+            md.append(f"| {icon} | `{p_name}` | `{p_type}` | {p_def_str} | {rate_str} | {domain_str} | {desc} |")
         md.append("")
 
     # Compact Legend if ports/properties present

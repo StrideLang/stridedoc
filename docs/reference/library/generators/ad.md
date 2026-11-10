@@ -9,17 +9,17 @@ description: "AD module definition."
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | The module's primary output port. |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `output` | `trigger` | `OutputPort.domain` | Triggers the envelope |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | The module's primary output port. |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `output` | `trigger` | — | `OutputPort.domain` | Triggers the envelope |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `attack` | `signal` | `0.2` | — | Attack time in seconds |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `decay` | `signal` | `3.0` | — | Decay time in seconds |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `attack` | `signal` | `0.2` | — | — | Attack time in seconds |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `decay` | `signal` | `3.0` | — | — | Decay time in seconds |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

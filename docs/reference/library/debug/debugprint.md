@@ -9,15 +9,15 @@ description: "DebugPrint module definition."
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `value` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `value` | `signal` | — | — | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `trigger` | `switch` | `on` | — | — |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `trigger` | `switch` | `on` | — | — | — |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

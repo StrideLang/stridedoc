@@ -11,10 +11,10 @@ Detects rising edge (off -> on): Input >> RisingEdge() >> Trigger.
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `switch` | `OutputPort.rate` / `OutputPort.domain` | Monitored switch signal |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | `OutputPort.rate` / `OutputPort.domain` | Switch that is on for one tick when Input transitions from off to on |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Monitored switch signal |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch that is on for one tick when Input transitions from off to on |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

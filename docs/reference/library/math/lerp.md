@@ -11,17 +11,17 @@ Linearly interpolates from Input to Target based on factor: Input >> Lerp(target
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Base input signal |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Interpolated output signal |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Base input signal |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Interpolated output signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `target` | `OutputPort.type` | `0.0` | `OutputPort.rate` / `OutputPort.domain` | Target signal to blend towards |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `factor` | `OutputPort.type` | `0.5` | `OutputPort.rate` / `OutputPort.domain` | Blend factor from 0.0 (Input) to 1.0 (Target) |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `target` | `OutputPort.type` | `0.0` | `OutputPort.rate` | `OutputPort.domain` | Target signal to blend towards |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `factor` | `OutputPort.type` | `0.5` | `OutputPort.rate` | `OutputPort.domain` | Blend factor from 0.0 (Input) to 1.0 (Target) |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

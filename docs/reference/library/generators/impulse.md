@@ -9,16 +9,16 @@ description: "Impulse module definition."
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | `440.0` | — | The frequency of the oscillator. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `amplitude` | `signal` | `1.0` | — | The amplitude of the oscillator. |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | `440.0` | — | — | The frequency of the oscillator. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `amplitude` | `signal` | `1.0` | — | — | The amplitude of the oscillator. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

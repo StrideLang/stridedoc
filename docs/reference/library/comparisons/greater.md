@@ -11,10 +11,10 @@ Compares two input values: outputs on if Input[0] > Input[1], else off.
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `InputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Two-element list with values to compare: [Left, Right] |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | `OutputPort.rate` / `OutputPort.domain` | Switch indicating if Left > Right |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `InputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Two-element list with values to compare: [Left, Right] |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch indicating if Left > Right |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

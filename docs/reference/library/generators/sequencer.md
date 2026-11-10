@@ -11,16 +11,16 @@ Sequencer
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `trigger` | `InputPort.domain` | — |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | `OutputPort.domain` | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `trigger` | — | `InputPort.domain` | — |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | `OutputPort.domain` | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `values` | `signal` | — | — | Values in the sequencer |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `values` | `signal` | — | — | — | Values in the sequencer |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

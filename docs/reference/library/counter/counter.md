@@ -11,18 +11,18 @@ A discrete step counter that increments per tick and rolls over to startValue up
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | `OutputPort.domain` | Counter output signal |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | `OutputPort.domain` | Counter output signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `startValue` | `signal` | `0` | `OutputPort.domain` | The starting value of the counter, which is also the first output value. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `stopValue` | `signal` | `100` | `OutputPort.domain` | The roll value of the counter. The maximum value before resetting to startValue. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `increment` | `signal` | `1` | `OutputPort.domain` | The step value added per tick. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `reset` | `trigger` | — | `OutputPort.domain` | The counter is reset to startValue when a trigger arrives at the reset port. |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `startValue` | `signal` | `0` | — | `OutputPort.domain` | The starting value of the counter, which is also the first output value. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `stopValue` | `signal` | `100` | — | `OutputPort.domain` | The roll value of the counter. The maximum value before resetting to startValue. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `increment` | `signal` | `1` | — | `OutputPort.domain` | The step value added per tick. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `reset` | `trigger` | — | — | `OutputPort.domain` | The counter is reset to startValue when a trigger arrives at the reset port. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

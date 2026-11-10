@@ -11,16 +11,16 @@ Lightweight signal probe that non-intrusively monitors a stream while passing it
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | Signal to be probed and passed through |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | Pass-through of the input signal |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | Signal to be probed and passed through |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | Pass-through of the input signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `label` | `signal` | — | — | Label identifier for the probe |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `label` | `signal` | — | — | — | Label identifier for the probe |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

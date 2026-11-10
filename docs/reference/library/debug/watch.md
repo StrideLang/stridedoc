@@ -11,16 +11,16 @@ Signal watch module for non-intrusive runtime observation
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | Signal to be watched and passed through |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | Pass-through of the input signal |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | Signal to be watched and passed through |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | Pass-through of the input signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `label` | `signal` | — | — | — |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `label` | `signal` | — | — | — | — |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

@@ -11,10 +11,10 @@ Not implemented yet
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Port">»</span> | `output` | `signal` | — | — |
-| <span class="port-icon stream-in" title="Port">»</span> | `input` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Port">»</span> | `output` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Port">»</span> | `input` | `signal` | — | — | — |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

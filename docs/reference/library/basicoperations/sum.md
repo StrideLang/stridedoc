@@ -11,10 +11,10 @@ Adds all signals in the input array: Input >> Sum() >> Output.
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Sum_Input` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Array of signals to be summed |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Sum_Output` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | The sum of all signals in the array |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Sum_Input` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Array of signals to be summed |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Sum_Output` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | The sum of all signals in the array |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

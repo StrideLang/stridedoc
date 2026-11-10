@@ -12,17 +12,17 @@ Formula: output = input * gain + offset
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | — | — |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | — | — | — |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `gain` | `GainPort.type` | `1.0` | `GainPort.rate` / `GainPort.domain` | Amplifies or attenuates the signal. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `offset` | `OffsetPort.type` | `0.0` | `OffsetPort.rate` / `OffsetPort.domain` | Adds an offset to the signal after applying the gain. |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `gain` | `GainPort.type` | `1.0` | `GainPort.rate` | `GainPort.domain` | Amplifies or attenuates the signal. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `offset` | `OffsetPort.type` | `0.0` | `OffsetPort.rate` | `OffsetPort.domain` | Adds an offset to the signal after applying the gain. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

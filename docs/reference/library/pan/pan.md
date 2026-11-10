@@ -11,16 +11,16 @@ Stereo panner.
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `position` | `signal` | — | — | Sets the panning position with range [-1, 1]. |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `position` | `signal` | — | — | — | Sets the panning position with range [-1, 1]. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

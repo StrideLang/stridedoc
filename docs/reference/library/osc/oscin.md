@@ -11,17 +11,17 @@ Receives OSC messages.
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `address` | `signal` | `/Stride` | — | The OSC address |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `ip` | `signal` | `127.0.0.1` | — | The IP address to receive from. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `port` | `signal` | `9011` | — | The Network port to receive the data from. |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `address` | `signal` | `/Stride` | — | — | The OSC address |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `ip` | `signal` | `127.0.0.1` | — | — | The IP address to receive from. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `port` | `signal` | `9011` | — | — | The Network port to receive the data from. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

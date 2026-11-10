@@ -11,18 +11,18 @@ Placeholder for low pass filter. Currently not implemented.
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | — | — | The frequency of the filter. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `qFactor` | `signal` | — | — | The Q value of the filter. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `gain` | `signal` | — | — | — |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | — | — | — | The frequency of the filter. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `qFactor` | `signal` | — | — | — | The Q value of the filter. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `gain` | `signal` | — | — | — | — |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

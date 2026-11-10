@@ -11,10 +11,10 @@ Detects changes in a signal: outputs on when Input differs from previous tick: I
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `InputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Signal or switch being monitored for changes |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | `OutputPort.rate` / `OutputPort.domain` | Switch that is on when Input changed from its previous tick value |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `InputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Signal or switch being monitored for changes |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch that is on when Input changed from its previous tick value |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

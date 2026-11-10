@@ -11,15 +11,15 @@ Statistical Signal-to-Noise Ratio assertion for stream differential testing.
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | Two-element input list for Signal-to-Noise Ratio comparison: [Candidate, Baseline] |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | Two-element input list for Signal-to-Noise Ratio comparison: [Candidate, Baseline] |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `minSnr` | `signal` | `80.0` | — | Minimum acceptable Signal-to-Noise Ratio in dB |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `minSnr` | `signal` | `80.0` | — | — | Minimum acceptable Signal-to-Noise Ratio in dB |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

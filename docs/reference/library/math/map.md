@@ -11,19 +11,19 @@ Linearly maps Input from [inMin, inMax] to [outMin, outMax]: Input >> Map(inMin:
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Input value to rescale |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Rescaled output value |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Input value to rescale |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Rescaled output value |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `inMin` | `OutputPort.type` | `0.0` | `OutputPort.rate` / `OutputPort.domain` | Source range minimum |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `inMax` | `OutputPort.type` | `1.0` | `OutputPort.rate` / `OutputPort.domain` | Source range maximum |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `outMin` | `OutputPort.type` | `0.0` | `OutputPort.rate` / `OutputPort.domain` | Target range minimum |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `outMax` | `OutputPort.type` | `1.0` | `OutputPort.rate` / `OutputPort.domain` | Target range maximum |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `inMin` | `OutputPort.type` | `0.0` | `OutputPort.rate` | `OutputPort.domain` | Source range minimum |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `inMax` | `OutputPort.type` | `1.0` | `OutputPort.rate` | `OutputPort.domain` | Source range maximum |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `outMin` | `OutputPort.type` | `0.0` | `OutputPort.rate` | `OutputPort.domain` | Target range minimum |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `outMax` | `OutputPort.type` | `1.0` | `OutputPort.rate` | `OutputPort.domain` | Target range maximum |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

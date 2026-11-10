@@ -11,17 +11,17 @@ BiQuad filter
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | — | — |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | — | — | — |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `centerFrequency` | `signal` | — | — | The center frequency of the filter. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `resonance` | `signal` | `50` | — | Resonance (Q) amount. Should be greater than on equal to 1.0. |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `centerFrequency` | `signal` | — | — | — | The center frequency of the filter. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `resonance` | `signal` | `50` | — | — | Resonance (Q) amount. Should be greater than on equal to 1.0. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

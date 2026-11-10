@@ -11,17 +11,17 @@ Limits signal within minimum and maximum values: Input >> Clip(minimum: 0.0 maxi
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Input signal to constrain |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Clipped output signal |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Input signal to constrain |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Clipped output signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `minimum` | `OutputPort.type` | `0.0` | `OutputPort.rate` / `OutputPort.domain` | Lower bound |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `maximum` | `OutputPort.type` | `1.0` | `OutputPort.rate` / `OutputPort.domain` | Upper bound |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `minimum` | `OutputPort.type` | `0.0` | `OutputPort.rate` | `OutputPort.domain` | Lower bound |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `maximum` | `OutputPort.type` | `1.0` | `OutputPort.rate` | `OutputPort.domain` | Upper bound |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

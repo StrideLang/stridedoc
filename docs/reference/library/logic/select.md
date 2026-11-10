@@ -11,18 +11,18 @@ Selects between whenOn and whenOff signals based on a switch condition: Input >>
 
 ## Streams
 
-| | Stream | Type | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | `OutputPort.domain` | Default signal flowing along the primary path |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | `OutputPort.domain` | Selected output signal |
+| | Stream | Type | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | — | `OutputPort.domain` | Default signal flowing along the primary path |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | `OutputPort.domain` | Selected output signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate / Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `condition` | `switch` | — | `OutputPort.domain` | Switch condition determining which value is output |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `whenOn` | `signal` | — | `OutputPort.domain` | Signal produced when Condition is on |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `whenOff` | `signal` | `Input` | `OutputPort.domain` | Signal produced when Condition is off (defaults to Input if not specified) |
+| | Property | Type | Default | Rate | Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `condition` | `switch` | — | — | `OutputPort.domain` | Switch condition determining which value is output |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `whenOn` | `signal` | — | — | `OutputPort.domain` | Signal produced when Condition is on |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `whenOff` | `signal` | `Input` | — | `OutputPort.domain` | Signal produced when Condition is off (defaults to Input if not specified) |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
