@@ -10,15 +10,7 @@ if (fs.existsSync(grammarPath)) {
 }
 
 // Load Auto-generated Reference Sidebar
-const sidebarRefPath = path.resolve(__dirname, 'sidebar-reference.json');
-let referenceCategories: any[] = [];
-if (fs.existsSync(sidebarRefPath)) {
-  try {
-    referenceCategories = JSON.parse(fs.readFileSync(sidebarRefPath, 'utf-8'));
-  } catch (e) {
-    console.error("Failed to parse sidebar-reference.json", e);
-  }
-}
+import referenceCategories from './sidebar-reference.json';
 
 export default defineConfig({
   title: "Stride",
