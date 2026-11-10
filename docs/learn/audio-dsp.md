@@ -1,28 +1,31 @@
-# Audio DSP & Synthesis in Stride
+# Digital Signal Processing
 
-A practical guide to designing digital signal processing chains, synthesizers, and sound effects in Stride.
+This document outlines standard DSP design patterns and synthesis structures formulated in Stride.
 
 ---
 
 ## 1. Frequency Modulation (FM) Synthesis
 
-FM synthesis creates rich, harmonically complex spectra by modulating the frequency of a carrier oscillator with the output of a modulator oscillator:
+In frequency modulation synthesis, the instantaneous frequency of a carrier oscillator is varied according to the output of a modulation oscillator:
+
+$$\omega_c(t) = \omega_0 + I \cdot \sin(\omega_m t)$$
+
+Where:
+- $\omega_0$ represents the unmodulated carrier angular frequency.
+- $\omega_m$ is the modulator angular frequency.
+- $I$ denotes the modulation depth (index).
 
 ```stride
 use DesktopAudio version 1.0;
 
 import Stride;
 
-# Define frequency parameters
-signal CarrierFreq  { default: 440.0 }
-signal ModFreq      { default: 220.0 }
-signal ModDepth     { default: 150.0 }
+# Parameter definitions
+signal CarrierFreq { default: 440.0 }
+signal ModFreq     { default: 220.0 }
+signal ModDepth    { default: 150.0 }
 
-# 1. Modulator generates wave at ModFreq
-# 2. Scale by ModDepth
-# 3. Add to CarrierFreq
-# 4. Stream into Carrier Oscillator
-
+# Modulator computes instantaneous offset:
 ModFreq 
   >> Generators::Oscillator() 
   >> Math::Multiply(value: ModDepth)
@@ -33,38 +36,38 @@ ModFreq
 
 ---
 
-## 2. Resonant Filter Sweeps (Subtractive Synthesis)
+## 2. Biquad Digital Filtering
 
-In subtractive synthesis, a harmonically rich waveform (such as a sawtooth wave) is carved away by time-varying resonant filters:
+The standard second-order infinite impulse response (IIR) biquad transfer function is expressed in the Z-domain as:
+
+$$H(z) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{a_0 + a_1 z^{-1} + a_2 z^{-2}}$$
+
+The `Stride::Filters::BiQuad` module implements this standard Direct Form topology:
 
 ```stride
 use DesktopAudio version 1.0;
 
 import Stride;
 
-# Envelope parameters for filter sweep
-signal CutoffStart { default: 300.0 }
-signal CutoffEnd   { default: 4500.0 }
-
-# Band-limited sawtooth passed into a resonant 12dB/octave BiQuad filter
-110.0 >> Generators::BandLimitedSaw() >> Filters::BiQuad(
-    centerFrequency: 1800.0,
-    resonance: 4.0
-) >> AudioOut;
+# Band-limited sawtooth passed into a resonant 12 dB/octave biquad filter:
+110.0 
+  >> Generators::BandLimitedSaw() 
+  >> Filters::BiQuad(centerFrequency: 1800.0, resonance: 4.0) 
+  >> AudioOut;
 ```
 
 ---
 
-## 3. Polyphony & Voice Bundles
+## 3. Parallel Processing & Channel Bundles
 
-Stride's bundle syntax `[...]` enables concise expression of polyphonic voice architectures:
+Multichannel signal paths and polyphonic voice banks are evaluated using bundle notation `[...]`:
 
 ```stride
 use DesktopAudio version 1.0;
 
 import Stride;
 
-# Three-note chord: Root (220 Hz), Major Third (277.18 Hz), Fifth (329.63 Hz)
+# Multi-frequency triad: Root (220 Hz), Major Third (277.18 Hz), Fifth (329.63 Hz)
 [220.0, 277.18, 329.63]
   >> Generators::Oscillator(amplitude: 0.25)
   >> Math::Sum()

@@ -1,29 +1,29 @@
 ---
 title: Sequencer
-description: "Sequencer module reference."
+description: "Sequencer module definition."
 ---
 
 # Sequencer
 
 <span class="stride-badge">Module</span> `package Stride::Generators`
 
-*Module defined in `library\1.0\Generators\Sequencer.stride`.*
+*Module declared in `library\1.0\Generators\Sequencer.stride`.*
 
 ## Ports & Properties
 
-| Name | Kind | Target Signal | Default | Description |
+| Name | Type | Target Signal | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `InputPort` | Input Stream | `Input` | — | — |
 | `OutputPort` | Output Stream | `Output` | — | — |
 | `values` | Property In | `Values` | — | Values in the sequencer |
 
-## Internal Signals & Defaults
+## Signals & Attributes
 
 | Signal | Type | Default | Rate / Domain | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `Input` | `trigger` | `0` | Domain: } | Sequencer |
 
-## Usage Example
+## Usage
 
 ```stride
 import Stride;

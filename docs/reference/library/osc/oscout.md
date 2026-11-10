@@ -1,24 +1,24 @@
 ---
 title: OSCOut
-description: "OSCOut module reference."
+description: "OSCOut module definition."
 ---
 
 # OSCOut
 
 <span class="stride-badge">Module</span> `package Stride::Osc`
 
-*Module defined in `library\1.0\Osc\OSC.stride`.*
+*Module declared in `library\1.0\Osc\OSC.stride`.*
 
 ## Ports & Properties
 
-| Name | Kind | Target Signal | Default | Description |
+| Name | Type | Target Signal | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `input` | Input Stream | — | — | — |
 | `address` | Property In | `Address` | — | The OSC address |
 | `ip` | Property In | `IP` | — | The IP address to send to. |
 | `port` | Property In | `Port` | — | The Network port to send the data to. |
 
-## Internal Signals & Defaults
+## Signals & Attributes
 
 | Signal | Type | Default | Rate / Domain | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -30,7 +30,7 @@ description: "OSCOut module reference."
 | `IP` | `signal` | `127.0.0.1` | — | — |
 | `Port` | `signal` | `9011` | — | — |
 
-## Usage Example
+## Usage
 
 ```stride
 import Stride;

@@ -11,7 +11,7 @@ Placeholder for low pass filter. Currently not implemented.
 
 ## Ports & Properties
 
-| Name | Kind | Target Signal | Default | Description |
+| Name | Type | Target Signal | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `output` | Output Stream | — | — | — |
 | `input` | Input Stream | — | — | — |
@@ -19,7 +19,7 @@ Placeholder for low pass filter. Currently not implemented.
 | `qFactor` | Property In | `QFactor` | — | The Q value of the filter. |
 | `gain` | Property In | `Gain` | — | — |
 
-## Usage Example
+## Usage
 
 ```stride
 import Stride;

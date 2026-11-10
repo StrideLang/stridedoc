@@ -1,17 +1,17 @@
 ---
 title: Oscillator
-description: "Oscillator module reference."
+description: "Oscillator module definition."
 ---
 
 # Oscillator
 
 <span class="stride-badge">Module</span> `package Stride::Generators`
 
-*Module defined in `library\1.0\Generators\Oscillator.stride`.*
+*Module declared in `library\1.0\Generators\Oscillator.stride`.*
 
 ## Ports & Properties
 
-| Name | Kind | Target Signal | Default | Description |
+| Name | Type | Target Signal | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `OutputPort` | Output Stream | `Output` | — | — |
 | `frequency` | Property In | `Frequency` | — | The frequency of the oscillator. |
@@ -19,7 +19,7 @@ description: "Oscillator module reference."
 | `phase` | Property In | `StartPhase` | — | The starting phase of the oscillator. |
 | `reset` | Property In | `Reset` | — | Resets the oscillator to the starting phase. |
 
-## Internal Signals & Defaults
+## Signals & Attributes
 
 | Signal | Type | Default | Rate / Domain | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -27,7 +27,7 @@ description: "Oscillator module reference."
 | `Amplitude` | `signal` | `1.0` | — | — |
 | `Phase` | `signal` | `0.0` | Rate: >>, Domain: } | — |
 
-## Usage Example
+## Usage
 
 ```stride
 import Stride;

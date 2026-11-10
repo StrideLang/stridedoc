@@ -11,12 +11,12 @@ Not implemented yet
 
 ## Ports & Properties
 
-| Name | Kind | Target Signal | Default | Description |
+| Name | Type | Target Signal | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `output` | Port | — | — | — |
 | `input` | Port | — | — | — |
 
-## Usage Example
+## Usage
 
 ```stride
 import Stride;

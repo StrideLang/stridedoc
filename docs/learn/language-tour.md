@@ -1,133 +1,141 @@
-# Stride Language Tour
+# Language Tour
 
-A guided tour of the fundamental concepts, syntax, and idioms in Stride.
+A technical overview of the grammar, type system, stream operators, and compilation semantics of Stride.
 
 ---
 
-## 1. Streams & The Stream Operator (`>>`)
+## 1. Stream Operations & Dataflow
 
-In Stride, computation is expressed as data flowing through streams:
+Computation in Stride is formulated as directed dataflow graphs. The forward stream operator `>>` routes signal values from producers to consumers:
 
 ```stride
 Source >> Transform >> Destination;
 ```
 
-Streams can chain multiple processing stages linearly:
+Pipelines can be connected sequentially. The compiler resolves signal types and validates rate compatibility at each connection:
 
 ```stride
 import Stride;
 
 AudioIn 
   >> Filters::BiQuad(centerFrequency: 1000.0, resonance: 1.5)
-  >> Math::Clip(min: -0.9, max: 0.9)
+  >> Math::Clamp(min: -0.9, max: 0.9)
   >> AudioOut;
 ```
 
 ---
 
-## 2. Bundles & Parallel Streams
+## 2. Bundles & Parallel Dataflow
 
-Brackets `[...]` declare **stream bundles** (multichannel streams or parallel operations):
+Bracket syntax `[...]` designates **bundles**—ordered collections of signals evaluated in parallel:
 
 ```stride
-# Fan-out: Sending one signal into two parallel paths
-Signal >> [ PathA, PathB ];
+# Fan-out: A single signal dispatched to multiple destinations
+InputSignal >> [ BranchA, BranchB ];
 
-# Fan-in: Combining multiple signals into a dual-input block
-[ SignalLeft, SignalRight ] >> StereoProcessor() >> [ AudioOut[0], AudioOut[1] ];
+# Fan-in: Multi-channel signals routed into a multi-port processor
+[ LeftChannel, RightChannel ] >> StereoProcessor() >> [ AudioOut[0], AudioOut[1] ];
 ```
 
-You can use the placeholder `_` to position inputs into specific argument slots:
+The underscore token `_` serves as a positional placeholder when feeding into a subset of a bundle's input slots:
 
 ```stride
-# Feeds Frequency into slot 0, keeping Amplitude at 0.5
+# Routes Frequency into port 0, setting port 1 to constant 0.5:
 Frequency >> [_, 0.5] >> Generators::Oscillator() >> AudioOut;
 ```
 
 ---
 
-## 3. Packages and Imports
+## 3. Package Structure & Namespace Resolution
 
-Stride organizes modular components into sealed packages:
+Stride organizes source components into modular, sealed packages.
 
-### Canonical Package Declarations
-Files declare their logical namespace using the `package` keyword:
+### Package Declarations
+Files declare their package namespace explicitly:
 
 ```stride
 package Stride::Generators;
 ```
 
-### The 3-Tier Import Convention
+When no package is declared, components placed directly at the root of the standard library reside in the top-level **`Stride`** namespace.
 
-1. **Import the whole library**:
+### Import Semantics
+
+1. **Top-Level Library Import**:
    ```stride
    import Stride;
 
-   # Access modules with category qualification:
-   Generators::Oscillator() >> Filters::LowPass() >> AudioOut;
+   # Standard root library operations are in immediate scope:
+   Input >> Sin() >> Output;
+
+   # Sub-packages are referenced via category qualification:
+   Input >> Filters::LowPass(cutoff: 1000.0) >> Output;
    ```
 
-2. **Import a specific category**:
+2. **Categorical Sub-package Import**:
    ```stride
    import Stride::Generators;
 
-   # Access modules directly:
-   Oscillator(frequency: 440.0) >> AudioOut;
+   # Generator definitions become available without qualification:
+   440.0 >> Oscillator() >> AudioOut;
    ```
 
-3. **Import with an alias**:
+3. **Aliased Import**:
    ```stride
-   import Stride::Generators as Gen;
+   import Stride::Filters as Flt;
 
-   Gen::Oscillator(frequency: 440.0) >> AudioOut;
+   Input >> Flt::BiQuad() >> Output;
    ```
 
 ---
 
 ## 4. Modules, Ports, and Properties
 
-A **Module** encapsulates signals, inner state, and processing streams. Its external interface is defined by **Ports**:
+A **Module** encapsulates computational state, internal signals, and processing logic. Its external interface is defined strictly through **Ports**:
 
 ```stride
 module Tremolo {
     ports: [
         mainInputPort InputPort {
             entity: Input
-            meta: "Audio signal to modulate"
+            meta: "Input audio signal"
         },
         mainOutputPort OutputPort {
             entity: Output
-            meta: "Tremolo-modulated audio stream"
+            meta: "Modulated audio stream output"
         },
         propertyInputPort RateProperty {
             name: "rate"
-            entity: LfoRate
+            entity: ModulationRate
             default: 5.0
-            meta: "LFO modulation speed in Hz"
+            meta: "Modulation frequency in Hz"
         }
     ]
     entities: [
         signal Input {}
         signal Output {}
-        signal LfoRate { default: 5.0 }
-        signal LfoOut {}
+        signal ModulationRate { default: 5.0 }
+        signal LfoSignal {}
     ]
     streams: [
-        # Generate low-frequency modulation between 0.2 and 1.0
-        LfoRate >> Generators::Oscillator() >> Math::Abs() >> LfoOut;
-        Input * LfoOut >> Output;
+        ModulationRate >> Generators::Oscillator() >> Math::Abs() >> LfoSignal;
+        Input * LfoSignal >> Output;
     ]
-    meta: "Applies amplitude modulation (tremolo) to the audio stream."
+    meta: "Applies amplitude modulation to an incoming signal."
 }
 ```
 
+### Port Classifications
+- `mainInputPort` / `mainOutputPort`: Primary synchronous streaming data paths.
+- `propertyInputPort` / `propertyOutputPort`: Named configuration attributes accessible via keyword arguments (e.g., `rate: 5.0`).
+
 ---
 
-## 5. Rates and Domains
+## 5. Rate Typing & Domain Boundaries
 
-Stride signals are strongly associated with execution rates:
-* `AudioRate`: High-frequency streaming rate (e.g. 48,000 samples/sec).
-* `ControlRate`: Sub-sampled rate for envelopes, UI parameters, and sensor readings.
-* `none`: Static constants or asynchronous event triggers.
+Every signal in Stride is associated with a discrete rate type:
+* `AudioRate`: Evaluated synchronously at the primary audio sampling frequency (e.g., 48 kHz).
+* `ControlRate`: Evaluated at a sub-sampled control period (e.g., 1 kHz).
+* `none`: Static constants or discrete asynchronous events.
 
-When streams flow across different execution domains or cores, Stride enforces explicit Domain declarations to guarantee thread safety and prevent sample tearing.
+Signals operating at distinct rates or hosted on separate processing cores cannot be directly connected through synchronous stream operators. They must be routed through formal **Domains** using explicitly declared synchronization primitives.

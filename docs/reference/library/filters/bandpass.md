@@ -11,7 +11,7 @@ Band pass filter
 
 ## Ports & Properties
 
-| Name | Kind | Target Signal | Default | Description |
+| Name | Type | Target Signal | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `output` | Port | — | — | — |
 | `input` | Port | — | — | — |
@@ -19,13 +19,13 @@ Band pass filter
 | `qFactor` | Port | `QFactor` | — | The Q value of the filter. |
 | `gain` | Port | `Gain` | — | — |
 
-## Internal Signals & Defaults
+## Signals & Attributes
 
 | Signal | Type | Default | Rate / Domain | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `QFactor` | `signal` | `1.0` | — | — |
 
-## Usage Example
+## Usage
 
 ```stride
 import Stride;

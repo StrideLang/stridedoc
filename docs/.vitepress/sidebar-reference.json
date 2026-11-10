@@ -1,247 +1,415 @@
 [
   {
-    "text": "Stride::Assertions",
-    "collapsed": true,
+    "text": "Stride (Core Library)",
+    "collapsed": false,
     "items": [
       {
-        "text": "ExpectEqual",
-        "link": "/reference/library/assertions/expectequal"
+        "text": "Abs",
+        "link": "/reference/library/core/abs"
       },
       {
-        "text": "ExpectFalse",
-        "link": "/reference/library/assertions/expectfalse"
+        "text": "Accurate",
+        "link": "/reference/library/core/accurate"
       },
       {
-        "text": "ExpectGe",
-        "link": "/reference/library/assertions/expectge"
+        "text": "Compact",
+        "link": "/reference/library/core/compact"
       },
-      {
-        "text": "ExpectGt",
-        "link": "/reference/library/assertions/expectgt"
-      },
-      {
-        "text": "ExpectLe",
-        "link": "/reference/library/assertions/expectle"
-      },
-      {
-        "text": "ExpectLt",
-        "link": "/reference/library/assertions/expectlt"
-      },
-      {
-        "text": "ExpectMaxError",
-        "link": "/reference/library/assertions/expectmaxerror"
-      },
-      {
-        "text": "ExpectNear",
-        "link": "/reference/library/assertions/expectnear"
-      },
-      {
-        "text": "ExpectSnr",
-        "link": "/reference/library/assertions/expectsnr"
-      },
-      {
-        "text": "ExpectTrue",
-        "link": "/reference/library/assertions/expecttrue"
-      }
-    ]
-  },
-  {
-    "text": "Stride::BasicOperations",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Sum",
-        "link": "/reference/library/basicoperations/sum"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Callable",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_Callable",
-        "link": "/reference/library/callable/_callable"
-      },
-      {
-        "text": "_MainInputPort",
-        "link": "/reference/library/callable/_maininputport"
-      },
-      {
-        "text": "_MainOutputPort",
-        "link": "/reference/library/callable/_mainoutputport"
-      },
-      {
-        "text": "_Port",
-        "link": "/reference/library/callable/_port"
-      },
-      {
-        "text": "_PortAttributes",
-        "link": "/reference/library/callable/_portattributes"
-      },
-      {
-        "text": "_PropertyInputPort",
-        "link": "/reference/library/callable/_propertyinputport"
-      },
-      {
-        "text": "_PropertyOutputPort",
-        "link": "/reference/library/callable/_propertyoutputport"
-      }
-    ]
-  },
-  {
-    "text": "Stride::CodeGenerators",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_CodeGenerator",
-        "link": "/reference/library/codegenerators/_codegenerator"
-      },
-      {
-        "text": "_Loop",
-        "link": "/reference/library/codegenerators/_loop"
-      },
-      {
-        "text": "_Module",
-        "link": "/reference/library/codegenerators/_module"
-      },
-      {
-        "text": "_Reaction",
-        "link": "/reference/library/codegenerators/_reaction"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Comparisons",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Greater",
-        "link": "/reference/library/comparisons/greater"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Control",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "OnChange",
-        "link": "/reference/library/control/onchange"
-      }
-    ]
-  },
-  {
-    "text": "Stride::CoreTypes",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_Buffer",
-        "link": "/reference/library/coretypes/_buffer"
-      },
-      {
-        "text": "_Constant",
-        "link": "/reference/library/coretypes/_constant"
-      },
-      {
-        "text": "_GroupType",
-        "link": "/reference/library/coretypes/_grouptype"
-      },
-      {
-        "text": "_IteratorType",
-        "link": "/reference/library/coretypes/_iteratortype"
-      },
-      {
-        "text": "_SequenceType",
-        "link": "/reference/library/coretypes/_sequencetype"
-      },
-      {
-        "text": "_Signal",
-        "link": "/reference/library/coretypes/_signal"
-      },
-      {
-        "text": "_StreamType",
-        "link": "/reference/library/coretypes/_streamtype"
-      },
-      {
-        "text": "_String",
-        "link": "/reference/library/coretypes/_string"
-      },
-      {
-        "text": "_Switch",
-        "link": "/reference/library/coretypes/_switch"
-      },
-      {
-        "text": "_Table",
-        "link": "/reference/library/coretypes/_table"
-      },
-      {
-        "text": "_Trigger",
-        "link": "/reference/library/coretypes/_trigger"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Counter",
-    "collapsed": true,
-    "items": [
       {
         "text": "Counter",
-        "link": "/reference/library/counter/counter"
-      }
-    ]
-  },
-  {
-    "text": "Stride::DataTypes",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_TypeClass",
-        "link": "/reference/library/datatypes/_typeclass"
+        "link": "/reference/library/core/counter"
       },
-      {
-        "text": "_TypeClassConversion",
-        "link": "/reference/library/datatypes/_typeclassconversion"
-      },
-      {
-        "text": "_Variadic",
-        "link": "/reference/library/datatypes/_variadic"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Debug",
-    "collapsed": true,
-    "items": [
       {
         "text": "DebugPrint",
-        "link": "/reference/library/debug/debugprint"
+        "link": "/reference/library/core/debugprint"
       },
       {
         "text": "Error",
-        "link": "/reference/library/debug/error"
+        "link": "/reference/library/core/error"
+      },
+      {
+        "text": "Exit",
+        "link": "/reference/library/core/exit"
+      },
+      {
+        "text": "ExpectEqual",
+        "link": "/reference/library/core/expectequal"
+      },
+      {
+        "text": "ExpectFalse",
+        "link": "/reference/library/core/expectfalse"
+      },
+      {
+        "text": "ExpectGe",
+        "link": "/reference/library/core/expectge"
+      },
+      {
+        "text": "ExpectGt",
+        "link": "/reference/library/core/expectgt"
+      },
+      {
+        "text": "ExpectLe",
+        "link": "/reference/library/core/expectle"
+      },
+      {
+        "text": "ExpectLt",
+        "link": "/reference/library/core/expectlt"
+      },
+      {
+        "text": "ExpectMaxError",
+        "link": "/reference/library/core/expectmaxerror"
+      },
+      {
+        "text": "ExpectNear",
+        "link": "/reference/library/core/expectnear"
+      },
+      {
+        "text": "ExpectSnr",
+        "link": "/reference/library/core/expectsnr"
+      },
+      {
+        "text": "ExpectTrue",
+        "link": "/reference/library/core/expecttrue"
+      },
+      {
+        "text": "Fast",
+        "link": "/reference/library/core/fast"
+      },
+      {
+        "text": "Greater",
+        "link": "/reference/library/core/greater"
+      },
+      {
+        "text": "Level",
+        "link": "/reference/library/core/level"
+      },
+      {
+        "text": "OnChange",
+        "link": "/reference/library/core/onchange"
+      },
+      {
+        "text": "Optimal",
+        "link": "/reference/library/core/optimal"
+      },
+      {
+        "text": "Pan",
+        "link": "/reference/library/core/pan"
       },
       {
         "text": "Probe",
-        "link": "/reference/library/debug/probe"
+        "link": "/reference/library/core/probe"
+      },
+      {
+        "text": "Select",
+        "link": "/reference/library/core/select"
+      },
+      {
+        "text": "Sum",
+        "link": "/reference/library/core/sum"
       },
       {
         "text": "Watch",
-        "link": "/reference/library/debug/watch"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Domain",
-    "collapsed": true,
-    "items": [
+        "link": "/reference/library/core/watch"
+      },
       {
-        "text": "Exit",
-        "link": "/reference/library/domain/exit"
+        "text": "_Alias",
+        "link": "/reference/library/core/_alias"
+      },
+      {
+        "text": "_Any",
+        "link": "/reference/library/core/_any"
+      },
+      {
+        "text": "_Base",
+        "link": "/reference/library/core/_base"
+      },
+      {
+        "text": "_Buffer",
+        "link": "/reference/library/core/_buffer"
+      },
+      {
+        "text": "_BufferType",
+        "link": "/reference/library/core/_buffertype"
+      },
+      {
+        "text": "_Callable",
+        "link": "/reference/library/core/_callable"
+      },
+      {
+        "text": "_CodeGenerator",
+        "link": "/reference/library/core/_codegenerator"
+      },
+      {
+        "text": "_ConnectionType",
+        "link": "/reference/library/core/_connectiontype"
+      },
+      {
+        "text": "_Constant",
+        "link": "/reference/library/core/_constant"
+      },
+      {
+        "text": "_ConstrainedEntity",
+        "link": "/reference/library/core/_constrainedentity"
+      },
+      {
+        "text": "_ConstrainedInt",
+        "link": "/reference/library/core/_constrainedint"
+      },
+      {
+        "text": "_ConstrainedList",
+        "link": "/reference/library/core/_constrainedlist"
+      },
+      {
+        "text": "_ConstrainedReal",
+        "link": "/reference/library/core/_constrainedreal"
+      },
+      {
+        "text": "_ConstrainedString",
+        "link": "/reference/library/core/_constrainedstring"
+      },
+      {
+        "text": "_Constraint",
+        "link": "/reference/library/core/_constraint"
+      },
+      {
+        "text": "_DeviceType",
+        "link": "/reference/library/core/_devicetype"
       },
       {
         "text": "_DomainDefinition",
-        "link": "/reference/library/domain/_domaindefinition"
+        "link": "/reference/library/core/_domaindefinition"
+      },
+      {
+        "text": "_DomainMember",
+        "link": "/reference/library/core/_domainmember"
+      },
+      {
+        "text": "_DomainResourceType",
+        "link": "/reference/library/core/_domainresourcetype"
+      },
+      {
+        "text": "_E",
+        "link": "/reference/library/core/_e"
+      },
+      {
+        "text": "_Entity",
+        "link": "/reference/library/core/_entity"
+      },
+      {
+        "text": "_FrameworkDataType",
+        "link": "/reference/library/core/_frameworkdatatype"
+      },
+      {
+        "text": "_FrameworkDescriptionType",
+        "link": "/reference/library/core/_frameworkdescriptiontype"
+      },
+      {
+        "text": "_FrameworkTypeClass",
+        "link": "/reference/library/core/_frameworktypeclass"
+      },
+      {
+        "text": "_FunctionTest",
+        "link": "/reference/library/core/_functiontest"
+      },
+      {
+        "text": "_GroupType",
+        "link": "/reference/library/core/_grouptype"
+      },
+      {
+        "text": "_IntLiteral",
+        "link": "/reference/library/core/_intliteral"
+      },
+      {
+        "text": "_IteratorType",
+        "link": "/reference/library/core/_iteratortype"
+      },
+      {
+        "text": "_List",
+        "link": "/reference/library/core/_list"
+      },
+      {
+        "text": "_Loop",
+        "link": "/reference/library/core/_loop"
+      },
+      {
+        "text": "_MainInputPort",
+        "link": "/reference/library/core/_maininputport"
+      },
+      {
+        "text": "_MainOutputPort",
+        "link": "/reference/library/core/_mainoutputport"
+      },
+      {
+        "text": "_MemberAccess",
+        "link": "/reference/library/core/_memberaccess"
+      },
+      {
+        "text": "_Module",
+        "link": "/reference/library/core/_module"
+      },
+      {
+        "text": "_NoneLiteral",
+        "link": "/reference/library/core/_noneliteral"
+      },
+      {
+        "text": "_Pi",
+        "link": "/reference/library/core/_pi"
+      },
+      {
+        "text": "_PlatformCodeType",
+        "link": "/reference/library/core/_platformcodetype"
+      },
+      {
+        "text": "_PlatformEntityType",
+        "link": "/reference/library/core/_platformentitytype"
+      },
+      {
+        "text": "_PlatformModulePortType",
+        "link": "/reference/library/core/_platformmoduleporttype"
+      },
+      {
+        "text": "_PlatformModuleType",
+        "link": "/reference/library/core/_platformmoduletype"
+      },
+      {
+        "text": "_PlatformOperatorType",
+        "link": "/reference/library/core/_platformoperatortype"
+      },
+      {
+        "text": "_PlatformType",
+        "link": "/reference/library/core/_platformtype"
+      },
+      {
+        "text": "_PolicyBinding",
+        "link": "/reference/library/core/_policybinding"
+      },
+      {
+        "text": "_Port",
+        "link": "/reference/library/core/_port"
+      },
+      {
+        "text": "_PortAttributes",
+        "link": "/reference/library/core/_portattributes"
+      },
+      {
+        "text": "_PortProperty",
+        "link": "/reference/library/core/_portproperty"
+      },
+      {
+        "text": "_PropertyInputPort",
+        "link": "/reference/library/core/_propertyinputport"
+      },
+      {
+        "text": "_PropertyOutputPort",
+        "link": "/reference/library/core/_propertyoutputport"
+      },
+      {
+        "text": "_Rated",
+        "link": "/reference/library/core/_rated"
+      },
+      {
+        "text": "_Reaction",
+        "link": "/reference/library/core/_reaction"
+      },
+      {
+        "text": "_RealLiteral",
+        "link": "/reference/library/core/_realliteral"
+      },
+      {
+        "text": "_Resetable",
+        "link": "/reference/library/core/_resetable"
+      },
+      {
+        "text": "_ResourceConfigurationType",
+        "link": "/reference/library/core/_resourceconfigurationtype"
+      },
+      {
+        "text": "_ResourceType",
+        "link": "/reference/library/core/_resourcetype"
+      },
+      {
+        "text": "_SequenceType",
+        "link": "/reference/library/core/_sequencetype"
+      },
+      {
+        "text": "_Signal",
+        "link": "/reference/library/core/_signal"
+      },
+      {
+        "text": "_StateType",
+        "link": "/reference/library/core/_statetype"
+      },
+      {
+        "text": "_StreamType",
+        "link": "/reference/library/core/_streamtype"
+      },
+      {
+        "text": "_Streamable",
+        "link": "/reference/library/core/_streamable"
+      },
+      {
+        "text": "_String",
+        "link": "/reference/library/core/_string"
+      },
+      {
+        "text": "_StringLiteral",
+        "link": "/reference/library/core/_stringliteral"
+      },
+      {
+        "text": "_Switch",
+        "link": "/reference/library/core/_switch"
+      },
+      {
+        "text": "_SwitchLiteral",
+        "link": "/reference/library/core/_switchliteral"
+      },
+      {
+        "text": "_SystemType",
+        "link": "/reference/library/core/_systemtype"
+      },
+      {
+        "text": "_Table",
+        "link": "/reference/library/core/_table"
+      },
+      {
+        "text": "_TableType",
+        "link": "/reference/library/core/_tabletype"
+      },
+      {
+        "text": "_TransitionType",
+        "link": "/reference/library/core/_transitiontype"
+      },
+      {
+        "text": "_Trigger",
+        "link": "/reference/library/core/_trigger"
+      },
+      {
+        "text": "_TwoPi",
+        "link": "/reference/library/core/_twopi"
+      },
+      {
+        "text": "_Type",
+        "link": "/reference/library/core/_type"
+      },
+      {
+        "text": "_TypeClass",
+        "link": "/reference/library/core/_typeclass"
+      },
+      {
+        "text": "_TypeClassConversion",
+        "link": "/reference/library/core/_typeclassconversion"
+      },
+      {
+        "text": "_TypeProperty",
+        "link": "/reference/library/core/_typeproperty"
+      },
+      {
+        "text": "_Typed",
+        "link": "/reference/library/core/_typed"
+      },
+      {
+        "text": "_Variadic",
+        "link": "/reference/library/core/_variadic"
       }
     ]
   },
@@ -272,80 +440,6 @@
     ]
   },
   {
-    "text": "Stride::Framework",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_ConnectionType",
-        "link": "/reference/library/framework/_connectiontype"
-      },
-      {
-        "text": "_FrameworkDescriptionType",
-        "link": "/reference/library/framework/_frameworkdescriptiontype"
-      },
-      {
-        "text": "_PlatformCodeType",
-        "link": "/reference/library/framework/_platformcodetype"
-      },
-      {
-        "text": "_PlatformEntityType",
-        "link": "/reference/library/framework/_platformentitytype"
-      },
-      {
-        "text": "_PlatformModulePortType",
-        "link": "/reference/library/framework/_platformmoduleporttype"
-      },
-      {
-        "text": "_PlatformModuleType",
-        "link": "/reference/library/framework/_platformmoduletype"
-      },
-      {
-        "text": "_PlatformOperatorType",
-        "link": "/reference/library/framework/_platformoperatortype"
-      },
-      {
-        "text": "_PlatformType",
-        "link": "/reference/library/framework/_platformtype"
-      },
-      {
-        "text": "_SystemType",
-        "link": "/reference/library/framework/_systemtype"
-      }
-    ]
-  },
-  {
-    "text": "Stride::FrameworkDataTypes",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_BufferType",
-        "link": "/reference/library/frameworkdatatypes/_buffertype"
-      },
-      {
-        "text": "_FrameworkDataType",
-        "link": "/reference/library/frameworkdatatypes/_frameworkdatatype"
-      },
-      {
-        "text": "_FrameworkTypeClass",
-        "link": "/reference/library/frameworkdatatypes/_frameworktypeclass"
-      },
-      {
-        "text": "_TableType",
-        "link": "/reference/library/frameworkdatatypes/_tabletype"
-      }
-    ]
-  },
-  {
-    "text": "Stride::FunctionTest",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_FunctionTest",
-        "link": "/reference/library/functiontest/_functiontest"
-      }
-    ]
-  },
-  {
     "text": "Stride::Generators",
     "collapsed": true,
     "items": [
@@ -372,82 +466,6 @@
     ]
   },
   {
-    "text": "Stride::Level",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Level",
-        "link": "/reference/library/level/level"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Literals",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_IntLiteral",
-        "link": "/reference/library/literals/_intliteral"
-      },
-      {
-        "text": "_MemberAccess",
-        "link": "/reference/library/literals/_memberaccess"
-      },
-      {
-        "text": "_NoneLiteral",
-        "link": "/reference/library/literals/_noneliteral"
-      },
-      {
-        "text": "_PortProperty",
-        "link": "/reference/library/literals/_portproperty"
-      },
-      {
-        "text": "_RealLiteral",
-        "link": "/reference/library/literals/_realliteral"
-      },
-      {
-        "text": "_StringLiteral",
-        "link": "/reference/library/literals/_stringliteral"
-      },
-      {
-        "text": "_SwitchLiteral",
-        "link": "/reference/library/literals/_switchliteral"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Logic",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Select",
-        "link": "/reference/library/logic/select"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Math",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Abs",
-        "link": "/reference/library/math/abs"
-      },
-      {
-        "text": "_E",
-        "link": "/reference/library/math/_e"
-      },
-      {
-        "text": "_Pi",
-        "link": "/reference/library/math/_pi"
-      },
-      {
-        "text": "_TwoPi",
-        "link": "/reference/library/math/_twopi"
-      }
-    ]
-  },
-  {
     "text": "Stride::Notes",
     "collapsed": true,
     "items": [
@@ -470,44 +488,6 @@
     ]
   },
   {
-    "text": "Stride::Object",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_Alias",
-        "link": "/reference/library/object/_alias"
-      },
-      {
-        "text": "_Base",
-        "link": "/reference/library/object/_base"
-      },
-      {
-        "text": "_CodeGenerator",
-        "link": "/reference/library/object/_codegenerator"
-      },
-      {
-        "text": "_DomainMember",
-        "link": "/reference/library/object/_domainmember"
-      },
-      {
-        "text": "_Rated",
-        "link": "/reference/library/object/_rated"
-      },
-      {
-        "text": "_Resetable",
-        "link": "/reference/library/object/_resetable"
-      },
-      {
-        "text": "_Streamable",
-        "link": "/reference/library/object/_streamable"
-      },
-      {
-        "text": "_Typed",
-        "link": "/reference/library/object/_typed"
-      }
-    ]
-  },
-  {
     "text": "Stride::Osc",
     "collapsed": true,
     "items": [
@@ -518,152 +498,12 @@
     ]
   },
   {
-    "text": "Stride::Pan",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Pan",
-        "link": "/reference/library/pan/pan"
-      }
-    ]
-  },
-  {
-    "text": "Stride::QualityPolicy",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Accurate",
-        "link": "/reference/library/qualitypolicy/accurate"
-      },
-      {
-        "text": "Compact",
-        "link": "/reference/library/qualitypolicy/compact"
-      },
-      {
-        "text": "Fast",
-        "link": "/reference/library/qualitypolicy/fast"
-      },
-      {
-        "text": "Optimal",
-        "link": "/reference/library/qualitypolicy/optimal"
-      },
-      {
-        "text": "_DeviceType",
-        "link": "/reference/library/qualitypolicy/_devicetype"
-      },
-      {
-        "text": "_PolicyBinding",
-        "link": "/reference/library/qualitypolicy/_policybinding"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Resource",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_DomainResourceType",
-        "link": "/reference/library/resource/_domainresourcetype"
-      },
-      {
-        "text": "_ResourceConfigurationType",
-        "link": "/reference/library/resource/_resourceconfigurationtype"
-      },
-      {
-        "text": "_ResourceType",
-        "link": "/reference/library/resource/_resourcetype"
-      }
-    ]
-  },
-  {
-    "text": "Stride::Schema",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_Any",
-        "link": "/reference/library/schema/_any"
-      },
-      {
-        "text": "_ConstrainedEntity",
-        "link": "/reference/library/schema/_constrainedentity"
-      },
-      {
-        "text": "_ConstrainedInt",
-        "link": "/reference/library/schema/_constrainedint"
-      },
-      {
-        "text": "_ConstrainedList",
-        "link": "/reference/library/schema/_constrainedlist"
-      },
-      {
-        "text": "_ConstrainedReal",
-        "link": "/reference/library/schema/_constrainedreal"
-      },
-      {
-        "text": "_ConstrainedString",
-        "link": "/reference/library/schema/_constrainedstring"
-      },
-      {
-        "text": "_Constraint",
-        "link": "/reference/library/schema/_constraint"
-      },
-      {
-        "text": "_Entity",
-        "link": "/reference/library/schema/_entity"
-      },
-      {
-        "text": "_List",
-        "link": "/reference/library/schema/_list"
-      },
-      {
-        "text": "_Type",
-        "link": "/reference/library/schema/_type"
-      },
-      {
-        "text": "_TypeProperty",
-        "link": "/reference/library/schema/_typeproperty"
-      }
-    ]
-  },
-  {
     "text": "Stride::Serial",
     "collapsed": true,
     "items": [
       {
         "text": "SerialPrint",
         "link": "/reference/library/serial/serialprint"
-      }
-    ]
-  },
-  {
-    "text": "Stride::StateMachine",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "_StateType",
-        "link": "/reference/library/statemachine/_statetype"
-      },
-      {
-        "text": "_TransitionType",
-        "link": "/reference/library/statemachine/_transitiontype"
-      }
-    ]
-  },
-  {
-    "text": "Stride::tests",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "ClassicAccumulatorModule",
-        "link": "/reference/library/tests/classicaccumulatormodule"
-      },
-      {
-        "text": "ClassicScaleModule",
-        "link": "/reference/library/tests/classicscalemodule"
-      },
-      {
-        "text": "ClassicSumLoop",
-        "link": "/reference/library/tests/classicsumloop"
       }
     ]
   }

@@ -1,24 +1,24 @@
 ---
 title: AD
-description: "AD module reference."
+description: "AD module definition."
 ---
 
 # AD
 
 <span class="stride-badge">Module</span> `package Stride::Generators`
 
-*Module defined in `library\1.0\Generators\Envelope.stride`.*
+*Module declared in `library\1.0\Generators\Envelope.stride`.*
 
 ## Ports & Properties
 
-| Name | Kind | Target Signal | Default | Description |
+| Name | Type | Target Signal | Default | Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `output` | Output Stream | `Output` | — | The module's primary output port. |
 | `output` | Input Stream | `TriggerEnv` | — | Triggers the envelope |
 | `attack` | Property In | `AttackTime` | — | Attack time in seconds |
 | `decay` | Property In | `DecayTime` | — | Decay time in seconds |
 
-## Internal Signals & Defaults
+## Signals & Attributes
 
 | Signal | Type | Default | Rate / Domain | Description |
 | :--- | :--- | :--- | :--- | :--- |
@@ -28,7 +28,7 @@ description: "AD module reference."
 | `StageIncrements[2]` | `signal` | `0.0` | — | — |
 | `TriggerEnv` | `trigger` | `-1` | Rate: ), Domain: } | — |
 
-## Usage Example
+## Usage
 
 ```stride
 import Stride;

@@ -1,21 +1,22 @@
-# Getting Started with Stride
+# Getting Started
 
-Get up and running with the Stride language, the `stridec` compiler, and editor tooling.
-
----
-
-## 1. Prerequisites
-
-Stride builds on standard C++17 compilers and CMake:
-* **CMake** (>= 3.15)
-* **C++17 Compiler** (Clang 10+, GCC 9+, or MSVC 2019/2022)
-* **LLVM** (14.x recommended, for JIT and native AOT code emission)
+This guide details the procedure for building the Stride toolchain, configuring developer tooling, and compiling your first Stride program.
 
 ---
 
-## 2. Installing the Toolchain (`stridelang`)
+## 1. System Requirements
 
-Clone the central development repository:
+Building the Stride compiler and runtime toolchain requires:
+* **CMake** (version 3.15 or later)
+* **ISO C++17 Compiler** (Clang 10+, GCC 9+, or MSVC 2019/2022)
+* **LLVM** (version 14.x, required for code generation and JIT execution)
+* **Flex & Bison** (required for lexical analysis and parser generation)
+
+---
+
+## 2. Toolchain Compilation (`stridelang`)
+
+Clone the central development repository recursively:
 
 ```bash
 git clone --recursive https://github.com/StrideLang/Stride.git
@@ -25,65 +26,72 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 cmake --build . --config Release
 ```
 
-The build produces two core command-line tools:
-- **`stride`**: Interactive execution runner and JIT environment.
-- **`stridec`**: Ahead-Of-Time (AOT) compiler targeting host CPUs and embedded microcontrollers.
+The build process produces two core executables:
+- **`stride`**: Interactive execution driver and JIT compilation runtime.
+- **`stridec`**: Ahead-Of-Time (AOT) compiler driver supporting host and cross-compilation targets.
 
 ---
 
-## 3. Editor Support: VS Code Extension
+## 3. Editor Configuration
 
-For syntax highlighting, auto-completion, and error diagnostics, install the official Stride Visual Studio Code extension:
+Language support, diagnostics, and syntax highlighting are available via the official Visual Studio Code extension:
 
-1. Clone or download [`vscode-stride-lang`](https://github.com/StrideLang/vscode-stride-lang).
-2. Install the `.vsix` package:
+1. Obtain the extension package from [`vscode-stride-lang`](https://github.com/StrideLang/vscode-stride-lang).
+2. Install via the CLI:
    ```bash
    code --install-extension stride-language-0.1.0.vsix
    ```
-3. Any file ending in `.stride` now features full syntax highlighting and language semantics.
+3. Source files with the `.stride` extension will activate the language server and syntax highlighting.
 
 ---
 
-## 4. Your First Stride Program
+## 4. Writing and Compiling a Program
 
-Create a new file named `sine_synth.stride`:
+Create a source file named `oscillator.stride`:
 
 ```stride
 use DesktopAudio version 1.0;
 
 import Stride;
 
-# Generate a 440 Hz concert pitch tone with 0.2 amplitude
+# Connect a 440 Hz generator to the primary audio output:
 440.0 >> Generators::Oscillator(amplitude: 0.2) >> AudioOut;
 ```
 
-### Running with JIT:
-To test and listen to the audio output immediately on your desktop speakers:
+### JIT Execution (Host Audio)
+To execute the pipeline immediately using the local audio framework:
 
 ```bash
-stride sine_synth.stride
+stride oscillator.stride
 ```
 
-### Compiling to an Embedded Object File:
-To compile this DSP graph for a Raspberry Pi Pico (RP2040):
+### Cross-Compilation (Bare-Metal Embedded)
+To compile the pipeline for an ARM Cortex-M0+ microcontroller (e.g. Raspberry Pi Pico RP2040):
 
 ```bash
 stridec --target=thumbv6m-none-eabi -mcpu=cortex-m0plus -O3 \
-        --emit-header=sine_synth.h \
-        -o sine_synth.o \
-        sine_synth.stride
+        --emit-header=oscillator.h \
+        -o oscillator.o \
+        oscillator.stride
 ```
 
-This emits:
-1. `sine_synth.o`: Optimized bare-metal ARM machine code.
-2. `sine_synth.h`: A C header you can include directly in your C/C++ firmware:
+This compilation step emits:
+1. `oscillator.o`: An ELF object file containing native machine code.
+2. `oscillator.h`: A C interface header exposing lifecycle functions:
    ```c
-   #include "sine_synth.h"
+   #ifndef OSCILLATOR_H
+   #define OSCILLATOR_H
 
-   int main(void) {
-       sine_synth_init();
-       while (1) {
-           sine_synth_process();
-       }
+   #ifdef __cplusplus
+   extern "C" {
+   #endif
+
+   void oscillator_init(void);
+   void oscillator_process(void);
+
+   #ifdef __cplusplus
    }
+   #endif
+
+   #endif /* OSCILLATOR_H */
    ```

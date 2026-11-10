@@ -22,14 +22,14 @@ if (fs.existsSync(sidebarRefPath)) {
 
 export default defineConfig({
   title: "Stride",
-  description: "A domain-specific language for streams, audio DSP, and embedded systems",
+  description: "A domain-specific programming language for dataflow streams, real-time digital signal processing, and embedded systems",
   base: "/stridedoc/", // Ready for GitHub Pages deployment under https://<org>.github.io/stridedoc/
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/stridedoc/logo.svg' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-    ['meta', { name: 'og:title', content: 'Stride Programming Language' }],
-    ['meta', { name: 'og:description', content: 'A modern declarative language for reactive streams, audio DSP, and bare-metal microcontrollers.' }]
+    ['meta', { name: 'theme-color', content: '#0284c7' }],
+    ['meta', { name: 'og:title', content: 'The Stride Programming Language' }],
+    ['meta', { name: 'og:description', content: 'A domain-specific programming language for dataflow streams, real-time digital signal processing, and embedded systems.' }]
   ],
 
   markdown: {
@@ -51,14 +51,14 @@ export default defineConfig({
     siteTitle: 'Stride',
 
     nav: [
-      { text: 'Learn', link: '/learn/getting-started' },
+      { text: 'Documentation', link: '/learn/getting-started' },
       { text: 'Language Tour', link: '/learn/language-tour' },
       { text: 'Reference', link: '/reference/library/' },
       { text: 'Architecture', link: '/learn/systems-and-domains' },
       {
         text: 'Ecosystem',
         items: [
-          { text: 'Stride Toolchain (stridelang)', link: 'https://github.com/StrideLang/stridelang' },
+          { text: 'Toolchain (stridelang)', link: 'https://github.com/StrideLang/stridelang' },
           { text: 'VS Code Extension', link: 'https://github.com/StrideLang/vscode-stride-lang' },
           { text: 'Core Runtime (strideroot)', link: 'https://github.com/StrideLang/strideroot' }
         ]
@@ -70,16 +70,16 @@ export default defineConfig({
         {
           text: 'Introduction',
           items: [
-            { text: 'Why Stride?', link: '/learn/why-stride' },
+            { text: 'Design Rationale', link: '/learn/why-stride' },
             { text: 'Getting Started', link: '/learn/getting-started' },
             { text: 'Language Tour', link: '/learn/language-tour' }
           ]
         },
         {
-          text: 'Guides & Concepts',
+          text: 'Architecture & Specifications',
           items: [
             { text: 'Systems, Frameworks & Domains', link: '/learn/systems-and-domains' },
-            { text: 'Audio DSP & Synthesis', link: '/learn/audio-dsp' }
+            { text: 'Digital Signal Processing', link: '/learn/audio-dsp' }
           ]
         }
       ],
@@ -87,7 +87,7 @@ export default defineConfig({
         {
           text: 'Standard Library',
           items: [
-            { text: 'Library Overview', link: '/reference/library/' }
+            { text: 'Overview & Namespaces', link: '/reference/library/' }
           ]
         },
         ...referenceCategories

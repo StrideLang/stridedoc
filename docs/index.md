@@ -3,51 +3,47 @@ layout: home
 
 hero:
   name: Stride
-  text: Streams. Audio DSP. Microcontrollers.
-  tagline: A modern domain-specific language for reactive signal processing, state machines, and bare-metal embedded targets.
+  text: Dataflow Streams. Digital Signal Processing. Embedded Targets.
+  tagline: A domain-specific programming language for reactive signal processing, multi-rate streams, and bare-metal embedded systems.
   image:
     src: /logo.svg
     alt: Stride Language Logo
   actions:
     - theme: brand
-      text: Get Started
+      text: Documentation
       link: /learn/getting-started
-    - theme: alt
-      text: Standard Library
-      link: /reference/library/
     - theme: alt
       text: Language Tour
       link: /learn/language-tour
+    - theme: alt
+      text: Standard Library
+      link: /reference/library/
 
 features:
-  - icon: 🌊
-    title: Reactive Stream Pipelines
-    details: Connect oscillators, filters, and mathematical operators with expressive stream routing (<code>&gt;&gt;</code> and <code>-&gt;</code>) running at distinct sample rates.
-  - icon: ⚡
-    title: Ahead-Of-Time Native Compilation
-    details: Compiles directly via LLVM to native machine code (.o), static libraries, or clean C99/C++ API headers with zero runtime overhead.
-  - icon: 🎛️
-    title: Embedded & MCU First-Class
-    details: First-class targets for Raspberry Pi Pico (RP2040 / RP2350), STM32 Cortex-M, Arduino, and bare-metal RTOS environments.
-  - icon: 🔄
-    title: Multi-Rate Domains & Safety
-    details: Isolate real-time DSP from asynchronous control logic using formal Domain boundaries, semaphores, and sealed package namespaces.
+  - title: Deterministic Dataflow Streams
+    details: Statically scheduled pipeline operators (<code>&gt;&gt;</code> and <code>-&gt;</code>) connect signal generators, filters, and mathematical lowerings with explicit rate semantics.
+  - title: Ahead-Of-Time Native Compilation
+    details: Compiles via LLVM directly into relocatable machine object files (.o), static archives (.a), or ISO C99/C++ API headers. No runtime garbage collection.
+  - title: Microcontroller & Platform Targets
+    details: Architected for bare-metal targets including Raspberry Pi Pico (RP2040 / RP2350), ARM Cortex-M (STM32), WebAssembly, and host systems.
+  - title: Multi-Rate Domain Isolation
+    details: Formal domain semantics decouple high-rate synchronous audio processing from asynchronous control events using bounded queues and counting semaphores.
 ---
 
-<div class="stride-home-preview" style="margin-top: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+<div class="stride-home-preview" style="margin-top: 3.5rem; max-width: 820px; margin-left: auto; margin-right: auto;">
 
-### A Taste of Stride
+### Signal Processing Example
+
+The following example defines an audio synthesis pipeline incorporating frequency modulation, arithmetic scaling, and resonant biquad filtering:
 
 ```stride
 use DesktopAudio version 1.0;
 
 import Stride;
 
-# Generate an FM-modulated synthesizer voice:
-# 1. Modulator oscillator at 110 Hz
-# 2. Scale modulation depth and add to carrier frequency (440 Hz)
-# 3. Stream carrier output through a resonant BiQuad filter into audio output
-
+# 1. Modulating oscillator operating at 110 Hz
+# 2. Additive offset applied to carrier center frequency (440 Hz)
+# 3. Carrier oscillator passed through a resonant low-pass filter
 [110.0, 150.0] 
   >> Generators::Oscillator() 
   >> [_, 440.0] >> Add()

@@ -3,7 +3,7 @@
 Stride Documentation Extractor (stride-docgen)
 
 Extracts API documentation, metadata, ports, and signals from .stride source files
-and generates clean Markdown pages + VitePress sidebar configuration.
+and generates structured Markdown reference pages and VitePress navigation configurations.
 """
 
 import os
@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 
 class StrideLexer:
-    """Lexer that tokenizes Stride syntax while properly handling comments and strings."""
+    """Tokenizes Stride syntax while handling comments and multi-line strings."""
     
     TOKEN_REGEX = re.compile(
         r'(?P<COMMENT>#[^\r\n]*)'
@@ -41,7 +41,7 @@ class StrideLexer:
         for m in cls.TOKEN_REGEX.finditer(text):
             kind = m.lastgroup
             val = m.group(kind)
-            if kind == 'WS' or kind == 'COMMENT':
+            if kind in ('WS', 'COMMENT'):
                 continue
             if kind == 'STRING':
                 if val.startswith('"') and val.endswith('"'):
@@ -119,7 +119,6 @@ class StrideDocParser:
                 name_kind, name_val = self.advance()
                 decl_name = name_val if name_kind in ('IDENT', 'NUMBER') else "Anonymous"
 
-                # Check for brace
                 b_kind, b_val = self.peek()
                 if b_kind == 'BRACE_OPEN':
                     self.advance()
@@ -315,7 +314,6 @@ class StrideDocParser:
                 id_kind, id_val = self.advance()
                 ent_id = id_val if id_kind == 'IDENT' else ""
 
-                # Handle array index like Input[2]
                 if self.peek()[0] == 'BRACKET_OPEN':
                     self.advance()
                     idx_val = ""
@@ -392,7 +390,7 @@ def friendly_port_kind(kind: str) -> str:
     return mapping.get(kind, kind)
 
 
-def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, file_rel_path: str) -> str:
+def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, file_rel_path: str, is_root_library: bool) -> str:
     name = decl.get('name', 'Anonymous')
     kind = decl.get('kind', 'module').capitalize()
     meta = decl.get('meta', '').strip()
@@ -402,7 +400,7 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
 
     md = []
     # Frontmatter
-    clean_desc = meta.replace('\n', ' ').replace('"', "'")[:140] if meta else f"{name} {kind.lower()} reference."
+    clean_desc = meta.replace('\n', ' ').replace('"', "'")[:140] if meta else f"{name} {kind.lower()} definition."
     md.append("---")
     md.append(f"title: {name}")
     md.append(f"description: \"{clean_desc}\"")
@@ -416,7 +414,7 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
     if meta:
         md.append(f"{meta}\n")
     else:
-        md.append(f"*{kind} defined in `{file_rel_path}`.*\n")
+        md.append(f"*{kind} declared in `{file_rel_path}`.*\n")
 
     # If it's a constant
     if value is not None:
@@ -428,7 +426,7 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
     # Ports Table
     if ports:
         md.append("## Ports & Properties\n")
-        md.append("| Name | Kind | Target Signal | Default | Description |")
+        md.append("| Name | Type | Target Signal | Default | Description |")
         md.append("| :--- | :--- | :--- | :--- | :--- |")
         for p in ports:
             p_name = f"`{p['name']}`" if p['name'] else "—"
@@ -439,10 +437,10 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
             md.append(f"| {p_name} | {p_kind} | {p_entity} | {p_def} | {p_desc} |")
         md.append("")
 
-    # Internal Signals & Entities Table (if any with defaults/descriptions)
+    # Internal Signals & Entities Table
     notable_entities = [e for e in entities if e['default'] or e['meta'] or e['rate']]
     if notable_entities:
-        md.append("## Internal Signals & Defaults\n")
+        md.append("## Signals & Attributes\n")
         md.append("| Signal | Type | Default | Rate / Domain | Description |")
         md.append("| :--- | :--- | :--- | :--- | :--- |")
         for e in notable_entities:
@@ -458,22 +456,24 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
         md.append("")
 
     # Usage Example
-    cat_prefix = package_name.replace("Stride::", "")
-    short_cat = cat_prefix if cat_prefix else ""
-    md.append("## Usage Example\n")
+    md.append("## Usage\n")
     md.append("```stride")
     md.append("import Stride;\n")
-    if short_cat and short_cat != "Core":
-        prop_args = []
-        for p in ports:
-            if 'property' in p['kind'].lower() and p['name']:
-                val = p['default'] if p['default'] else "..."
-                prop_args.append(f"{p['name']}: {val}")
-        args_str = f"({', '.join(prop_args[:3])})" if prop_args else "()"
-        md.append(f"# Access via {short_cat} category:")
-        md.append(f"Signal >> {short_cat}::{name}{args_str} >> Output;")
+    prop_args = []
+    for p in ports:
+        if 'property' in p['kind'].lower() and p['name']:
+            val = p['default'] if p['default'] else "..."
+            prop_args.append(f"{p['name']}: {val}")
+    args_str = f"({', '.join(prop_args[:3])})" if prop_args else "()"
+
+    if is_root_library:
+        # Directly available in Stride root namespace
+        md.append(f"# Available in root namespace:")
+        md.append(f"Signal >> {name}{args_str} >> Output;")
     else:
-        md.append(f"Signal >> {name}() >> Output;")
+        cat = package_name.replace("Stride::", "")
+        md.append(f"# Access via {cat} category:")
+        md.append(f"Signal >> {cat}::{name}{args_str} >> Output;")
     md.append("```\n")
 
     return "\n".join(md)
@@ -489,12 +489,46 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
     ref_dir = output_docs_dir / "reference" / "library"
     ref_dir.mkdir(parents=True, exist_ok=True)
 
+    # Categories:
+    # 1. "Stride (Core Library)" for all root files
+    # 2. "Stride::<Subdir>" for subdirectories (Generators, Filters, etc.)
     sidebar_groups = {}
+    sidebar_order = ["Stride (Core Library)"]
 
-    for root, _, files in os.walk(library_dir):
+    IGNORED_DIRS = {'doc', '.strdcache', 'tests', 'local'}
+
+    for root, dirs, files in os.walk(library_dir):
+        # Prune ignored directories
+        dirs[:] = [d for d in dirs if d not in IGNORED_DIRS and not d.startswith('.')]
+
         root_path = Path(root)
         rel_to_lib = root_path.relative_to(library_dir)
         stride_files = [f for f in files if f.endswith(".stride")]
+
+        # Determine category and package
+        is_root = (rel_to_lib == Path('.'))
+
+        if is_root:
+            group_key = "Stride (Core Library)"
+            pkg_name = "Stride"
+            cat_slug = "core"
+        else:
+            cat_name = rel_to_lib.parts[0]
+            group_key = f"Stride::{cat_name}"
+            pkg_name = f"Stride::{cat_name}"
+            cat_slug = cat_name.lower()
+            if group_key not in sidebar_order:
+                sidebar_order.append(group_key)
+
+        cat_dir = ref_dir / cat_slug
+        cat_dir.mkdir(parents=True, exist_ok=True)
+
+        if group_key not in sidebar_groups:
+            sidebar_groups[group_key] = {
+                'slug': cat_slug,
+                'package': pkg_name,
+                'items': []
+            }
 
         for sf in stride_files:
             file_path = root_path / sf
@@ -508,29 +542,16 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
             parser = StrideDocParser(tokens)
             parsed = parser.parse_file()
 
-            # Determine category and package
-            if rel_to_lib == Path('.'):
-                category = file_path.stem
-                pkg_name = parsed['package'] if parsed['package'] else f"Stride::{category}"
-            else:
-                category = rel_to_lib.parts[0]
-                pkg_name = parsed['package'] if parsed['package'] else f"Stride::{category}"
-
-            cat_slug = category.lower()
-            cat_dir = ref_dir / cat_slug
-            cat_dir.mkdir(parents=True, exist_ok=True)
-
-            if category not in sidebar_groups:
-                sidebar_groups[category] = []
+            effective_pkg = parsed['package'] if parsed['package'] else pkg_name
 
             for decl in parsed['declarations']:
-                # Skip internal declarations starting with double underscore
                 decl_name = decl.get('name', '')
-                if decl_name.startswith('__'):
+                # Skip internal declarations starting with double underscore
+                if decl_name.startswith('__') or decl_name == "Anonymous":
                     continue
 
                 md_content = generate_markdown_for_declaration(
-                    decl, pkg_name, str(file_path.relative_to(strideroot_path))
+                    decl, effective_pkg, str(file_path.relative_to(strideroot_path)), is_root
                 )
 
                 file_slug = decl_name.lower().replace(" ", "-")
@@ -538,41 +559,54 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
                 out_file = cat_dir / md_filename
                 out_file.write_text(md_content, encoding='utf-8')
 
-                sidebar_groups[category].append({
+                sidebar_groups[group_key]['items'].append({
                     'text': decl_name,
                     'link': f"/reference/library/{cat_slug}/{file_slug}"
                 })
 
-    # Sort sidebar items
+    # Build sorted sidebar items
     sidebar_config = []
-    for cat_name in sorted(sidebar_groups.keys()):
-        items = sorted(sidebar_groups[cat_name], key=lambda x: x['text'])
-        if items:
+    for g_key in sidebar_order:
+        if g_key not in sidebar_groups:
+            continue
+        g_data = sidebar_groups[g_key]
+        # Deduplicate items by text
+        seen = set()
+        deduped = []
+        for it in sorted(g_data['items'], key=lambda x: x['text']):
+            if it['text'] not in seen:
+                seen.add(it['text'])
+                deduped.append(it)
+
+        if deduped:
             sidebar_config.append({
-                'text': f"Stride::{cat_name}",
-                'collapsed': True,
-                'items': items
+                'text': g_key,
+                'collapsed': g_key != "Stride (Core Library)",
+                'items': deduped
             })
 
     # Generate an Index Page for the Library Reference
     index_md = [
         "---",
         "title: Standard Library Reference",
-        "description: Complete API reference for Stride standard modules, filters, generators, and math operations.",
+        "description: Specification of modules, stream processors, filters, generators, and arithmetic operations in the Stride standard library.",
         "---\n",
         "# Standard Library Reference\n",
-        "The Stride standard library provides reactive stream processors, oscillators, filters, math constants, and control structures.\n",
-        "All standard packages are namespaced under `Stride::*`. You can import the entire library via `import Stride` or import individual categories (e.g. `import Stride::Generators`).\n",
-        "## Package Categories\n"
+        "The Stride standard library provides the foundational primitives for signal routing, multi-rate audio digital signal processing (DSP), mathematical operations, and state machine transitions.\n",
+        "## Namespace Organization\n",
+        "- **`package Stride` (Core Library)**: Primitives located in the root of the standard library (`Math`, `Logic`, `BasicOperations`, `Comparisons`, etc.) belong to the root `Stride` package. They are imported automatically or via `import Stride`, and are available directly in global scope (e.g. `Sin()`, `Sum()`, `Abs()`).",
+        "- **Sub-packages (`Stride::<Category>`)**: Components residing in subdirectories (`Generators`, `Filters`, `Serial`, `Osc`) form categorized sub-packages. When using `import Stride`, they are referenced via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or directly via category import (`import Stride::Generators`).\n",
+        "## Package Modules\n"
     ]
 
-    for cat_name in sorted(sidebar_groups.keys()):
-        cat_slug = cat_name.lower()
-        count = len(sidebar_groups[cat_name])
-        index_md.append(f"### `Stride::{cat_name}` ({count} modules)\n")
-        sample_items = sidebar_groups[cat_name][:6]
-        links = [f"[{item['text']}](/reference/library/{cat_slug}/{item['link'].split('/')[-1]})" for item in sample_items]
-        index_md.append(", ".join(links) + ("..." if count > 6 else ""))
+    for entry in sidebar_config:
+        title = entry['text']
+        items = entry['items']
+        count = len(items)
+        index_md.append(f"### {title} ({count} definitions)\n")
+        sample_items = items[:8]
+        links = [f"[`{item['text']}`]({item['link']})" for item in sample_items]
+        index_md.append(", ".join(links) + ("..." if count > 8 else ""))
         index_md.append("\n")
 
     (ref_dir / "index.md").write_text("\n".join(index_md), encoding='utf-8')
@@ -615,7 +649,7 @@ def main():
     sidebar_file.write_text(json.dumps(sidebar, indent=2), encoding='utf-8')
 
     total_modules = sum(len(g['items']) for g in sidebar)
-    print(f"[+] Successfully extracted {total_modules} modules across {len(sidebar)} packages!")
+    print(f"[+] Successfully extracted {total_modules} definitions across {len(sidebar)} packages!")
     print(f"[+] Sidebar config saved to: {sidebar_file}")
 
 
