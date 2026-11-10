@@ -11,10 +11,10 @@ Returns the maximum of two input values in a list: [A, B] >> Max() >> Out.
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Two-element input list to compare: [A, B] |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | The maximum value |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Two-element input list to compare: [A, B] |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | The maximum value |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

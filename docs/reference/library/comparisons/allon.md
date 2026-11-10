@@ -11,10 +11,10 @@ Outputs on if all switches in the input array are on: Input >> AllOn() >> Output
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `AllOn_Input` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Array of switches to be checked |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `AllOn_Output` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch that is on only if all input switches are on |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Array of switches to be checked |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch that is on only if all input switches are on |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

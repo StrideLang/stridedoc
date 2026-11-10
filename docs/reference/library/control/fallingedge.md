@@ -11,10 +11,10 @@ Detects falling edge (on -> off): Input >> FallingEdge() >> Trigger.
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Monitored switch signal |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch that is on for one tick when Input transitions from on to off |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Monitored switch signal |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch that is on for one tick when Input transitions from on to off |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

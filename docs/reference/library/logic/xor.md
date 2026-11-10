@@ -11,10 +11,10 @@ Logical exclusive OR (XOR) operation on switch inputs: [A, B] >> Xor() >> Out.
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `switch` | — | `OutputPort.domain` | Two-element switch list: [A, B] |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `switch` | — | `OutputPort.domain` | Switch output of A XOR B |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `switch` | — | `OutputPort.domain` | Two-element switch list: [A, B] |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `switch` | — | `OutputPort.domain` | Switch output of A XOR B |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

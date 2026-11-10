@@ -11,9 +11,9 @@ A discrete step counter that increments per tick and rolls over to startValue up
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | `OutputPort.domain` | Counter output signal |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | `OutputPort.domain` | Counter output signal |
 
 ## Properties
 

@@ -11,9 +11,9 @@ Condition assertion (false). Declared for schema validation; handled with specia
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `switch` | — | — | Condition value expected to be false (off) |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `switch` | — | — | Condition value expected to be false (off) |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

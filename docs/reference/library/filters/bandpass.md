@@ -11,13 +11,13 @@ Band pass filter
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Port">»</span> | `output` | `signal` | — | — | — |
-| <span class="port-icon stream-in" title="Port">»</span> | `input` | `signal` | — | — | — |
-| <span class="port-icon stream-in" title="Port">»</span> | `centerFrequency` | `signal` | — | — | The center frequency of the filter. |
-| <span class="port-icon stream-in" title="Port">»</span> | `qFactor` | `signal` | — | — | The Q value of the filter. |
-| <span class="port-icon stream-in" title="Port">»</span> | `gain` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Port">»</span> | `OutputPort` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Port">»</span> | `InputPort` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Port">»</span> | `CenterFrequencyProperty` | `signal` | — | — | The center frequency of the filter. |
+| <span class="port-icon stream-in" title="Port">»</span> | `QFactorProperty` | `signal` | — | — | The Q value of the filter. |
+| <span class="port-icon stream-in" title="Port">»</span> | `GainProperty` | `signal` | — | — | — |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

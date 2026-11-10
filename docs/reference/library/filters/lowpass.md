@@ -11,10 +11,10 @@ Placeholder for low pass filter. Currently not implemented.
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | — |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | — |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | — |
 
 ## Properties
 

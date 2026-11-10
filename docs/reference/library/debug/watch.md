@@ -11,10 +11,10 @@ Signal watch module for non-intrusive runtime observation
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | Signal to be watched and passed through |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | Pass-through of the input signal |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | Signal to be watched and passed through |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | Pass-through of the input signal |
 
 ## Properties
 

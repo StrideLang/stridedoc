@@ -11,9 +11,9 @@ Sends OSC messages.
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | — |
 
 ## Properties
 

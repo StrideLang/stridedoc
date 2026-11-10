@@ -9,9 +9,9 @@ description: "Error module definition."
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Trigger` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `TriggerPort` | `signal` | — | — | — |
 
 ## Properties
 

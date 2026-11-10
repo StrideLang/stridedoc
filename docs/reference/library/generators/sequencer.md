@@ -11,10 +11,10 @@ Sequencer
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `trigger` | — | `InputPort.domain` | — |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | `OutputPort.domain` | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `trigger` | — | `InputPort.domain` | — |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | `OutputPort.domain` | — |
 
 ## Properties
 

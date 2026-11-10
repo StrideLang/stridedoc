@@ -491,19 +491,19 @@ def generate_markdown_for_declaration(
     # 1. Streams Table (if any stream ports)
     if stream_ports:
         md.append("## Streams\n")
-        md.append("| | Stream | Type | Rate | Domain | Description |")
+        md.append("| | Port identifier | Type | Rate | Domain | Description |")
         md.append("| :-: | :--- | :--- | :--- | :--- | :--- |")
         for p in stream_ports:
             icon = render_port_icon(p['kind'])
-            # Stream name
-            s_name = p['name'] if (p['name'] and p['name'] != p['id']) else (p['entity'] if p['entity'] else p['id'])
+            # Port identifier: use the port entity symbol (e.g. InputPort, OutputPort) instead of bound entity
+            port_ident = p['id'] if p['id'] else (p['name'] if p['name'] else p['entity'])
             # Resolve from entity
             ent = entity_map.get(p['entity'], {})
             s_type = ent.get('type') or ent.get('kind') or 'signal'
             rate_str = format_field(ent.get('rate', '') or p.get('rate', ''))
             domain_str = format_field(ent.get('domain', '') or p.get('domain', ''))
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
-            md.append(f"| {icon} | `{s_name}` | `{s_type}` | {rate_str} | {domain_str} | {desc} |")
+            md.append(f"| {icon} | `{port_ident}` | `{s_type}` | {rate_str} | {domain_str} | {desc} |")
         md.append("")
 
     # 2. Properties Table (if any properties)

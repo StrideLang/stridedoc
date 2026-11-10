@@ -9,10 +9,10 @@ description: "AD module definition."
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — | The module's primary output port. |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `output` | `trigger` | — | `OutputPort.domain` | Triggers the envelope |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | The module's primary output port. |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `trigger` | — | `OutputPort.domain` | Triggers the envelope |
 
 ## Properties
 

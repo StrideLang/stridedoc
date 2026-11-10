@@ -11,9 +11,9 @@ When input is true, the current domain terminates without executing any further.
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `switch` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `MainInputPort` | `switch` | — | — | — |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

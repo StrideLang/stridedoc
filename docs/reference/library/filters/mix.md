@@ -9,12 +9,12 @@ description: "Mix module definition."
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Port">»</span> | `output` | `signal` | — | — | The module's primary output port. |
-| <span class="port-icon stream-in" title="Port">»</span> | `input` | `signal` | — | — | The module's primary output port. |
-| <span class="port-icon stream-in" title="Port">»</span> | `gain` | `signal` | — | — | Gain applied to channel. |
-| <span class="port-icon stream-in" title="Port">»</span> | `bias` | `signal` | — | — | Bias applied to channel. |
+| <span class="port-icon stream-in" title="Port">»</span> | `OutputPort` | `signal` | — | — | The module's primary output port. |
+| <span class="port-icon stream-in" title="Port">»</span> | `InputPort` | `signal` | — | — | The module's primary output port. |
+| <span class="port-icon stream-in" title="Port">»</span> | `GainPort` | `signal` | — | — | Gain applied to channel. |
+| <span class="port-icon stream-in" title="Port">»</span> | `BiasPort` | `signal` | — | — | Bias applied to channel. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

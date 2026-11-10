@@ -11,10 +11,10 @@ Selects between whenOn and whenOff signals based on a switch condition: Input >>
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | — | `OutputPort.domain` | Default signal flowing along the primary path |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | `OutputPort.domain` | Selected output signal |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | `OutputPort.domain` | Default signal flowing along the primary path |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | `OutputPort.domain` | Selected output signal |
 
 ## Properties
 

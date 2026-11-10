@@ -9,9 +9,9 @@ description: "DebugPrint module definition."
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `value` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `ValueProperty` | `signal` | — | — | — |
 
 ## Properties
 

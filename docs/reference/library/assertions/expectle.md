@@ -11,9 +11,9 @@ Less-than-or-equal assertion module (Actual <= Expected). Declared for schema va
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — | Two-element input list for less-than-or-equal comparison: [Actual, Expected] |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | Two-element input list for less-than-or-equal comparison: [Actual, Expected] |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

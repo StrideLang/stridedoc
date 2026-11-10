@@ -12,10 +12,10 @@ Formula: output = input * gain + offset
 
 ## Streams
 
-| | Stream | Type | Rate | Domain | Description |
+| | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `signal` | — | — | — |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | — |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | — |
 
 ## Properties
 
