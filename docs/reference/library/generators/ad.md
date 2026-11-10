@@ -5,18 +5,23 @@ description: "AD module definition."
 
 # AD
 
-<span class="stride-badge">Module</span> `package Stride::Generators`
-
-*Module declared in `library\1.0\Generators\Envelope.stride`.*
+<span class="stride-badge">Module</span> `package Stride::Generators` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Generators/Envelope.stride#L1" target="_blank" rel="noopener" title="View source on GitHub">[Envelope.stride:1]</a>
 
 ## Ports & Properties
 
-| Name | Type | Target Signal | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `output` | Output Stream | `Output` | — | The module's primary output port. |
-| `output` | Input Stream | `TriggerEnv` | — | Triggers the envelope |
-| `attack` | Property In | `AttackTime` | — | Attack time in seconds |
-| `decay` | Property In | `DecayTime` | — | Decay time in seconds |
+| | Port | Target | Default | Description |
+| :-: | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `Output` | — | The module's primary output port. |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `output` | `TriggerEnv` | — | Triggers the envelope |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `attack` | `AttackTime` | — | Attack time in seconds |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `decay` | `DecayTime` | — | Decay time in seconds |
+
+<div class="port-legend">
+  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
+  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
+  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
+  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+</div>
 
 ## Signals & Attributes
 
@@ -26,7 +31,7 @@ description: "AD module definition."
 | `DecayTime` | `signal` | `3.0` | — | — |
 | `Output` | `signal` | `0.0` | — | — |
 | `StageIncrements[2]` | `signal` | `0.0` | — | — |
-| `TriggerEnv` | `trigger` | `-1` | Rate: ), Domain: } | — |
+| `Stage` | `signal` | `-1` | Domain: OutputPort.domain | — |
 
 ## Usage
 

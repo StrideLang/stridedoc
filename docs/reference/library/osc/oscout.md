@@ -1,22 +1,29 @@
 ---
 title: OSCOut
-description: "OSCOut module definition."
+description: "Sends OSC messages."
 ---
 
 # OSCOut
 
-<span class="stride-badge">Module</span> `package Stride::Osc`
+<span class="stride-badge">Module</span> `package Stride::Osc` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Osc/OSC.stride#L2" target="_blank" rel="noopener" title="View source on GitHub">[OSC.stride:2]</a>
 
-*Module declared in `library\1.0\Osc\OSC.stride`.*
+Sends OSC messages.
 
 ## Ports & Properties
 
-| Name | Type | Target Signal | Default | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `input` | Input Stream | — | — | — |
-| `address` | Property In | `Address` | — | The OSC address |
-| `ip` | Property In | `IP` | — | The IP address to send to. |
-| `port` | Property In | `Port` | — | The Network port to send the data to. |
+| | Port | Target | Default | Description |
+| :-: | :--- | :--- | :--- | :--- |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | — | — | — |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `address` | `Address` | — | The OSC address |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `ip` | `IP` | — | The IP address to send to. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `port` | `Port` | — | The Network port to send the data to. |
+
+<div class="port-legend">
+  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
+  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
+  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
+  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+</div>
 
 ## Signals & Attributes
 
@@ -25,10 +32,6 @@ description: "OSCOut module definition."
 | `Address` | `signal` | `/Stride` | — | — |
 | `IP` | `signal` | `127.0.0.1` | — | — |
 | `Port` | `signal` | `9010` | — | — |
-| `Input` | `signal` | — | Domain: } | Sends OSC messages. |
-| `Address` | `signal` | `/Stride` | — | — |
-| `IP` | `signal` | `127.0.0.1` | — | — |
-| `Port` | `signal` | `9011` | — | — |
 
 ## Usage
 

@@ -1,421 +1,343 @@
 [
   {
-    "text": "Stride (Core Library)",
-    "collapsed": false,
+    "text": "Assertions",
+    "collapsed": true,
     "items": [
       {
-        "text": "Abs",
-        "link": "/reference/library/core/abs"
-      },
-      {
-        "text": "Accurate",
-        "link": "/reference/library/core/accurate"
-      },
-      {
-        "text": "Compact",
-        "link": "/reference/library/core/compact"
-      },
-      {
-        "text": "Counter",
-        "link": "/reference/library/core/counter"
-      },
-      {
-        "text": "DebugPrint",
-        "link": "/reference/library/core/debugprint"
-      },
-      {
-        "text": "Error",
-        "link": "/reference/library/core/error"
-      },
-      {
-        "text": "Exit",
-        "link": "/reference/library/core/exit"
-      },
-      {
         "text": "ExpectEqual",
-        "link": "/reference/library/core/expectequal"
+        "link": "/reference/library/assertions/expectequal"
       },
       {
         "text": "ExpectFalse",
-        "link": "/reference/library/core/expectfalse"
+        "link": "/reference/library/assertions/expectfalse"
       },
       {
         "text": "ExpectGe",
-        "link": "/reference/library/core/expectge"
+        "link": "/reference/library/assertions/expectge"
       },
       {
         "text": "ExpectGt",
-        "link": "/reference/library/core/expectgt"
+        "link": "/reference/library/assertions/expectgt"
       },
       {
         "text": "ExpectLe",
-        "link": "/reference/library/core/expectle"
+        "link": "/reference/library/assertions/expectle"
       },
       {
         "text": "ExpectLt",
-        "link": "/reference/library/core/expectlt"
+        "link": "/reference/library/assertions/expectlt"
       },
       {
         "text": "ExpectMaxError",
-        "link": "/reference/library/core/expectmaxerror"
+        "link": "/reference/library/assertions/expectmaxerror"
       },
       {
         "text": "ExpectNear",
-        "link": "/reference/library/core/expectnear"
+        "link": "/reference/library/assertions/expectnear"
       },
       {
         "text": "ExpectSnr",
-        "link": "/reference/library/core/expectsnr"
+        "link": "/reference/library/assertions/expectsnr"
       },
       {
         "text": "ExpectTrue",
-        "link": "/reference/library/core/expecttrue"
-      },
-      {
-        "text": "Fast",
-        "link": "/reference/library/core/fast"
-      },
-      {
-        "text": "Greater",
-        "link": "/reference/library/core/greater"
-      },
-      {
-        "text": "Level",
-        "link": "/reference/library/core/level"
-      },
-      {
-        "text": "OnChange",
-        "link": "/reference/library/core/onchange"
-      },
-      {
-        "text": "Optimal",
-        "link": "/reference/library/core/optimal"
-      },
-      {
-        "text": "Pan",
-        "link": "/reference/library/core/pan"
-      },
-      {
-        "text": "Probe",
-        "link": "/reference/library/core/probe"
-      },
-      {
-        "text": "Select",
-        "link": "/reference/library/core/select"
-      },
-      {
-        "text": "Sum",
-        "link": "/reference/library/core/sum"
-      },
-      {
-        "text": "Watch",
-        "link": "/reference/library/core/watch"
-      },
-      {
-        "text": "_Alias",
-        "link": "/reference/library/core/_alias"
-      },
-      {
-        "text": "_Any",
-        "link": "/reference/library/core/_any"
-      },
-      {
-        "text": "_Base",
-        "link": "/reference/library/core/_base"
-      },
-      {
-        "text": "_Buffer",
-        "link": "/reference/library/core/_buffer"
-      },
-      {
-        "text": "_BufferType",
-        "link": "/reference/library/core/_buffertype"
-      },
-      {
-        "text": "_Callable",
-        "link": "/reference/library/core/_callable"
-      },
-      {
-        "text": "_CodeGenerator",
-        "link": "/reference/library/core/_codegenerator"
-      },
-      {
-        "text": "_ConnectionType",
-        "link": "/reference/library/core/_connectiontype"
-      },
-      {
-        "text": "_Constant",
-        "link": "/reference/library/core/_constant"
-      },
-      {
-        "text": "_ConstrainedEntity",
-        "link": "/reference/library/core/_constrainedentity"
-      },
-      {
-        "text": "_ConstrainedInt",
-        "link": "/reference/library/core/_constrainedint"
-      },
-      {
-        "text": "_ConstrainedList",
-        "link": "/reference/library/core/_constrainedlist"
-      },
-      {
-        "text": "_ConstrainedReal",
-        "link": "/reference/library/core/_constrainedreal"
-      },
-      {
-        "text": "_ConstrainedString",
-        "link": "/reference/library/core/_constrainedstring"
-      },
-      {
-        "text": "_Constraint",
-        "link": "/reference/library/core/_constraint"
-      },
-      {
-        "text": "_DeviceType",
-        "link": "/reference/library/core/_devicetype"
-      },
-      {
-        "text": "_DomainDefinition",
-        "link": "/reference/library/core/_domaindefinition"
-      },
-      {
-        "text": "_DomainMember",
-        "link": "/reference/library/core/_domainmember"
-      },
-      {
-        "text": "_DomainResourceType",
-        "link": "/reference/library/core/_domainresourcetype"
-      },
-      {
-        "text": "_E",
-        "link": "/reference/library/core/_e"
-      },
-      {
-        "text": "_Entity",
-        "link": "/reference/library/core/_entity"
-      },
-      {
-        "text": "_FrameworkDataType",
-        "link": "/reference/library/core/_frameworkdatatype"
-      },
-      {
-        "text": "_FrameworkDescriptionType",
-        "link": "/reference/library/core/_frameworkdescriptiontype"
-      },
-      {
-        "text": "_FrameworkTypeClass",
-        "link": "/reference/library/core/_frameworktypeclass"
-      },
-      {
-        "text": "_FunctionTest",
-        "link": "/reference/library/core/_functiontest"
-      },
-      {
-        "text": "_GroupType",
-        "link": "/reference/library/core/_grouptype"
-      },
-      {
-        "text": "_IntLiteral",
-        "link": "/reference/library/core/_intliteral"
-      },
-      {
-        "text": "_IteratorType",
-        "link": "/reference/library/core/_iteratortype"
-      },
-      {
-        "text": "_List",
-        "link": "/reference/library/core/_list"
-      },
-      {
-        "text": "_Loop",
-        "link": "/reference/library/core/_loop"
-      },
-      {
-        "text": "_MainInputPort",
-        "link": "/reference/library/core/_maininputport"
-      },
-      {
-        "text": "_MainOutputPort",
-        "link": "/reference/library/core/_mainoutputport"
-      },
-      {
-        "text": "_MemberAccess",
-        "link": "/reference/library/core/_memberaccess"
-      },
-      {
-        "text": "_Module",
-        "link": "/reference/library/core/_module"
-      },
-      {
-        "text": "_NoneLiteral",
-        "link": "/reference/library/core/_noneliteral"
-      },
-      {
-        "text": "_Pi",
-        "link": "/reference/library/core/_pi"
-      },
-      {
-        "text": "_PlatformCodeType",
-        "link": "/reference/library/core/_platformcodetype"
-      },
-      {
-        "text": "_PlatformEntityType",
-        "link": "/reference/library/core/_platformentitytype"
-      },
-      {
-        "text": "_PlatformModulePortType",
-        "link": "/reference/library/core/_platformmoduleporttype"
-      },
-      {
-        "text": "_PlatformModuleType",
-        "link": "/reference/library/core/_platformmoduletype"
-      },
-      {
-        "text": "_PlatformOperatorType",
-        "link": "/reference/library/core/_platformoperatortype"
-      },
-      {
-        "text": "_PlatformType",
-        "link": "/reference/library/core/_platformtype"
-      },
-      {
-        "text": "_PolicyBinding",
-        "link": "/reference/library/core/_policybinding"
-      },
-      {
-        "text": "_Port",
-        "link": "/reference/library/core/_port"
-      },
-      {
-        "text": "_PortAttributes",
-        "link": "/reference/library/core/_portattributes"
-      },
-      {
-        "text": "_PortProperty",
-        "link": "/reference/library/core/_portproperty"
-      },
-      {
-        "text": "_PropertyInputPort",
-        "link": "/reference/library/core/_propertyinputport"
-      },
-      {
-        "text": "_PropertyOutputPort",
-        "link": "/reference/library/core/_propertyoutputport"
-      },
-      {
-        "text": "_Rated",
-        "link": "/reference/library/core/_rated"
-      },
-      {
-        "text": "_Reaction",
-        "link": "/reference/library/core/_reaction"
-      },
-      {
-        "text": "_RealLiteral",
-        "link": "/reference/library/core/_realliteral"
-      },
-      {
-        "text": "_Resetable",
-        "link": "/reference/library/core/_resetable"
-      },
-      {
-        "text": "_ResourceConfigurationType",
-        "link": "/reference/library/core/_resourceconfigurationtype"
-      },
-      {
-        "text": "_ResourceType",
-        "link": "/reference/library/core/_resourcetype"
-      },
-      {
-        "text": "_SequenceType",
-        "link": "/reference/library/core/_sequencetype"
-      },
-      {
-        "text": "_Signal",
-        "link": "/reference/library/core/_signal"
-      },
-      {
-        "text": "_StateType",
-        "link": "/reference/library/core/_statetype"
-      },
-      {
-        "text": "_StreamType",
-        "link": "/reference/library/core/_streamtype"
-      },
-      {
-        "text": "_Streamable",
-        "link": "/reference/library/core/_streamable"
-      },
-      {
-        "text": "_String",
-        "link": "/reference/library/core/_string"
-      },
-      {
-        "text": "_StringLiteral",
-        "link": "/reference/library/core/_stringliteral"
-      },
-      {
-        "text": "_Switch",
-        "link": "/reference/library/core/_switch"
-      },
-      {
-        "text": "_SwitchLiteral",
-        "link": "/reference/library/core/_switchliteral"
-      },
-      {
-        "text": "_SystemType",
-        "link": "/reference/library/core/_systemtype"
-      },
-      {
-        "text": "_Table",
-        "link": "/reference/library/core/_table"
-      },
-      {
-        "text": "_TableType",
-        "link": "/reference/library/core/_tabletype"
-      },
-      {
-        "text": "_TransitionType",
-        "link": "/reference/library/core/_transitiontype"
-      },
-      {
-        "text": "_Trigger",
-        "link": "/reference/library/core/_trigger"
-      },
-      {
-        "text": "_TwoPi",
-        "link": "/reference/library/core/_twopi"
-      },
-      {
-        "text": "_Type",
-        "link": "/reference/library/core/_type"
-      },
-      {
-        "text": "_TypeClass",
-        "link": "/reference/library/core/_typeclass"
-      },
-      {
-        "text": "_TypeClassConversion",
-        "link": "/reference/library/core/_typeclassconversion"
-      },
-      {
-        "text": "_TypeProperty",
-        "link": "/reference/library/core/_typeproperty"
-      },
-      {
-        "text": "_Typed",
-        "link": "/reference/library/core/_typed"
-      },
-      {
-        "text": "_Variadic",
-        "link": "/reference/library/core/_variadic"
+        "link": "/reference/library/assertions/expecttrue"
       }
     ]
   },
   {
-    "text": "Stride::Filters",
+    "text": "BasicOperations",
     "collapsed": true,
+    "items": [
+      {
+        "text": "Average",
+        "link": "/reference/library/basicoperations/average"
+      },
+      {
+        "text": "Clip",
+        "link": "/reference/library/basicoperations/clip"
+      },
+      {
+        "text": "Sum",
+        "link": "/reference/library/basicoperations/sum"
+      }
+    ]
+  },
+  {
+    "text": "Comparisons",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "AllOff",
+        "link": "/reference/library/comparisons/alloff"
+      },
+      {
+        "text": "AllOn",
+        "link": "/reference/library/comparisons/allon"
+      },
+      {
+        "text": "Equal",
+        "link": "/reference/library/comparisons/equal"
+      },
+      {
+        "text": "Greater",
+        "link": "/reference/library/comparisons/greater"
+      },
+      {
+        "text": "GreaterOrEqual",
+        "link": "/reference/library/comparisons/greaterorequal"
+      },
+      {
+        "text": "Less",
+        "link": "/reference/library/comparisons/less"
+      },
+      {
+        "text": "LessOrEqual",
+        "link": "/reference/library/comparisons/lessorequal"
+      },
+      {
+        "text": "NotEqual",
+        "link": "/reference/library/comparisons/notequal"
+      }
+    ]
+  },
+  {
+    "text": "Control",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "FallingEdge",
+        "link": "/reference/library/control/fallingedge"
+      },
+      {
+        "text": "Latch",
+        "link": "/reference/library/control/latch"
+      },
+      {
+        "text": "OnChange",
+        "link": "/reference/library/control/onchange"
+      },
+      {
+        "text": "RisingEdge",
+        "link": "/reference/library/control/risingedge"
+      },
+      {
+        "text": "Smooth",
+        "link": "/reference/library/control/smooth"
+      }
+    ]
+  },
+  {
+    "text": "Counter",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Counter",
+        "link": "/reference/library/counter/counter"
+      }
+    ]
+  },
+  {
+    "text": "Debug",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "DebugPrint",
+        "link": "/reference/library/debug/debugprint"
+      },
+      {
+        "text": "Error",
+        "link": "/reference/library/debug/error"
+      },
+      {
+        "text": "Probe",
+        "link": "/reference/library/debug/probe"
+      },
+      {
+        "text": "Watch",
+        "link": "/reference/library/debug/watch"
+      }
+    ]
+  },
+  {
+    "text": "Domain",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Exit",
+        "link": "/reference/library/domain/exit"
+      }
+    ]
+  },
+  {
+    "text": "Level",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Level",
+        "link": "/reference/library/level/level"
+      }
+    ]
+  },
+  {
+    "text": "Logic",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "And",
+        "link": "/reference/library/logic/and"
+      },
+      {
+        "text": "Nand",
+        "link": "/reference/library/logic/nand"
+      },
+      {
+        "text": "Nor",
+        "link": "/reference/library/logic/nor"
+      },
+      {
+        "text": "Not",
+        "link": "/reference/library/logic/not"
+      },
+      {
+        "text": "Or",
+        "link": "/reference/library/logic/or"
+      },
+      {
+        "text": "Select",
+        "link": "/reference/library/logic/select"
+      },
+      {
+        "text": "Xor",
+        "link": "/reference/library/logic/xor"
+      }
+    ]
+  },
+  {
+    "text": "Math",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Abs",
+        "link": "/reference/library/math/abs"
+      },
+      {
+        "text": "C1",
+        "link": "/reference/library/math/c1"
+      },
+      {
+        "text": "C2",
+        "link": "/reference/library/math/c2"
+      },
+      {
+        "text": "C3",
+        "link": "/reference/library/math/c3"
+      },
+      {
+        "text": "C4",
+        "link": "/reference/library/math/c4"
+      },
+      {
+        "text": "Clamp",
+        "link": "/reference/library/math/clamp"
+      },
+      {
+        "text": "Cos",
+        "link": "/reference/library/math/cos"
+      },
+      {
+        "text": "Divide",
+        "link": "/reference/library/math/divide"
+      },
+      {
+        "text": "Exp",
+        "link": "/reference/library/math/exp"
+      },
+      {
+        "text": "Floor",
+        "link": "/reference/library/math/floor"
+      },
+      {
+        "text": "Inverse",
+        "link": "/reference/library/math/inverse"
+      },
+      {
+        "text": "Lerp",
+        "link": "/reference/library/math/lerp"
+      },
+      {
+        "text": "Map",
+        "link": "/reference/library/math/map"
+      },
+      {
+        "text": "Max",
+        "link": "/reference/library/math/max"
+      },
+      {
+        "text": "Min",
+        "link": "/reference/library/math/min"
+      },
+      {
+        "text": "Multiply",
+        "link": "/reference/library/math/multiply"
+      },
+      {
+        "text": "Pow",
+        "link": "/reference/library/math/pow"
+      },
+      {
+        "text": "Sign",
+        "link": "/reference/library/math/sign"
+      },
+      {
+        "text": "Sin",
+        "link": "/reference/library/math/sin"
+      },
+      {
+        "text": "Tan",
+        "link": "/reference/library/math/tan"
+      },
+      {
+        "text": "Wrap",
+        "link": "/reference/library/math/wrap"
+      }
+    ]
+  },
+  {
+    "text": "Pan",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Pan",
+        "link": "/reference/library/pan/pan"
+      }
+    ]
+  },
+  {
+    "text": "QualityPolicy",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Accurate",
+        "link": "/reference/library/qualitypolicy/accurate"
+      },
+      {
+        "text": "Compact",
+        "link": "/reference/library/qualitypolicy/compact"
+      },
+      {
+        "text": "Fast",
+        "link": "/reference/library/qualitypolicy/fast"
+      },
+      {
+        "text": "Optimal",
+        "link": "/reference/library/qualitypolicy/optimal"
+      }
+    ]
+  },
+  {
+    "text": "Filters",
+    "collapsed": false,
     "items": [
       {
         "text": "BandPass",
@@ -440,8 +362,8 @@
     ]
   },
   {
-    "text": "Stride::Generators",
-    "collapsed": true,
+    "text": "Generators",
+    "collapsed": false,
     "items": [
       {
         "text": "AD",
@@ -450,6 +372,10 @@
       {
         "text": "BandLimitedSaw",
         "link": "/reference/library/generators/bandlimitedsaw"
+      },
+      {
+        "text": "Impulse",
+        "link": "/reference/library/generators/impulse"
       },
       {
         "text": "Oscillator",
@@ -466,7 +392,7 @@
     ]
   },
   {
-    "text": "Stride::Notes",
+    "text": "Notes",
     "collapsed": true,
     "items": [
       {
@@ -488,9 +414,13 @@
     ]
   },
   {
-    "text": "Stride::Osc",
+    "text": "Osc",
     "collapsed": true,
     "items": [
+      {
+        "text": "OSCIn",
+        "link": "/reference/library/osc/oscin"
+      },
       {
         "text": "OSCOut",
         "link": "/reference/library/osc/oscout"
@@ -498,7 +428,7 @@
     ]
   },
   {
-    "text": "Stride::Serial",
+    "text": "Serial",
     "collapsed": true,
     "items": [
       {

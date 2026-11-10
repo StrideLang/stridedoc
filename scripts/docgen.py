@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Dict, List, Any, Optional
 
 class StrideLexer:
-    """Tokenizes Stride syntax while handling comments and multi-line strings."""
+    """Tokenizes Stride syntax with line number tracking."""
     
     TOKEN_REGEX = re.compile(
         r'(?P<COMMENT>#[^\r\n]*)'
@@ -38,7 +38,15 @@ class StrideLexer:
     @classmethod
     def tokenize(cls, text: str):
         tokens = []
+        line_no = 1
+        last_pos = 0
+
         for m in cls.TOKEN_REGEX.finditer(text):
+            match_start = m.start()
+            if match_start > last_pos:
+                line_no += text.count('\n', last_pos, match_start)
+                last_pos = match_start
+
             kind = m.lastgroup
             val = m.group(kind)
             if kind in ('WS', 'COMMENT'):
@@ -48,7 +56,7 @@ class StrideLexer:
                     val = val[1:-1].replace('\\"', '"').replace('\\\\', '\\')
                 elif val.startswith("'") and val.endswith("'"):
                     val = val[1:-1].replace("\\'", "'").replace('\\\\', '\\')
-            tokens.append((kind, val))
+            tokens.append((kind, val, line_no))
         return tokens
 
 
@@ -77,12 +85,38 @@ class StrideDocParser:
         target = self.idx + offset
         if target < self.length:
             return self.tokens[target]
-        return (None, None)
+        return (None, None, 0)
 
     def advance(self):
         tok = self.peek()
         self.idx += 1
         return tok
+
+    def parse_property_value(self) -> str:
+        """Collects tokens until end of statement/property boundary."""
+        val_parts = []
+        bracket_depth = 0
+        while self.idx < self.length:
+            k, v, _ = self.peek()
+            if bracket_depth == 0:
+                if k in ('BRACE_CLOSE', 'SEMICOLON', 'COMMA'):
+                    break
+                if k == 'BRACKET_CLOSE':
+                    break
+                # If next is an IDENT followed by a COLON, that is the start of the next property
+                if k == 'IDENT' and self.peek(1)[0] == 'COLON':
+                    break
+
+            if k == 'BRACKET_OPEN':
+                bracket_depth += 1
+            elif k == 'BRACKET_CLOSE':
+                bracket_depth -= 1
+
+            val_parts.append(str(v))
+            self.advance()
+
+        result = " ".join(val_parts).replace(" . ", ".").strip()
+        return result
 
     def parse_file(self) -> Dict[str, Any]:
         results = {
@@ -91,14 +125,14 @@ class StrideDocParser:
         }
 
         while self.idx < self.length:
-            kind, val = self.peek()
+            kind, val, line = self.peek()
 
             # package Foo::Bar
             if kind == 'IDENT' and val == 'package':
                 self.advance()
                 pkg_parts = []
                 while self.idx < self.length:
-                    k, v = self.peek()
+                    k, v, _ = self.peek()
                     if k == 'IDENT':
                         pkg_parts.append(v)
                         self.advance()
@@ -115,16 +149,18 @@ class StrideDocParser:
             # Declarations: module Foo { ... }
             if kind == 'IDENT' and val in self.DECLARATION_KEYWORDS:
                 decl_type = val
+                decl_line = line
                 self.advance()
-                name_kind, name_val = self.advance()
+                name_kind, name_val, _ = self.advance()
                 decl_name = name_val if name_kind in ('IDENT', 'NUMBER') else "Anonymous"
 
-                b_kind, b_val = self.peek()
+                b_kind, b_val, _ = self.peek()
                 if b_kind == 'BRACE_OPEN':
                     self.advance()
                     decl_body = self.parse_block()
                     decl_body['kind'] = decl_type
                     decl_body['name'] = decl_name
+                    decl_body['line'] = decl_line
                     results['declarations'].append(decl_body)
                 continue
 
@@ -144,7 +180,7 @@ class StrideDocParser:
         brace_depth = 1
 
         while self.idx < self.length and brace_depth > 0:
-            kind, val = self.peek()
+            kind, val, _ = self.peek()
 
             if kind == 'BRACE_OPEN':
                 brace_depth += 1
@@ -159,40 +195,37 @@ class StrideDocParser:
                 continue
 
             # meta: "..."
-            if kind == 'IDENT' and val == 'meta':
-                self.advance()
-                if self.peek()[0] == 'COLON':
-                    self.advance()
-                s_kind, s_val = self.peek()
+            if kind == 'IDENT' and self.peek(1)[0] == 'COLON' and val == 'meta':
+                self.advance() # 'meta'
+                self.advance() # ':'
+                s_kind, s_val, _ = self.peek()
                 if s_kind == 'STRING':
                     block_data['meta'] = s_val
                     self.advance()
+                else:
+                    block_data['meta'] = self.parse_property_value().strip('"\'')
                 continue
 
             # value: ...
-            if kind == 'IDENT' and val == 'value':
+            if kind == 'IDENT' and self.peek(1)[0] == 'COLON' and val == 'value':
                 self.advance()
-                if self.peek()[0] == 'COLON':
-                    self.advance()
-                v_kind, v_val = self.advance()
-                block_data['value'] = v_val
+                self.advance()
+                block_data['value'] = self.parse_property_value()
                 continue
 
             # ports: [ ... ]
-            if kind == 'IDENT' and val == 'ports':
+            if kind == 'IDENT' and self.peek(1)[0] == 'COLON' and val == 'ports':
                 self.advance()
-                if self.peek()[0] == 'COLON':
-                    self.advance()
+                self.advance()
                 if self.peek()[0] == 'BRACKET_OPEN':
                     self.advance()
                     block_data['ports'] = self.parse_ports_list()
                 continue
 
             # entities: [ ... ]
-            if kind == 'IDENT' and val == 'entities':
+            if kind == 'IDENT' and self.peek(1)[0] == 'COLON' and val == 'entities':
                 self.advance()
-                if self.peek()[0] == 'COLON':
-                    self.advance()
+                self.advance()
                 if self.peek()[0] == 'BRACKET_OPEN':
                     self.advance()
                     block_data['entities'] = self.parse_entities_list()
@@ -207,7 +240,7 @@ class StrideDocParser:
         bracket_depth = 1
 
         while self.idx < self.length and bracket_depth > 0:
-            kind, val = self.peek()
+            kind, val, _ = self.peek()
 
             if kind == 'BRACKET_OPEN':
                 bracket_depth += 1
@@ -228,7 +261,7 @@ class StrideDocParser:
             if kind == 'IDENT' and val in self.PORT_TYPES:
                 port_kind = val
                 self.advance()
-                id_kind, id_val = self.advance()
+                id_kind, id_val, _ = self.advance()
                 port_id = id_val if id_kind == 'IDENT' else ""
 
                 port_meta = ""
@@ -240,7 +273,7 @@ class StrideDocParser:
                     self.advance()
                     port_brace_depth = 1
                     while self.idx < self.length and port_brace_depth > 0:
-                        p_kind, p_val = self.peek()
+                        p_kind, p_val, _ = self.peek()
                         if p_kind == 'BRACE_OPEN':
                             port_brace_depth += 1
                             self.advance()
@@ -252,24 +285,22 @@ class StrideDocParser:
                                 break
                             continue
 
-                        if p_kind == 'IDENT' and p_val == 'name':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            port_name = str(self.advance()[1])
-                        elif p_kind == 'IDENT' and p_val == 'entity':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            port_entity = str(self.advance()[1])
-                        elif p_kind == 'IDENT' and p_val == 'meta':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            port_meta = str(self.advance()[1])
-                        elif p_kind == 'IDENT' and p_val == 'default':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            port_default = str(self.advance()[1])
-                        else:
-                            self.advance()
+                        if p_kind == 'IDENT' and self.peek(1)[0] == 'COLON':
+                            prop_name = p_val
+                            self.advance() # prop_name
+                            self.advance() # ':'
+                            prop_val = self.parse_property_value()
+                            if prop_name == 'name':
+                                port_name = prop_val.strip('"\'')
+                            elif prop_name == 'entity':
+                                port_entity = prop_val
+                            elif prop_name == 'meta':
+                                port_meta = prop_val.strip('"\'')
+                            elif prop_name == 'default':
+                                port_default = prop_val
+                            continue
+
+                        self.advance()
 
                 ports.append({
                     'id': port_id,
@@ -290,7 +321,7 @@ class StrideDocParser:
         bracket_depth = 1
 
         while self.idx < self.length and bracket_depth > 0:
-            kind, val = self.peek()
+            kind, val, _ = self.peek()
 
             if kind == 'BRACKET_OPEN':
                 bracket_depth += 1
@@ -311,7 +342,7 @@ class StrideDocParser:
             if kind == 'IDENT' and val in self.ENTITY_TYPES:
                 ent_type = val
                 self.advance()
-                id_kind, id_val = self.advance()
+                id_kind, id_val, _ = self.advance()
                 ent_id = id_val if id_kind == 'IDENT' else ""
 
                 if self.peek()[0] == 'BRACKET_OPEN':
@@ -331,7 +362,7 @@ class StrideDocParser:
                     self.advance()
                     ent_brace_depth = 1
                     while self.idx < self.length and ent_brace_depth > 0:
-                        e_kind, e_val = self.peek()
+                        e_kind, e_val, _ = self.peek()
                         if e_kind == 'BRACE_OPEN':
                             ent_brace_depth += 1
                             self.advance()
@@ -343,24 +374,22 @@ class StrideDocParser:
                                 break
                             continue
 
-                        if e_kind == 'IDENT' and e_val == 'default':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            ent_default = str(self.advance()[1])
-                        elif e_kind == 'IDENT' and e_val == 'rate':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            ent_rate = str(self.advance()[1])
-                        elif e_kind == 'IDENT' and e_val == 'domain':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            ent_domain = str(self.advance()[1])
-                        elif e_kind == 'IDENT' and e_val == 'meta':
-                            self.advance()
-                            if self.peek()[0] == 'COLON': self.advance()
-                            ent_meta = str(self.advance()[1])
-                        else:
-                            self.advance()
+                        if e_kind == 'IDENT' and self.peek(1)[0] == 'COLON':
+                            eprop_name = e_val
+                            self.advance() # eprop_name
+                            self.advance() # ':'
+                            eprop_val = self.parse_property_value()
+                            if eprop_name == 'default':
+                                ent_default = eprop_val
+                            elif eprop_name == 'rate':
+                                ent_rate = eprop_val
+                            elif eprop_name == 'domain':
+                                ent_domain = eprop_val
+                            elif eprop_name == 'meta':
+                                ent_meta = eprop_val.strip('"\'')
+                            continue
+
+                        self.advance()
 
                 entities.append({
                     'id': ent_id,
@@ -377,26 +406,34 @@ class StrideDocParser:
         return entities
 
 
-def friendly_port_kind(kind: str) -> str:
-    mapping = {
-        'mainInputPort': 'Input Stream',
-        'mainOutputPort': 'Output Stream',
-        'propertyInputPort': 'Property In',
-        'propertyOutputPort': 'Property Out',
-        'inputPort': 'Input',
-        'outputPort': 'Output',
-        'port': 'Port'
-    }
-    return mapping.get(kind, kind)
+def render_port_icon(kind: str) -> str:
+    """Returns a sober, compact badge for the port kind."""
+    if kind in ('mainInputPort', 'inputPort'):
+        return '<span class="port-icon stream-in" title="Stream Input">»</span>'
+    elif kind in ('mainOutputPort', 'outputPort'):
+        return '<span class="port-icon stream-out" title="Stream Output">»</span>'
+    elif kind == 'propertyInputPort':
+        return '<span class="port-icon prop-in" title="Property Input">↓</span>'
+    elif kind == 'propertyOutputPort':
+        return '<span class="port-icon prop-out" title="Property Output">↑</span>'
+    return '<span class="port-icon stream-in" title="Port">»</span>'
 
 
-def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, file_rel_path: str, is_root_library: bool) -> str:
+def generate_markdown_for_declaration(
+    decl: Dict[str, Any],
+    package_name: str,
+    file_rel_path: str,
+    file_basename: str,
+    github_url: str,
+    is_root_library: bool
+) -> str:
     name = decl.get('name', 'Anonymous')
     kind = decl.get('kind', 'module').capitalize()
     meta = decl.get('meta', '').strip()
     ports = decl.get('ports', [])
     entities = decl.get('entities', [])
     value = decl.get('value', None)
+    line_no = decl.get('line', 1)
 
     md = []
     # Frontmatter
@@ -406,15 +443,15 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
     md.append(f"description: \"{clean_desc}\"")
     md.append("---\n")
 
-    # Title & Badge
+    # Title & Badge & Source Link
+    source_label = f"{file_basename}:{line_no}"
+    source_anchor = f'<a class="stride-source-link" href="{github_url}" target="_blank" rel="noopener" title="View source on GitHub">[{source_label}]</a>'
     md.append(f"# {name}\n")
-    md.append(f'<span class="stride-badge">{kind}</span> `package {package_name}`\n')
+    md.append(f'<span class="stride-badge">{kind}</span> `package {package_name}` {source_anchor}\n')
 
     # Description
     if meta:
         md.append(f"{meta}\n")
-    else:
-        md.append(f"*{kind} declared in `{file_rel_path}`.*\n")
 
     # If it's a constant
     if value is not None:
@@ -423,22 +460,31 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
         md.append(f"constant {name} = {value}")
         md.append("```\n")
 
-    # Ports Table
+    # Ports Table with compact icons
     if ports:
         md.append("## Ports & Properties\n")
-        md.append("| Name | Type | Target Signal | Default | Description |")
-        md.append("| :--- | :--- | :--- | :--- | :--- |")
+        md.append("| | Port | Target | Default | Description |")
+        md.append("| :-: | :--- | :--- | :--- | :--- |")
         for p in ports:
+            icon = render_port_icon(p['kind'])
             p_name = f"`{p['name']}`" if p['name'] else "—"
-            p_kind = friendly_port_kind(p['kind'])
             p_entity = f"`{p['entity']}`" if p['entity'] else "—"
             p_def = f"`{p['default']}`" if p['default'] else "—"
             p_desc = p['meta'].replace('\n', ' ') if p['meta'] else "—"
-            md.append(f"| {p_name} | {p_kind} | {p_entity} | {p_def} | {p_desc} |")
+            md.append(f"| {icon} | {p_name} | {p_entity} | {p_def} | {p_desc} |")
         md.append("")
+        md.append('<div class="port-legend">')
+        md.append('  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>')
+        md.append('  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>')
+        md.append('  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>')
+        md.append('  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>')
+        md.append('</div>\n')
 
-    # Internal Signals & Entities Table
-    notable_entities = [e for e in entities if e['default'] or e['meta'] or e['rate']]
+    # Internal Signals & Entities Table (only if non-internal signals exist)
+    notable_entities = [
+        e for e in entities 
+        if (e['default'] or e['meta'] or e['rate']) and not e['id'].startswith('_')
+    ]
     if notable_entities:
         md.append("## Signals & Attributes\n")
         md.append("| Signal | Type | Default | Rate / Domain | Description |")
@@ -461,13 +507,12 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
     md.append("import Stride;\n")
     prop_args = []
     for p in ports:
-        if 'property' in p['kind'].lower() and p['name']:
+        if 'property' in p['kind'].lower() and p['name'] and not p['name'].startswith('_'):
             val = p['default'] if p['default'] else "..."
             prop_args.append(f"{p['name']}: {val}")
     args_str = f"({', '.join(prop_args[:3])})" if prop_args else "()"
 
     if is_root_library:
-        # Directly available in Stride root namespace
         md.append(f"# Available in root namespace:")
         md.append(f"Signal >> {name}{args_str} >> Output;")
     else:
@@ -479,8 +524,8 @@ def generate_markdown_for_declaration(decl: Dict[str, Any], package_name: str, f
     return "\n".join(md)
 
 
-def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str, Any]:
-    """Scans strideroot/library, extracts docs, and writes markdown files."""
+def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: str = "main") -> Dict[str, Any]:
+    """Scans strideroot/library, extracts docs, and writes markdown files grouped by filename/folder."""
     library_dir = strideroot_path / "library" / "1.0"
     if not library_dir.exists():
         print(f"Error: Could not find library directory at {library_dir}")
@@ -489,13 +534,11 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
     ref_dir = output_docs_dir / "reference" / "library"
     ref_dir.mkdir(parents=True, exist_ok=True)
 
-    # Categories:
-    # 1. "Stride (Core Library)" for all root files
-    # 2. "Stride::<Subdir>" for subdirectories (Generators, Filters, etc.)
     sidebar_groups = {}
-    sidebar_order = ["Stride (Core Library)"]
+    sidebar_order = []
 
     IGNORED_DIRS = {'doc', '.strdcache', 'tests', 'local'}
+    GITHUB_REPO_URL = "https://github.com/StrideLang/strideroot"
 
     for root, dirs, files in os.walk(library_dir):
         # Prune ignored directories
@@ -503,32 +546,9 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
 
         root_path = Path(root)
         rel_to_lib = root_path.relative_to(library_dir)
-        stride_files = [f for f in files if f.endswith(".stride")]
+        stride_files = sorted([f for f in files if f.endswith(".stride")])
 
-        # Determine category and package
         is_root = (rel_to_lib == Path('.'))
-
-        if is_root:
-            group_key = "Stride (Core Library)"
-            pkg_name = "Stride"
-            cat_slug = "core"
-        else:
-            cat_name = rel_to_lib.parts[0]
-            group_key = f"Stride::{cat_name}"
-            pkg_name = f"Stride::{cat_name}"
-            cat_slug = cat_name.lower()
-            if group_key not in sidebar_order:
-                sidebar_order.append(group_key)
-
-        cat_dir = ref_dir / cat_slug
-        cat_dir.mkdir(parents=True, exist_ok=True)
-
-        if group_key not in sidebar_groups:
-            sidebar_groups[group_key] = {
-                'slug': cat_slug,
-                'package': pkg_name,
-                'items': []
-            }
 
         for sf in stride_files:
             file_path = root_path / sf
@@ -542,16 +562,58 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
             parser = StrideDocParser(tokens)
             parsed = parser.parse_file()
 
-            effective_pkg = parsed['package'] if parsed['package'] else pkg_name
+            # Filter out declarations starting with '_'
+            valid_decls = [
+                d for d in parsed['declarations']
+                if not d.get('name', '').startswith('_') and d.get('name', '') != 'Anonymous'
+            ]
 
-            for decl in parsed['declarations']:
+            if not valid_decls:
+                continue
+
+            # Grouping:
+            # - For root files: group by filename stem (e.g. "Math", "BasicOperations")
+            # - For subdirectories: group by folder name (e.g. "Generators", "Filters")
+            if is_root:
+                cat_name = file_path.stem
+                cat_slug = cat_name.lower()
+                group_key = cat_name
+                pkg_name = parsed['package'] if parsed['package'] else "Stride"
+            else:
+                cat_name = rel_to_lib.parts[0]
+                cat_slug = cat_name.lower()
+                group_key = cat_name
+                pkg_name = parsed['package'] if parsed['package'] else f"Stride::{cat_name}"
+
+            if group_key not in sidebar_order:
+                sidebar_order.append(group_key)
+
+            cat_dir = ref_dir / cat_slug
+            cat_dir.mkdir(parents=True, exist_ok=True)
+
+            if group_key not in sidebar_groups:
+                sidebar_groups[group_key] = {
+                    'slug': cat_slug,
+                    'package': pkg_name,
+                    'items': []
+                }
+
+            # Relative path from strideroot using forward slashes for GitHub URL
+            rel_unix = str(file_path.relative_to(strideroot_path)).replace("\\", "/")
+
+            for decl in valid_decls:
                 decl_name = decl.get('name', '')
-                # Skip internal declarations starting with double underscore
-                if decl_name.startswith('__') or decl_name == "Anonymous":
-                    continue
+                decl_line = decl.get('line', 1)
+
+                github_url = f"{GITHUB_REPO_URL}/blob/{git_ref}/{rel_unix}#L{decl_line}"
 
                 md_content = generate_markdown_for_declaration(
-                    decl, effective_pkg, str(file_path.relative_to(strideroot_path)), is_root
+                    decl=decl,
+                    package_name=pkg_name,
+                    file_rel_path=rel_unix,
+                    file_basename=file_path.name,
+                    github_url=github_url,
+                    is_root_library=is_root
                 )
 
                 file_slug = decl_name.lower().replace(" ", "-")
@@ -564,13 +626,12 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
                     'link': f"/reference/library/{cat_slug}/{file_slug}"
                 })
 
-    # Build sorted sidebar items
+    # Sort sidebar items within each group
     sidebar_config = []
     for g_key in sidebar_order:
         if g_key not in sidebar_groups:
             continue
         g_data = sidebar_groups[g_key]
-        # Deduplicate items by text
         seen = set()
         deduped = []
         for it in sorted(g_data['items'], key=lambda x: x['text']):
@@ -581,7 +642,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
         if deduped:
             sidebar_config.append({
                 'text': g_key,
-                'collapsed': g_key != "Stride (Core Library)",
+                'collapsed': False if g_key in ('Math', 'Generators', 'Filters') else True,
                 'items': deduped
             })
 
@@ -589,14 +650,17 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path) -> Dict[str
     index_md = [
         "---",
         "title: Standard Library Reference",
-        "description: Specification of modules, stream processors, filters, generators, and arithmetic operations in the Stride standard library.",
+        "description: Formal specification of standard modules, filters, generators, and arithmetic operations in Stride.",
         "---\n",
         "# Standard Library Reference\n",
-        "The Stride standard library provides the foundational primitives for signal routing, multi-rate audio digital signal processing (DSP), mathematical operations, and state machine transitions.\n",
+        "The Stride standard library provides verified primitives for signal flow, digital signal processing (DSP), mathematical operations, and state machine transitions.\n",
+        "## Source Repository & Versioning\n",
+        f"- **Upstream Repository**: [`StrideLang/strideroot`]({GITHUB_REPO_URL})\n",
+        f"- **Active Ref**: `{git_ref}` (unambiguous source line links are embedded in each definition)\n",
         "## Namespace Organization\n",
-        "- **`package Stride` (Core Library)**: Primitives located in the root of the standard library (`Math`, `Logic`, `BasicOperations`, `Comparisons`, etc.) belong to the root `Stride` package. They are imported automatically or via `import Stride`, and are available directly in global scope (e.g. `Sin()`, `Sum()`, `Abs()`).",
-        "- **Sub-packages (`Stride::<Category>`)**: Components residing in subdirectories (`Generators`, `Filters`, `Serial`, `Osc`) form categorized sub-packages. When using `import Stride`, they are referenced via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or directly via category import (`import Stride::Generators`).\n",
-        "## Package Modules\n"
+        "- **`package Stride` (Core Groups)**: Modules defined directly in root library files (`Math`, `BasicOperations`, `Logic`, `Comparisons`, `Control`, `Assertions`) reside in the root `Stride` package. They are imported automatically or via `import Stride;` and are available in global scope (e.g. `Sin()`, `Sum()`, `Equal()`).",
+        "- **Sub-packages (`Stride::<Category>`)**: Components residing in subdirectories (`Generators`, `Filters`, `Serial`, `Osc`, `Notes`) form categorized sub-packages. When using `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or directly via category import (`import Stride::Generators;`).\n",
+        "## Categories\n"
     ]
 
     for entry in sidebar_config:
@@ -618,6 +682,7 @@ def main():
     parser = argparse.ArgumentParser(description="Stride Documentation Extractor (stride-docgen)")
     parser.add_argument("--strideroot", default=None, help="Path to strideroot repository")
     parser.add_argument("--output", default="docs", help="Target output documentation directory")
+    parser.add_argument("--ref", default=os.environ.get("STRIDE_DOCS_GIT_REF", "main"), help="Git ref (branch or tag) for GitHub source links")
     args = parser.parse_args()
 
     strideroot_candidates = [
@@ -640,16 +705,17 @@ def main():
 
     output_dir = Path(args.output).resolve()
     print(f"[*] Extracting docs from: {strideroot_path}")
+    print(f"[*] Target branch/ref:    {args.ref}")
     print(f"[*] Output directory:     {output_dir}")
 
-    sidebar = process_strideroot(strideroot_path, output_dir)
+    sidebar = process_strideroot(strideroot_path, output_dir, git_ref=args.ref)
 
     sidebar_file = output_dir / ".vitepress" / "sidebar-reference.json"
     sidebar_file.parent.mkdir(parents=True, exist_ok=True)
     sidebar_file.write_text(json.dumps(sidebar, indent=2), encoding='utf-8')
 
     total_modules = sum(len(g['items']) for g in sidebar)
-    print(f"[+] Successfully extracted {total_modules} definitions across {len(sidebar)} packages!")
+    print(f"[+] Successfully extracted {total_modules} definitions across {len(sidebar)} groups!")
     print(f"[+] Sidebar config saved to: {sidebar_file}")
 
 

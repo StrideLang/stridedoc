@@ -2,32 +2,137 @@
   --vp-c-brand-1: #0ea5e9;
   --vp-c-brand-2: #0284c7;
   --vp-c-brand-3: #0369a1;
-  --vp-c-brand-soft: rgba(14, 165, 233, 0.14);
+  --vp-c-brand-soft: rgba(14, 165, 233, 0.12);
 }
 
 .dark {
   --vp-c-brand-1: #38bdf8;
   --vp-c-brand-2: #0ea5e9;
   --vp-c-brand-3: #0284c7;
-  --vp-c-brand-soft: rgba(56, 189, 248, 0.16);
+  --vp-c-brand-soft: rgba(56, 189, 248, 0.14);
 }
 
+/* Header & Package Badge */
 .stride-badge {
   display: inline-block;
   font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding: 0.2rem 0.55rem;
-  border-radius: 9999px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
   background-color: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
   border: 1px solid var(--vp-c-brand-soft);
-  margin-right: 0.5rem;
+  margin-right: 0.4rem;
   vertical-align: middle;
 }
 
-table {
+.stride-source-link {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.stride-source-link:hover {
+  color: var(--vp-c-brand-1);
+  text-decoration: underline;
+}
+
+/* Port Type Icons */
+.port-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--vp-font-family-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 4px;
+  line-height: 1;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.port-icon.stream-in {
+  background-color: rgba(14, 165, 233, 0.14);
+  color: #0284c7;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+}
+
+.port-icon.stream-out {
+  background-color: rgba(99, 102, 241, 0.14);
+  color: #4f46e5;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+.port-icon.prop-in {
+  background-color: rgba(16, 185, 129, 0.14);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.port-icon.prop-out {
+  background-color: rgba(245, 158, 11, 0.14);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.dark .port-icon.stream-in {
+  background-color: rgba(56, 189, 248, 0.18);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.dark .port-icon.stream-out {
+  background-color: rgba(129, 140, 248, 0.18);
+  color: #a5b4fc;
+  border: 1px solid rgba(129, 140, 248, 0.3);
+}
+
+.dark .port-icon.prop-in {
+  background-color: rgba(52, 211, 153, 0.18);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.dark .port-icon.prop-out {
+  background-color: rgba(251, 191, 36, 0.18);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.port-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.78rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.75rem;
+  background-color: var(--vp-c-bg-soft);
+  border-radius: 6px;
+  align-items: center;
+}
+
+.port-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Compact Table Formatting */
+.vp-doc table {
   display: table !important;
   width: 100% !important;
+  margin: 0.75rem 0 !important;
+  font-size: 0.88rem !important;
+}
+
+.vp-doc th, 
+.vp-doc td {
+  padding: 0.35rem 0.65rem !important;
 }
