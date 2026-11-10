@@ -5,7 +5,7 @@ description: "Greater-than-or-equal assertion module (Actual >= Expected). Decla
 
 # ExpectGe
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Assertions** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L91" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:91]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Assertions (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L91" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:91]</a>
 
 Greater-than-or-equal assertion module (Actual >= Expected). Declared for schema validation; handled with special treatment in the testing framework.
 
@@ -23,8 +23,6 @@ Greater-than-or-equal assertion module (Actual >= Expected). Declared for schema
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> ExpectGe() >> Output;
 ```

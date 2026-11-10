@@ -5,7 +5,7 @@ description: "Returns input value rounded down to the nearest integer."
 
 # Floor
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L543" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:543]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L528" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:528]</a>
 
 Returns input value rounded down to the nearest integer.
 
@@ -24,8 +24,6 @@ Returns input value rounded down to the nearest integer.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Floor() >> Output;
 ```

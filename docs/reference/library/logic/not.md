@@ -5,7 +5,7 @@ description: "Logical NOT operation: inverts a switch input."
 
 # Not
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Logic** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Logic.stride#L85" target="_blank" rel="noopener" title="View source on GitHub">[Logic.stride:85]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Logic (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Logic.stride#L85" target="_blank" rel="noopener" title="View source on GitHub">[Logic.stride:85]</a>
 
 Logical NOT operation: inverts a switch input.
 
@@ -24,8 +24,6 @@ Logical NOT operation: inverts a switch input.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Not() >> Output;
 ```

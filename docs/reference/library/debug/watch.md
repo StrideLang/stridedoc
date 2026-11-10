@@ -5,7 +5,7 @@ description: "Signal watch module for non-intrusive runtime observation"
 
 # Watch
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Debug** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Debug.stride#L76" target="_blank" rel="noopener" title="View source on GitHub">[Debug.stride:76]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Debug (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Debug.stride#L76" target="_blank" rel="noopener" title="View source on GitHub">[Debug.stride:76]</a>
 
 Signal watch module for non-intrusive runtime observation
 
@@ -32,8 +32,6 @@ Signal watch module for non-intrusive runtime observation
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Watch(label: ...) >> Output;
 ```

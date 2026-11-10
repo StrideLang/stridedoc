@@ -5,7 +5,7 @@ description: "Outputs on if all switches in the input array are on: Input >> All
 
 # AllOn
 
-<span class="stride-badge">Loop</span> `package Stride` &bull; Group: **Comparisons** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Comparisons.stride#L172" target="_blank" rel="noopener" title="View source on GitHub">[Comparisons.stride:172]</a>
+<span class="stride-badge">Loop</span> Global Prelude &bull; Group: **Comparisons (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Comparisons.stride#L172" target="_blank" rel="noopener" title="View source on GitHub">[Comparisons.stride:172]</a>
 
 Outputs on if all switches in the input array are on: Input >> AllOn() >> Output.
 
@@ -24,8 +24,6 @@ Outputs on if all switches in the input array are on: Input >> AllOn() >> Output
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> AllOn() >> Output;
 ```

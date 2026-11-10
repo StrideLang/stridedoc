@@ -52,7 +52,7 @@ Create a source file named `oscillator.stride`:
 ```stride
 use DesktopAudio version 1.0;
 
-import Stride;
+import Dsp::Generators as Generators;
 
 # Connect a 440 Hz generator to the primary audio output:
 440.0 >> Generators::Oscillator(amplitude: 0.2) >> AudioOut;

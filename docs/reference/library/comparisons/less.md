@@ -5,7 +5,7 @@ description: "Compares two input values: outputs on if Input[0] < Input[1], else
 
 # Less
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Comparisons** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Comparisons.stride#L60" target="_blank" rel="noopener" title="View source on GitHub">[Comparisons.stride:60]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Comparisons (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Comparisons.stride#L60" target="_blank" rel="noopener" title="View source on GitHub">[Comparisons.stride:60]</a>
 
 Compares two input values: outputs on if Input[0] < Input[1], else off.
 
@@ -24,8 +24,6 @@ Compares two input values: outputs on if Input[0] < Input[1], else off.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Less() >> Output;
 ```

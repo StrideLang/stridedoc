@@ -5,7 +5,7 @@ description: "Computes the natural exponential: exp(Input)."
 
 # Exp
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L389" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:389]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L374" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:374]</a>
 
 Computes the natural exponential: exp(Input).
 
@@ -24,8 +24,6 @@ Computes the natural exponential: exp(Input).
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Exp() >> Output;
 ```

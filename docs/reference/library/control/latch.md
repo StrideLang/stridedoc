@@ -5,7 +5,7 @@ description: "Sample and hold: samples Input when trigger is on and holds the va
 
 # Latch
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Control** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Control.stride#L114" target="_blank" rel="noopener" title="View source on GitHub">[Control.stride:114]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Control.stride#L114" target="_blank" rel="noopener" title="View source on GitHub">[Control.stride:114]</a>
 
 Sample and hold: samples Input when trigger is on and holds the value when off: Input >> Latch(trigger: Gate) >> Output.
 
@@ -32,8 +32,6 @@ Sample and hold: samples Input when trigger is on and holds the value when off: 
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Latch(trigger: off) >> Output;
 ```

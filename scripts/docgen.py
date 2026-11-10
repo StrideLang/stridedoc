@@ -10,6 +10,7 @@ import os
 import sys
 import re
 import json
+import shutil
 import argparse
 from pathlib import Path
 from typing import Dict, List, Any, Optional
@@ -437,7 +438,7 @@ def generate_markdown_for_declaration(
     file_rel_path: str,
     file_basename: str,
     github_url: str,
-    is_root_library: bool
+    is_prelude: bool
 ) -> str:
     name = decl.get('name', 'Anonymous')
     kind = decl.get('kind', 'module').capitalize()
@@ -467,10 +468,9 @@ def generate_markdown_for_declaration(
     source_anchor = f'<a class="stride-source-link" href="{github_url}" target="_blank" rel="noopener" title="View source on GitHub">[{source_label}]</a>'
     
     md.append(f"# {name}\n")
-    if is_root_library:
-        md.append(f'<span class="stride-badge">{kind}</span> `package Stride` &bull; Group: **{group_name}** {source_anchor}\n')
+    if is_prelude:
+        md.append(f'<span class="stride-badge">{kind}</span> Global Prelude &bull; Group: **{group_name}** {source_anchor}\n')
     else:
-        cat = package_name.replace("Stride::", "")
         md.append(f'<span class="stride-badge">{kind}</span> `package {package_name}` &bull; Namespace: **`{package_name}`** {source_anchor}\n')
 
     # Compact Overview Description
@@ -539,7 +539,6 @@ def generate_markdown_for_declaration(
     # Usage Example
     md.append("## Usage\n")
     md.append("```stride")
-    md.append("import Stride;\n")
     prop_args = []
     for p in properties:
         if p['name'] and not p['name'].startswith('_'):
@@ -548,29 +547,35 @@ def generate_markdown_for_declaration(
             val_str = val if val else "..."
             prop_args.append(f"{p['name']}: {val_str}")
     args_str = f"({', '.join(prop_args[:3])})" if prop_args else "()"
+    is_const = (value is not None or kind.lower() == 'constant')
 
-    if value is not None or kind.lower() == 'constant':
-        if is_root_library:
-            md.append(f"# Available in root namespace:")
+    if is_prelude:
+        md.append("# Available in global prelude without import:")
+        if is_const:
             md.append(f"Signal * {name} >> Output;")
         else:
-            cat = package_name.replace("Stride::", "")
-            md.append(f"# Access via {cat} category:")
-            md.append(f"Signal * {cat}::{name} >> Output;")
-    elif is_root_library:
-        md.append(f"# Available in root namespace:")
-        md.append(f"Signal >> {name}{args_str} >> Output;")
+            md.append(f"Signal >> {name}{args_str} >> Output;")
     else:
-        cat = package_name.replace("Stride::", "")
-        md.append(f"# Access via {cat} category:")
-        md.append(f"Signal >> {cat}::{name}{args_str} >> Output;")
+        alias = package_name.split("::")[-1]
+        if "::" in package_name:
+            md.append(f"import {package_name} as {alias};\n")
+            if is_const:
+                md.append(f"Signal * {alias}::{name} >> Output;")
+            else:
+                md.append(f"Signal >> {alias}::{name}{args_str} >> Output;")
+        else:
+            md.append(f"import {package_name};\n")
+            if is_const:
+                md.append(f"Signal * {package_name}::{name} >> Output;")
+            else:
+                md.append(f"Signal >> {name}{args_str} >> Output;")
     md.append("```\n")
 
     return "\n".join(md)
 
 
 def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: str = "main") -> List[Dict[str, Any]]:
-    """Scans strideroot/library, extracts docs, and writes markdown files with clear Core/Package sidebar distinction."""
+    """Scans strideroot/library, extracts docs, and writes markdown files according to the 4-layer stdlib specification."""
     library_dir = strideroot_path / "library" / "1.0"
     if not library_dir.exists():
         print(f"Error: Could not find library directory at {library_dir}")
@@ -579,11 +584,24 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
     ref_dir = output_docs_dir / "reference" / "library"
     ref_dir.mkdir(parents=True, exist_ok=True)
 
-    core_groups = {}
-    core_order = []
+    # Clean out stale subdirectories to remove obsolete pages (e.g. old Filters/, Generators/, Pan/, Level/)
+    for item in ref_dir.iterdir():
+        if item.is_dir():
+            shutil.rmtree(item)
+        elif item.name != "index.md":
+            item.unlink()
 
-    package_groups = {}
-    package_order = []
+    prelude_groups = {}
+    prelude_order = []
+
+    dsp_groups = {}
+    dsp_order = []
+
+    io_groups = {}
+    io_order = []
+
+    math_groups = {}
+    math_order = []
 
     IGNORED_DIRS = {'doc', '.strdcache', 'tests', 'local'}
     GITHUB_REPO_URL = "https://github.com/StrideLang/strideroot"
@@ -618,107 +636,133 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
             if not valid_decls:
                 continue
 
-            if is_root:
-                group_name = file_path.stem
-                cat_slug = group_name.lower()
-                pkg_name = "Stride"
-                if group_name not in core_order:
-                    core_order.append(group_name)
-                target_dict = core_groups
-                group_key = group_name
-            else:
-                cat_name = rel_to_lib.parts[0]
-                group_name = cat_name
-                cat_slug = cat_name.lower()
-                pkg_name = f"Stride::{cat_name}"
-                if cat_name not in package_order:
-                    package_order.append(cat_name)
-                target_dict = package_groups
-                group_key = cat_name
-
-            cat_dir = ref_dir / cat_slug
-            cat_dir.mkdir(parents=True, exist_ok=True)
-
-            if group_key not in target_dict:
-                target_dict[group_key] = {
-                    'slug': cat_slug,
-                    'package': pkg_name,
-                    'items': []
-                }
-
+            pkg = parsed.get('package')
             rel_unix = str(file_path.relative_to(strideroot_path)).replace("\\", "/")
+
+            if is_root:
+                if sf == 'Dsp.stride':
+                    target_dict, order, group_key = dsp_groups, dsp_order, 'Dsp (Root)'
+                    pkg_name = 'Dsp'
+                    is_prelude = False
+                    dest_dir = ref_dir / "dsp"
+                    link_prefix = "/reference/library/dsp"
+                elif sf == 'IO.stride':
+                    target_dict, order, group_key = io_groups, io_order, 'IO (Root)'
+                    pkg_name = 'IO'
+                    is_prelude = False
+                    dest_dir = ref_dir / "io"
+                    link_prefix = "/reference/library/io"
+                else:
+                    group_stem = file_path.stem
+                    target_dict, order, group_key = prelude_groups, prelude_order, f"{group_stem} (Group)"
+                    pkg_name = 'Stride'
+                    is_prelude = True
+                    group_slug = group_stem.lower()
+                    dest_dir = ref_dir / group_slug
+                    link_prefix = f"/reference/library/{group_slug}"
+            else:
+                top_dir = rel_to_lib.parts[0]
+                is_prelude = False
+                if top_dir == 'Dsp':
+                    target_dict, order = dsp_groups, dsp_order
+                    pkg_name = pkg if pkg else f"Dsp::{file_path.stem}"
+                    group_key = pkg_name
+                    sub_cat = rel_to_lib.parts[1].lower() if len(rel_to_lib.parts) > 1 else file_path.stem.lower()
+                    dest_dir = ref_dir / "dsp" / sub_cat
+                    link_prefix = f"/reference/library/dsp/{sub_cat}"
+                elif top_dir == 'IO':
+                    target_dict, order = io_groups, io_order
+                    pkg_name = pkg if pkg else f"IO::{file_path.stem}"
+                    group_key = pkg_name
+                    sub_cat = file_path.stem.lower()
+                    dest_dir = ref_dir / "io" / sub_cat
+                    link_prefix = f"/reference/library/io/{sub_cat}"
+                elif top_dir == 'Math':
+                    target_dict, order = math_groups, math_order
+                    pkg_name = 'Math::Constants'
+                    group_key = 'Math::Constants'
+                    dest_dir = ref_dir / "math" / "constants"
+                    link_prefix = "/reference/library/math/constants"
+                else:
+                    continue
+
+            dest_dir.mkdir(parents=True, exist_ok=True)
+            if group_key not in order:
+                order.append(group_key)
+            if group_key not in target_dict:
+                target_dict[group_key] = []
 
             for decl in valid_decls:
                 decl_name = decl.get('name', '')
                 decl_line = decl.get('line', 1)
-
                 github_url = f"{GITHUB_REPO_URL}/blob/{git_ref}/{rel_unix}#L{decl_line}"
 
                 md_content = generate_markdown_for_declaration(
                     decl=decl,
                     package_name=pkg_name,
-                    group_name=group_name,
+                    group_name=group_key,
                     file_rel_path=rel_unix,
                     file_basename=file_path.name,
                     github_url=github_url,
-                    is_root_library=is_root
+                    is_prelude=is_prelude
                 )
 
                 file_slug = decl_name.lower().replace(" ", "-")
                 md_filename = f"{file_slug}.md"
-                out_file = cat_dir / md_filename
+                out_file = dest_dir / md_filename
                 out_file.write_text(md_content, encoding='utf-8')
 
-                target_dict[group_key]['items'].append({
+                target_dict[group_key].append({
                     'text': decl_name,
-                    'link': f"/reference/library/{cat_slug}/{file_slug}"
+                    'link': f"{link_prefix}/{file_slug}"
                 })
 
-    # Build Core Section items
-    core_items = []
-    for g_key in core_order:
-        g_data = core_groups[g_key]
-        seen = set()
-        deduped = []
-        for it in sorted(g_data['items'], key=lambda x: x['text']):
-            if it['text'] not in seen:
-                seen.add(it['text'])
-                deduped.append(it)
-        if deduped:
-            core_items.append({
-                'text': f"{g_key} (Group)",
-                'collapsed': False if g_key == 'Math' else True,
-                'items': deduped
-            })
+    def build_sidebar_items(target_dict, order_list, default_open=None):
+        section_items = []
+        for g_key in order_list:
+            items_list = target_dict[g_key]
+            seen = set()
+            deduped = []
+            for it in sorted(items_list, key=lambda x: x['text']):
+                if it['text'] not in seen:
+                    seen.add(it['text'])
+                    deduped.append(it)
+            if deduped:
+                is_collapsed = True
+                if default_open and g_key in default_open:
+                    is_collapsed = False
+                section_items.append({
+                    'text': g_key,
+                    'collapsed': is_collapsed,
+                    'items': deduped
+                })
+        return section_items
 
-    # Build Packages Section items
-    package_items = []
-    for p_key in package_order:
-        p_data = package_groups[p_key]
-        seen = set()
-        deduped = []
-        for it in sorted(p_data['items'], key=lambda x: x['text']):
-            if it['text'] not in seen:
-                seen.add(it['text'])
-                deduped.append(it)
-        if deduped:
-            package_items.append({
-                'text': f"Stride::{p_key}",
-                'collapsed': False if p_key in ('Generators', 'Filters') else True,
-                'items': deduped
-            })
+    prelude_items = build_sidebar_items(prelude_groups, prelude_order, default_open={'Math (Group)', 'BasicOperations (Group)'})
+    dsp_items = build_sidebar_items(dsp_groups, dsp_order, default_open={'Dsp::Generators', 'Dsp::Filters'})
+    io_items = build_sidebar_items(io_groups, io_order, default_open={'IO::Console', 'IO::Serial'})
+    math_items = build_sidebar_items(math_groups, math_order, default_open={'Math::Constants'})
 
-    # Structured 2-Tier Sidebar distinguishing Stride Root from Sub-packages
     sidebar_config = [
         {
-          'text': "Stride (Root Namespace)",
-          'collapsed': False,
-          'items': core_items
+            'text': "Global Prelude",
+            'collapsed': False,
+            'items': prelude_items
         },
         {
-          'text': "Stride Sub-packages",
-          'collapsed': False,
-          'items': package_items
+            'text': "Package Dsp",
+            'collapsed': False,
+            'items': dsp_items
+        },
+        {
+            'text': "Package IO",
+            'collapsed': False,
+            'items': io_items
+        },
+        {
+            'text': "Package Math",
+            'collapsed': False,
+            'items': math_items
         }
     ]
 
@@ -729,28 +773,41 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
         "description: Specification of modules, stream processors, filters, generators, and arithmetic operations in the Stride standard library.",
         "---\n",
         "# Standard Library Reference\n",
-        "The Stride standard library provides verified primitives for signal flow, multi-rate digital signal processing (DSP), mathematical operations, and state machine transitions.\n",
+        "The Stride standard library provides verified primitives for signal flow, multi-rate digital signal processing (DSP), mathematical operations, and IO communications.\n",
         "## Source Repository & Versioning\n",
         f"- **Upstream Repository**: [`StrideLang/strideroot`]({GITHUB_REPO_URL})\n",
         f"- **Active Ref**: `{git_ref}` (unambiguous source line links are embedded in each definition)\n",
-        "## Namespace Architecture\n",
-        "The Stride standard library establishes a unified hierarchy under the `Stride` namespace:\n",
-        "### 1. Stride (Root Namespace)\n",
-        "Definitions residing in the root library files belong directly to `package Stride`. They are imported automatically or via `import Stride;` and are called directly in global scope (e.g. `Sin()`, `Sum()`, `Equal()`). In documentation and navigation, they are organized into file-based groups for clarity:\n"
+        "## Architectural Layers & Namespace Organization\n",
+        "The Stride standard library is organized across defined architectural layers:\n",
+        "### 1. Global Prelude (Auto-Imported)\n",
+        "Foundational primitives loaded automatically into the root namespace of every file (`strideroot/library/1.0/*.stride`). These modules and operations are called bare in global scope without imports (e.g. `Sin()`, `Sum()`, `Equal()`, `Select()`):\n"
     ]
 
-    for g_entry in core_items:
+    for g_entry in prelude_items:
         g_name = g_entry['text']
         items = g_entry['items']
         index_md.append(f"- **{g_name}** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
 
-    index_md.append("\n### 2. Stride Sub-packages\n")
-    index_md.append("Components residing in library subdirectories form hierarchical sub-namespaces (`Stride::<Package>`). When imported via `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or imported directly via `import Stride::Generators;`:\n")
+    index_md.append("\n### 2. Standard Library Packages (Explicitly Imported)\n")
+    index_md.append("Cohesive, domain-specific modules organized under namespaced packages. In user code, they are imported via package statements (e.g. `import Dsp::Generators as Generators;`):\n")
 
-    for p_entry in package_items:
-        p_name = p_entry['text']
-        items = p_entry['items']
-        index_md.append(f"- **`{p_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
+    index_md.append("\n#### Package `Dsp` (`package Dsp`)\n")
+    for g_entry in dsp_items:
+        g_name = g_entry['text']
+        items = g_entry['items']
+        index_md.append(f"- **`{g_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
+
+    index_md.append("\n#### Package `IO` (`package IO`)\n")
+    for g_entry in io_items:
+        g_name = g_entry['text']
+        items = g_entry['items']
+        index_md.append(f"- **`{g_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
+
+    index_md.append("\n#### Package `Math` (`package Math`)\n")
+    for g_entry in math_items:
+        g_name = g_entry['text']
+        items = g_entry['items']
+        index_md.append(f"- **`{g_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
 
     index_md.append("\n")
     (ref_dir / "index.md").write_text("\n".join(index_md), encoding='utf-8')
@@ -794,11 +851,15 @@ def main():
     sidebar_file.parent.mkdir(parents=True, exist_ok=True)
     sidebar_file.write_text(json.dumps(sidebar, indent=2), encoding='utf-8')
 
-    total_core = sum(len(g['items']) for g in sidebar[0]['items'])
-    total_pkgs = sum(len(g['items']) for g in sidebar[1]['items'])
-    print(f"[+] Successfully extracted {total_core + total_pkgs} definitions!")
-    print(f"    - Stride Root: {total_core} definitions across {len(sidebar[0]['items'])} groups")
-    print(f"    - Stride Sub-packages: {total_pkgs} definitions across {len(sidebar[1]['items'])} namespaces")
+    total_prelude = sum(len(g['items']) for g in sidebar[0]['items'])
+    total_dsp = sum(len(g['items']) for g in sidebar[1]['items'])
+    total_io = sum(len(g['items']) for g in sidebar[2]['items'])
+    total_math = sum(len(g['items']) for g in sidebar[3]['items'])
+    print(f"[+] Successfully extracted {total_prelude + total_dsp + total_io + total_math} definitions!")
+    print(f"    - Global Prelude: {total_prelude} definitions across {len(sidebar[0]['items'])} groups")
+    print(f"    - Package Dsp:    {total_dsp} definitions across {len(sidebar[1]['items'])} namespaces")
+    print(f"    - Package IO:     {total_io} definitions across {len(sidebar[2]['items'])} namespaces")
+    print(f"    - Package Math:   {total_math} definitions across {len(sidebar[3]['items'])} namespaces")
     print(f"[+] Sidebar config saved to: {sidebar_file}")
 
 

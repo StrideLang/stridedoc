@@ -5,7 +5,7 @@ description: "Equality assertion module. Declared for schema validation; handled
 
 # ExpectEqual
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Assertions** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L3" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:3]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Assertions (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L3" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:3]</a>
 
 Equality assertion module. Declared for schema validation; handled with special treatment in the testing framework.
 
@@ -23,8 +23,6 @@ Equality assertion module. Declared for schema validation; handled with special 
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> ExpectEqual() >> Output;
 ```

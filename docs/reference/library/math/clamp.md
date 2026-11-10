@@ -5,7 +5,7 @@ description: "Constrains input signal between minimum and maximum bounds: Input 
 
 # Clamp
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L486" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:486]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L471" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:471]</a>
 
 Constrains input signal between minimum and maximum bounds: Input >> Clamp(min: 0.0 max: 1.0) >> Output.
 
@@ -33,8 +33,6 @@ Constrains input signal between minimum and maximum bounds: Input >> Clamp(min: 
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Clamp(min: 0.0, max: 1.0) >> Output;
 ```

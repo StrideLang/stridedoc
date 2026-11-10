@@ -5,7 +5,7 @@ description: Specification of modules, stream processors, filters, generators, a
 
 # Standard Library Reference
 
-The Stride standard library provides verified primitives for signal flow, multi-rate digital signal processing (DSP), mathematical operations, and state machine transitions.
+The Stride standard library provides verified primitives for signal flow, multi-rate digital signal processing (DSP), mathematical operations, and IO communications.
 
 ## Source Repository & Versioning
 
@@ -13,13 +13,13 @@ The Stride standard library provides verified primitives for signal flow, multi-
 
 - **Active Ref**: `main` (unambiguous source line links are embedded in each definition)
 
-## Namespace Architecture
+## Architectural Layers & Namespace Organization
 
-The Stride standard library establishes a unified hierarchy under the `Stride` namespace:
+The Stride standard library is organized across defined architectural layers:
 
-### 1. Stride (Root Namespace)
+### 1. Global Prelude (Auto-Imported)
 
-Definitions residing in the root library files belong directly to `package Stride`. They are imported automatically or via `import Stride;` and are called directly in global scope (e.g. `Sin()`, `Sum()`, `Equal()`). In documentation and navigation, they are organized into file-based groups for clarity:
+Foundational primitives loaded automatically into the root namespace of every file (`strideroot/library/1.0/*.stride`). These modules and operations are called bare in global scope without imports (e.g. `Sin()`, `Sum()`, `Equal()`, `Select()`):
 
 - **Assertions (Group)** (10 definitions): [`ExpectEqual`](/reference/library/assertions/expectequal), [`ExpectFalse`](/reference/library/assertions/expectfalse), [`ExpectGe`](/reference/library/assertions/expectge), [`ExpectGt`](/reference/library/assertions/expectgt), [`ExpectLe`](/reference/library/assertions/expectle), [`ExpectLt`](/reference/library/assertions/expectlt)...
 - **BasicOperations (Group)** (3 definitions): [`Average`](/reference/library/basicoperations/average), [`Clip`](/reference/library/basicoperations/clip), [`Sum`](/reference/library/basicoperations/sum)
@@ -28,20 +28,33 @@ Definitions residing in the root library files belong directly to `package Strid
 - **Counter (Group)** (1 definitions): [`Counter`](/reference/library/counter/counter)
 - **Debug (Group)** (4 definitions): [`DebugPrint`](/reference/library/debug/debugprint), [`Error`](/reference/library/debug/error), [`Probe`](/reference/library/debug/probe), [`Watch`](/reference/library/debug/watch)
 - **Domain (Group)** (1 definitions): [`Exit`](/reference/library/domain/exit)
-- **Level (Group)** (1 definitions): [`Level`](/reference/library/level/level)
 - **Logic (Group)** (7 definitions): [`And`](/reference/library/logic/and), [`Nand`](/reference/library/logic/nand), [`Nor`](/reference/library/logic/nor), [`Not`](/reference/library/logic/not), [`Or`](/reference/library/logic/or), [`Select`](/reference/library/logic/select)...
 - **Math (Group)** (21 definitions): [`Abs`](/reference/library/math/abs), [`C1`](/reference/library/math/c1), [`C2`](/reference/library/math/c2), [`C3`](/reference/library/math/c3), [`C4`](/reference/library/math/c4), [`Clamp`](/reference/library/math/clamp)...
-- **MathConstants (Group)** (3 definitions): [`E`](/reference/library/mathconstants/e), [`Pi`](/reference/library/mathconstants/pi), [`TwoPi`](/reference/library/mathconstants/twopi)
-- **Pan (Group)** (1 definitions): [`Pan`](/reference/library/pan/pan)
 - **QualityPolicy (Group)** (4 definitions): [`Accurate`](/reference/library/qualitypolicy/accurate), [`Compact`](/reference/library/qualitypolicy/compact), [`Fast`](/reference/library/qualitypolicy/fast), [`Optimal`](/reference/library/qualitypolicy/optimal)
 
-### 2. Stride Sub-packages
+### 2. Standard Library Packages (Explicitly Imported)
 
-Components residing in library subdirectories form hierarchical sub-namespaces (`Stride::<Package>`). When imported via `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or imported directly via `import Stride::Generators;`:
+Cohesive, domain-specific modules organized under namespaced packages. In user code, they are imported via package statements (e.g. `import Dsp::Generators as Generators;`):
 
-- **`Stride::Filters`** (5 definitions): [`BandPass`](/reference/library/filters/bandpass), [`BiQuad`](/reference/library/filters/biquad), [`LowPass`](/reference/library/filters/lowpass), [`Mix`](/reference/library/filters/mix), [`Rectify`](/reference/library/filters/rectify)
-- **`Stride::Generators`** (6 definitions): [`AD`](/reference/library/generators/ad), [`BandLimitedSaw`](/reference/library/generators/bandlimitedsaw), [`Impulse`](/reference/library/generators/impulse), [`Oscillator`](/reference/library/generators/oscillator), [`Sequencer`](/reference/library/generators/sequencer), [`TableOscillator`](/reference/library/generators/tableoscillator)
-- **`Stride::Notes`** (4 definitions): [`C4`](/reference/library/notes/c4), [`C5`](/reference/library/notes/c5), [`E4`](/reference/library/notes/e4), [`G4`](/reference/library/notes/g4)
-- **`Stride::Osc`** (2 definitions): [`OSCIn`](/reference/library/osc/oscin), [`OSCOut`](/reference/library/osc/oscout)
-- **`Stride::Serial`** (1 definitions): [`SerialPrint`](/reference/library/serial/serialprint)
+
+#### Package `Dsp` (`package Dsp`)
+
+- **`Dsp (Root)`** (2 definitions): [`Level`](/reference/library/dsp/level), [`Pan`](/reference/library/dsp/pan)
+- **`Dsp::FilterDesign`** (2 definitions): [`HighPassCoefficients`](/reference/library/dsp/filterdesign/highpasscoefficients), [`LowPassCoefficients`](/reference/library/dsp/filterdesign/lowpasscoefficients)
+- **`Dsp::Routing`** (3 definitions): [`Crossfade`](/reference/library/dsp/routing/crossfade), [`Level`](/reference/library/dsp/routing/level), [`Pan`](/reference/library/dsp/routing/pan)
+- **`Dsp::Units`** (51 definitions): [`A0`](/reference/library/dsp/units/a0), [`A1`](/reference/library/dsp/units/a1), [`A2`](/reference/library/dsp/units/a2), [`A3`](/reference/library/dsp/units/a3), [`A4`](/reference/library/dsp/units/a4), [`A5`](/reference/library/dsp/units/a5)...
+- **`Dsp::Filters`** (4 definitions): [`BandPass`](/reference/library/dsp/filters/bandpass), [`BiQuad`](/reference/library/dsp/filters/biquad), [`LowPass`](/reference/library/dsp/filters/lowpass), [`Rectify`](/reference/library/dsp/filters/rectify)
+- **`Dsp::Generators`** (6 definitions): [`AD`](/reference/library/dsp/generators/ad), [`BandLimitedSaw`](/reference/library/dsp/generators/bandlimitedsaw), [`Impulse`](/reference/library/dsp/generators/impulse), [`Oscillator`](/reference/library/dsp/generators/oscillator), [`Sequencer`](/reference/library/dsp/generators/sequencer), [`TableOscillator`](/reference/library/dsp/generators/tableoscillator)
+
+#### Package `IO` (`package IO`)
+
+- **`IO::Console`** (3 definitions): [`Log`](/reference/library/io/console/log), [`Print`](/reference/library/io/console/print), [`Println`](/reference/library/io/console/println)
+- **`IO::Framing`** (5 definitions): [`CobsDelimiter`](/reference/library/io/framing/cobsdelimiter), [`SlipEnd`](/reference/library/io/framing/slipend), [`SlipEsc`](/reference/library/io/framing/slipesc), [`SlipEscEnd`](/reference/library/io/framing/slipescend), [`SlipEscEsc`](/reference/library/io/framing/slipescesc)
+- **`IO::Midi`** (4 definitions): [`CcIn`](/reference/library/io/midi/ccin), [`CcOut`](/reference/library/io/midi/ccout), [`NoteIn`](/reference/library/io/midi/notein), [`NoteOut`](/reference/library/io/midi/noteout)
+- **`IO::Osc`** (2 definitions): [`In`](/reference/library/io/osc/in), [`Out`](/reference/library/io/osc/out)
+- **`IO::Serial`** (3 definitions): [`In`](/reference/library/io/serial/in), [`Out`](/reference/library/io/serial/out), [`Print`](/reference/library/io/serial/print)
+
+#### Package `Math` (`package Math`)
+
+- **`Math::Constants`** (3 definitions): [`E`](/reference/library/math/constants/e), [`Pi`](/reference/library/math/constants/pi), [`TwoPi`](/reference/library/math/constants/twopi)
 

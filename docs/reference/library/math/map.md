@@ -5,7 +5,7 @@ description: "Linearly maps Input from [inMin, inMax] to [outMin, outMax]: Input
 
 # Map
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L704" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:704]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L689" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:689]</a>
 
 Linearly maps Input from [inMin, inMax] to [outMin, outMax]: Input >> Map(inMin: 0.0 inMax: 1.0 outMin: 100.0 outMax: 1000.0) >> Output.
 
@@ -35,8 +35,6 @@ Linearly maps Input from [inMin, inMax] to [outMin, outMax]: Input >> Map(inMin:
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Map(inMin: 0.0, inMax: 1.0, outMin: 0.0) >> Output;
 ```

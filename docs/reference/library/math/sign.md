@@ -5,7 +5,7 @@ description: "Returns 1.0 if input > 0, -1.0 if input < 0, and 0.0 if input == 0
 
 # Sign
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L51" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:51]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L36" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:36]</a>
 
 Returns 1.0 if input > 0, -1.0 if input < 0, and 0.0 if input == 0.
 
@@ -24,8 +24,6 @@ Returns 1.0 if input > 0, -1.0 if input < 0, and 0.0 if input == 0.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Sign() >> Output;
 ```

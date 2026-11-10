@@ -5,7 +5,7 @@ description: "Detects changes in a signal: outputs on when Input differs from pr
 
 # OnChange
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Control** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Control.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[Control.stride:4]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Control.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[Control.stride:4]</a>
 
 Detects changes in a signal: outputs on when Input differs from previous tick: Input >> OnChange() >> Trigger.
 
@@ -24,8 +24,6 @@ Detects changes in a signal: outputs on when Input differs from previous tick: I
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> OnChange() >> Output;
 ```

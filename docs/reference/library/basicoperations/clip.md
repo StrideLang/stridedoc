@@ -5,7 +5,7 @@ description: "Limits signal within minimum and maximum values: Input >> Clip(min
 
 # Clip
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **BasicOperations** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L85" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:85]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **BasicOperations (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L85" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:85]</a>
 
 Limits signal within minimum and maximum values: Input >> Clip(minimum: 0.0 maximum: 1.0) >> Output.
 
@@ -33,8 +33,6 @@ Limits signal within minimum and maximum values: Input >> Clip(minimum: 0.0 maxi
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Clip(minimum: 0.0, maximum: 1.0) >> Output;
 ```

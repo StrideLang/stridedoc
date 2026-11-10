@@ -5,7 +5,7 @@ description: "Returns the minimum of two input values in a list: [A, B] >> Min()
 
 # Min
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L452" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:452]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L437" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:437]</a>
 
 Returns the minimum of two input values in a list: [A, B] >> Min() >> Out.
 
@@ -24,8 +24,6 @@ Returns the minimum of two input values in a list: [A, B] >> Min() >> Out.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Min() >> Output;
 ```

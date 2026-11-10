@@ -18,7 +18,7 @@ Where:
 ```stride
 use DesktopAudio version 1.0;
 
-import Stride;
+import Dsp::Generators as Generators;
 
 # Parameter definitions
 signal CarrierFreq { default: 440.0 }
@@ -28,8 +28,8 @@ signal ModDepth    { default: 150.0 }
 # Modulator computes instantaneous offset:
 ModFreq 
   >> Generators::Oscillator() 
-  >> Math::Multiply(value: ModDepth)
-  >> [_, CarrierFreq] >> Math::Add()
+  >> Multiply(value: ModDepth)
+  >> [_, CarrierFreq] >> Add()
   >> Generators::Oscillator(amplitude: 0.5)
   >> AudioOut;
 ```
@@ -42,12 +42,13 @@ The standard second-order infinite impulse response (IIR) biquad transfer functi
 
 $$H(z) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{a_0 + a_1 z^{-1} + a_2 z^{-2}}$$
 
-The `Stride::Filters::BiQuad` module implements this standard Direct Form topology:
+The `Dsp::Filters::BiQuad` module implements this standard Direct Form topology:
 
 ```stride
 use DesktopAudio version 1.0;
 
-import Stride;
+import Dsp::Generators as Generators;
+import Dsp::Filters as Filters;
 
 # Band-limited sawtooth passed into a resonant 12 dB/octave biquad filter:
 110.0 
@@ -65,12 +66,13 @@ Multichannel signal paths and polyphonic voice banks are evaluated using bundle 
 ```stride
 use DesktopAudio version 1.0;
 
-import Stride;
+import Dsp::Generators as Generators;
+import Dsp::Filters as Filters;
 
 # Multi-frequency triad: Root (220 Hz), Major Third (277.18 Hz), Fifth (329.63 Hz)
 [220.0, 277.18, 329.63]
   >> Generators::Oscillator(amplitude: 0.25)
-  >> Math::Sum()
-  >> Filters::LowPass(cutoff: 3000.0)
+  >> Sum()
+  >> Filters::LowPass(frequency: 3000.0)
   >> AudioOut;
 ```

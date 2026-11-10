@@ -5,7 +5,7 @@ description: "Computes the arithmetic mean of all signals in the input array: In
 
 # Average
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **BasicOperations** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L50" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:50]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **BasicOperations (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L50" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:50]</a>
 
 Computes the arithmetic mean of all signals in the input array: Input >> Average() >> Output.
 
@@ -24,8 +24,6 @@ Computes the arithmetic mean of all signals in the input array: Input >> Average
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Average() >> Output;
 ```

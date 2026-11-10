@@ -5,7 +5,7 @@ description: "Returns the absolute value of the input signal."
 
 # Abs
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L22" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:22]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L7" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:7]</a>
 
 Returns the absolute value of the input signal.
 
@@ -24,8 +24,6 @@ Returns the absolute value of the input signal.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Abs() >> Output;
 ```

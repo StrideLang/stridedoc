@@ -39,7 +39,8 @@ The following example defines an audio synthesis pipeline incorporating frequenc
 ```stride
 use DesktopAudio version 1.0;
 
-import Stride;
+import Dsp::Generators as Generators;
+import Dsp::Filters as Filters;
 
 # 1. Modulating oscillator operating at 110 Hz
 # 2. Additive offset applied to carrier center frequency (440 Hz)

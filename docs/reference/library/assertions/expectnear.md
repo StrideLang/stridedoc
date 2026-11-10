@@ -5,7 +5,7 @@ description: "Approximate equality assertion within epsilon tolerance. Declared 
 
 # ExpectNear
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Assertions** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L19" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:19]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Assertions (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L19" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:19]</a>
 
 Approximate equality assertion within epsilon tolerance. Declared for schema validation; handled with special treatment in the testing framework.
 
@@ -31,8 +31,6 @@ Approximate equality assertion within epsilon tolerance. Declared for schema val
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> ExpectNear(epsilon: 0.0001) >> Output;
 ```

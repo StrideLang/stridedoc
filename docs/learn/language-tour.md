@@ -15,11 +15,11 @@ Source >> Transform >> Destination;
 Pipelines can be connected sequentially. The compiler resolves signal types and validates rate compatibility at each connection:
 
 ```stride
-import Stride;
+import Dsp::Filters as Filters;
 
 AudioIn 
   >> Filters::BiQuad(centerFrequency: 1000.0, resonance: 1.5)
-  >> Math::Clamp(min: -0.9, max: 0.9)
+  >> Clamp(min: -0.9, max: 0.9)
   >> AudioOut;
 ```
 
@@ -40,6 +40,8 @@ InputSignal >> [ BranchA, BranchB ];
 The underscore token `_` serves as a positional placeholder when feeding into a subset of a bundle's input slots:
 
 ```stride
+import Dsp::Generators as Generators;
+
 # Routes Frequency into port 0, setting port 1 to constant 0.5:
 Frequency >> [_, 0.5] >> Generators::Oscillator() >> AudioOut;
 ```
@@ -48,43 +50,53 @@ Frequency >> [_, 0.5] >> Generators::Oscillator() >> AudioOut;
 
 ## 3. Package Structure & Namespace Resolution
 
-Stride organizes source components into modular, sealed packages.
+Stride organizes source components across defined architectural layers:
 
-### Package Declarations
-Files declare their package namespace explicitly:
+### 1. Global Prelude (Auto-Imported)
+Foundational primitives (`Sin()`, `Abs()`, `Floor()`, `Clamp()`, `Equal()`, `Select()`, `Sum()`, `OnChange()`) reside in the root prelude (`strideroot/library/1.0/*.stride`) and are available in every file without import statements:
 
 ```stride
-package Stride::Generators;
+# Calling Global Prelude primitives directly:
+Input >> Sin() >> Clamp(min: -1.0, max: 1.0) >> Output;
 ```
 
-When no package is declared, components placed directly at the root of the standard library reside in the top-level **`Stride`** namespace.
+### 2. Standard Library Packages
+Domain-specific modules are grouped into explicit packages:
+- **`package Dsp`**: Digital signal processing, audio filters, synthesis generators, and routing.
+- **`package IO`**: Console telemetry, serial communication, OSC networking, and MIDI events.
+- **`package Math`**: Mathematical constants (`Math::Pi`, `Math::TwoPi`, `Math::E`).
+
+### Package Declarations
+Files declare their logical package explicitly:
+
+```stride
+package Dsp::Generators;
+```
 
 ### Import Semantics
 
-1. **Top-Level Library Import**:
+1. **Sub-package Import with Alias**:
    ```stride
-   import Stride;
+   import Dsp::Generators as Generators;
+   import Dsp::Filters as Filters;
 
-   # Standard root library operations are in immediate scope:
-   Input >> Sin() >> Output;
-
-   # Sub-packages are referenced via category qualification:
-   Input >> Filters::LowPass(cutoff: 1000.0) >> Output;
+   Input >> Generators::Oscillator(frequency: 440.0) >> Filters::LowPass(frequency: 1200.0) >> Output;
    ```
 
-2. **Categorical Sub-package Import**:
+2. **Package Root Import**:
    ```stride
-   import Stride::Generators;
+   import Dsp;
 
-   # Generator definitions become available without qualification:
-   440.0 >> Oscillator() >> AudioOut;
+   # Access members via package qualification:
+   Input >> Dsp::Level(gain: 0.8) >> Output;
    ```
 
-3. **Aliased Import**:
+3. **IO and Math Package Imports**:
    ```stride
-   import Stride::Filters as Flt;
+   import IO::Console as Console;
+   import Math;
 
-   Input >> Flt::BiQuad() >> Output;
+   Signal * Math::Pi >> Console::Print();
    ```
 
 ---
@@ -118,7 +130,7 @@ module Tremolo {
         signal LfoSignal {}
     ]
     streams: [
-        ModulationRate >> Generators::Oscillator() >> Math::Abs() >> LfoSignal;
+        ModulationRate >> Generators::Oscillator() >> Abs() >> LfoSignal;
         Input * LfoSignal >> Output;
     ]
     meta: "Applies amplitude modulation to an incoming signal."

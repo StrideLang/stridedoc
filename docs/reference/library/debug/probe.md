@@ -5,7 +5,7 @@ description: "Lightweight signal probe that non-intrusively monitors a stream wh
 
 # Probe
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Debug** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Debug.stride#L41" target="_blank" rel="noopener" title="View source on GitHub">[Debug.stride:41]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Debug (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Debug.stride#L41" target="_blank" rel="noopener" title="View source on GitHub">[Debug.stride:41]</a>
 
 Lightweight signal probe that non-intrusively monitors a stream while passing it through
 
@@ -32,8 +32,6 @@ Lightweight signal probe that non-intrusively monitors a stream while passing it
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Probe(label: ...) >> Output;
 ```

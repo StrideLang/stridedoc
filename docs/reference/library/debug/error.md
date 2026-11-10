@@ -5,7 +5,7 @@ description: "Error module definition."
 
 # Error
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Debug** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Debug.stride#L27" target="_blank" rel="noopener" title="View source on GitHub">[Debug.stride:27]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Debug (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Debug.stride#L27" target="_blank" rel="noopener" title="View source on GitHub">[Debug.stride:27]</a>
 
 ## Streams
 
@@ -29,8 +29,6 @@ description: "Error module definition."
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Error(message: ...) >> Output;
 ```

@@ -5,7 +5,7 @@ description: "Sine function of angle in radians."
 
 # Sin
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L161" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:161]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L146" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:146]</a>
 
 Sine function of angle in radians.
 
@@ -24,8 +24,6 @@ Sine function of angle in radians.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Sin() >> Output;
 ```

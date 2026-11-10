@@ -5,7 +5,7 @@ description: "Condition assertion (false). Declared for schema validation; handl
 
 # ExpectFalse
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Assertions** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L59" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:59]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Assertions (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L59" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:59]</a>
 
 Condition assertion (false). Declared for schema validation; handled with special treatment in the testing framework.
 
@@ -23,8 +23,6 @@ Condition assertion (false). Declared for schema validation; handled with specia
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> ExpectFalse() >> Output;
 ```

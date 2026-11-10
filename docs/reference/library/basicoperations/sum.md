@@ -5,7 +5,7 @@ description: "Adds all signals in the input array: Input >> Sum() >> Output."
 
 # Sum
 
-<span class="stride-badge">Loop</span> `package Stride` &bull; Group: **BasicOperations** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:4]</a>
+<span class="stride-badge">Loop</span> Global Prelude &bull; Group: **BasicOperations (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:4]</a>
 
 Adds all signals in the input array: Input >> Sum() >> Output.
 
@@ -24,8 +24,6 @@ Adds all signals in the input array: Input >> Sum() >> Output.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Sum() >> Output;
 ```

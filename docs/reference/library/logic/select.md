@@ -5,7 +5,7 @@ description: "Selects between whenOn and whenOff signals based on a switch condi
 
 # Select
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Logic** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Logic.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[Logic.stride:4]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Logic (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Logic.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[Logic.stride:4]</a>
 
 Selects between whenOn and whenOff signals based on a switch condition: Input >> Select(condition: Cond whenOn: Alt whenOff: Input) >> Output.
 
@@ -34,8 +34,6 @@ Selects between whenOn and whenOff signals based on a switch condition: Input >>
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Select(condition: ..., whenOn: ..., whenOff: Input) >> Output;
 ```

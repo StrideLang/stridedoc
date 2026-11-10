@@ -1,6 +1,6 @@
 [
   {
-    "text": "Stride (Root Namespace)",
+    "text": "Global Prelude",
     "collapsed": false,
     "items": [
       {
@@ -51,7 +51,7 @@
       },
       {
         "text": "BasicOperations (Group)",
-        "collapsed": true,
+        "collapsed": false,
         "items": [
           {
             "text": "Average",
@@ -170,16 +170,6 @@
           {
             "text": "Exit",
             "link": "/reference/library/domain/exit"
-          }
-        ]
-      },
-      {
-        "text": "Level (Group)",
-        "collapsed": true,
-        "items": [
-          {
-            "text": "Level",
-            "link": "/reference/library/level/level"
           }
         ]
       },
@@ -308,34 +298,6 @@
         ]
       },
       {
-        "text": "MathConstants (Group)",
-        "collapsed": true,
-        "items": [
-          {
-            "text": "E",
-            "link": "/reference/library/mathconstants/e"
-          },
-          {
-            "text": "Pi",
-            "link": "/reference/library/mathconstants/pi"
-          },
-          {
-            "text": "TwoPi",
-            "link": "/reference/library/mathconstants/twopi"
-          }
-        ]
-      },
-      {
-        "text": "Pan (Group)",
-        "collapsed": true,
-        "items": [
-          {
-            "text": "Pan",
-            "link": "/reference/library/pan/pan"
-          }
-        ]
-      },
-      {
         "text": "QualityPolicy (Group)",
         "collapsed": true,
         "items": [
@@ -360,108 +322,442 @@
     ]
   },
   {
-    "text": "Stride Sub-packages",
+    "text": "Package Dsp",
     "collapsed": false,
     "items": [
       {
-        "text": "Stride::Filters",
+        "text": "Dsp (Root)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Level",
+            "link": "/reference/library/dsp/level"
+          },
+          {
+            "text": "Pan",
+            "link": "/reference/library/dsp/pan"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::FilterDesign",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "HighPassCoefficients",
+            "link": "/reference/library/dsp/filterdesign/highpasscoefficients"
+          },
+          {
+            "text": "LowPassCoefficients",
+            "link": "/reference/library/dsp/filterdesign/lowpasscoefficients"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Routing",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Crossfade",
+            "link": "/reference/library/dsp/routing/crossfade"
+          },
+          {
+            "text": "Level",
+            "link": "/reference/library/dsp/routing/level"
+          },
+          {
+            "text": "Pan",
+            "link": "/reference/library/dsp/routing/pan"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Units",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "A0",
+            "link": "/reference/library/dsp/units/a0"
+          },
+          {
+            "text": "A1",
+            "link": "/reference/library/dsp/units/a1"
+          },
+          {
+            "text": "A2",
+            "link": "/reference/library/dsp/units/a2"
+          },
+          {
+            "text": "A3",
+            "link": "/reference/library/dsp/units/a3"
+          },
+          {
+            "text": "A4",
+            "link": "/reference/library/dsp/units/a4"
+          },
+          {
+            "text": "A5",
+            "link": "/reference/library/dsp/units/a5"
+          },
+          {
+            "text": "A6",
+            "link": "/reference/library/dsp/units/a6"
+          },
+          {
+            "text": "B0",
+            "link": "/reference/library/dsp/units/b0"
+          },
+          {
+            "text": "B1",
+            "link": "/reference/library/dsp/units/b1"
+          },
+          {
+            "text": "B2",
+            "link": "/reference/library/dsp/units/b2"
+          },
+          {
+            "text": "B3",
+            "link": "/reference/library/dsp/units/b3"
+          },
+          {
+            "text": "B4",
+            "link": "/reference/library/dsp/units/b4"
+          },
+          {
+            "text": "B5",
+            "link": "/reference/library/dsp/units/b5"
+          },
+          {
+            "text": "B6",
+            "link": "/reference/library/dsp/units/b6"
+          },
+          {
+            "text": "C0",
+            "link": "/reference/library/dsp/units/c0"
+          },
+          {
+            "text": "C1",
+            "link": "/reference/library/dsp/units/c1"
+          },
+          {
+            "text": "C2",
+            "link": "/reference/library/dsp/units/c2"
+          },
+          {
+            "text": "C3",
+            "link": "/reference/library/dsp/units/c3"
+          },
+          {
+            "text": "C4",
+            "link": "/reference/library/dsp/units/c4"
+          },
+          {
+            "text": "C5",
+            "link": "/reference/library/dsp/units/c5"
+          },
+          {
+            "text": "C6",
+            "link": "/reference/library/dsp/units/c6"
+          },
+          {
+            "text": "D0",
+            "link": "/reference/library/dsp/units/d0"
+          },
+          {
+            "text": "D1",
+            "link": "/reference/library/dsp/units/d1"
+          },
+          {
+            "text": "D2",
+            "link": "/reference/library/dsp/units/d2"
+          },
+          {
+            "text": "D3",
+            "link": "/reference/library/dsp/units/d3"
+          },
+          {
+            "text": "D4",
+            "link": "/reference/library/dsp/units/d4"
+          },
+          {
+            "text": "D5",
+            "link": "/reference/library/dsp/units/d5"
+          },
+          {
+            "text": "D6",
+            "link": "/reference/library/dsp/units/d6"
+          },
+          {
+            "text": "DbToLinear",
+            "link": "/reference/library/dsp/units/dbtolinear"
+          },
+          {
+            "text": "E0",
+            "link": "/reference/library/dsp/units/e0"
+          },
+          {
+            "text": "E1",
+            "link": "/reference/library/dsp/units/e1"
+          },
+          {
+            "text": "E2",
+            "link": "/reference/library/dsp/units/e2"
+          },
+          {
+            "text": "E3",
+            "link": "/reference/library/dsp/units/e3"
+          },
+          {
+            "text": "E4",
+            "link": "/reference/library/dsp/units/e4"
+          },
+          {
+            "text": "E5",
+            "link": "/reference/library/dsp/units/e5"
+          },
+          {
+            "text": "E6",
+            "link": "/reference/library/dsp/units/e6"
+          },
+          {
+            "text": "F0",
+            "link": "/reference/library/dsp/units/f0"
+          },
+          {
+            "text": "F1",
+            "link": "/reference/library/dsp/units/f1"
+          },
+          {
+            "text": "F2",
+            "link": "/reference/library/dsp/units/f2"
+          },
+          {
+            "text": "F3",
+            "link": "/reference/library/dsp/units/f3"
+          },
+          {
+            "text": "F4",
+            "link": "/reference/library/dsp/units/f4"
+          },
+          {
+            "text": "F5",
+            "link": "/reference/library/dsp/units/f5"
+          },
+          {
+            "text": "F6",
+            "link": "/reference/library/dsp/units/f6"
+          },
+          {
+            "text": "G0",
+            "link": "/reference/library/dsp/units/g0"
+          },
+          {
+            "text": "G1",
+            "link": "/reference/library/dsp/units/g1"
+          },
+          {
+            "text": "G2",
+            "link": "/reference/library/dsp/units/g2"
+          },
+          {
+            "text": "G3",
+            "link": "/reference/library/dsp/units/g3"
+          },
+          {
+            "text": "G4",
+            "link": "/reference/library/dsp/units/g4"
+          },
+          {
+            "text": "G5",
+            "link": "/reference/library/dsp/units/g5"
+          },
+          {
+            "text": "G6",
+            "link": "/reference/library/dsp/units/g6"
+          },
+          {
+            "text": "MidiToFreq",
+            "link": "/reference/library/dsp/units/miditofreq"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Filters",
         "collapsed": false,
         "items": [
           {
             "text": "BandPass",
-            "link": "/reference/library/filters/bandpass"
+            "link": "/reference/library/dsp/filters/bandpass"
           },
           {
             "text": "BiQuad",
-            "link": "/reference/library/filters/biquad"
+            "link": "/reference/library/dsp/filters/biquad"
           },
           {
             "text": "LowPass",
-            "link": "/reference/library/filters/lowpass"
-          },
-          {
-            "text": "Mix",
-            "link": "/reference/library/filters/mix"
+            "link": "/reference/library/dsp/filters/lowpass"
           },
           {
             "text": "Rectify",
-            "link": "/reference/library/filters/rectify"
+            "link": "/reference/library/dsp/filters/rectify"
           }
         ]
       },
       {
-        "text": "Stride::Generators",
+        "text": "Dsp::Generators",
         "collapsed": false,
         "items": [
           {
             "text": "AD",
-            "link": "/reference/library/generators/ad"
+            "link": "/reference/library/dsp/generators/ad"
           },
           {
             "text": "BandLimitedSaw",
-            "link": "/reference/library/generators/bandlimitedsaw"
+            "link": "/reference/library/dsp/generators/bandlimitedsaw"
           },
           {
             "text": "Impulse",
-            "link": "/reference/library/generators/impulse"
+            "link": "/reference/library/dsp/generators/impulse"
           },
           {
             "text": "Oscillator",
-            "link": "/reference/library/generators/oscillator"
+            "link": "/reference/library/dsp/generators/oscillator"
           },
           {
             "text": "Sequencer",
-            "link": "/reference/library/generators/sequencer"
+            "link": "/reference/library/dsp/generators/sequencer"
           },
           {
             "text": "TableOscillator",
-            "link": "/reference/library/generators/tableoscillator"
+            "link": "/reference/library/dsp/generators/tableoscillator"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Package IO",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "IO::Console",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "Log",
+            "link": "/reference/library/io/console/log"
+          },
+          {
+            "text": "Print",
+            "link": "/reference/library/io/console/print"
+          },
+          {
+            "text": "Println",
+            "link": "/reference/library/io/console/println"
           }
         ]
       },
       {
-        "text": "Stride::Notes",
+        "text": "IO::Framing",
         "collapsed": true,
         "items": [
           {
-            "text": "C4",
-            "link": "/reference/library/notes/c4"
+            "text": "CobsDelimiter",
+            "link": "/reference/library/io/framing/cobsdelimiter"
           },
           {
-            "text": "C5",
-            "link": "/reference/library/notes/c5"
+            "text": "SlipEnd",
+            "link": "/reference/library/io/framing/slipend"
           },
           {
-            "text": "E4",
-            "link": "/reference/library/notes/e4"
+            "text": "SlipEsc",
+            "link": "/reference/library/io/framing/slipesc"
           },
           {
-            "text": "G4",
-            "link": "/reference/library/notes/g4"
+            "text": "SlipEscEnd",
+            "link": "/reference/library/io/framing/slipescend"
+          },
+          {
+            "text": "SlipEscEsc",
+            "link": "/reference/library/io/framing/slipescesc"
           }
         ]
       },
       {
-        "text": "Stride::Osc",
+        "text": "IO::Midi",
         "collapsed": true,
         "items": [
           {
-            "text": "OSCIn",
-            "link": "/reference/library/osc/oscin"
+            "text": "CcIn",
+            "link": "/reference/library/io/midi/ccin"
           },
           {
-            "text": "OSCOut",
-            "link": "/reference/library/osc/oscout"
+            "text": "CcOut",
+            "link": "/reference/library/io/midi/ccout"
+          },
+          {
+            "text": "NoteIn",
+            "link": "/reference/library/io/midi/notein"
+          },
+          {
+            "text": "NoteOut",
+            "link": "/reference/library/io/midi/noteout"
           }
         ]
       },
       {
-        "text": "Stride::Serial",
+        "text": "IO::Osc",
         "collapsed": true,
         "items": [
           {
-            "text": "SerialPrint",
-            "link": "/reference/library/serial/serialprint"
+            "text": "In",
+            "link": "/reference/library/io/osc/in"
+          },
+          {
+            "text": "Out",
+            "link": "/reference/library/io/osc/out"
+          }
+        ]
+      },
+      {
+        "text": "IO::Serial",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "In",
+            "link": "/reference/library/io/serial/in"
+          },
+          {
+            "text": "Out",
+            "link": "/reference/library/io/serial/out"
+          },
+          {
+            "text": "Print",
+            "link": "/reference/library/io/serial/print"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Package Math",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Math::Constants",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "E",
+            "link": "/reference/library/math/constants/e"
+          },
+          {
+            "text": "Pi",
+            "link": "/reference/library/math/constants/pi"
+          },
+          {
+            "text": "TwoPi",
+            "link": "/reference/library/math/constants/twopi"
           }
         ]
       }

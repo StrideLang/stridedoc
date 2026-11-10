@@ -5,7 +5,7 @@ description: "Logical NAND operation on switch inputs: [A, B] >> Nand() >> Out."
 
 # Nand
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Logic** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Logic.stride#L127" target="_blank" rel="noopener" title="View source on GitHub">[Logic.stride:127]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Logic (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Logic.stride#L127" target="_blank" rel="noopener" title="View source on GitHub">[Logic.stride:127]</a>
 
 Logical NAND operation on switch inputs: [A, B] >> Nand() >> Out.
 
@@ -24,8 +24,6 @@ Logical NAND operation on switch inputs: [A, B] >> Nand() >> Out.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Nand() >> Output;
 ```

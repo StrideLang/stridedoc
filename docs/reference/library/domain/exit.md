@@ -5,7 +5,7 @@ description: "When input is true, the current domain terminates without executin
 
 # Exit
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Domain** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Domain.stride#L191" target="_blank" rel="noopener" title="View source on GitHub">[Domain.stride:191]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Domain (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Domain.stride#L191" target="_blank" rel="noopener" title="View source on GitHub">[Domain.stride:191]</a>
 
 When input is true, the current domain terminates without executing any further.
 
@@ -23,8 +23,6 @@ When input is true, the current domain terminates without executing any further.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Exit() >> Output;
 ```

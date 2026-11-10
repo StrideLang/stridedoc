@@ -5,7 +5,7 @@ description: "Statistical Signal-to-Noise Ratio assertion for stream differentia
 
 # ExpectSnr
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Assertions** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L163" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:163]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Assertions (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L163" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:163]</a>
 
 Statistical Signal-to-Noise Ratio assertion for stream differential testing.
 
@@ -31,8 +31,6 @@ Statistical Signal-to-Noise Ratio assertion for stream differential testing.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> ExpectSnr(minSnr: 80.0) >> Output;
 ```

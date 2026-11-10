@@ -5,7 +5,7 @@ description: "Computes Base raised to the power of Exponent: pow(Input[0], Input
 
 # Pow
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L360" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:360]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L345" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:345]</a>
 
 Computes Base raised to the power of Exponent: pow(Input[0], Input[1]).
 
@@ -24,8 +24,6 @@ Computes Base raised to the power of Exponent: pow(Input[0], Input[1]).
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Pow() >> Output;
 ```

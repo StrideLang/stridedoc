@@ -5,7 +5,7 @@ description: "A discrete step counter that increments per tick and rolls over to
 
 # Counter
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Counter** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Counter.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[Counter.stride:4]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Counter (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Counter.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[Counter.stride:4]</a>
 
 A discrete step counter that increments per tick and rolls over to startValue upon exceeding stopValue.
 
@@ -34,8 +34,6 @@ A discrete step counter that increments per tick and rolls over to startValue up
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Counter(startValue: 0, stopValue: 100, increment: 1) >> Output;
 ```

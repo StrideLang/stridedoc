@@ -5,7 +5,7 @@ description: "Linearly interpolates from Input to Target based on factor: Input 
 
 # Lerp
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L653" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:653]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L638" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:638]</a>
 
 Linearly interpolates from Input to Target based on factor: Input >> Lerp(target: Target factor: 0.5) >> Output.
 
@@ -33,8 +33,6 @@ Linearly interpolates from Input to Target based on factor: Input >> Lerp(target
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Lerp(target: 0.0, factor: 0.5) >> Output;
 ```

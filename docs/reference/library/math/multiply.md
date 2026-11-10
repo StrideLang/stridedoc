@@ -5,7 +5,7 @@ description: "Multiplies Input[0] by Input[1]."
 
 # Multiply
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L302" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:302]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L287" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:287]</a>
 
 Multiplies Input[0] by Input[1].
 
@@ -24,8 +24,6 @@ Multiplies Input[0] by Input[1].
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Multiply() >> Output;
 ```

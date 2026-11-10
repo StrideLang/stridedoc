@@ -5,7 +5,7 @@ description: "Returns the maximum of two input values in a list: [A, B] >> Max()
 
 # Max
 
-<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L418" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:418]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L403" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:403]</a>
 
 Returns the maximum of two input values in a list: [A, B] >> Max() >> Out.
 
@@ -24,8 +24,6 @@ Returns the maximum of two input values in a list: [A, B] >> Max() >> Out.
 ## Usage
 
 ```stride
-import Stride;
-
-# Available in root namespace:
+# Available in global prelude without import:
 Signal >> Max() >> Output;
 ```
