@@ -5,16 +5,21 @@ description: "Approximate equality assertion within epsilon tolerance. Declared 
 
 # ExpectNear
 
-<span class="stride-badge">Module</span> `package Stride` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L19" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:19]</a>
+<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Assertions** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Assertions.stride#L19" target="_blank" rel="noopener" title="View source on GitHub">[Assertions.stride:19]</a>
 
 Approximate equality assertion within epsilon tolerance. Declared for schema validation; handled with special treatment in the testing framework.
 
-## Ports & Properties
+## Streams
 
-| | Port | Target | Default | Description |
+| | Stream | Type | Rate / Domain | Description |
 | :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `Input` | — | Two-element input list with values expected to be close: [Actual, Expected] |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `epsilon` | `Epsilon` | — | Tolerance threshold for approximate comparison |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | Two-element input list with values expected to be close: [Actual, Expected] |
+
+## Properties
+
+| | Property | Type | Default | Rate / Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `epsilon` | `signal` | `0.0001` | — | Tolerance threshold for approximate comparison |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -23,17 +28,11 @@ Approximate equality assertion within epsilon tolerance. Declared for schema val
   <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
 </div>
 
-## Signals & Attributes
-
-| Signal | Type | Default | Rate / Domain | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `Epsilon` | `signal` | `0.0001` | — | — |
-
 ## Usage
 
 ```stride
 import Stride;
 
 # Available in root namespace:
-Signal >> ExpectNear(epsilon: ...) >> Output;
+Signal >> ExpectNear(epsilon: 0.0001) >> Output;
 ```

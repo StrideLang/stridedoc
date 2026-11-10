@@ -5,15 +5,20 @@ description: "Impulse module definition."
 
 # Impulse
 
-<span class="stride-badge">Module</span> `package Stride::Generators` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Generators/Oscillator.stride#L88" target="_blank" rel="noopener" title="View source on GitHub">[Oscillator.stride:88]</a>
+<span class="stride-badge">Module</span> `package Stride::Generators` &bull; Namespace: **`Stride::Generators`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Generators/Oscillator.stride#L88" target="_blank" rel="noopener" title="View source on GitHub">[Oscillator.stride:88]</a>
 
-## Ports & Properties
+## Streams
 
-| | Port | Target | Default | Description |
+| | Stream | Type | Rate / Domain | Description |
 | :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `Output` | — | — |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `Frequency` | — | The frequency of the oscillator. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `amplitude` | `Amplitude` | — | The amplitude of the oscillator. |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `signal` | — | — |
+
+## Properties
+
+| | Property | Type | Default | Rate / Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | `440.0` | — | The frequency of the oscillator. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `amplitude` | `signal` | `1.0` | — | The amplitude of the oscillator. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -22,20 +27,11 @@ description: "Impulse module definition."
   <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
 </div>
 
-## Signals & Attributes
-
-| Signal | Type | Default | Rate / Domain | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `Frequency` | `signal` | `440.0` | — | — |
-| `Amplitude` | `signal` | `1.0` | — | — |
-| `Phase` | `signal` | `1.0` | Domain: OutputPort.domain | — |
-| `PhaseInc` | `signal` | `0.0` | Domain: FrequencyPort.domain | — |
-
 ## Usage
 
 ```stride
 import Stride;
 
 # Access via Generators category:
-Signal >> Generators::Impulse(frequency: ..., amplitude: ...) >> Output;
+Signal >> Generators::Impulse(frequency: 440.0, amplitude: 1.0) >> Output;
 ```

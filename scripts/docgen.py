@@ -357,6 +357,7 @@ class StrideDocParser:
                 ent_rate = ""
                 ent_domain = ""
                 ent_meta = ""
+                ent_explicit_type = ""
 
                 if self.peek()[0] == 'BRACE_OPEN':
                     self.advance()
@@ -376,8 +377,8 @@ class StrideDocParser:
 
                         if e_kind == 'IDENT' and self.peek(1)[0] == 'COLON':
                             eprop_name = e_val
-                            self.advance() # eprop_name
-                            self.advance() # ':'
+                            self.advance()
+                            self.advance()
                             eprop_val = self.parse_property_value()
                             if eprop_name == 'default':
                                 ent_default = eprop_val
@@ -385,6 +386,8 @@ class StrideDocParser:
                                 ent_rate = eprop_val
                             elif eprop_name == 'domain':
                                 ent_domain = eprop_val
+                            elif eprop_name == 'type':
+                                ent_explicit_type = eprop_val
                             elif eprop_name == 'meta':
                                 ent_meta = eprop_val.strip('"\'')
                             continue
@@ -393,7 +396,8 @@ class StrideDocParser:
 
                 entities.append({
                     'id': ent_id,
-                    'type': ent_type,
+                    'kind': ent_type,
+                    'type': ent_explicit_type if ent_explicit_type else ent_type,
                     'default': ent_default,
                     'rate': ent_rate,
                     'domain': ent_domain,
@@ -407,7 +411,7 @@ class StrideDocParser:
 
 
 def render_port_icon(kind: str) -> str:
-    """Returns a sober, compact badge for the port kind."""
+    """Returns a sober, compact badge for the port/property kind."""
     if kind in ('mainInputPort', 'inputPort'):
         return '<span class="port-icon stream-in" title="Stream Input">»</span>'
     elif kind in ('mainOutputPort', 'outputPort'):
@@ -419,9 +423,20 @@ def render_port_icon(kind: str) -> str:
     return '<span class="port-icon stream-in" title="Port">»</span>'
 
 
+def format_rate_domain(rate: str, domain: str) -> str:
+    """Combines rate and domain into a clean, compact representation."""
+    parts = []
+    if rate and rate != 'none':
+        parts.append(f"`{rate}`")
+    if domain:
+        parts.append(f"`{domain}`")
+    return " / ".join(parts) if parts else "—"
+
+
 def generate_markdown_for_declaration(
     decl: Dict[str, Any],
     package_name: str,
+    group_name: str,
     file_rel_path: str,
     file_basename: str,
     github_url: str,
@@ -435,6 +450,13 @@ def generate_markdown_for_declaration(
     value = decl.get('value', None)
     line_no = decl.get('line', 1)
 
+    # Build entity lookup map
+    entity_map = {}
+    for e in entities:
+        base_id = e['id'].split('[')[0].strip()
+        entity_map[base_id] = e
+        entity_map[e['id'].strip()] = e
+
     md = []
     # Frontmatter
     clean_desc = meta.replace('\n', ' ').replace('"', "'")[:140] if meta else f"{name} {kind.lower()} definition."
@@ -443,13 +465,18 @@ def generate_markdown_for_declaration(
     md.append(f"description: \"{clean_desc}\"")
     md.append("---\n")
 
-    # Title & Badge & Source Link
+    # Header with Scope Note and GitHub Link
     source_label = f"{file_basename}:{line_no}"
     source_anchor = f'<a class="stride-source-link" href="{github_url}" target="_blank" rel="noopener" title="View source on GitHub">[{source_label}]</a>'
+    
     md.append(f"# {name}\n")
-    md.append(f'<span class="stride-badge">{kind}</span> `package {package_name}` {source_anchor}\n')
+    if is_root_library:
+        md.append(f'<span class="stride-badge">{kind}</span> `package Stride` &bull; Group: **{group_name}** {source_anchor}\n')
+    else:
+        cat = package_name.replace("Stride::", "")
+        md.append(f'<span class="stride-badge">{kind}</span> `package {package_name}` &bull; Namespace: **`{package_name}`** {source_anchor}\n')
 
-    # Description
+    # Compact Overview Description
     if meta:
         md.append(f"{meta}\n")
 
@@ -460,56 +487,67 @@ def generate_markdown_for_declaration(
         md.append(f"constant {name} = {value}")
         md.append("```\n")
 
-    # Ports Table with compact icons
-    if ports:
-        md.append("## Ports & Properties\n")
-        md.append("| | Port | Target | Default | Description |")
-        md.append("| :-: | :--- | :--- | :--- | :--- |")
-        for p in ports:
-            icon = render_port_icon(p['kind'])
-            p_name = f"`{p['name']}`" if p['name'] else "—"
-            p_entity = f"`{p['entity']}`" if p['entity'] else "—"
-            p_def = f"`{p['default']}`" if p['default'] else "—"
-            p_desc = p['meta'].replace('\n', ' ') if p['meta'] else "—"
-            md.append(f"| {icon} | {p_name} | {p_entity} | {p_def} | {p_desc} |")
-        md.append("")
-        md.append('<div class="port-legend">')
-        md.append('  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>')
-        md.append('  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>')
-        md.append('  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>')
-        md.append('  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>')
-        md.append('</div>\n')
+    # Partition ports into stream ports and properties
+    stream_ports = [p for p in ports if 'property' not in p['kind'].lower()]
+    properties = [p for p in ports if 'property' in p['kind'].lower()]
 
-    # Internal Signals & Entities Table (only if non-internal signals exist)
-    notable_entities = [
-        e for e in entities 
-        if (e['default'] or e['meta'] or e['rate']) and not e['id'].startswith('_')
-    ]
-    if notable_entities:
-        md.append("## Signals & Attributes\n")
-        md.append("| Signal | Type | Default | Rate / Domain | Description |")
-        md.append("| :--- | :--- | :--- | :--- | :--- |")
-        for e in notable_entities:
-            e_id = f"`{e['id']}`"
-            e_type = f"`{e['type']}`"
-            e_def = f"`{e['default']}`" if e['default'] else "—"
-            rate_domain = []
-            if e['rate']: rate_domain.append(f"Rate: {e['rate']}")
-            if e['domain']: rate_domain.append(f"Domain: {e['domain']}")
-            e_rd = ", ".join(rate_domain) if rate_domain else "—"
-            e_desc = e['meta'].replace('\n', ' ') if e['meta'] else "—"
-            md.append(f"| {e_id} | {e_type} | {e_def} | {e_rd} | {e_desc} |")
+    # 1. Streams Table (if any stream ports)
+    if stream_ports:
+        md.append("## Streams\n")
+        md.append("| | Stream | Type | Rate / Domain | Description |")
+        md.append("| :-: | :--- | :--- | :--- | :--- |")
+        for p in stream_ports:
+            icon = render_port_icon(p['kind'])
+            # Stream name
+            s_name = p['name'] if (p['name'] and p['name'] != p['id']) else (p['entity'] if p['entity'] else p['id'])
+            # Resolve from entity
+            ent = entity_map.get(p['entity'], {})
+            s_type = ent.get('type') or ent.get('kind') or 'signal'
+            rate_domain = format_rate_domain(ent.get('rate', ''), ent.get('domain', ''))
+            desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
+            md.append(f"| {icon} | `{s_name}` | `{s_type}` | {rate_domain} | {desc} |")
         md.append("")
+
+    # 2. Properties Table (if any properties)
+    if properties:
+        md.append("## Properties\n")
+        md.append("| | Property | Type | Default | Rate / Domain | Description |")
+        md.append("| :-: | :--- | :--- | :--- | :--- | :--- |")
+        for p in properties:
+            icon = render_port_icon(p['kind'])
+            p_name = p['name'] if p['name'] else p['id']
+            # Resolve from entity
+            ent = entity_map.get(p['entity'], {})
+            p_def = p['default'] if p['default'] else ent.get('default', '')
+            p_def_str = f"`{p_def}`" if p_def else "—"
+            p_type = ent.get('type') or ent.get('kind') or 'signal'
+            rate_domain = format_rate_domain(ent.get('rate', ''), ent.get('domain', ''))
+            desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
+            md.append(f"| {icon} | `{p_name}` | `{p_type}` | {p_def_str} | {rate_domain} | {desc} |")
+        md.append("")
+
+    # Compact Legend if ports/properties present
+    if stream_ports or properties:
+        md.append('<div class="port-legend">')
+        if stream_ports:
+            md.append('  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>')
+            md.append('  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>')
+        if properties:
+            md.append('  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>')
+            md.append('  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>')
+        md.append('</div>\n')
 
     # Usage Example
     md.append("## Usage\n")
     md.append("```stride")
     md.append("import Stride;\n")
     prop_args = []
-    for p in ports:
-        if 'property' in p['kind'].lower() and p['name'] and not p['name'].startswith('_'):
-            val = p['default'] if p['default'] else "..."
-            prop_args.append(f"{p['name']}: {val}")
+    for p in properties:
+        if p['name'] and not p['name'].startswith('_'):
+            ent = entity_map.get(p['entity'], {})
+            val = p['default'] if p['default'] else ent.get('default', '')
+            val_str = val if val else "..."
+            prop_args.append(f"{p['name']}: {val_str}")
     args_str = f"({', '.join(prop_args[:3])})" if prop_args else "()"
 
     if is_root_library:
@@ -524,24 +562,26 @@ def generate_markdown_for_declaration(
     return "\n".join(md)
 
 
-def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: str = "main") -> Dict[str, Any]:
-    """Scans strideroot/library, extracts docs, and writes markdown files grouped by filename/folder."""
+def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: str = "main") -> List[Dict[str, Any]]:
+    """Scans strideroot/library, extracts docs, and writes markdown files with clear Core/Package sidebar distinction."""
     library_dir = strideroot_path / "library" / "1.0"
     if not library_dir.exists():
         print(f"Error: Could not find library directory at {library_dir}")
-        return {}
+        return []
 
     ref_dir = output_docs_dir / "reference" / "library"
     ref_dir.mkdir(parents=True, exist_ok=True)
 
-    sidebar_groups = {}
-    sidebar_order = []
+    core_groups = {}
+    core_order = []
+
+    package_groups = {}
+    package_order = []
 
     IGNORED_DIRS = {'doc', '.strdcache', 'tests', 'local'}
     GITHUB_REPO_URL = "https://github.com/StrideLang/strideroot"
 
     for root, dirs, files in os.walk(library_dir):
-        # Prune ignored directories
         dirs[:] = [d for d in dirs if d not in IGNORED_DIRS and not d.startswith('.')]
 
         root_path = Path(root)
@@ -571,34 +611,34 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
             if not valid_decls:
                 continue
 
-            # Grouping:
-            # - For root files: group by filename stem (e.g. "Math", "BasicOperations")
-            # - For subdirectories: group by folder name (e.g. "Generators", "Filters")
             if is_root:
-                cat_name = file_path.stem
-                cat_slug = cat_name.lower()
-                group_key = cat_name
-                pkg_name = parsed['package'] if parsed['package'] else "Stride"
+                group_name = file_path.stem
+                cat_slug = group_name.lower()
+                pkg_name = "Stride"
+                if group_name not in core_order:
+                    core_order.append(group_name)
+                target_dict = core_groups
+                group_key = group_name
             else:
                 cat_name = rel_to_lib.parts[0]
+                group_name = cat_name
                 cat_slug = cat_name.lower()
+                pkg_name = f"Stride::{cat_name}"
+                if cat_name not in package_order:
+                    package_order.append(cat_name)
+                target_dict = package_groups
                 group_key = cat_name
-                pkg_name = parsed['package'] if parsed['package'] else f"Stride::{cat_name}"
-
-            if group_key not in sidebar_order:
-                sidebar_order.append(group_key)
 
             cat_dir = ref_dir / cat_slug
             cat_dir.mkdir(parents=True, exist_ok=True)
 
-            if group_key not in sidebar_groups:
-                sidebar_groups[group_key] = {
+            if group_key not in target_dict:
+                target_dict[group_key] = {
                     'slug': cat_slug,
                     'package': pkg_name,
                     'items': []
                 }
 
-            # Relative path from strideroot using forward slashes for GitHub URL
             rel_unix = str(file_path.relative_to(strideroot_path)).replace("\\", "/")
 
             for decl in valid_decls:
@@ -610,6 +650,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                 md_content = generate_markdown_for_declaration(
                     decl=decl,
                     package_name=pkg_name,
+                    group_name=group_name,
                     file_rel_path=rel_unix,
                     file_basename=file_path.name,
                     github_url=github_url,
@@ -621,58 +662,90 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                 out_file = cat_dir / md_filename
                 out_file.write_text(md_content, encoding='utf-8')
 
-                sidebar_groups[group_key]['items'].append({
+                target_dict[group_key]['items'].append({
                     'text': decl_name,
                     'link': f"/reference/library/{cat_slug}/{file_slug}"
                 })
 
-    # Sort sidebar items within each group
-    sidebar_config = []
-    for g_key in sidebar_order:
-        if g_key not in sidebar_groups:
-            continue
-        g_data = sidebar_groups[g_key]
+    # Build Core Section items
+    core_items = []
+    for g_key in core_order:
+        g_data = core_groups[g_key]
         seen = set()
         deduped = []
         for it in sorted(g_data['items'], key=lambda x: x['text']):
             if it['text'] not in seen:
                 seen.add(it['text'])
                 deduped.append(it)
-
         if deduped:
-            sidebar_config.append({
-                'text': g_key,
-                'collapsed': False if g_key in ('Math', 'Generators', 'Filters') else True,
+            core_items.append({
+                'text': f"{g_key} (Group)",
+                'collapsed': False if g_key == 'Math' else True,
                 'items': deduped
             })
+
+    # Build Packages Section items
+    package_items = []
+    for p_key in package_order:
+        p_data = package_groups[p_key]
+        seen = set()
+        deduped = []
+        for it in sorted(p_data['items'], key=lambda x: x['text']):
+            if it['text'] not in seen:
+                seen.add(it['text'])
+                deduped.append(it)
+        if deduped:
+            package_items.append({
+                'text': f"Stride::{p_key}",
+                'collapsed': False if p_key in ('Generators', 'Filters') else True,
+                'items': deduped
+            })
+
+    # Structured 2-Tier Sidebar distinguishing Core Groups from Sub-packages
+    sidebar_config = [
+        {
+          'text': "Core Library (Direct Scope)",
+          'collapsed': False,
+          'items': core_items
+        },
+        {
+          'text': "Packages (Namespaces)",
+          'collapsed': False,
+          'items': package_items
+        }
+    ]
 
     # Generate an Index Page for the Library Reference
     index_md = [
         "---",
         "title: Standard Library Reference",
-        "description: Formal specification of standard modules, filters, generators, and arithmetic operations in Stride.",
+        "description: Specification of modules, stream processors, filters, generators, and arithmetic operations in the Stride standard library.",
         "---\n",
         "# Standard Library Reference\n",
-        "The Stride standard library provides verified primitives for signal flow, digital signal processing (DSP), mathematical operations, and state machine transitions.\n",
+        "The Stride standard library provides verified primitives for signal flow, multi-rate digital signal processing (DSP), mathematical operations, and state machine transitions.\n",
         "## Source Repository & Versioning\n",
         f"- **Upstream Repository**: [`StrideLang/strideroot`]({GITHUB_REPO_URL})\n",
         f"- **Active Ref**: `{git_ref}` (unambiguous source line links are embedded in each definition)\n",
-        "## Namespace Organization\n",
-        "- **`package Stride` (Core Groups)**: Modules defined directly in root library files (`Math`, `BasicOperations`, `Logic`, `Comparisons`, `Control`, `Assertions`) reside in the root `Stride` package. They are imported automatically or via `import Stride;` and are available in global scope (e.g. `Sin()`, `Sum()`, `Equal()`).",
-        "- **Sub-packages (`Stride::<Category>`)**: Components residing in subdirectories (`Generators`, `Filters`, `Serial`, `Osc`, `Notes`) form categorized sub-packages. When using `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or directly via category import (`import Stride::Generators;`).\n",
-        "## Categories\n"
+        "## Namespace Architecture\n",
+        "Stride establishes a clear distinction between **Core Library Groups** (which share the root `Stride` namespace) and **Sub-packages** (which form dedicated hierarchical namespaces):\n",
+        "### 1. Core Library (Root `Stride` Namespace)\n",
+        "Modules defined in root library files reside directly in `package Stride`. They are imported automatically or via `import Stride;` and are called directly in global scope (e.g. `Sin()`, `Sum()`, `Equal()`). In the documentation and navigation sidebar, they are organized into file-based groups for clarity:\n"
     ]
 
-    for entry in sidebar_config:
-        title = entry['text']
-        items = entry['items']
-        count = len(items)
-        index_md.append(f"### {title} ({count} definitions)\n")
-        sample_items = items[:8]
-        links = [f"[`{item['text']}`]({item['link']})" for item in sample_items]
-        index_md.append(", ".join(links) + ("..." if count > 8 else ""))
-        index_md.append("\n")
+    for g_entry in core_items:
+        g_name = g_entry['text']
+        items = g_entry['items']
+        index_md.append(f"- **{g_name}** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
 
+    index_md.append("\n### 2. Sub-Packages (Dedicated Namespaces)\n")
+    index_md.append("Components residing in library subdirectories form explicit language namespaces (`Stride::<Package>`). When imported via `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or imported directly via `import Stride::Generators;`:\n")
+
+    for p_entry in package_items:
+        p_name = p_entry['text']
+        items = p_entry['items']
+        index_md.append(f"- **`{p_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
+
+    index_md.append("\n")
     (ref_dir / "index.md").write_text("\n".join(index_md), encoding='utf-8')
 
     return sidebar_config
@@ -714,8 +787,11 @@ def main():
     sidebar_file.parent.mkdir(parents=True, exist_ok=True)
     sidebar_file.write_text(json.dumps(sidebar, indent=2), encoding='utf-8')
 
-    total_modules = sum(len(g['items']) for g in sidebar)
-    print(f"[+] Successfully extracted {total_modules} definitions across {len(sidebar)} groups!")
+    total_core = sum(len(g['items']) for g in sidebar[0]['items'])
+    total_pkgs = sum(len(g['items']) for g in sidebar[1]['items'])
+    print(f"[+] Successfully extracted {total_core + total_pkgs} definitions!")
+    print(f"    - Core Library: {total_core} definitions across {len(sidebar[0]['items'])} groups")
+    print(f"    - Sub-packages: {total_pkgs} definitions across {len(sidebar[1]['items'])} namespaces")
     print(f"[+] Sidebar config saved to: {sidebar_file}")
 
 

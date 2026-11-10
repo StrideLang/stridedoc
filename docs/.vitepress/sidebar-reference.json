@@ -1,439 +1,451 @@
 [
   {
-    "text": "Assertions",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "ExpectEqual",
-        "link": "/reference/library/assertions/expectequal"
-      },
-      {
-        "text": "ExpectFalse",
-        "link": "/reference/library/assertions/expectfalse"
-      },
-      {
-        "text": "ExpectGe",
-        "link": "/reference/library/assertions/expectge"
-      },
-      {
-        "text": "ExpectGt",
-        "link": "/reference/library/assertions/expectgt"
-      },
-      {
-        "text": "ExpectLe",
-        "link": "/reference/library/assertions/expectle"
-      },
-      {
-        "text": "ExpectLt",
-        "link": "/reference/library/assertions/expectlt"
-      },
-      {
-        "text": "ExpectMaxError",
-        "link": "/reference/library/assertions/expectmaxerror"
-      },
-      {
-        "text": "ExpectNear",
-        "link": "/reference/library/assertions/expectnear"
-      },
-      {
-        "text": "ExpectSnr",
-        "link": "/reference/library/assertions/expectsnr"
-      },
-      {
-        "text": "ExpectTrue",
-        "link": "/reference/library/assertions/expecttrue"
-      }
-    ]
-  },
-  {
-    "text": "BasicOperations",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Average",
-        "link": "/reference/library/basicoperations/average"
-      },
-      {
-        "text": "Clip",
-        "link": "/reference/library/basicoperations/clip"
-      },
-      {
-        "text": "Sum",
-        "link": "/reference/library/basicoperations/sum"
-      }
-    ]
-  },
-  {
-    "text": "Comparisons",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "AllOff",
-        "link": "/reference/library/comparisons/alloff"
-      },
-      {
-        "text": "AllOn",
-        "link": "/reference/library/comparisons/allon"
-      },
-      {
-        "text": "Equal",
-        "link": "/reference/library/comparisons/equal"
-      },
-      {
-        "text": "Greater",
-        "link": "/reference/library/comparisons/greater"
-      },
-      {
-        "text": "GreaterOrEqual",
-        "link": "/reference/library/comparisons/greaterorequal"
-      },
-      {
-        "text": "Less",
-        "link": "/reference/library/comparisons/less"
-      },
-      {
-        "text": "LessOrEqual",
-        "link": "/reference/library/comparisons/lessorequal"
-      },
-      {
-        "text": "NotEqual",
-        "link": "/reference/library/comparisons/notequal"
-      }
-    ]
-  },
-  {
-    "text": "Control",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "FallingEdge",
-        "link": "/reference/library/control/fallingedge"
-      },
-      {
-        "text": "Latch",
-        "link": "/reference/library/control/latch"
-      },
-      {
-        "text": "OnChange",
-        "link": "/reference/library/control/onchange"
-      },
-      {
-        "text": "RisingEdge",
-        "link": "/reference/library/control/risingedge"
-      },
-      {
-        "text": "Smooth",
-        "link": "/reference/library/control/smooth"
-      }
-    ]
-  },
-  {
-    "text": "Counter",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Counter",
-        "link": "/reference/library/counter/counter"
-      }
-    ]
-  },
-  {
-    "text": "Debug",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "DebugPrint",
-        "link": "/reference/library/debug/debugprint"
-      },
-      {
-        "text": "Error",
-        "link": "/reference/library/debug/error"
-      },
-      {
-        "text": "Probe",
-        "link": "/reference/library/debug/probe"
-      },
-      {
-        "text": "Watch",
-        "link": "/reference/library/debug/watch"
-      }
-    ]
-  },
-  {
-    "text": "Domain",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Exit",
-        "link": "/reference/library/domain/exit"
-      }
-    ]
-  },
-  {
-    "text": "Level",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Level",
-        "link": "/reference/library/level/level"
-      }
-    ]
-  },
-  {
-    "text": "Logic",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "And",
-        "link": "/reference/library/logic/and"
-      },
-      {
-        "text": "Nand",
-        "link": "/reference/library/logic/nand"
-      },
-      {
-        "text": "Nor",
-        "link": "/reference/library/logic/nor"
-      },
-      {
-        "text": "Not",
-        "link": "/reference/library/logic/not"
-      },
-      {
-        "text": "Or",
-        "link": "/reference/library/logic/or"
-      },
-      {
-        "text": "Select",
-        "link": "/reference/library/logic/select"
-      },
-      {
-        "text": "Xor",
-        "link": "/reference/library/logic/xor"
-      }
-    ]
-  },
-  {
-    "text": "Math",
+    "text": "Core Library (Direct Scope)",
     "collapsed": false,
     "items": [
       {
-        "text": "Abs",
-        "link": "/reference/library/math/abs"
+        "text": "Assertions (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "ExpectEqual",
+            "link": "/reference/library/assertions/expectequal"
+          },
+          {
+            "text": "ExpectFalse",
+            "link": "/reference/library/assertions/expectfalse"
+          },
+          {
+            "text": "ExpectGe",
+            "link": "/reference/library/assertions/expectge"
+          },
+          {
+            "text": "ExpectGt",
+            "link": "/reference/library/assertions/expectgt"
+          },
+          {
+            "text": "ExpectLe",
+            "link": "/reference/library/assertions/expectle"
+          },
+          {
+            "text": "ExpectLt",
+            "link": "/reference/library/assertions/expectlt"
+          },
+          {
+            "text": "ExpectMaxError",
+            "link": "/reference/library/assertions/expectmaxerror"
+          },
+          {
+            "text": "ExpectNear",
+            "link": "/reference/library/assertions/expectnear"
+          },
+          {
+            "text": "ExpectSnr",
+            "link": "/reference/library/assertions/expectsnr"
+          },
+          {
+            "text": "ExpectTrue",
+            "link": "/reference/library/assertions/expecttrue"
+          }
+        ]
       },
       {
-        "text": "C1",
-        "link": "/reference/library/math/c1"
+        "text": "BasicOperations (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Average",
+            "link": "/reference/library/basicoperations/average"
+          },
+          {
+            "text": "Clip",
+            "link": "/reference/library/basicoperations/clip"
+          },
+          {
+            "text": "Sum",
+            "link": "/reference/library/basicoperations/sum"
+          }
+        ]
       },
       {
-        "text": "C2",
-        "link": "/reference/library/math/c2"
+        "text": "Comparisons (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "AllOff",
+            "link": "/reference/library/comparisons/alloff"
+          },
+          {
+            "text": "AllOn",
+            "link": "/reference/library/comparisons/allon"
+          },
+          {
+            "text": "Equal",
+            "link": "/reference/library/comparisons/equal"
+          },
+          {
+            "text": "Greater",
+            "link": "/reference/library/comparisons/greater"
+          },
+          {
+            "text": "GreaterOrEqual",
+            "link": "/reference/library/comparisons/greaterorequal"
+          },
+          {
+            "text": "Less",
+            "link": "/reference/library/comparisons/less"
+          },
+          {
+            "text": "LessOrEqual",
+            "link": "/reference/library/comparisons/lessorequal"
+          },
+          {
+            "text": "NotEqual",
+            "link": "/reference/library/comparisons/notequal"
+          }
+        ]
       },
       {
-        "text": "C3",
-        "link": "/reference/library/math/c3"
+        "text": "Control (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "FallingEdge",
+            "link": "/reference/library/control/fallingedge"
+          },
+          {
+            "text": "Latch",
+            "link": "/reference/library/control/latch"
+          },
+          {
+            "text": "OnChange",
+            "link": "/reference/library/control/onchange"
+          },
+          {
+            "text": "RisingEdge",
+            "link": "/reference/library/control/risingedge"
+          },
+          {
+            "text": "Smooth",
+            "link": "/reference/library/control/smooth"
+          }
+        ]
       },
       {
-        "text": "C4",
-        "link": "/reference/library/math/c4"
+        "text": "Counter (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Counter",
+            "link": "/reference/library/counter/counter"
+          }
+        ]
       },
       {
-        "text": "Clamp",
-        "link": "/reference/library/math/clamp"
+        "text": "Debug (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "DebugPrint",
+            "link": "/reference/library/debug/debugprint"
+          },
+          {
+            "text": "Error",
+            "link": "/reference/library/debug/error"
+          },
+          {
+            "text": "Probe",
+            "link": "/reference/library/debug/probe"
+          },
+          {
+            "text": "Watch",
+            "link": "/reference/library/debug/watch"
+          }
+        ]
       },
       {
-        "text": "Cos",
-        "link": "/reference/library/math/cos"
+        "text": "Domain (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Exit",
+            "link": "/reference/library/domain/exit"
+          }
+        ]
       },
       {
-        "text": "Divide",
-        "link": "/reference/library/math/divide"
+        "text": "Level (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Level",
+            "link": "/reference/library/level/level"
+          }
+        ]
       },
       {
-        "text": "Exp",
-        "link": "/reference/library/math/exp"
+        "text": "Logic (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "And",
+            "link": "/reference/library/logic/and"
+          },
+          {
+            "text": "Nand",
+            "link": "/reference/library/logic/nand"
+          },
+          {
+            "text": "Nor",
+            "link": "/reference/library/logic/nor"
+          },
+          {
+            "text": "Not",
+            "link": "/reference/library/logic/not"
+          },
+          {
+            "text": "Or",
+            "link": "/reference/library/logic/or"
+          },
+          {
+            "text": "Select",
+            "link": "/reference/library/logic/select"
+          },
+          {
+            "text": "Xor",
+            "link": "/reference/library/logic/xor"
+          }
+        ]
       },
       {
-        "text": "Floor",
-        "link": "/reference/library/math/floor"
+        "text": "Math (Group)",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "Abs",
+            "link": "/reference/library/math/abs"
+          },
+          {
+            "text": "C1",
+            "link": "/reference/library/math/c1"
+          },
+          {
+            "text": "C2",
+            "link": "/reference/library/math/c2"
+          },
+          {
+            "text": "C3",
+            "link": "/reference/library/math/c3"
+          },
+          {
+            "text": "C4",
+            "link": "/reference/library/math/c4"
+          },
+          {
+            "text": "Clamp",
+            "link": "/reference/library/math/clamp"
+          },
+          {
+            "text": "Cos",
+            "link": "/reference/library/math/cos"
+          },
+          {
+            "text": "Divide",
+            "link": "/reference/library/math/divide"
+          },
+          {
+            "text": "Exp",
+            "link": "/reference/library/math/exp"
+          },
+          {
+            "text": "Floor",
+            "link": "/reference/library/math/floor"
+          },
+          {
+            "text": "Inverse",
+            "link": "/reference/library/math/inverse"
+          },
+          {
+            "text": "Lerp",
+            "link": "/reference/library/math/lerp"
+          },
+          {
+            "text": "Map",
+            "link": "/reference/library/math/map"
+          },
+          {
+            "text": "Max",
+            "link": "/reference/library/math/max"
+          },
+          {
+            "text": "Min",
+            "link": "/reference/library/math/min"
+          },
+          {
+            "text": "Multiply",
+            "link": "/reference/library/math/multiply"
+          },
+          {
+            "text": "Pow",
+            "link": "/reference/library/math/pow"
+          },
+          {
+            "text": "Sign",
+            "link": "/reference/library/math/sign"
+          },
+          {
+            "text": "Sin",
+            "link": "/reference/library/math/sin"
+          },
+          {
+            "text": "Tan",
+            "link": "/reference/library/math/tan"
+          },
+          {
+            "text": "Wrap",
+            "link": "/reference/library/math/wrap"
+          }
+        ]
       },
       {
-        "text": "Inverse",
-        "link": "/reference/library/math/inverse"
+        "text": "Pan (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Pan",
+            "link": "/reference/library/pan/pan"
+          }
+        ]
       },
       {
-        "text": "Lerp",
-        "link": "/reference/library/math/lerp"
-      },
-      {
-        "text": "Map",
-        "link": "/reference/library/math/map"
-      },
-      {
-        "text": "Max",
-        "link": "/reference/library/math/max"
-      },
-      {
-        "text": "Min",
-        "link": "/reference/library/math/min"
-      },
-      {
-        "text": "Multiply",
-        "link": "/reference/library/math/multiply"
-      },
-      {
-        "text": "Pow",
-        "link": "/reference/library/math/pow"
-      },
-      {
-        "text": "Sign",
-        "link": "/reference/library/math/sign"
-      },
-      {
-        "text": "Sin",
-        "link": "/reference/library/math/sin"
-      },
-      {
-        "text": "Tan",
-        "link": "/reference/library/math/tan"
-      },
-      {
-        "text": "Wrap",
-        "link": "/reference/library/math/wrap"
+        "text": "QualityPolicy (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Accurate",
+            "link": "/reference/library/qualitypolicy/accurate"
+          },
+          {
+            "text": "Compact",
+            "link": "/reference/library/qualitypolicy/compact"
+          },
+          {
+            "text": "Fast",
+            "link": "/reference/library/qualitypolicy/fast"
+          },
+          {
+            "text": "Optimal",
+            "link": "/reference/library/qualitypolicy/optimal"
+          }
+        ]
       }
     ]
   },
   {
-    "text": "Pan",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Pan",
-        "link": "/reference/library/pan/pan"
-      }
-    ]
-  },
-  {
-    "text": "QualityPolicy",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "Accurate",
-        "link": "/reference/library/qualitypolicy/accurate"
-      },
-      {
-        "text": "Compact",
-        "link": "/reference/library/qualitypolicy/compact"
-      },
-      {
-        "text": "Fast",
-        "link": "/reference/library/qualitypolicy/fast"
-      },
-      {
-        "text": "Optimal",
-        "link": "/reference/library/qualitypolicy/optimal"
-      }
-    ]
-  },
-  {
-    "text": "Filters",
+    "text": "Packages (Namespaces)",
     "collapsed": false,
     "items": [
       {
-        "text": "BandPass",
-        "link": "/reference/library/filters/bandpass"
+        "text": "Stride::Filters",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "BandPass",
+            "link": "/reference/library/filters/bandpass"
+          },
+          {
+            "text": "BiQuad",
+            "link": "/reference/library/filters/biquad"
+          },
+          {
+            "text": "LowPass",
+            "link": "/reference/library/filters/lowpass"
+          },
+          {
+            "text": "Mix",
+            "link": "/reference/library/filters/mix"
+          },
+          {
+            "text": "Rectify",
+            "link": "/reference/library/filters/rectify"
+          }
+        ]
       },
       {
-        "text": "BiQuad",
-        "link": "/reference/library/filters/biquad"
+        "text": "Stride::Generators",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "AD",
+            "link": "/reference/library/generators/ad"
+          },
+          {
+            "text": "BandLimitedSaw",
+            "link": "/reference/library/generators/bandlimitedsaw"
+          },
+          {
+            "text": "Impulse",
+            "link": "/reference/library/generators/impulse"
+          },
+          {
+            "text": "Oscillator",
+            "link": "/reference/library/generators/oscillator"
+          },
+          {
+            "text": "Sequencer",
+            "link": "/reference/library/generators/sequencer"
+          },
+          {
+            "text": "TableOscillator",
+            "link": "/reference/library/generators/tableoscillator"
+          }
+        ]
       },
       {
-        "text": "LowPass",
-        "link": "/reference/library/filters/lowpass"
+        "text": "Stride::Notes",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "C4",
+            "link": "/reference/library/notes/c4"
+          },
+          {
+            "text": "C5",
+            "link": "/reference/library/notes/c5"
+          },
+          {
+            "text": "E4",
+            "link": "/reference/library/notes/e4"
+          },
+          {
+            "text": "G4",
+            "link": "/reference/library/notes/g4"
+          }
+        ]
       },
       {
-        "text": "Mix",
-        "link": "/reference/library/filters/mix"
+        "text": "Stride::Osc",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "OSCIn",
+            "link": "/reference/library/osc/oscin"
+          },
+          {
+            "text": "OSCOut",
+            "link": "/reference/library/osc/oscout"
+          }
+        ]
       },
       {
-        "text": "Rectify",
-        "link": "/reference/library/filters/rectify"
-      }
-    ]
-  },
-  {
-    "text": "Generators",
-    "collapsed": false,
-    "items": [
-      {
-        "text": "AD",
-        "link": "/reference/library/generators/ad"
-      },
-      {
-        "text": "BandLimitedSaw",
-        "link": "/reference/library/generators/bandlimitedsaw"
-      },
-      {
-        "text": "Impulse",
-        "link": "/reference/library/generators/impulse"
-      },
-      {
-        "text": "Oscillator",
-        "link": "/reference/library/generators/oscillator"
-      },
-      {
-        "text": "Sequencer",
-        "link": "/reference/library/generators/sequencer"
-      },
-      {
-        "text": "TableOscillator",
-        "link": "/reference/library/generators/tableoscillator"
-      }
-    ]
-  },
-  {
-    "text": "Notes",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "C4",
-        "link": "/reference/library/notes/c4"
-      },
-      {
-        "text": "C5",
-        "link": "/reference/library/notes/c5"
-      },
-      {
-        "text": "E4",
-        "link": "/reference/library/notes/e4"
-      },
-      {
-        "text": "G4",
-        "link": "/reference/library/notes/g4"
-      }
-    ]
-  },
-  {
-    "text": "Osc",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "OSCIn",
-        "link": "/reference/library/osc/oscin"
-      },
-      {
-        "text": "OSCOut",
-        "link": "/reference/library/osc/oscout"
-      }
-    ]
-  },
-  {
-    "text": "Serial",
-    "collapsed": true,
-    "items": [
-      {
-        "text": "SerialPrint",
-        "link": "/reference/library/serial/serialprint"
+        "text": "Stride::Serial",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "SerialPrint",
+            "link": "/reference/library/serial/serialprint"
+          }
+        ]
       }
     ]
   }

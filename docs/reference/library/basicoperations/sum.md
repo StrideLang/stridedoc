@@ -5,31 +5,21 @@ description: "Adds all signals in the input array: Input >> Sum() >> Output."
 
 # Sum
 
-<span class="stride-badge">Loop</span> `package Stride` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:4]</a>
+<span class="stride-badge">Loop</span> `package Stride` &bull; Group: **BasicOperations** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L4" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:4]</a>
 
 Adds all signals in the input array: Input >> Sum() >> Output.
 
-## Ports & Properties
+## Streams
 
-| | Port | Target | Default | Description |
+| | Stream | Type | Rate / Domain | Description |
 | :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `Sum_Input` | — | Array of signals to be summed |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `Sum_Output` | — | The sum of all signals in the array |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Sum_Input` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Array of signals to be summed |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Sum_Output` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | The sum of all signals in the array |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
   <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
 </div>
-
-## Signals & Attributes
-
-| Signal | Type | Default | Rate / Domain | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `Sum_Input[InputPort.size]` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Sum_Output` | `signal` | `0.0` | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Sum_Index` | `signal` | `0` | Rate: none, Domain: OutputPort.domain | — |
 
 ## Usage
 

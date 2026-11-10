@@ -5,18 +5,23 @@ description: "Limits signal within minimum and maximum values: Input >> Clip(min
 
 # Clip
 
-<span class="stride-badge">Module</span> `package Stride` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L85" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:85]</a>
+<span class="stride-badge">Module</span> `package Stride` &bull; Group: **BasicOperations** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/BasicOperations.stride#L85" target="_blank" rel="noopener" title="View source on GitHub">[BasicOperations.stride:85]</a>
 
 Limits signal within minimum and maximum values: Input >> Clip(minimum: 0.0 maximum: 1.0) >> Output.
 
-## Ports & Properties
+## Streams
 
-| | Port | Target | Default | Description |
+| | Stream | Type | Rate / Domain | Description |
 | :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `Input` | — | Input signal to constrain |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `Output` | — | Clipped output signal |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `minimum` | `MinVal` | — | Lower bound |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `maximum` | `MaxVal` | — | Upper bound |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Input signal to constrain |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Clipped output signal |
+
+## Properties
+
+| | Property | Type | Default | Rate / Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `minimum` | `OutputPort.type` | `0.0` | `OutputPort.rate` / `OutputPort.domain` | Lower bound |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `maximum` | `OutputPort.type` | `1.0` | `OutputPort.rate` / `OutputPort.domain` | Upper bound |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -25,20 +30,11 @@ Limits signal within minimum and maximum values: Input >> Clip(minimum: 0.0 maxi
   <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
 </div>
 
-## Signals & Attributes
-
-| Signal | Type | Default | Rate / Domain | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `Input` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Output` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `MinVal` | `signal` | `0.0` | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `MaxVal` | `signal` | `1.0` | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-
 ## Usage
 
 ```stride
 import Stride;
 
 # Available in root namespace:
-Signal >> Clip(minimum: ..., maximum: ...) >> Output;
+Signal >> Clip(minimum: 0.0, maximum: 1.0) >> Output;
 ```

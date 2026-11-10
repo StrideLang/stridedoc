@@ -5,17 +5,22 @@ description: "Stereo panner."
 
 # Pan
 
-<span class="stride-badge">Module</span> `package Stride` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Pan.stride#L2" target="_blank" rel="noopener" title="View source on GitHub">[Pan.stride:2]</a>
+<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Pan** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Pan.stride#L2" target="_blank" rel="noopener" title="View source on GitHub">[Pan.stride:2]</a>
 
 Stereo panner.
 
-## Ports & Properties
+## Streams
 
-| | Port | Target | Default | Description |
+| | Stream | Type | Rate / Domain | Description |
 | :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `Output` | — | — |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `Input` | — | — |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `position` | `Position` | — | Sets the panning position with range [-1, 1]. |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `output` | `signal` | — | — |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `input` | `signal` | — | — |
+
+## Properties
+
+| | Property | Type | Default | Rate / Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `position` | `signal` | — | — | Sets the panning position with range [-1, 1]. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

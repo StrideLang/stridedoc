@@ -5,18 +5,23 @@ description: "Periodically wraps input signal within [min, max): Input >> Wrap(m
 
 # Wrap
 
-<span class="stride-badge">Module</span> `package Stride` <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L572" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:572]</a>
+<span class="stride-badge">Module</span> `package Stride` &bull; Group: **Math** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L572" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:572]</a>
 
 Periodically wraps input signal within [min, max): Input >> Wrap(min: 0.0 max: 1.0) >> Output.
 
-## Ports & Properties
+## Streams
 
-| | Port | Target | Default | Description |
+| | Stream | Type | Rate / Domain | Description |
 | :-: | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `Input` | — | Input signal to wrap |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `Output` | — | Wrapped output signal |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `min` | `MinVal` | — | Range lower bound |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `max` | `MaxVal` | — | Range upper bound |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `Input` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Input signal to wrap |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `Output` | `OutputPort.type` | `OutputPort.rate` / `OutputPort.domain` | Wrapped output signal |
+
+## Properties
+
+| | Property | Type | Default | Rate / Domain | Description |
+| :-: | :--- | :--- | :--- | :--- | :--- |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `min` | `OutputPort.type` | `0.0` | `OutputPort.rate` / `OutputPort.domain` | Range lower bound |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `max` | `OutputPort.type` | `1.0` | `OutputPort.rate` / `OutputPort.domain` | Range upper bound |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -25,25 +30,11 @@ Periodically wraps input signal within [min, max): Input >> Wrap(min: 0.0 max: 1
   <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
 </div>
 
-## Signals & Attributes
-
-| Signal | Type | Default | Rate / Domain | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| `Input` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Output` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `MinVal` | `signal` | `0.0` | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `MaxVal` | `signal` | `1.0` | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Range` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Offset` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `ModVal` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Quo` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-| `Fl` | `signal` | — | Rate: OutputPort.rate, Domain: OutputPort.domain | — |
-
 ## Usage
 
 ```stride
 import Stride;
 
 # Available in root namespace:
-Signal >> Wrap(min: ..., max: ...) >> Output;
+Signal >> Wrap(min: 0.0, max: 1.0) >> Output;
 ```
