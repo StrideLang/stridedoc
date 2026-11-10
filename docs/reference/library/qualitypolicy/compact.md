@@ -15,5 +15,5 @@ Prioritizes minimal Flash/RAM memory footprint (e.g. avoids tables, uses ROM)
 import Stride;
 
 # Available in root namespace:
-Signal >> Compact() >> Output;
+Signal * Compact >> Output;
 ```

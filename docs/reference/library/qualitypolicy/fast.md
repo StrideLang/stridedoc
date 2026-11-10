@@ -15,5 +15,5 @@ Prioritizes execution speed and low cycle count over algorithmic precision
 import Stride;
 
 # Available in root namespace:
-Signal >> Fast() >> Output;
+Signal * Fast >> Output;
 ```

@@ -15,5 +15,5 @@ Platform optimal: selects hardware accelerators or best platform implementation
 import Stride;
 
 # Available in root namespace:
-Signal >> Optimal() >> Output;
+Signal * Optimal >> Output;
 ```

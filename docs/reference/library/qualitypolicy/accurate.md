@@ -15,5 +15,5 @@ Prioritizes numerical precision and exact behavior over speed
 import Stride;
 
 # Available in root namespace:
-Signal >> Accurate() >> Output;
+Signal * Accurate >> Output;
 ```

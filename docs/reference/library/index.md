@@ -15,11 +15,11 @@ The Stride standard library provides verified primitives for signal flow, multi-
 
 ## Namespace Architecture
 
-Stride establishes a clear distinction between **Core Library Groups** (which share the root `Stride` namespace) and **Sub-packages** (which form dedicated hierarchical namespaces):
+The Stride standard library establishes a unified hierarchy under the `Stride` namespace:
 
-### 1. Core Library (Root `Stride` Namespace)
+### 1. Stride (Root Namespace)
 
-Modules defined in root library files reside directly in `package Stride`. They are imported automatically or via `import Stride;` and are called directly in global scope (e.g. `Sin()`, `Sum()`, `Equal()`). In the documentation and navigation sidebar, they are organized into file-based groups for clarity:
+Definitions residing in the root library files belong directly to `package Stride`. They are imported automatically or via `import Stride;` and are called directly in global scope (e.g. `Sin()`, `Sum()`, `Equal()`). In documentation and navigation, they are organized into file-based groups for clarity:
 
 - **Assertions (Group)** (10 definitions): [`ExpectEqual`](/reference/library/assertions/expectequal), [`ExpectFalse`](/reference/library/assertions/expectfalse), [`ExpectGe`](/reference/library/assertions/expectge), [`ExpectGt`](/reference/library/assertions/expectgt), [`ExpectLe`](/reference/library/assertions/expectle), [`ExpectLt`](/reference/library/assertions/expectlt)...
 - **BasicOperations (Group)** (3 definitions): [`Average`](/reference/library/basicoperations/average), [`Clip`](/reference/library/basicoperations/clip), [`Sum`](/reference/library/basicoperations/sum)
@@ -31,12 +31,13 @@ Modules defined in root library files reside directly in `package Stride`. They 
 - **Level (Group)** (1 definitions): [`Level`](/reference/library/level/level)
 - **Logic (Group)** (7 definitions): [`And`](/reference/library/logic/and), [`Nand`](/reference/library/logic/nand), [`Nor`](/reference/library/logic/nor), [`Not`](/reference/library/logic/not), [`Or`](/reference/library/logic/or), [`Select`](/reference/library/logic/select)...
 - **Math (Group)** (21 definitions): [`Abs`](/reference/library/math/abs), [`C1`](/reference/library/math/c1), [`C2`](/reference/library/math/c2), [`C3`](/reference/library/math/c3), [`C4`](/reference/library/math/c4), [`Clamp`](/reference/library/math/clamp)...
+- **MathConstants (Group)** (3 definitions): [`E`](/reference/library/mathconstants/e), [`Pi`](/reference/library/mathconstants/pi), [`TwoPi`](/reference/library/mathconstants/twopi)
 - **Pan (Group)** (1 definitions): [`Pan`](/reference/library/pan/pan)
 - **QualityPolicy (Group)** (4 definitions): [`Accurate`](/reference/library/qualitypolicy/accurate), [`Compact`](/reference/library/qualitypolicy/compact), [`Fast`](/reference/library/qualitypolicy/fast), [`Optimal`](/reference/library/qualitypolicy/optimal)
 
-### 2. Sub-Packages (Dedicated Namespaces)
+### 2. Stride Sub-packages
 
-Components residing in library subdirectories form explicit language namespaces (`Stride::<Package>`). When imported via `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or imported directly via `import Stride::Generators;`:
+Components residing in library subdirectories form hierarchical sub-namespaces (`Stride::<Package>`). When imported via `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or imported directly via `import Stride::Generators;`:
 
 - **`Stride::Filters`** (5 definitions): [`BandPass`](/reference/library/filters/bandpass), [`BiQuad`](/reference/library/filters/biquad), [`LowPass`](/reference/library/filters/lowpass), [`Mix`](/reference/library/filters/mix), [`Rectify`](/reference/library/filters/rectify)
 - **`Stride::Generators`** (6 definitions): [`AD`](/reference/library/generators/ad), [`BandLimitedSaw`](/reference/library/generators/bandlimitedsaw), [`Impulse`](/reference/library/generators/impulse), [`Oscillator`](/reference/library/generators/oscillator), [`Sequencer`](/reference/library/generators/sequencer), [`TableOscillator`](/reference/library/generators/tableoscillator)

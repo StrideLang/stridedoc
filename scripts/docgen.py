@@ -549,7 +549,15 @@ def generate_markdown_for_declaration(
             prop_args.append(f"{p['name']}: {val_str}")
     args_str = f"({', '.join(prop_args[:3])})" if prop_args else "()"
 
-    if is_root_library:
+    if value is not None or kind.lower() == 'constant':
+        if is_root_library:
+            md.append(f"# Available in root namespace:")
+            md.append(f"Signal * {name} >> Output;")
+        else:
+            cat = package_name.replace("Stride::", "")
+            md.append(f"# Access via {cat} category:")
+            md.append(f"Signal * {cat}::{name} >> Output;")
+    elif is_root_library:
         md.append(f"# Available in root namespace:")
         md.append(f"Signal >> {name}{args_str} >> Output;")
     else:
@@ -700,15 +708,15 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                 'items': deduped
             })
 
-    # Structured 2-Tier Sidebar distinguishing Core Groups from Sub-packages
+    # Structured 2-Tier Sidebar distinguishing Stride Root from Sub-packages
     sidebar_config = [
         {
-          'text': "Core Library (Direct Scope)",
+          'text': "Stride (Root Namespace)",
           'collapsed': False,
           'items': core_items
         },
         {
-          'text': "Packages (Namespaces)",
+          'text': "Stride Sub-packages",
           'collapsed': False,
           'items': package_items
         }
@@ -726,9 +734,9 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
         f"- **Upstream Repository**: [`StrideLang/strideroot`]({GITHUB_REPO_URL})\n",
         f"- **Active Ref**: `{git_ref}` (unambiguous source line links are embedded in each definition)\n",
         "## Namespace Architecture\n",
-        "Stride establishes a clear distinction between **Core Library Groups** (which share the root `Stride` namespace) and **Sub-packages** (which form dedicated hierarchical namespaces):\n",
-        "### 1. Core Library (Root `Stride` Namespace)\n",
-        "Modules defined in root library files reside directly in `package Stride`. They are imported automatically or via `import Stride;` and are called directly in global scope (e.g. `Sin()`, `Sum()`, `Equal()`). In the documentation and navigation sidebar, they are organized into file-based groups for clarity:\n"
+        "The Stride standard library establishes a unified hierarchy under the `Stride` namespace:\n",
+        "### 1. Stride (Root Namespace)\n",
+        "Definitions residing in the root library files belong directly to `package Stride`. They are imported automatically or via `import Stride;` and are called directly in global scope (e.g. `Sin()`, `Sum()`, `Equal()`). In documentation and navigation, they are organized into file-based groups for clarity:\n"
     ]
 
     for g_entry in core_items:
@@ -736,8 +744,8 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
         items = g_entry['items']
         index_md.append(f"- **{g_name}** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
 
-    index_md.append("\n### 2. Sub-Packages (Dedicated Namespaces)\n")
-    index_md.append("Components residing in library subdirectories form explicit language namespaces (`Stride::<Package>`). When imported via `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or imported directly via `import Stride::Generators;`:\n")
+    index_md.append("\n### 2. Stride Sub-packages\n")
+    index_md.append("Components residing in library subdirectories form hierarchical sub-namespaces (`Stride::<Package>`). When imported via `import Stride;`, they are accessed via category qualification (e.g. `Generators::Oscillator`, `Filters::BiQuad`), or imported directly via `import Stride::Generators;`:\n")
 
     for p_entry in package_items:
         p_name = p_entry['text']
@@ -789,8 +797,8 @@ def main():
     total_core = sum(len(g['items']) for g in sidebar[0]['items'])
     total_pkgs = sum(len(g['items']) for g in sidebar[1]['items'])
     print(f"[+] Successfully extracted {total_core + total_pkgs} definitions!")
-    print(f"    - Core Library: {total_core} definitions across {len(sidebar[0]['items'])} groups")
-    print(f"    - Sub-packages: {total_pkgs} definitions across {len(sidebar[1]['items'])} namespaces")
+    print(f"    - Stride Root: {total_core} definitions across {len(sidebar[0]['items'])} groups")
+    print(f"    - Stride Sub-packages: {total_pkgs} definitions across {len(sidebar[1]['items'])} namespaces")
     print(f"[+] Sidebar config saved to: {sidebar_file}")
 
 

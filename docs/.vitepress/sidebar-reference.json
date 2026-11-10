@@ -1,6 +1,6 @@
 [
   {
-    "text": "Core Library (Direct Scope)",
+    "text": "Stride (Root Namespace)",
     "collapsed": false,
     "items": [
       {
@@ -308,6 +308,24 @@
         ]
       },
       {
+        "text": "MathConstants (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "E",
+            "link": "/reference/library/mathconstants/e"
+          },
+          {
+            "text": "Pi",
+            "link": "/reference/library/mathconstants/pi"
+          },
+          {
+            "text": "TwoPi",
+            "link": "/reference/library/mathconstants/twopi"
+          }
+        ]
+      },
+      {
         "text": "Pan (Group)",
         "collapsed": true,
         "items": [
@@ -342,7 +360,7 @@
     ]
   },
   {
-    "text": "Packages (Namespaces)",
+    "text": "Stride Sub-packages",
     "collapsed": false,
     "items": [
       {
