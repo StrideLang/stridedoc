@@ -5,7 +5,7 @@ description: "Scales the input signal and applies an offset to it. Formula: outp
 
 # Level
 
-<span class="stride-badge">Module</span> `package Dsp` &bull; Namespace: **`Dsp`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Dsp.stride#L9" target="_blank" rel="noopener" title="View source on GitHub">[Dsp.stride:9]</a>
+<span class="stride-badge">Module</span> `package Dsp` &bull; Namespace: **`Dsp`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Dsp.stride#L14" target="_blank" rel="noopener" title="View source on GitHub">[Dsp.stride:14]</a>
 
 Scales the input signal and applies an offset to it.
 Formula: output = input * gain + offset

@@ -74,7 +74,7 @@ class StrideDocParser:
     }
 
     ENTITY_TYPES = {
-        'signal', 'switch', 'trigger', 'stream', 'list', 'buffer'
+        'signal', 'switch', 'trigger', 'stream', 'list', 'buffer', 'constant'
     }
 
     def __init__(self, tokens):
@@ -154,6 +154,10 @@ class StrideDocParser:
                 self.advance()
                 name_kind, name_val, _ = self.advance()
                 decl_name = name_val if name_kind in ('IDENT', 'NUMBER') else "Anonymous"
+                if self.peek()[1] == '@':
+                    self.advance() # consume '@'
+                    spec_kind, spec_val, _ = self.advance()
+                    decl_name = f"{decl_name}@{spec_val}"
 
                 b_kind, b_val, _ = self.peek()
                 if b_kind == 'BRACE_OPEN':
@@ -458,6 +462,7 @@ def generate_markdown_for_declaration(
     md = []
     # Frontmatter
     clean_desc = meta.replace('\n', ' ').replace('"', "'")[:140] if meta else f"{name} {kind.lower()} definition."
+    clean_desc = clean_desc.replace('\\', '\\\\')
     md.append("---")
     md.append(f"title: {name}")
     md.append(f"description: \"{clean_desc}\"")
@@ -594,14 +599,8 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
     prelude_groups = {}
     prelude_order = []
 
-    dsp_groups = {}
-    dsp_order = []
-
-    io_groups = {}
-    io_order = []
-
-    math_groups = {}
-    math_order = []
+    package_groups = {}  # top_pkg -> { group_key -> [items] }
+    package_order = {}   # top_pkg -> [group_keys]
 
     IGNORED_DIRS = {'doc', '.strdcache', 'tests', 'local'}
     GITHUB_REPO_URL = "https://github.com/StrideLang/strideroot"
@@ -627,10 +626,12 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
             parser = StrideDocParser(tokens)
             parsed = parser.parse_file()
 
-            # Filter out declarations starting with '_'
+            # Filter out internal declarations (starting with '_', 'Anonymous', or lowering specializations with '@')
             valid_decls = [
                 d for d in parsed['declarations']
-                if not d.get('name', '').startswith('_') and d.get('name', '') != 'Anonymous'
+                if not d.get('name', '').startswith('_')
+                and d.get('name', '') != 'Anonymous'
+                and '@' not in d.get('name', '')
             ]
 
             if not valid_decls:
@@ -640,57 +641,57 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
             rel_unix = str(file_path.relative_to(strideroot_path)).replace("\\", "/")
 
             if is_root:
-                if sf == 'Dsp.stride':
-                    target_dict, order, group_key = dsp_groups, dsp_order, 'Dsp (Root)'
-                    pkg_name = 'Dsp'
-                    is_prelude = False
-                    dest_dir = ref_dir / "dsp"
-                    link_prefix = "/reference/library/dsp"
-                elif sf == 'IO.stride':
-                    target_dict, order, group_key = io_groups, io_order, 'IO (Root)'
-                    pkg_name = 'IO'
-                    is_prelude = False
-                    dest_dir = ref_dir / "io"
-                    link_prefix = "/reference/library/io"
-                else:
+                if pkg is None or pkg == 'QualityPolicy':
+                    top_pkg = None
                     group_stem = file_path.stem
-                    target_dict, order, group_key = prelude_groups, prelude_order, f"{group_stem} (Group)"
+                    group_key = f"{group_stem} (Group)"
                     pkg_name = 'Stride'
                     is_prelude = True
-                    group_slug = group_stem.lower()
-                    dest_dir = ref_dir / group_slug
-                    link_prefix = f"/reference/library/{group_slug}"
+                    cat_path = group_stem.lower()
+                else:
+                    top_pkg = pkg
+                    group_key = f"{pkg} (Root)"
+                    pkg_name = pkg
+                    is_prelude = False
+                    cat_path = file_path.stem.lower()
             else:
                 top_dir = rel_to_lib.parts[0]
+                top_pkg = top_dir
                 is_prelude = False
-                if top_dir == 'Dsp':
-                    target_dict, order = dsp_groups, dsp_order
-                    pkg_name = pkg if pkg else f"Dsp::{file_path.stem}"
-                    group_key = pkg_name
-                    sub_cat = rel_to_lib.parts[1].lower() if len(rel_to_lib.parts) > 1 else file_path.stem.lower()
-                    dest_dir = ref_dir / "dsp" / sub_cat
-                    link_prefix = f"/reference/library/dsp/{sub_cat}"
-                elif top_dir == 'IO':
-                    target_dict, order = io_groups, io_order
-                    pkg_name = pkg if pkg else f"IO::{file_path.stem}"
-                    group_key = pkg_name
-                    sub_cat = file_path.stem.lower()
-                    dest_dir = ref_dir / "io" / sub_cat
-                    link_prefix = f"/reference/library/io/{sub_cat}"
-                elif top_dir == 'Math':
-                    target_dict, order = math_groups, math_order
-                    pkg_name = 'Math::Constants'
+
+                if pkg and "::" in pkg:
+                    group_key = pkg
+                    pkg_name = pkg
+                    cat_path = "/".join(p.lower() for p in pkg.split("::"))
+                elif top_dir == 'Math' and file_path.stem == 'Constants':
                     group_key = 'Math::Constants'
-                    dest_dir = ref_dir / "math" / "constants"
-                    link_prefix = "/reference/library/math/constants"
+                    pkg_name = 'Math::Constants'
+                    cat_path = "math/constants"
                 else:
-                    continue
+                    group_key = pkg if pkg else top_dir
+                    pkg_name = pkg if pkg else top_dir
+                    cat_path = f"{top_dir.lower()}/{file_path.stem.lower()}"
+
+            dest_dir = ref_dir / cat_path
+            link_prefix = f"/reference/library/{cat_path}"
 
             dest_dir.mkdir(parents=True, exist_ok=True)
-            if group_key not in order:
-                order.append(group_key)
-            if group_key not in target_dict:
-                target_dict[group_key] = []
+
+            if top_pkg is None:
+                if group_key not in prelude_order:
+                    prelude_order.append(group_key)
+                if group_key not in prelude_groups:
+                    prelude_groups[group_key] = []
+                target_list = prelude_groups[group_key]
+            else:
+                if top_pkg not in package_groups:
+                    package_groups[top_pkg] = {}
+                    package_order[top_pkg] = []
+                if group_key not in package_order[top_pkg]:
+                    package_order[top_pkg].append(group_key)
+                if group_key not in package_groups[top_pkg]:
+                    package_groups[top_pkg][group_key] = []
+                target_list = package_groups[top_pkg][group_key]
 
             for decl in valid_decls:
                 decl_name = decl.get('name', '')
@@ -712,7 +713,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                 out_file = dest_dir / md_filename
                 out_file.write_text(md_content, encoding='utf-8')
 
-                target_dict[group_key].append({
+                target_list.append({
                     'text': decl_name,
                     'link': f"{link_prefix}/{file_slug}"
                 })
@@ -720,7 +721,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
     def build_sidebar_items(target_dict, order_list, default_open=None):
         section_items = []
         for g_key in order_list:
-            items_list = target_dict[g_key]
+            items_list = target_dict.get(g_key, [])
             seen = set()
             deduped = []
             for it in sorted(items_list, key=lambda x: x['text']):
@@ -729,7 +730,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                     deduped.append(it)
             if deduped:
                 is_collapsed = True
-                if default_open and g_key in default_open:
+                if default_open and (g_key in default_open or "*" in default_open):
                     is_collapsed = False
                 section_items.append({
                     'text': g_key,
@@ -739,32 +740,28 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
         return section_items
 
     prelude_items = build_sidebar_items(prelude_groups, prelude_order, default_open={'Math (Group)', 'BasicOperations (Group)'})
-    dsp_items = build_sidebar_items(dsp_groups, dsp_order, default_open={'Dsp::Generators', 'Dsp::Filters'})
-    io_items = build_sidebar_items(io_groups, io_order, default_open={'IO::Console', 'IO::Serial'})
-    math_items = build_sidebar_items(math_groups, math_order, default_open={'Math::Constants'})
 
     sidebar_config = [
         {
             'text': "Global Prelude",
             'collapsed': False,
             'items': prelude_items
-        },
-        {
-            'text': "Package Dsp",
-            'collapsed': False,
-            'items': dsp_items
-        },
-        {
-            'text': "Package IO",
-            'collapsed': False,
-            'items': io_items
-        },
-        {
-            'text': "Package Math",
-            'collapsed': False,
-            'items': math_items
         }
     ]
+
+    for top_pkg in sorted(package_groups.keys()):
+        order = package_order[top_pkg]
+        groups = package_groups[top_pkg]
+        default_open = {'*'} if len(order) <= 2 else {
+            'Dsp::Generators', 'Dsp::Filters', 'IO::Console', 'IO::Serial',
+            'LinAlg::Vectors', 'Control', 'Sensors::Conditioning', 'Window::Functions'
+        }
+        pkg_items = build_sidebar_items(groups, order, default_open=default_open)
+        sidebar_config.append({
+            'text': f"Package {top_pkg}",
+            'collapsed': False,
+            'items': pkg_items
+        })
 
     # Generate an Index Page for the Library Reference
     index_md = [
@@ -791,23 +788,15 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
     index_md.append("\n### 2. Standard Library Packages (Explicitly Imported)\n")
     index_md.append("Cohesive, domain-specific modules organized under namespaced packages. In user code, they are imported via package statements (e.g. `import Dsp::Generators as Generators;`):\n")
 
-    index_md.append("\n#### Package `Dsp` (`package Dsp`)\n")
-    for g_entry in dsp_items:
-        g_name = g_entry['text']
-        items = g_entry['items']
-        index_md.append(f"- **`{g_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
-
-    index_md.append("\n#### Package `IO` (`package IO`)\n")
-    for g_entry in io_items:
-        g_name = g_entry['text']
-        items = g_entry['items']
-        index_md.append(f"- **`{g_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
-
-    index_md.append("\n#### Package `Math` (`package Math`)\n")
-    for g_entry in math_items:
-        g_name = g_entry['text']
-        items = g_entry['items']
-        index_md.append(f"- **`{g_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
+    for section in sidebar_config:
+        if section['text'] == "Global Prelude":
+            continue
+        pkg_title = section['text']
+        index_md.append(f"\n#### {pkg_title}\n")
+        for g_entry in section['items']:
+            g_name = g_entry['text']
+            items = g_entry['items']
+            index_md.append(f"- **`{g_name}`** ({len(items)} definitions): " + ", ".join(f"[`{it['text']}`]({it['link']})" for it in items[:6]) + ("..." if len(items) > 6 else ""))
 
     index_md.append("\n")
     (ref_dir / "index.md").write_text("\n".join(index_md), encoding='utf-8')
@@ -851,15 +840,14 @@ def main():
     sidebar_file.parent.mkdir(parents=True, exist_ok=True)
     sidebar_file.write_text(json.dumps(sidebar, indent=2), encoding='utf-8')
 
-    total_prelude = sum(len(g['items']) for g in sidebar[0]['items'])
-    total_dsp = sum(len(g['items']) for g in sidebar[1]['items'])
-    total_io = sum(len(g['items']) for g in sidebar[2]['items'])
-    total_math = sum(len(g['items']) for g in sidebar[3]['items'])
-    print(f"[+] Successfully extracted {total_prelude + total_dsp + total_io + total_math} definitions!")
-    print(f"    - Global Prelude: {total_prelude} definitions across {len(sidebar[0]['items'])} groups")
-    print(f"    - Package Dsp:    {total_dsp} definitions across {len(sidebar[1]['items'])} namespaces")
-    print(f"    - Package IO:     {total_io} definitions across {len(sidebar[2]['items'])} namespaces")
-    print(f"    - Package Math:   {total_math} definitions across {len(sidebar[3]['items'])} namespaces")
+    total_decls = 0
+    print("[+] Successfully extracted standard library definitions:")
+    for section in sidebar:
+        s_title = section['text']
+        s_count = sum(len(g['items']) for g in section['items'])
+        total_decls += s_count
+        print(f"    - {s_title:20}: {s_count} definitions across {len(section['items'])} groups")
+    print(f"[+] Total definitions: {total_decls}")
     print(f"[+] Sidebar config saved to: {sidebar_file}")
 
 

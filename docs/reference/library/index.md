@@ -29,7 +29,7 @@ Foundational primitives loaded automatically into the root namespace of every fi
 - **Debug (Group)** (4 definitions): [`DebugPrint`](/reference/library/debug/debugprint), [`Error`](/reference/library/debug/error), [`Probe`](/reference/library/debug/probe), [`Watch`](/reference/library/debug/watch)
 - **Domain (Group)** (1 definitions): [`Exit`](/reference/library/domain/exit)
 - **Logic (Group)** (7 definitions): [`And`](/reference/library/logic/and), [`Nand`](/reference/library/logic/nand), [`Nor`](/reference/library/logic/nor), [`Not`](/reference/library/logic/not), [`Or`](/reference/library/logic/or), [`Select`](/reference/library/logic/select)...
-- **Math (Group)** (21 definitions): [`Abs`](/reference/library/math/abs), [`C1`](/reference/library/math/c1), [`C2`](/reference/library/math/c2), [`C3`](/reference/library/math/c3), [`C4`](/reference/library/math/c4), [`Clamp`](/reference/library/math/clamp)...
+- **Math (Group)** (17 definitions): [`Abs`](/reference/library/math/abs), [`Clamp`](/reference/library/math/clamp), [`Cos`](/reference/library/math/cos), [`Divide`](/reference/library/math/divide), [`Exp`](/reference/library/math/exp), [`Floor`](/reference/library/math/floor)...
 - **QualityPolicy (Group)** (4 definitions): [`Accurate`](/reference/library/qualitypolicy/accurate), [`Compact`](/reference/library/qualitypolicy/compact), [`Fast`](/reference/library/qualitypolicy/fast), [`Optimal`](/reference/library/qualitypolicy/optimal)
 
 ### 2. Standard Library Packages (Explicitly Imported)
@@ -37,16 +37,33 @@ Foundational primitives loaded automatically into the root namespace of every fi
 Cohesive, domain-specific modules organized under namespaced packages. In user code, they are imported via package statements (e.g. `import Dsp::Generators as Generators;`):
 
 
-#### Package `Dsp` (`package Dsp`)
+#### Package Control
+
+- **`Control`** (7 definitions): [`Clarke`](/reference/library/control/foc/clarke), [`Hysteresis`](/reference/library/control/hysteresis/hysteresis), [`InverseClarke`](/reference/library/control/foc/inverseclarke), [`InversePark`](/reference/library/control/foc/inversepark), [`Park`](/reference/library/control/foc/park), [`Pid`](/reference/library/control/pid/pid)...
+
+#### Package Dsp
 
 - **`Dsp (Root)`** (2 definitions): [`Level`](/reference/library/dsp/level), [`Pan`](/reference/library/dsp/pan)
 - **`Dsp::FilterDesign`** (2 definitions): [`HighPassCoefficients`](/reference/library/dsp/filterdesign/highpasscoefficients), [`LowPassCoefficients`](/reference/library/dsp/filterdesign/lowpasscoefficients)
 - **`Dsp::Routing`** (3 definitions): [`Crossfade`](/reference/library/dsp/routing/crossfade), [`Level`](/reference/library/dsp/routing/level), [`Pan`](/reference/library/dsp/routing/pan)
 - **`Dsp::Units`** (51 definitions): [`A0`](/reference/library/dsp/units/a0), [`A1`](/reference/library/dsp/units/a1), [`A2`](/reference/library/dsp/units/a2), [`A3`](/reference/library/dsp/units/a3), [`A4`](/reference/library/dsp/units/a4), [`A5`](/reference/library/dsp/units/a5)...
+- **`Dsp::Delay::FractionalDelay`** (1 definitions): [`Line`](/reference/library/dsp/delay/fractionaldelay/line)
+- **`Dsp::Dynamics::Compressor`** (1 definitions): [`Device`](/reference/library/dsp/dynamics/compressor/device)
+- **`Dsp::Dynamics::EnvelopeFollower`** (1 definitions): [`Follower`](/reference/library/dsp/dynamics/envelopefollower/follower)
+- **`Dsp::Dynamics::Limiter`** (1 definitions): [`Fast`](/reference/library/dsp/dynamics/limiter/fast)
 - **`Dsp::Filters`** (4 definitions): [`BandPass`](/reference/library/dsp/filters/bandpass), [`BiQuad`](/reference/library/dsp/filters/biquad), [`LowPass`](/reference/library/dsp/filters/lowpass), [`Rectify`](/reference/library/dsp/filters/rectify)
+- **`Dsp::Filters::Cic`** (1 definitions): [`Decimator2`](/reference/library/dsp/filters/cic/decimator2)
+- **`Dsp::Filters::Halfband`** (1 definitions): [`Fir7`](/reference/library/dsp/filters/halfband/fir7)
 - **`Dsp::Generators`** (6 definitions): [`AD`](/reference/library/dsp/generators/ad), [`BandLimitedSaw`](/reference/library/dsp/generators/bandlimitedsaw), [`Impulse`](/reference/library/dsp/generators/impulse), [`Oscillator`](/reference/library/dsp/generators/oscillator), [`Sequencer`](/reference/library/dsp/generators/sequencer), [`TableOscillator`](/reference/library/dsp/generators/tableoscillator)
+- **`Dsp::Nonlinear::Saturate`** (2 definitions): [`SoftClip`](/reference/library/dsp/nonlinear/saturate/softclip), [`Tanh`](/reference/library/dsp/nonlinear/saturate/tanh)
+- **`Dsp::Spectral::Goertzel`** (1 definitions): [`Detector`](/reference/library/dsp/spectral/goertzel/detector)
 
-#### Package `IO` (`package IO`)
+#### Package Estimation
+
+- **`Estimation::Kalman`** (1 definitions): [`Filter`](/reference/library/estimation/kalman/filter)
+- **`Estimation::PeakDetector`** (1 definitions): [`Detector`](/reference/library/estimation/peakdetector/detector)
+
+#### Package IO
 
 - **`IO::Console`** (3 definitions): [`Log`](/reference/library/io/console/log), [`Print`](/reference/library/io/console/print), [`Println`](/reference/library/io/console/println)
 - **`IO::Framing`** (5 definitions): [`CobsDelimiter`](/reference/library/io/framing/cobsdelimiter), [`SlipEnd`](/reference/library/io/framing/slipend), [`SlipEsc`](/reference/library/io/framing/slipesc), [`SlipEscEnd`](/reference/library/io/framing/slipescend), [`SlipEscEsc`](/reference/library/io/framing/slipescesc)
@@ -54,7 +71,25 @@ Cohesive, domain-specific modules organized under namespaced packages. In user c
 - **`IO::Osc`** (2 definitions): [`In`](/reference/library/io/osc/in), [`Out`](/reference/library/io/osc/out)
 - **`IO::Serial`** (3 definitions): [`In`](/reference/library/io/serial/in), [`Out`](/reference/library/io/serial/out), [`Print`](/reference/library/io/serial/print)
 
-#### Package `Math` (`package Math`)
+#### Package LinAlg
+
+- **`LinAlg::Matrices`** (4 definitions): [`MatMul2x2`](/reference/library/linalg/matrices/matmul2x2), [`Transform2D`](/reference/library/linalg/matrices/transform2d), [`Transform3D`](/reference/library/linalg/matrices/transform3d), [`Transpose2x2`](/reference/library/linalg/matrices/transpose2x2)
+- **`LinAlg::Quaternion`** (4 definitions): [`Conjugate`](/reference/library/linalg/quaternion/conjugate), [`Multiply`](/reference/library/linalg/quaternion/multiply), [`Norm`](/reference/library/linalg/quaternion/norm), [`RotateVector3D`](/reference/library/linalg/quaternion/rotatevector3d)
+- **`LinAlg::Vectors`** (7 definitions): [`Cross3D`](/reference/library/linalg/vectors/cross3d), [`Dot2D`](/reference/library/linalg/vectors/dot2d), [`Dot3D`](/reference/library/linalg/vectors/dot3d), [`Norm2D`](/reference/library/linalg/vectors/norm2d), [`Norm3D`](/reference/library/linalg/vectors/norm3d), [`Normalize2D`](/reference/library/linalg/vectors/normalize2d)...
+
+#### Package Math
 
 - **`Math::Constants`** (3 definitions): [`E`](/reference/library/math/constants/e), [`Pi`](/reference/library/math/constants/pi), [`TwoPi`](/reference/library/math/constants/twopi)
+
+#### Package Sensors
+
+- **`Sensors::Conditioning`** (4 definitions): [`ComplementaryFilter`](/reference/library/sensors/conditioning/complementaryfilter), [`Deadband`](/reference/library/sensors/conditioning/deadband), [`Debounce`](/reference/library/sensors/conditioning/debounce), [`LinearCalibration`](/reference/library/sensors/conditioning/linearcalibration)
+
+#### Package Test
+
+- **`Test::Assertions`** (1 definitions): [`AssertInRange`](/reference/library/test/assertions/assertinrange)
+
+#### Package Window
+
+- **`Window::Functions`** (4 definitions): [`Blackman`](/reference/library/window/functions/blackman), [`FlatTop`](/reference/library/window/functions/flattop), [`Hamming`](/reference/library/window/functions/hamming), [`Hann`](/reference/library/window/functions/hann)
 

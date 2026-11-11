@@ -5,7 +5,7 @@ description: "Stereo panner splitting a mono signal into stereo left [0] and rig
 
 # Pan
 
-<span class="stride-badge">Module</span> `package Dsp` &bull; Namespace: **`Dsp`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Dsp.stride#L64" target="_blank" rel="noopener" title="View source on GitHub">[Dsp.stride:64]</a>
+<span class="stride-badge">Module</span> `package Dsp` &bull; Namespace: **`Dsp`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Dsp.stride#L69" target="_blank" rel="noopener" title="View source on GitHub">[Dsp.stride:69]</a>
 
 Stereo panner splitting a mono signal into stereo left [0] and right [1].
 
@@ -14,7 +14,7 @@ Stereo panner splitting a mono signal into stereo left [0] and right [1].
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | Mono input signal |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | Stereo output signal bundle [left, right] |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | Stereo output signal array [left, right] |
 
 ## Properties
 

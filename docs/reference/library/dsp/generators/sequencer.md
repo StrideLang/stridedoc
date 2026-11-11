@@ -20,7 +20,7 @@ Step sequencer module.
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `values` | `signal` | — | — | — | Values in the sequencer |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `values` | `constant` | — | — | — | Values in the sequencer |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

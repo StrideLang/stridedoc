@@ -14,7 +14,7 @@ Stereo panner splitting a mono signal into stereo left [0] and right [1].
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | Mono input signal |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | Stereo output signal bundle [left, right] |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | Stereo output signal array [left, right] |
 
 ## Properties
 

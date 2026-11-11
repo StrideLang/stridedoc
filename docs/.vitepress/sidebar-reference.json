@@ -216,22 +216,6 @@
             "link": "/reference/library/math/abs"
           },
           {
-            "text": "C1",
-            "link": "/reference/library/math/c1"
-          },
-          {
-            "text": "C2",
-            "link": "/reference/library/math/c2"
-          },
-          {
-            "text": "C3",
-            "link": "/reference/library/math/c3"
-          },
-          {
-            "text": "C4",
-            "link": "/reference/library/math/c4"
-          },
-          {
             "text": "Clamp",
             "link": "/reference/library/math/clamp"
           },
@@ -316,6 +300,46 @@
           {
             "text": "Optimal",
             "link": "/reference/library/qualitypolicy/optimal"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Package Control",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Control",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "Clarke",
+            "link": "/reference/library/control/foc/clarke"
+          },
+          {
+            "text": "Hysteresis",
+            "link": "/reference/library/control/hysteresis/hysteresis"
+          },
+          {
+            "text": "InverseClarke",
+            "link": "/reference/library/control/foc/inverseclarke"
+          },
+          {
+            "text": "InversePark",
+            "link": "/reference/library/control/foc/inversepark"
+          },
+          {
+            "text": "Park",
+            "link": "/reference/library/control/foc/park"
+          },
+          {
+            "text": "Pid",
+            "link": "/reference/library/control/pid/pid"
+          },
+          {
+            "text": "SlewRateLimiter",
+            "link": "/reference/library/control/slewratelimiter/slewratelimiter"
           }
         ]
       }
@@ -582,6 +606,46 @@
         ]
       },
       {
+        "text": "Dsp::Delay::FractionalDelay",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Line",
+            "link": "/reference/library/dsp/delay/fractionaldelay/line"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Dynamics::Compressor",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Device",
+            "link": "/reference/library/dsp/dynamics/compressor/device"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Dynamics::EnvelopeFollower",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Follower",
+            "link": "/reference/library/dsp/dynamics/envelopefollower/follower"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Dynamics::Limiter",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Fast",
+            "link": "/reference/library/dsp/dynamics/limiter/fast"
+          }
+        ]
+      },
+      {
         "text": "Dsp::Filters",
         "collapsed": false,
         "items": [
@@ -600,6 +664,26 @@
           {
             "text": "Rectify",
             "link": "/reference/library/dsp/filters/rectify"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Filters::Cic",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Decimator2",
+            "link": "/reference/library/dsp/filters/cic/decimator2"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Filters::Halfband",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Fir7",
+            "link": "/reference/library/dsp/filters/halfband/fir7"
           }
         ]
       },
@@ -630,6 +714,56 @@
           {
             "text": "TableOscillator",
             "link": "/reference/library/dsp/generators/tableoscillator"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Nonlinear::Saturate",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "SoftClip",
+            "link": "/reference/library/dsp/nonlinear/saturate/softclip"
+          },
+          {
+            "text": "Tanh",
+            "link": "/reference/library/dsp/nonlinear/saturate/tanh"
+          }
+        ]
+      },
+      {
+        "text": "Dsp::Spectral::Goertzel",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Detector",
+            "link": "/reference/library/dsp/spectral/goertzel/detector"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Package Estimation",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Estimation::Kalman",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "Filter",
+            "link": "/reference/library/estimation/kalman/filter"
+          }
+        ]
+      },
+      {
+        "text": "Estimation::PeakDetector",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "Detector",
+            "link": "/reference/library/estimation/peakdetector/detector"
           }
         ]
       }
@@ -740,6 +874,90 @@
     ]
   },
   {
+    "text": "Package LinAlg",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "LinAlg::Matrices",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "MatMul2x2",
+            "link": "/reference/library/linalg/matrices/matmul2x2"
+          },
+          {
+            "text": "Transform2D",
+            "link": "/reference/library/linalg/matrices/transform2d"
+          },
+          {
+            "text": "Transform3D",
+            "link": "/reference/library/linalg/matrices/transform3d"
+          },
+          {
+            "text": "Transpose2x2",
+            "link": "/reference/library/linalg/matrices/transpose2x2"
+          }
+        ]
+      },
+      {
+        "text": "LinAlg::Quaternion",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Conjugate",
+            "link": "/reference/library/linalg/quaternion/conjugate"
+          },
+          {
+            "text": "Multiply",
+            "link": "/reference/library/linalg/quaternion/multiply"
+          },
+          {
+            "text": "Norm",
+            "link": "/reference/library/linalg/quaternion/norm"
+          },
+          {
+            "text": "RotateVector3D",
+            "link": "/reference/library/linalg/quaternion/rotatevector3d"
+          }
+        ]
+      },
+      {
+        "text": "LinAlg::Vectors",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "Cross3D",
+            "link": "/reference/library/linalg/vectors/cross3d"
+          },
+          {
+            "text": "Dot2D",
+            "link": "/reference/library/linalg/vectors/dot2d"
+          },
+          {
+            "text": "Dot3D",
+            "link": "/reference/library/linalg/vectors/dot3d"
+          },
+          {
+            "text": "Norm2D",
+            "link": "/reference/library/linalg/vectors/norm2d"
+          },
+          {
+            "text": "Norm3D",
+            "link": "/reference/library/linalg/vectors/norm3d"
+          },
+          {
+            "text": "Normalize2D",
+            "link": "/reference/library/linalg/vectors/normalize2d"
+          },
+          {
+            "text": "Normalize3D",
+            "link": "/reference/library/linalg/vectors/normalize3d"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "text": "Package Math",
     "collapsed": false,
     "items": [
@@ -758,6 +976,78 @@
           {
             "text": "TwoPi",
             "link": "/reference/library/math/constants/twopi"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Package Sensors",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Sensors::Conditioning",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "ComplementaryFilter",
+            "link": "/reference/library/sensors/conditioning/complementaryfilter"
+          },
+          {
+            "text": "Deadband",
+            "link": "/reference/library/sensors/conditioning/deadband"
+          },
+          {
+            "text": "Debounce",
+            "link": "/reference/library/sensors/conditioning/debounce"
+          },
+          {
+            "text": "LinearCalibration",
+            "link": "/reference/library/sensors/conditioning/linearcalibration"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Package Test",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Test::Assertions",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "AssertInRange",
+            "link": "/reference/library/test/assertions/assertinrange"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "text": "Package Window",
+    "collapsed": false,
+    "items": [
+      {
+        "text": "Window::Functions",
+        "collapsed": false,
+        "items": [
+          {
+            "text": "Blackman",
+            "link": "/reference/library/window/functions/blackman"
+          },
+          {
+            "text": "FlatTop",
+            "link": "/reference/library/window/functions/flattop"
+          },
+          {
+            "text": "Hamming",
+            "link": "/reference/library/window/functions/hamming"
+          },
+          {
+            "text": "Hann",
+            "link": "/reference/library/window/functions/hann"
           }
         ]
       }
