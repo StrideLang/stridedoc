@@ -16,6 +16,9 @@
 			"include": "#directives"
 		},
 		{
+			"include": "#range-operator"
+		},
+		{
 			"include": "#numbers"
 		},
 		{
@@ -29,6 +32,9 @@
 		},
 		{
 			"include": "#builtin-types"
+		},
+		{
+			"include": "#builtin-functions"
 		},
 		{
 			"include": "#declarations"
@@ -223,7 +229,7 @@
 				},
 				{
 					"name": "constant.numeric.float.stride",
-					"match": "(?<![0-9a-zA-Z_])(\\.[0-9](?:_?[0-9])*(?:[eE][+-]?[0-9](?:_?[0-9])*)?)(f(?:32|64))?\\b",
+					"match": "(?<![0-9a-zA-Z_.])(\\.[0-9](?:_?[0-9])*(?:[eE][+-]?[0-9](?:_?[0-9])*)?)(f(?:32|64))?\\b",
 					"captures": {
 						"2": {
 							"name": "storage.type.numeric.stride"
@@ -286,10 +292,18 @@
 				}
 			]
 		},
+		"builtin-functions": {
+			"patterns": [
+				{
+					"name": "support.function.stride",
+					"match": "\\b(Abs|AD|And|Average|BandLimitedSaw|BandPass|BiQuad|Clamp|Clip|ComputeMix|CorrectPhase|Cos|Counter|DebugPrint|Divide|Equal|Error|Exit|Exp|ExpectEqual|ExpectFalse|ExpectGe|ExpectGt|ExpectLe|ExpectLt|ExpectNear|ExpectTrue|FallingEdge|Floor|Greater|GreaterOrEqual|Impulse|Inverse|Latch|Lerp|Less|LessOrEqual|Level|LowPass|Map|Max|Min|Mix|Multiply|Nand|NextStep|Nor|Not|NotEqual|OnChange|Or|Oscillator|OSCIn|OSCOut|Pan|Pow|Print|Probe|Rectify|RisingEdge|Select|Sequencer|SerialPrint|Sign|Sin|Smooth|TableOscillator|Tan|Tap|Watch|Wrap|WrapPhase|Xor|__Abs|__And|__Cos|__DebugPrint|__Equal|__ExitDomain|__Exp|__Floor|__Greater|__GreaterOrEqual|__Less|__LessOrEqual|__Nand|__Nor|__Not|__NotEqual|__Or|__OscOut|__Pow|__Select|__Sin|__Tan|__Xor)\\b"
+				}
+			]
+		},
 		"declarations": {
 			"patterns": [
 				{
-					"match": "\\b(module|reaction|loop)\\s+([_a-zA-Z0-9_]+)(?:\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@\\s*[_a-zA-Z0-9]+))?\\s*(?=\\{)",
+					"match": "\\b(module|reaction|loop)\\s+([_a-zA-Z0-9_]+)(\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@\\s*[_a-zA-Z0-9]+))?\\s*(?=\\{)",
 					"captures": {
 						"1": {
 							"name": "storage.type.declaration.stride"
@@ -298,20 +312,19 @@
 							"name": "entity.name.function.stride"
 						},
 						"3": {
+							"patterns": [
+								{
+									"include": "#bracket-contents"
+								}
+							]
+						},
+						"4": {
 							"name": "entity.other.attribute-name.annotation.stride"
 						}
 					}
 				},
 				{
-					"match": "\\b(module|reaction|loop)\\b",
-					"captures": {
-						"1": {
-							"name": "storage.type.declaration.stride"
-						}
-					}
-				},
-				{
-					"match": "\\b(_domainDefinition|gameDefinition|domainDeclaration|platformModule|platformFunction|state|transition|action|type|feature)\\s+(_*[a-zA-Z0-9_]+)(?:\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@\\s*[_a-zA-Z0-9]+))?",
+					"match": "\\b(_domainDefinition|gameDefinition|domainDeclaration|platformModule|platformFunction|state|transition|action|type|feature)\\s+(_*[a-zA-Z0-9_]+)(\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@\\s*[_a-zA-Z0-9]+))?",
 					"captures": {
 						"1": {
 							"name": "storage.type.declaration.stride"
@@ -320,12 +333,27 @@
 							"name": "entity.name.type.class.stride"
 						},
 						"3": {
+							"patterns": [
+								{
+									"include": "#bracket-contents"
+								}
+							]
+						},
+						"4": {
 							"name": "entity.other.attribute-name.annotation.stride"
 						}
 					}
 				},
 				{
-					"match": "\\b(_domainDefinition|gameDefinition|domainDeclaration|platformModule|platformFunction|module|reaction|loop|state|transition|action|type|feature)\\s*(?=(?:\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*@[_a-zA-Z0-9]+)?\\s*\\{)",
+					"match": "\\b(_domainDefinition|gameDefinition|domainDeclaration|platformModule|platformFunction|module|reaction|loop|state|transition|action|type|feature|signal|switch|trigger|mainInputPort|mainOutputPort|propertyInputPort|propertyOutputPort|port|typeProperty|constant|buffer|table|list|group)\\s*(?=(?:\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*@[_a-zA-Z0-9]+)?\\s*\\{)",
+					"captures": {
+						"1": {
+							"name": "storage.type.declaration.stride"
+						}
+					}
+				},
+				{
+					"match": "\\b(_domainDefinition|gameDefinition|domainDeclaration|platformModule|platformFunction|module|reaction|loop|state|transition|action|type|feature|signal|switch|trigger|mainInputPort|mainOutputPort|propertyInputPort|propertyOutputPort|port|typeProperty|constant|buffer|table|list|group)\\b",
 					"captures": {
 						"1": {
 							"name": "storage.type.declaration.stride"
@@ -337,7 +365,7 @@
 		"block-declarations": {
 			"patterns": [
 				{
-					"match": "\\b(signal|switch|trigger|mainInputPort|mainOutputPort|propertyInputPort|propertyOutputPort|port|typeProperty)\\s+(_*[a-zA-Z0-9_]+)(?:\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@\\s*[_a-zA-Z0-9]+))?",
+					"match": "\\b(signal|switch|trigger|mainInputPort|mainOutputPort|propertyInputPort|propertyOutputPort|port|typeProperty|constant|buffer|table|list|group)\\s+(_*[a-zA-Z0-9_]+)(\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@\\s*[_a-zA-Z0-9]+))?",
 					"captures": {
 						"1": {
 							"name": "storage.type.declaration.stride"
@@ -346,12 +374,19 @@
 							"name": "variable.other.constant.stride"
 						},
 						"3": {
+							"patterns": [
+								{
+									"include": "#bracket-contents"
+								}
+							]
+						},
+						"4": {
 							"name": "entity.other.attribute-name.annotation.stride"
 						}
 					}
 				},
 				{
-					"match": "\\b(signal|switch|trigger|mainInputPort|mainOutputPort|propertyInputPort|propertyOutputPort|port|typeProperty)\\s*(?=(?:\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*@[_a-zA-Z0-9]+)?\\s*\\{)",
+					"match": "\\b(signal|switch|trigger|mainInputPort|mainOutputPort|propertyInputPort|propertyOutputPort|port|typeProperty|constant|buffer|table|list|group)\\s*(?=(?:\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*@[_a-zA-Z0-9]+)?\\s*\\{)",
 					"captures": {
 						"1": {
 							"name": "storage.type.declaration.stride"
@@ -363,7 +398,7 @@
 		"generic-declarations": {
 			"patterns": [
 				{
-					"match": "\\b([_a-z][a-zA-Z0-9_]*)\\s+([_A-Z][a-zA-Z0-9_]*)(?:\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@)\\s*([_a-zA-Z0-9]+))?\\s*(?=\\{)",
+					"match": "\\b([_a-z][a-zA-Z0-9_]*)\\s+([_A-Z][a-zA-Z0-9_]*)(\\s*\\[(?:[^\\[\\]]|\\[[^\\]]*\\])*\\])?(?:\\s*(@)\\s*([_a-zA-Z0-9]+))?\\s*(?=\\{)",
 					"captures": {
 						"1": {
 							"name": "storage.type.declaration.stride"
@@ -372,9 +407,16 @@
 							"name": "entity.name.type.class.stride"
 						},
 						"3": {
-							"name": "punctuation.definition.annotation.stride"
+							"patterns": [
+								{
+									"include": "#bracket-contents"
+								}
+							]
 						},
 						"4": {
+							"name": "punctuation.definition.annotation.stride"
+						},
+						"5": {
 							"name": "entity.other.attribute-name.annotation.stride"
 						}
 					}
@@ -406,16 +448,13 @@
 					}
 				},
 				{
-					"match": "(>>)\\s*([_A-Z][_a-zA-Z0-9_]*)\\s*(>>)",
+					"match": "(>>)\\s*([_a-zA-Z0-9_]+)(?=(?:\\[[^\\]]*\\])?(?:@\\s*[_a-zA-Z0-9]+)?\\s*>>)",
 					"captures": {
 						"1": {
 							"name": "keyword.operator.stream.stride"
 						},
 						"2": {
 							"name": "entity.name.function.stride"
-						},
-						"3": {
-							"name": "keyword.operator.stream.stride"
 						}
 					}
 				}
@@ -530,8 +569,62 @@
 					"match": "\\b(_*[A-Z][a-zA-Z0-9_]*)\\b"
 				},
 				{
-					"name": "variable.language.stride",
+					"name": "variable.other.stride",
 					"match": "\\b(_*[a-z][a-zA-Z0-9_]*)\\b"
+				}
+			]
+		},
+		"bracket-contents": {
+			"patterns": [
+				{
+					"include": "#comments"
+				},
+				{
+					"include": "#strings"
+				},
+				{
+					"include": "#apostrings"
+				},
+				{
+					"include": "#range-operator"
+				},
+				{
+					"include": "#numbers"
+				},
+				{
+					"include": "#constants"
+				},
+				{
+					"include": "#keywords"
+				},
+				{
+					"include": "#builtin-types"
+				},
+				{
+					"include": "#builtin-functions"
+				},
+				{
+					"include": "#function-call"
+				},
+				{
+					"include": "#scope-resolution"
+				},
+				{
+					"include": "#member-access"
+				},
+				{
+					"include": "#operators"
+				},
+				{
+					"include": "#identifiers"
+				}
+			]
+		},
+		"range-operator": {
+			"patterns": [
+				{
+					"name": "keyword.operator.range.stride",
+					"match": "\\.\\."
 				}
 			]
 		}
