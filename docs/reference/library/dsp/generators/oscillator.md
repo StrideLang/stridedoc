@@ -29,6 +29,12 @@ Bipolar output [-1.0, 1.0] scaled by amplitude.
   <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
 </div>
 
+## Constraints
+
+```stride
+[OutputPort.rate, 0] >> LessOrEqual() >> Error(message: "The rate of the signal block connected to the main output port of the Oscillator module cannot be less than or equal to zero.");
+```
+
 ## Usage
 
 ```stride

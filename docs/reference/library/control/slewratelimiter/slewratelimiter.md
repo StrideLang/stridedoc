@@ -28,6 +28,12 @@ Limits the rate of change of a signal in units per second: Input >> SlewRateLimi
   <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
 </div>
 
+## Constraints
+
+```stride
+[OutputPort.rate, 0] >> LessOrEqual() >> Error(message: "Control::SlewRateLimiter needs a positive rate: up and down are per second, converted against the rate of the output.");
+```
+
 ## Usage
 
 ```stride

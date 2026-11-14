@@ -29,6 +29,12 @@ RBJ Audio EQ Cookbook biquad design: Frequency >> FilterDesign::Coefficients(mod
   <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
 </div>
 
+## Constraints
+
+```stride
+[CoefficientsPort.rate, 0] >> LessOrEqual() >> Error(message: "FilterDesign::Coefficients needs a positive rate: the sample rate is the rate of its output.");
+```
+
 ## Usage
 
 ```stride

@@ -27,6 +27,12 @@ Wedge (exterior) product of two vectors of any dimension: VecA >> Wedge(with: Ve
   <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
 </div>
 
+## Constraints
+
+```stride
+[VectorAPort.size * (VectorAPort.size - 1), OutputPort.size * 2] >> NotEqual() >> Error(message: "LinAlg::Vectors::Wedge: the output needs n * (n - 1) / 2 components for vectors of n components.");
+```
+
 ## Usage
 
 ```stride

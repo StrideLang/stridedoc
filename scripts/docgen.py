@@ -179,7 +179,8 @@ class StrideDocParser:
             'value': None,
             'ports': [],
             'entities': [],
-            'properties': {}
+            'properties': {},
+            'constraints': []
         }
 
         brace_depth = 1
@@ -234,6 +235,13 @@ class StrideDocParser:
                 if self.peek()[0] == 'BRACKET_OPEN':
                     self.advance()
                     block_data['entities'] = self.parse_entities_list()
+                continue
+
+            # constraints: [ ... ] or constraints: ...
+            if kind == 'IDENT' and self.peek(1)[0] == 'COLON' and val == 'constraints':
+                self.advance()
+                self.advance()
+                block_data['constraints'] = self.parse_constraints_list()
                 continue
 
             self.advance()
@@ -414,6 +422,121 @@ class StrideDocParser:
 
         return entities
 
+    def parse_constraints_list(self) -> List[str]:
+        """Parses constraints list or single stream and returns a list of formatted Stride constraint statements."""
+        if self.idx >= self.length:
+            return []
+
+        # Determine if outer list
+        is_outer_list = False
+        k0, v0, _ = self.peek()
+        if k0 == 'BRACKET_OPEN':
+            k1, v1, _ = self.peek(1)
+            if k1 == 'BRACKET_CLOSE':
+                # Empty list []
+                self.advance() # '['
+                self.advance() # ']'
+                return []
+            elif k1 == 'BRACKET_OPEN':
+                is_outer_list = True
+            else:
+                # Check lookahead to see if there is a SEMICOLON before matching BRACKET_CLOSE
+                depth = 1
+                j = 1
+                while self.idx + j < self.length and depth > 0:
+                    tok_k, _, _ = self.peek(j)
+                    if tok_k == 'BRACKET_OPEN':
+                        depth += 1
+                    elif tok_k == 'BRACKET_CLOSE':
+                        depth -= 1
+                    elif tok_k == 'SEMICOLON':
+                        is_outer_list = True
+                        break
+                    j += 1
+
+        raw_statements = []
+        if is_outer_list:
+            self.advance() # consume outer '['
+            bracket_depth = 1
+            curr_tokens = []
+            while self.idx < self.length and bracket_depth > 0:
+                tok_k, tok_v, tok_line = self.peek()
+                if tok_k == 'BRACKET_OPEN':
+                    bracket_depth += 1
+                    curr_tokens.append(self.advance())
+                elif tok_k == 'BRACKET_CLOSE':
+                    bracket_depth -= 1
+                    if bracket_depth == 0:
+                        self.advance()
+                        break
+                    curr_tokens.append(self.advance())
+                elif tok_k == 'SEMICOLON' and bracket_depth == 1:
+                    curr_tokens.append(self.advance())
+                    if curr_tokens:
+                        raw_statements.append(curr_tokens)
+                        curr_tokens = []
+                else:
+                    curr_tokens.append(self.advance())
+            if curr_tokens:
+                raw_statements.append(curr_tokens)
+        else:
+            curr_tokens = []
+            while self.idx < self.length:
+                tok_k, tok_v, tok_line = self.peek()
+                if tok_k in ('SEMICOLON', 'BRACE_CLOSE'):
+                    if tok_k == 'SEMICOLON':
+                        curr_tokens.append(self.advance())
+                    break
+                curr_tokens.append(self.advance())
+            if curr_tokens:
+                raw_statements.append(curr_tokens)
+
+        # Format each statement into clean Stride code
+        formatted_constraints = []
+        for stmt_tokens in raw_statements:
+            code = self.format_constraint_tokens(stmt_tokens)
+            if code:
+                formatted_constraints.append(code)
+
+        return formatted_constraints
+
+    @staticmethod
+    def format_constraint_tokens(tokens: List[tuple]) -> str:
+        """Formats constraint tokens into clean, readable Stride code."""
+        res = []
+        for k, v, _ in tokens:
+            if k == 'STRING':
+                escaped = v.replace('"', '\\"')
+                res.append(f'"{escaped}"')
+            elif k == 'STREAM_OP':
+                res.append('>>')
+            else:
+                res.append(str(v))
+        
+        s = ''
+        for i, part in enumerate(res):
+            if i == 0:
+                s += part
+                continue
+            prev = res[i-1]
+            if part in (',', ';', ')', ':', '.'):
+                s += part
+            elif part in (']', '}'):
+                s += part
+            elif prev in ('(', '[', '{', '.'):
+                s += part
+            elif part in ('()', '[]', '{}') and prev.isidentifier():
+                s += part
+            elif part == '(' and prev.isidentifier():
+                s += part
+            elif prev in ('>>', '+', '-', '*', '/', '<', '>', '<=', '>=', '==', '!=') or part in ('>>', '+', '-', '*', '/', '<', '>', '<=', '>=', '==', '!='):
+                s += ' ' + part
+            elif prev in (',', ':'):
+                s += ' ' + part
+            else:
+                s += ' ' + part
+        return s.strip()
+
 
 def render_port_icon(kind: str) -> str:
     """Returns a sober, compact badge for the port/property kind."""
@@ -499,6 +622,7 @@ def generate_markdown_for_declaration(
     entities = decl.get('entities', [])
     value = decl.get('value', None)
     line_no = decl.get('line', 1)
+    constraints = decl.get('constraints', [])
 
     # Build entity lookup map
     entity_map = {}
@@ -589,6 +713,15 @@ def generate_markdown_for_declaration(
         md.append('  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>')
         md.append('  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>')
         md.append('</div>\n')
+
+    # Constraints (if any)
+    if constraints:
+        md.append("## Constraints\n")
+        md.append("```stride")
+        for c in constraints:
+            stmt = c if c.endswith(';') else f"{c};"
+            md.append(stmt)
+        md.append("```\n")
 
     # Usage Example
     md.append("## Usage\n")
