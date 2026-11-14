@@ -13,6 +13,31 @@ if (fs.existsSync(grammarPath)) {
 // Load Auto-generated Reference Sidebar
 import referenceCategories from './sidebar-reference.json';
 
+const docSidebar = [
+  {
+    text: 'Guides',
+    items: [
+      { text: 'Design Rationale', link: '/learn/why-stride' },
+      { text: 'Getting Started', link: '/learn/getting-started' },
+      { text: 'Language Tour', link: '/learn/language-tour' }
+    ]
+  },
+  {
+    text: 'Architecture',
+    items: [
+      { text: 'Systems, Frameworks & Domains', link: '/learn/systems-and-domains' },
+      { text: 'Digital Signal Processing', link: '/learn/audio-dsp' }
+    ]
+  },
+  {
+    text: 'Reference',
+    items: [
+      { text: 'Standard Library Overview', link: '/reference/library/' },
+      ...referenceCategories
+    ]
+  }
+];
+
 export default withMermaid(
   defineConfig({
     title: "Stride",
@@ -45,10 +70,7 @@ export default withMermaid(
     siteTitle: 'Stride',
 
     nav: [
-      { text: 'Documentation', link: '/learn/getting-started' },
-      { text: 'Language Tour', link: '/learn/language-tour' },
-      { text: 'Reference', link: '/reference/library/' },
-      { text: 'Architecture', link: '/learn/systems-and-domains' },
+      { text: 'Documentation', link: '/learn/getting-started', activeMatch: '^/(learn|reference)/' },
       {
         text: 'Ecosystem',
         items: [
@@ -60,32 +82,8 @@ export default withMermaid(
     ],
 
     sidebar: {
-      '/learn/': [
-        {
-          text: 'Introduction',
-          items: [
-            { text: 'Design Rationale', link: '/learn/why-stride' },
-            { text: 'Getting Started', link: '/learn/getting-started' },
-            { text: 'Language Tour', link: '/learn/language-tour' }
-          ]
-        },
-        {
-          text: 'Architecture & Specifications',
-          items: [
-            { text: 'Systems, Frameworks & Domains', link: '/learn/systems-and-domains' },
-            { text: 'Digital Signal Processing', link: '/learn/audio-dsp' }
-          ]
-        }
-      ],
-      '/reference/': [
-        {
-          text: 'Standard Library',
-          items: [
-            { text: 'Overview & Namespaces', link: '/reference/library/' }
-          ]
-        },
-        ...referenceCategories
-      ]
+      '/learn/': docSidebar,
+      '/reference/': docSidebar
     },
 
     search: {

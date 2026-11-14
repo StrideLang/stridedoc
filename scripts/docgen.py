@@ -718,7 +718,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                     'link': f"{link_prefix}/{file_slug}"
                 })
 
-    def build_sidebar_items(target_dict, order_list, default_open=None):
+    def build_sidebar_items(target_dict, order_list):
         section_items = []
         for g_key in order_list:
             items_list = target_dict.get(g_key, [])
@@ -729,22 +729,19 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                     seen.add(it['text'])
                     deduped.append(it)
             if deduped:
-                is_collapsed = True
-                if default_open and (g_key in default_open or "*" in default_open):
-                    is_collapsed = False
                 section_items.append({
                     'text': g_key,
-                    'collapsed': is_collapsed,
+                    'collapsed': True,
                     'items': deduped
                 })
         return section_items
 
-    prelude_items = build_sidebar_items(prelude_groups, prelude_order, default_open={'Math (Group)', 'BasicOperations (Group)'})
+    prelude_items = build_sidebar_items(prelude_groups, prelude_order)
 
     sidebar_config = [
         {
             'text': "Global Prelude",
-            'collapsed': False,
+            'collapsed': True,
             'items': prelude_items
         }
     ]
@@ -752,14 +749,10 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
     for top_pkg in sorted(package_groups.keys()):
         order = package_order[top_pkg]
         groups = package_groups[top_pkg]
-        default_open = {'*'} if len(order) <= 2 else {
-            'Dsp::Generators', 'Dsp::Filters', 'IO::Console', 'IO::Serial',
-            'LinAlg::Vectors', 'Control', 'Sensors::Conditioning', 'Window::Functions'
-        }
-        pkg_items = build_sidebar_items(groups, order, default_open=default_open)
+        pkg_items = build_sidebar_items(groups, order)
         sidebar_config.append({
             'text': f"Package {top_pkg}",
-            'collapsed': False,
+            'collapsed': True,
             'items': pkg_items
         })
 

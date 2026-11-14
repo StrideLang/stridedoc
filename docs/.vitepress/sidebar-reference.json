@@ -1,7 +1,7 @@
 [
   {
     "text": "Global Prelude",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Assertions (Group)",
@@ -51,7 +51,7 @@
       },
       {
         "text": "BasicOperations (Group)",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Average",
@@ -205,7 +205,7 @@
       },
       {
         "text": "Math (Group)",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Abs",
@@ -317,11 +317,11 @@
   },
   {
     "text": "Package Control",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Control",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Clarke",
@@ -357,7 +357,7 @@
   },
   {
     "text": "Package Dsp",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Dsp::FilterDesign",
@@ -663,7 +663,7 @@
       },
       {
         "text": "Dsp::Filters",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "AllPass",
@@ -725,7 +725,7 @@
       },
       {
         "text": "Dsp::Generators",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "AD",
@@ -781,11 +781,11 @@
   },
   {
     "text": "Package Estimation",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Estimation::Kalman",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Filter",
@@ -795,7 +795,7 @@
       },
       {
         "text": "Estimation::PeakDetector",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Detector",
@@ -807,11 +807,11 @@
   },
   {
     "text": "Package IO",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "IO::Console",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Log",
@@ -891,7 +891,7 @@
       },
       {
         "text": "IO::Serial",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "In",
@@ -911,7 +911,7 @@
   },
   {
     "text": "Package LinAlg",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "LinAlg::Matrices",
@@ -951,7 +951,7 @@
       },
       {
         "text": "LinAlg::Vectors",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Dot",
@@ -979,11 +979,11 @@
   },
   {
     "text": "Package Math",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Math::Constants",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "E",
@@ -1003,11 +1003,11 @@
   },
   {
     "text": "Package Sensors",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Sensors::Conditioning",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "ComplementaryFilter",
@@ -1031,11 +1031,11 @@
   },
   {
     "text": "Package Test",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Test::Assertions",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "AssertInRange",
@@ -1047,11 +1047,11 @@
   },
   {
     "text": "Package Window",
-    "collapsed": false,
+    "collapsed": true,
     "items": [
       {
         "text": "Window::Functions",
-        "collapsed": false,
+        "collapsed": true,
         "items": [
           {
             "text": "Blackman",
