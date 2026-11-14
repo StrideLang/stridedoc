@@ -11,24 +11,23 @@ Matrix product of any compatible shapes: MatA >> MatMul(with: MatB inner: 3 colu
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `MatrixAPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Row-major matrix A with m rows and `inner` columns |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Row-major result C with m rows and `columns` columns. Its size is m * columns |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-in">» In</span> | `MatrixAPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">R</span><code>OutputPort.rate</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Row-major matrix A with m rows and `inner` columns |
+| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">R</span><code>OutputPort.rate</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Row-major result C with m rows and `columns` columns. Its size is m * columns |
 
 ## Properties
 
-| | Property | Type | Default | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `with` | `OutputPort.type` | — | — | `OutputPort.domain` | Row-major matrix B with `inner` rows and `columns` columns |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `inner` | `Int` | `2` | — | `OutputPort.domain` | Number of columns of A, which is the number of rows of B (default 2) |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `columns` | `Int` | `2` | — | `OutputPort.domain` | Number of columns of B, which is the number of columns of the result (default 2) |
+| Property | Description |
+| :--- | :--- |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>with</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Row-major matrix B with `inner` rows and `columns` columns |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>inner</code></span> <span class="prop-default">= <code>2</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>Int</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Number of columns of A, which is the number of rows of B (default 2) |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>columns</code></span> <span class="prop-default">= <code>2</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>Int</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Number of columns of B, which is the number of columns of the result (default 2) |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

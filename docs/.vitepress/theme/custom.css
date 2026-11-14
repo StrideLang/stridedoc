@@ -172,6 +172,180 @@
   border-color: rgba(167, 139, 250, 0.30);
 }
 
+/* Stream Port Direction Badges (Colored icon + text In/Out) */
+.port-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.port-badge.stream-in {
+  background-color: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+.dark .port-badge.stream-in {
+  background-color: rgba(96, 165, 250, 0.12);
+  color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.30);
+}
+
+.port-badge.stream-out {
+  background-color: rgba(5, 150, 105, 0.08);
+  color: #047857;
+  border: 1px solid rgba(5, 150, 105, 0.25);
+}
+.dark .port-badge.stream-out {
+  background-color: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.30);
+}
+
+/* Property Name + Arrow Badges */
+.prop-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--vp-font-family-mono);
+  font-weight: 600;
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.prop-badge.prop-in {
+  color: #b45309;
+}
+.dark .prop-badge.prop-in {
+  color: #fbbf24;
+}
+
+.prop-badge.prop-out {
+  color: #6d28d9;
+}
+.dark .prop-badge.prop-out {
+  color: #a78bfa;
+}
+
+.prop-badge .prop-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.prop-default {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
+}
+
+/* Type, Rate, Domain Bubble Badges */
+.attr-bubble-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.attr-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.12rem 0.45rem 0.12rem 0.18rem;
+  border-radius: 9999px;
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+  white-space: nowrap;
+}
+
+.attr-bubble code {
+  background: transparent !important;
+  padding: 0 !important;
+  font-size: 0.72rem !important;
+  color: inherit !important;
+}
+
+.attr-bubble .bubble-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.65rem;
+  line-height: 1;
+}
+
+/* T (Type) bubble */
+.attr-bubble.bubble-type .bubble-key {
+  background-color: rgba(37, 99, 235, 0.14);
+  color: #1d4ed8;
+}
+.dark .attr-bubble.bubble-type .bubble-key {
+  background-color: rgba(96, 165, 250, 0.18);
+  color: #60a5fa;
+}
+
+/* R (Rate) bubble */
+.attr-bubble.bubble-rate .bubble-key {
+  background-color: rgba(13, 148, 136, 0.14);
+  color: #0f766e;
+}
+.dark .attr-bubble.bubble-rate .bubble-key {
+  background-color: rgba(45, 212, 191, 0.18);
+  color: #2dd4bf;
+}
+
+/* D (Domain) bubble */
+.attr-bubble.bubble-domain .bubble-key {
+  background-color: rgba(124, 58, 237, 0.14);
+  color: #6d28d9;
+}
+.dark .attr-bubble.bubble-domain .bubble-key {
+  background-color: rgba(167, 139, 250, 0.18);
+  color: #a78bfa;
+}
+
+.bubble-key.type-key {
+  background-color: rgba(37, 99, 235, 0.14);
+  color: #1d4ed8;
+}
+.dark .bubble-key.type-key {
+  background-color: rgba(96, 165, 250, 0.18);
+  color: #60a5fa;
+}
+
+.bubble-key.rate-key {
+  background-color: rgba(13, 148, 136, 0.14);
+  color: #0f766e;
+}
+.dark .bubble-key.rate-key {
+  background-color: rgba(45, 212, 191, 0.18);
+  color: #2dd4bf;
+}
+
+.bubble-key.domain-key {
+  background-color: rgba(124, 58, 237, 0.14);
+  color: #6d28d9;
+}
+.dark .bubble-key.domain-key {
+  background-color: rgba(167, 139, 250, 0.18);
+  color: #a78bfa;
+}
+
 .port-legend {
   display: flex;
   flex-wrap: wrap;
@@ -191,6 +365,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+.port-legend-item .bubble-key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  font-family: var(--vp-font-family-mono);
+  font-weight: 700;
+  font-size: 0.7rem;
+  line-height: 1;
 }
 
 /* Compact Table Formatting */

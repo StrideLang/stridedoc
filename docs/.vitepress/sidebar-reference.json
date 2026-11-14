@@ -1030,6 +1030,42 @@
     ]
   },
   {
+    "text": "Package Status",
+    "collapsed": true,
+    "items": [
+      {
+        "text": "Status (Root)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "Invalid",
+            "link": "/reference/library/status/invalid"
+          },
+          {
+            "text": "Ok",
+            "link": "/reference/library/status/ok"
+          },
+          {
+            "text": "OutOfRange",
+            "link": "/reference/library/status/outofrange"
+          },
+          {
+            "text": "Platform",
+            "link": "/reference/library/status/platform"
+          },
+          {
+            "text": "Truncated",
+            "link": "/reference/library/status/truncated"
+          },
+          {
+            "text": "Unavailable",
+            "link": "/reference/library/status/unavailable"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "text": "Package Test",
     "collapsed": true,
     "items": [

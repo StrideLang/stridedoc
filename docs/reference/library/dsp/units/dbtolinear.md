@@ -11,14 +11,15 @@ Converts decibels (dB) to linear amplitude ratio.
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `DbPort` | `LinearPort.type` | — | `DbPort.domain` | Amplitude in decibels (dB) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `LinearPort` | `LinearPort.type` | — | `LinearPort.domain` | Linear amplitude ratio |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-in">» In</span> | `DbPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>LinearPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>DbPort.domain</code></span></div> | Amplitude in decibels (dB) |
+| <span class="port-badge stream-out">» Out</span> | `LinearPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>LinearPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>LinearPort.domain</code></span></div> | Linear amplitude ratio |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

@@ -11,24 +11,23 @@ Selects between whenOn and whenOff signals based on a switch condition: Input >>
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | `OutputPort.domain` | Default signal flowing along the primary path |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | `OutputPort.domain` | Selected output signal |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-in">» In</span> | `InputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Default signal flowing along the primary path |
+| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Selected output signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `condition` | `switch` | — | — | `OutputPort.domain` | Switch condition determining which value is output |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `whenOn` | `signal` | — | — | `OutputPort.domain` | Signal produced when Condition is on |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `whenOff` | `signal` | `Input` | — | `OutputPort.domain` | Signal produced when Condition is off (defaults to Input if not specified) |
+| Property | Description |
+| :--- | :--- |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>condition</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>switch</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Switch condition determining which value is output |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>whenOn</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Signal produced when Condition is on |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>whenOff</code></span> <span class="prop-default">= <code>Input</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Signal produced when Condition is off (defaults to Input if not specified) |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

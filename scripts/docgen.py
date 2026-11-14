@@ -428,6 +428,36 @@ def render_port_icon(kind: str) -> str:
     return '<span class="port-icon stream-in" title="Port">»</span>'
 
 
+def render_stream_badge(kind: str) -> str:
+    """Returns a visual colored direction badge with icon + In/Out text."""
+    if kind in ('mainInputPort', 'inputPort'):
+        return '<span class="port-badge stream-in">» In</span>'
+    elif kind in ('mainOutputPort', 'outputPort'):
+        return '<span class="port-badge stream-out">» Out</span>'
+    return '<span class="port-badge stream-in">» Port</span>'
+
+
+def render_prop_badge(kind: str, name: str) -> str:
+    """Returns property name combined with directional arrow and color."""
+    if kind == 'propertyOutputPort':
+        return f'<span class="prop-badge prop-out"><span class="prop-arrow">↑</span> <code>{name}</code></span>'
+    return f'<span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>{name}</code></span>'
+
+
+def render_attr_bubbles(s_type: str, rate: str, domain: str) -> str:
+    """Returns bubble badges for Type, Rate, and Domain."""
+    bubbles = []
+    if s_type and s_type.lower() not in ('none', '—', ''):
+        bubbles.append(f'<span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>{s_type}</code></span>')
+    if rate and rate.lower() not in ('none', '—', ''):
+        bubbles.append(f'<span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">R</span><code>{rate}</code></span>')
+    if domain and domain.lower() not in ('none', '—', ''):
+        bubbles.append(f'<span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>{domain}</code></span>')
+    if bubbles:
+        return f'<div class="attr-bubble-group">{"".join(bubbles)}</div>'
+    return ""
+
+
 def format_field(val: str) -> str:
     """Formats an entity field (rate, domain, type) into markdown code or an em-dash."""
     if not val or val.lower() == 'none':
@@ -496,49 +526,48 @@ def generate_markdown_for_declaration(
     # 1. Stream I/O Table (if any stream ports)
     if stream_ports:
         md.append("## Stream I/O\n")
-        md.append("| | Port Name | Type | Rate | Domain | Description |")
-        md.append("| :-: | :--- | :--- | :--- | :--- | :--- |")
+        md.append("| I/O | Port Name | Description |")
+        md.append("| :-: | :--- | :--- |")
         for p in stream_ports:
-            icon = render_port_icon(p['kind'])
+            badge = render_stream_badge(p['kind'])
             # Port name: use the port entity symbol (e.g. InputPort, OutputPort) instead of bound entity
             port_ident = p['id'] if p['id'] else (p['name'] if p['name'] else p['entity'])
             # Resolve from entity
             ent = entity_map.get(p['entity'], {})
             s_type = ent.get('type') or ent.get('kind') or 'signal'
-            rate_str = format_field(ent.get('rate', '') or p.get('rate', ''))
-            domain_str = format_field(ent.get('domain', '') or p.get('domain', ''))
+            rate_val = ent.get('rate', '') or p.get('rate', '')
+            domain_val = ent.get('domain', '') or p.get('domain', '')
+            bubbles = render_attr_bubbles(s_type, rate_val, domain_val)
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
-            md.append(f"| {icon} | `{port_ident}` | `{s_type}` | {rate_str} | {domain_str} | {desc} |")
+            md.append(f"| {badge} | `{port_ident}`{bubbles} | {desc} |")
         md.append("")
 
     # 2. Properties Table (if any properties)
     if properties:
         md.append("## Properties\n")
-        md.append("| | Property | Type | Default | Rate | Domain | Description |")
-        md.append("| :-: | :--- | :--- | :--- | :--- | :--- | :--- |")
+        md.append("| Property | Description |")
+        md.append("| :--- | :--- |")
         for p in properties:
-            icon = render_port_icon(p['kind'])
             p_name = p['name'] if p['name'] else p['id']
+            prop_badge = render_prop_badge(p['kind'], p_name)
             # Resolve from entity
             ent = entity_map.get(p['entity'], {})
             p_def = p['default'] if p['default'] else ent.get('default', '')
-            p_def_str = f"`{p_def}`" if p_def else "—"
+            def_str = f' <span class="prop-default">= <code>{p_def}</code></span>' if p_def else ""
             p_type = ent.get('type') or ent.get('kind') or 'signal'
-            rate_str = format_field(ent.get('rate', '') or p.get('rate', ''))
-            domain_str = format_field(ent.get('domain', '') or p.get('domain', ''))
+            rate_val = ent.get('rate', '') or p.get('rate', '')
+            domain_val = ent.get('domain', '') or p.get('domain', '')
+            bubbles = render_attr_bubbles(p_type, rate_val, domain_val)
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
-            md.append(f"| {icon} | `{p_name}` | `{p_type}` | {p_def_str} | {rate_str} | {domain_str} | {desc} |")
+            md.append(f"| {prop_badge}{def_str}{bubbles} | {desc} |")
         md.append("")
 
     # Compact Legend if ports/properties present
     if stream_ports or properties:
         md.append('<div class="port-legend">')
-        if stream_ports:
-            md.append('  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>')
-            md.append('  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>')
-        if properties:
-            md.append('  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>')
-            md.append('  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>')
+        md.append('  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>')
+        md.append('  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>')
+        md.append('  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>')
         md.append('</div>\n')
 
     # Usage Example

@@ -11,14 +11,15 @@ Converts MIDI note number to frequency in Hertz.
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `NotePort` | `FrequencyPort.type` | — | `NotePort.domain` | MIDI note number [0-127] where 69 = A4 (440Hz) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `FrequencyPort` | `FrequencyPort.type` | — | `FrequencyPort.domain` | Frequency in Hertz |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-in">» In</span> | `NotePort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>FrequencyPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>NotePort.domain</code></span></div> | MIDI note number [0-127] where 69 = A4 (440Hz) |
+| <span class="port-badge stream-out">» Out</span> | `FrequencyPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>FrequencyPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>FrequencyPort.domain</code></span></div> | Frequency in Hertz |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

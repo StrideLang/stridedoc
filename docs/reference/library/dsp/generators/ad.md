@@ -11,23 +11,22 @@ Attack-Decay envelope generator.
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | — | — | The module's primary output port. |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `trigger` | — | `OutputPort.domain` | Triggers the envelope |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span></div> | The module's primary output port. |
+| <span class="port-badge stream-in">» In</span> | `InputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>trigger</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Triggers the envelope |
 
 ## Properties
 
-| | Property | Type | Default | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `attack` | `OutputPort.type` | `0.2` | — | — | Attack time in seconds |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `decay` | `OutputPort.type` | `3.0` | — | — | Decay time in seconds |
+| Property | Description |
+| :--- | :--- |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>attack</code></span> <span class="prop-default">= <code>0.2</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span></div> | Attack time in seconds |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>decay</code></span> <span class="prop-default">= <code>3.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span></div> | Decay time in seconds |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

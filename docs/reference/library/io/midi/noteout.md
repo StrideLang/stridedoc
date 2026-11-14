@@ -11,23 +11,22 @@ Sends MIDI note on events.
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `TriggerPort` | `trigger` | — | — | Trigger for note on |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-in">» In</span> | `TriggerPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>trigger</code></span></div> | Trigger for note on |
 
 ## Properties
 
-| | Property | Type | Default | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `pitch` | `signal` | `60` | — | — | MIDI note number [0-127] |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `velocity` | `signal` | `100` | — | — | MIDI note velocity [0-127] |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `channel` | `signal` | `1` | — | — | MIDI channel (1-16) |
+| Property | Description |
+| :--- | :--- |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>pitch</code></span> <span class="prop-default">= <code>60</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span></div> | MIDI note number [0-127] |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>velocity</code></span> <span class="prop-default">= <code>100</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span></div> | MIDI note velocity [0-127] |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>channel</code></span> <span class="prop-default">= <code>1</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span></div> | MIDI channel (1-16) |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

@@ -85,6 +85,10 @@ Cohesive, domain-specific modules organized under namespaced packages. In user c
 
 - **`Sensors::Conditioning`** (4 definitions): [`ComplementaryFilter`](/reference/library/sensors/conditioning/complementaryfilter), [`Deadband`](/reference/library/sensors/conditioning/deadband), [`Debounce`](/reference/library/sensors/conditioning/debounce), [`LinearCalibration`](/reference/library/sensors/conditioning/linearcalibration)
 
+#### Package Status
+
+- **`Status (Root)`** (6 definitions): [`Invalid`](/reference/library/status/invalid), [`Ok`](/reference/library/status/ok), [`OutOfRange`](/reference/library/status/outofrange), [`Platform`](/reference/library/status/platform), [`Truncated`](/reference/library/status/truncated), [`Unavailable`](/reference/library/status/unavailable)
+
 #### Package Test
 
 - **`Test::Assertions`** (1 definitions): [`AssertInRange`](/reference/library/test/assertions/assertinrange)

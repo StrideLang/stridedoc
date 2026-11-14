@@ -11,23 +11,22 @@ IMU sensor fusion blending gyro rate and accelerometer tilt: GyroRate >> Complem
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `GyroPort` | `AnglePort.type` | `AnglePort.rate` | `AnglePort.domain` | Angular velocity from gyroscope in angle units per second (e.g. rad/s) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `AnglePort` | `AnglePort.type` | `AnglePort.rate` | `AnglePort.domain` | Fused estimated angle |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-in">» In</span> | `GyroPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>AnglePort.type</code></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">R</span><code>AnglePort.rate</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>AnglePort.domain</code></span></div> | Angular velocity from gyroscope in angle units per second (e.g. rad/s) |
+| <span class="port-badge stream-out">» Out</span> | `AnglePort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>AnglePort.type</code></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">R</span><code>AnglePort.rate</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>AnglePort.domain</code></span></div> | Fused estimated angle |
 
 ## Properties
 
-| | Property | Type | Default | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `accelAngle` | `AnglePort.type` | `0.0` | — | `AnglePort.domain` | Static tilt angle from accelerometer, in the same angle unit |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `timeConstant` | `AnglePort.type` | `0.5` | — | `AnglePort.domain` | Crossover time in seconds: for changes slower than this the accelerometer is trusted, for faster changes the gyroscope (default 0.5) |
+| Property | Description |
+| :--- | :--- |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>accelAngle</code></span> <span class="prop-default">= <code>0.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>AnglePort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>AnglePort.domain</code></span></div> | Static tilt angle from accelerometer, in the same angle unit |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>timeConstant</code></span> <span class="prop-default">= <code>0.5</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>AnglePort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>AnglePort.domain</code></span></div> | Crossover time in seconds: for changes slower than this the accelerometer is trusted, for faster changes the gyroscope (default 0.5) |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

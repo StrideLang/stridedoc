@@ -11,24 +11,23 @@ Bipolar output [-1.0, 1.0] scaled by amplitude.
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | — |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span></div> | — |
 
 ## Properties
 
-| | Property | Type | Default | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `OutputPort.type` | `440.0` | — | — | The frequency of the oscillator. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `amplitude` | `OutputPort.type` | `1.0` | — | — | The amplitude of the oscillator. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `phase` | `signal` | — | — | — | The starting phase of the oscillator. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `reset` | `signal` | — | — | — | Resets the oscillator to the starting phase. |
+| Property | Description |
+| :--- | :--- |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>frequency</code></span> <span class="prop-default">= <code>440.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span></div> | The frequency of the oscillator. |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>amplitude</code></span> <span class="prop-default">= <code>1.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span></div> | The amplitude of the oscillator. |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>phase</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span></div> | The starting phase of the oscillator. |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>reset</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>signal</code></span></div> | Resets the oscillator to the starting phase. |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage

@@ -11,26 +11,25 @@ Proportional-Integral-Derivative controller with anti-windup clamping: Error >> 
 
 ## Stream I/O
 
-| | Port Name | Type | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `ErrorPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Error signal (Setpoint - ProcessVariable) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Control variable output signal |
+| I/O | Port Name | Description |
+| :-: | :--- | :--- |
+| <span class="port-badge stream-in">» In</span> | `ErrorPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">R</span><code>OutputPort.rate</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Error signal (Setpoint - ProcessVariable) |
+| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">R</span><code>OutputPort.rate</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Control variable output signal |
 
 ## Properties
 
-| | Property | Type | Default | Rate | Domain | Description |
-| :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `kp` | `OutputPort.type` | `1.0` | — | `OutputPort.domain` | Proportional gain, in output units per error unit (default 1.0) |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `ki` | `OutputPort.type` | `0.0` | — | `OutputPort.domain` | Integral gain, in output units per error unit per second (default 0.0) |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `kd` | `OutputPort.type` | `0.0` | — | `OutputPort.domain` | Derivative gain, in output units per error unit per second of change, i.e. kd is a time in seconds (default 0.0) |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `min` | `OutputPort.type` | `-1.0` | — | `OutputPort.domain` | Minimum saturation limit for integrator and output (default -1.0) |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `max` | `OutputPort.type` | `1.0` | — | `OutputPort.domain` | Maximum saturation limit for integrator and output (default 1.0) |
+| Property | Description |
+| :--- | :--- |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>kp</code></span> <span class="prop-default">= <code>1.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Proportional gain, in output units per error unit (default 1.0) |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>ki</code></span> <span class="prop-default">= <code>0.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Integral gain, in output units per error unit per second (default 0.0) |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>kd</code></span> <span class="prop-default">= <code>0.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Derivative gain, in output units per error unit per second of change, i.e. kd is a time in seconds (default 0.0) |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>min</code></span> <span class="prop-default">= <code>-1.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Minimum saturation limit for integrator and output (default -1.0) |
+| <span class="prop-badge prop-in"><span class="prop-arrow">↓</span> <code>max</code></span> <span class="prop-default">= <code>1.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>OutputPort.type</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">D</span><code>OutputPort.domain</code></span></div> | Maximum saturation limit for integrator and output (default 1.0) |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
-  <span class="port-legend-item"><span class="port-icon stream-out">»</span> Stream Out</span>
-  <span class="port-legend-item"><span class="port-icon prop-in">↓</span> Property In</span>
-  <span class="port-legend-item"><span class="port-icon prop-out">↑</span> Property Out</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
 </div>
 
 ## Usage
