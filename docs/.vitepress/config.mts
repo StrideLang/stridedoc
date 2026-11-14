@@ -53,6 +53,7 @@ export default withMermaid(
   ],
 
   markdown: {
+    math: true,
     theme: {
       light: 'github-light',
       dark: 'github-dark'
