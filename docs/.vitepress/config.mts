@@ -19,7 +19,7 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/stridedoc/logo.svg' }],
-    ['meta', { name: 'theme-color', content: '#0284c7' }],
+    ['meta', { name: 'theme-color', content: '#18181b' }],
     ['meta', { name: 'og:title', content: 'The Stride Programming Language' }],
     ['meta', { name: 'og:description', content: 'A domain-specific programming language for dataflow streams, real-time digital signal processing, and embedded systems.' }]
   ],
