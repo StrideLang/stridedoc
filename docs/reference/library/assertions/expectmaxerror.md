@@ -19,7 +19,7 @@ Statistical maximum absolute error assertion for stream differential testing.
 
 | Property | Description |
 | :--- | :--- |
-| <span class="port-badge prop-in">↓ maxError</span> <span class="prop-default">= <code>0.0005</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>signal</code></span></div> | Maximum allowed absolute error |Candidate - Baseline| |
+| <span class="port-badge prop-in">↓ maxError</span> <span class="prop-default">= <code>0.0005</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>signal</code></span></div> | Maximum allowed absolute error \|Candidate - Baseline\| |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>

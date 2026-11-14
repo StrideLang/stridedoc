@@ -687,6 +687,7 @@ def generate_markdown_for_declaration(
             domain_val = ent.get('domain', '') or p.get('domain', '')
             bubbles = render_attr_bubbles(s_type, rate_val, domain_val, ports_by_id)
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
+            desc = desc.replace('|', r'\|')
             details_cell = bubbles if bubbles else "—"
             md.append(f"| {badge} | {details_cell} | {desc} |")
         md.append("")
@@ -707,6 +708,7 @@ def generate_markdown_for_declaration(
             domain_val = ent.get('domain', '') or p.get('domain', '')
             bubbles = render_attr_bubbles(p_type, rate_val, domain_val, ports_by_id)
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
+            desc = desc.replace('|', r'\|')
             md.append(f"| {prop_badge}{def_str}{bubbles} | {desc} |")
         md.append("")
         md.append('<div class="port-legend">')
