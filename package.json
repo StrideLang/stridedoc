@@ -19,6 +19,9 @@
   "author": "Stride Language Contributors",
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "vitepress": "^1.6.3"
+    "debug": "^4.4.3",
+    "mermaid": "^11.17.2",
+    "vitepress": "^1.6.3",
+    "vitepress-plugin-mermaid": "^2.0.17"
   }
 }

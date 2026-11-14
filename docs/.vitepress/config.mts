@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import { withMermaid } from 'vitepress-plugin-mermaid';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -12,10 +13,11 @@ if (fs.existsSync(grammarPath)) {
 // Load Auto-generated Reference Sidebar
 import referenceCategories from './sidebar-reference.json';
 
-export default defineConfig({
-  title: "Stride",
-  description: "A domain-specific programming language for dataflow streams, real-time digital signal processing, and embedded systems",
-  base: "/stridedoc/", // Ready for GitHub Pages deployment under https://<org>.github.io/stridedoc/
+export default withMermaid(
+  defineConfig({
+    title: "Stride",
+    description: "A domain-specific programming language for dataflow streams, real-time digital signal processing, and embedded systems",
+    base: "/stridedoc/", // Ready for GitHub Pages deployment under https://<org>.github.io/stridedoc/
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/stridedoc/logo.svg' }],
@@ -99,4 +101,4 @@ export default defineConfig({
       copyright: 'Copyright © 2017-present The Regents of the University of California & Stride Contributors.'
     }
   }
-});
+}));
