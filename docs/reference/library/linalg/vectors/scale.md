@@ -11,7 +11,7 @@ Scales a vector of any dimension: Vec >> Scale(factor: 2.0) >> Scaled.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `VectorPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Vector of any size |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Scaled vector, with the same size as the input |

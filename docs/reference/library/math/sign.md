@@ -11,7 +11,7 @@ Returns 1.0 if input > 0, -1.0 if input < 0, and 0.0 if input == 0.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Input value |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Sign of the input (-1.0, 0.0, or 1.0) |

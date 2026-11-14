@@ -11,7 +11,7 @@ Compares two input values: outputs on if Input[0] < Input[1], else off.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `InputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Two-element list with values to compare: [Left, Right] |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Switch indicating if Left < Right |

@@ -11,7 +11,7 @@ Computes the natural exponential: exp(Input).
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Exponent value |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Result of e raised to Input |

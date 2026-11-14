@@ -11,7 +11,7 @@ Inline runtime assertion verifying signal remains within bounds: AudioIn >> Asse
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | `OutputPort.rate` | `OutputPort.domain` | Signal stream to monitor |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | `OutputPort.rate` | `OutputPort.domain` | Passthrough of input signal |

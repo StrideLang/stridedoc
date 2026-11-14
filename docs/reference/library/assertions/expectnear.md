@@ -11,7 +11,7 @@ Approximate equality assertion within epsilon tolerance. Declared for schema val
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | Two-element input list with values expected to be close: [Actual, Expected] |
 

@@ -11,7 +11,7 @@ Prints the value of a stream to standard console output with a trailing newline.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `ValuePort` | `ValuePort.type` | — | `ValuePort.domain` | Input value to print to console followed by a newline |
 

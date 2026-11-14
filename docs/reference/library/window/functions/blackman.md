@@ -11,7 +11,7 @@ Blackman window function: Index >> Blackman(size: 512) >> Weight.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `IndexPort` | `WeightPort.type` | `WeightPort.rate` | `WeightPort.domain` | Sample index n (0 to size - 1) |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `WeightPort` | `WeightPort.type` | `WeightPort.rate` | `WeightPort.domain` | Window coefficient w[n] |

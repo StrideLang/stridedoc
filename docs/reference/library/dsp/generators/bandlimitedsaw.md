@@ -11,7 +11,7 @@ Band-limited sawtooth generator (differentiated parabolic wave, DPW): Saw(freque
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | — | — | The module's primary output port. |
 

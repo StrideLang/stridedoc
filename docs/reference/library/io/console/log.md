@@ -11,7 +11,7 @@ Logs structured timestamped telemetry messages.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `ValuePort` | `ValuePort.type` | — | `ValuePort.domain` | Value to log with structured telemetry timestamp |
 

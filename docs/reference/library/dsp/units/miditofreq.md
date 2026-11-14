@@ -11,7 +11,7 @@ Converts MIDI note number to frequency in Hertz.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `NotePort` | `FrequencyPort.type` | — | `NotePort.domain` | MIDI note number [0-127] where 69 = A4 (440Hz) |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `FrequencyPort` | `FrequencyPort.type` | — | `FrequencyPort.domain` | Frequency in Hertz |

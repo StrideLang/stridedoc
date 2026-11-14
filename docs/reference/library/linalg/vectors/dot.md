@@ -11,7 +11,7 @@ Dot product of two vectors of any dimension: VecA >> Dot(with: VecB) >> Result. 
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `VectorAPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | First vector, of any size |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Scalar dot product result |

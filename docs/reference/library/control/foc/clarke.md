@@ -11,7 +11,7 @@ Clarke transform: 3-phase currents [Ia, Ib, Ic] >> Clarke() >> [Ialpha, Ibeta].
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `IabcPort` | `IalphabetaPort.type` | `IalphabetaPort.rate` | `IalphabetaPort.domain` | 3-phase input currents [Ia, Ib, Ic] |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `IalphabetaPort` | `IalphabetaPort.type` | `IalphabetaPort.rate` | `IalphabetaPort.domain` | 2-phase stationary frame currents [Ialpha, Ibeta] |

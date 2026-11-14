@@ -11,7 +11,7 @@ description: "2nd-order multiplierless Cascaded Integrator-Comb (CIC) filter: Hi
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | High-rate input signal stream (e.g., PDM microphone / oversampled ADC) |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Integrator-comb filtered output stream |

@@ -11,7 +11,7 @@ Transmits OSC messages over UDP to a network host.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | `InputPort.domain` | Signal data to send via OSC |
 

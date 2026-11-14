@@ -11,7 +11,7 @@ Less-than-or-equal assertion module (Actual < Expected). Declared for schema val
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | Two-element input list for less-than comparison: [Actual, Expected] |
 

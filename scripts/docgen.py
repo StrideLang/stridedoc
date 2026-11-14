@@ -496,11 +496,11 @@ def generate_markdown_for_declaration(
     # 1. Streams Table (if any stream ports)
     if stream_ports:
         md.append("## Streams\n")
-        md.append("| | Port identifier | Type | Rate | Domain | Description |")
+        md.append("| | Port Name | Type | Rate | Domain | Description |")
         md.append("| :-: | :--- | :--- | :--- | :--- | :--- |")
         for p in stream_ports:
             icon = render_port_icon(p['kind'])
-            # Port identifier: use the port entity symbol (e.g. InputPort, OutputPort) instead of bound entity
+            # Port name: use the port entity symbol (e.g. InputPort, OutputPort) instead of bound entity
             port_ident = p['id'] if p['id'] else (p['name'] if p['name'] else p['entity'])
             # Resolve from entity
             ent = entity_map.get(p['entity'], {})

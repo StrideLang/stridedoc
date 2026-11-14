@@ -11,7 +11,7 @@ IMU sensor fusion blending gyro rate and accelerometer tilt: GyroRate >> Complem
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `GyroPort` | `AnglePort.type` | `AnglePort.rate` | `AnglePort.domain` | Angular velocity from gyroscope in angle units per second (e.g. rad/s) |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `AnglePort` | `AnglePort.type` | `AnglePort.rate` | `AnglePort.domain` | Fused estimated angle |

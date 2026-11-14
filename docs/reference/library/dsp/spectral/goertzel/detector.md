@@ -11,7 +11,7 @@ Goertzel single-frequency power detector: AudioIn >> Goertzel::Detector(frequenc
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `PowerPort.type` | `PowerPort.rate` | `PowerPort.domain` | Audio or sensor input stream |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `PowerPort` | `PowerPort.type` | `PowerPort.rate` | `PowerPort.domain` | Instantaneous signal power at target frequency |

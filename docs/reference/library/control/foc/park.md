@@ -11,7 +11,7 @@ Park transform: [Ialpha, Ibeta] >> Park(angle: Theta) >> [Id, Iq].
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `IalphabetaPort` | `IdqPort.type` | `IdqPort.rate` | `IdqPort.domain` | 2-phase stationary frame currents [Ialpha, Ibeta] |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `IdqPort` | `IdqPort.type` | `IdqPort.rate` | `IdqPort.domain` | Rotating direct-quadrature frame currents [Id, Iq] |

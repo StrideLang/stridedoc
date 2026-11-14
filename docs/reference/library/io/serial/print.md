@@ -11,7 +11,7 @@ Writes values formatted to the serial port.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `ValuePort` | `signal` | — | `ValuePort.domain` | Value to write to serial |
 

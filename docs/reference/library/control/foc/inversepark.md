@@ -11,7 +11,7 @@ Inverse Park transform: [Vd, Vq] >> InversePark(angle: Theta) >> [Valpha, Vbeta]
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `VdqPort` | `ValphabetaPort.type` | `ValphabetaPort.rate` | `ValphabetaPort.domain` | Rotating direct-quadrature frame voltages [Vd, Vq] |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `ValphabetaPort` | `ValphabetaPort.type` | `ValphabetaPort.rate` | `ValphabetaPort.domain` | Stationary frame voltages [Valpha, Vbeta] |

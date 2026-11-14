@@ -11,7 +11,7 @@ Statistical maximum absolute error assertion for stream differential testing.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | — | Two-element input list for maximum absolute error comparison: [Candidate, Baseline] |
 

@@ -11,7 +11,7 @@ Transposes a matrix of any shape: Mat >> Transpose(rows: 2 columns: 3) >> Transp
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `MatrixPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Row-major input matrix with `rows` rows and `columns` columns |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Row-major transposed matrix with `columns` rows and `rows` columns. Same size as the input |

@@ -11,7 +11,7 @@ Inverse Clarke transform: [Valpha, Vbeta] >> InverseClarke() >> [Va, Vb, Vc].
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `ValphabetaPort` | `VabcPort.type` | `VabcPort.rate` | `VabcPort.domain` | Stationary frame voltages [Valpha, Vbeta] |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `VabcPort` | `VabcPort.type` | `VabcPort.rate` | `VabcPort.domain` | 3-phase voltages [Va, Vb, Vc] |

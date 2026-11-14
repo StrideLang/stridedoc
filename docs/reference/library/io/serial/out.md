@@ -11,7 +11,7 @@ Writes signal values to platform serial output stream.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | `InputPort.domain` | Input signal to write to serial output stream |
 

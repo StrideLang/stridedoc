@@ -11,7 +11,7 @@ A random whole number from min to max, both included: RandomInt(min: 1 max: 6) >
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `ValuePort` | `Int` | — | — | — |
 

@@ -11,7 +11,7 @@ Quaternion Hamilton product: Q1 >> Multiply(with: Q2) >> QProduct.
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `Q1Port` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | First quaternion [w1, x1, y1, z1] |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Product quaternion [w, x, y, z] |

@@ -11,7 +11,7 @@ Wedge (exterior) product of two vectors of any dimension: VecA >> Wedge(with: Ve
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `VectorAPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | First vector with n components. n is the size of this port |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | The n * (n - 1) / 2 components a[i] * b[j] - a[j] * b[i], one for each pair of axes i < j, in lexicographic order: (0,1), (0,2), ..., (1,2), ... The size of this port must be n * (n - 1) / 2 |

@@ -11,7 +11,7 @@ RBJ Audio EQ Cookbook biquad design: Frequency >> FilterDesign::Coefficients(mod
 
 ## Streams
 
-| | Port identifier | Type | Rate | Domain | Description |
+| | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `FrequencyPort` | `CoefficientsPort.type` | `CoefficientsPort.rate` | `CoefficientsPort.domain` | Cutoff, centre or corner frequency in Hz |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `CoefficientsPort` | `CoefficientsPort.type` | `CoefficientsPort.rate` | `CoefficientsPort.domain` | Normalised coefficients [b0, b1, b2, a1, a2] |
