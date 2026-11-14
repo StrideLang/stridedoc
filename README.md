@@ -73,7 +73,29 @@ npm run docs:preview
 
 ## Deployment
 
-Pushes to `main` (or `master`) automatically trigger the GitHub Actions workflow in `.github/workflows/deploy.yml`, building and publishing the static site directly to **GitHub Pages**.
+The website is 100% statically generated and hosted for **free** on **GitHub Pages** using GitHub Actions (zero external servers or paid services required).
+
+### One-Time Setup in GitHub Repository
+
+1. Open your repository on GitHub.
+2. Navigate to **Settings** &rarr; **Pages** (in the left sidebar).
+3. Under **Build and deployment** &rarr; **Source**, select **GitHub Actions**.
+
+### Automated CI/CD
+
+Whenever changes are pushed to `main` (or `master`), the workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) automatically:
+1. Checks out the repository and installs dependencies with `npm ci`.
+2. Compiles the static site and pre-builds the client-side search index with `npm run docs:build`.
+3. Publishes the site directly to GitHub Pages at:
+   ```text
+   https://<username-or-org>.github.io/stridedoc/
+   ```
+
+### Custom Domain (Optional)
+
+To host the documentation under a custom domain (e.g. `docs.stridelang.org` or `stridelang.org`):
+1. In `docs/.vitepress/config.mts`, change `base: "/stridedoc/"` to `base: "/"`.
+2. In GitHub repository **Settings** &rarr; **Pages**, enter your custom domain under **Custom domain** and enable **Enforce HTTPS** (free SSL certificate is provisioned automatically via Let's Encrypt).
 
 ---
 
