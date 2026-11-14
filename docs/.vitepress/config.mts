@@ -87,10 +87,6 @@ export default withMermaid(
       '/reference/': docSidebar
     },
 
-    search: {
-      provider: 'local'
-    },
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/StrideLang/Stride' }
     ],
