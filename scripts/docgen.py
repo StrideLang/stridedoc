@@ -566,13 +566,6 @@ def generate_markdown_for_declaration(
             details_cell = bubbles if bubbles else "—"
             md.append(f"| {badge} | {details_cell} | {desc} |")
         md.append("")
-        md.append('<div class="port-legend">')
-        md.append('  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>')
-        md.append('  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>')
-        md.append('  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>')
-        md.append('  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>')
-        md.append('  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>')
-        md.append('</div>\n')
 
     # 2. Properties Table (if any properties)
     if properties:
@@ -595,9 +588,6 @@ def generate_markdown_for_declaration(
         md.append('<div class="port-legend">')
         md.append('  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>')
         md.append('  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>')
-        md.append('  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>')
-        md.append('  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>')
-        md.append('  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>')
         md.append('</div>\n')
 
     # Usage Example

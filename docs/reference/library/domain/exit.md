@@ -15,14 +15,6 @@ When input is true, the current domain terminates without executing any further.
 | :-: | :--- | :--- |
 | <span class="port-badge stream-in">» MainInputPort</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span></div> | — |
 
-<div class="port-legend">
-  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
-  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
-  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
-  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
-  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
-</div>
-
 ## Usage
 
 ```stride

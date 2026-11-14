@@ -16,14 +16,6 @@ Logical NOR operation on switch inputs: [A, B] >> Nor() >> Out.
 | <span class="port-badge stream-in">» In</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Two-element switch list: [A, B] |
 | <span class="port-badge stream-out">» Out</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Switch output of A NOR B |
 
-<div class="port-legend">
-  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
-  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
-  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
-  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
-  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
-</div>
-
 ## Usage
 
 ```stride

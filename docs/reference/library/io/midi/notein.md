@@ -17,14 +17,6 @@ Receives MIDI note on/off events.
 | <span class="port-badge stream-out">» velocity</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» velocity</span></span></div> | Note velocity normalized to [0.0, 1.0] |
 | <span class="port-badge stream-out">» gate</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span></div> | Gate switch on while note is held down |
 
-<div class="port-legend">
-  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
-  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
-  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
-  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
-  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
-</div>
-
 ## Properties
 
 | Property | Description |
@@ -34,9 +26,6 @@ Receives MIDI note on/off events.
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>
   <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
-  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
-  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
-  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
 </div>
 
 ## Usage
