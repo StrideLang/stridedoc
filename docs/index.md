@@ -5,9 +5,6 @@ hero:
   name: Stride
   text: Declarative Dataflow & Reactive Architecture
   tagline: A domain-specific programming language for declarative dataflow streams, finite state machines, and multi-rate reactive systems.
-  image:
-    src: /windmill-hero.jpg
-    alt: Stride Windmill Metaphor
   actions:
     - theme: brand
       text: Get Started
@@ -29,16 +26,6 @@ features:
   - title: Native Code Generation
     details: Lowers via LLVM directly into ISO C99 interface headers, static libraries, and relocatable machine object files (.o). Zero garbage collection and zero heap allocation in signal loops.
 ---
-
-<div class="windmill-section">
-  <h3>The Mechanical Metaphor</h3>
-  <p>
-    A windmill is a classical mechanical transducer: it harnesses the continuous, physical flow of the wind and converts it directly into deterministic, synchronous work.
-  </p>
-  <p>
-    Stride operates on the same principle. Rather than managing computation through mutable imperative state or dynamic object graphs, Stride captures the continuous flow of signals through streams (<code>&gt;&gt;</code>) and discrete transitions through reactive state machines, compiling them into verified, statically scheduled native machine code.
-  </p>
-</div>
 
 <div class="showcase-grid">
 

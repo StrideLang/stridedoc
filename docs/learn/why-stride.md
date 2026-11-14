@@ -55,18 +55,3 @@ Stride compiles directly into standard compilation units:
 - Clean ISO C99 headers (`.h`) declaring standardized lifecycle entry points: `<Domain>_init(void)` and `<Domain>_process(...)`.
 - Direct integration into build systems including **CMake**, **Bazel**, and **Google Pigweed**.
 
----
-
-## 3. The Windmill Metaphor
-
-A windmill is a classical mechanical transducer: it harnesses the continuous, physical flow of the wind and converts it directly into deterministic, synchronous work.
-
-Stride is designed around this physical analogy. Rather than treating signal processing as mutable imperative loops or dynamic object graphs, Stride captures the continuous flow of signals through streams (`>>`) and discrete transitions through reactive state machines, compiling them into verified, statically scheduled machine code.
-
-| Mechanical Windmill | Stride Language Concept |
-| :--- | :--- |
-| **Wind current** | Continuous signal stream (`>>`) |
-| **Blades & Sail angle** | Stream transducers and mathematical transforms |
-| **Gearing & Millstones** | Multi-rate domains, clock division, and synchronous sample steps |
-| **Deterministic output** | Statically scheduled native code without garbage collection |
-
