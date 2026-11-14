@@ -7,7 +7,7 @@ description: "DebugPrint module definition."
 
 <span class="stride-badge">Module</span> Global Prelude &bull; Group: **Debug (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Debug.stride#L1" target="_blank" rel="noopener" title="View source on GitHub">[Debug.stride:1]</a>
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

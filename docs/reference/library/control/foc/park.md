@@ -9,7 +9,7 @@ description: "Park transform: [Ialpha, Ibeta] >> Park(angle: Theta) >> [Id, Iq].
 
 Park transform: [Ialpha, Ibeta] >> Park(angle: Theta) >> [Id, Iq].
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

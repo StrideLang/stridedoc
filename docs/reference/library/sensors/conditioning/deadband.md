@@ -9,7 +9,7 @@ description: "Suppresses near-zero sensor jitter with smooth linear rescaling: J
 
 Suppresses near-zero sensor jitter with smooth linear rescaling: Joystick >> Deadband(threshold: 0.05) >> Output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

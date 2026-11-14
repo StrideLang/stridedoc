@@ -493,9 +493,9 @@ def generate_markdown_for_declaration(
     stream_ports = [p for p in ports if 'property' not in p['kind'].lower()]
     properties = [p for p in ports if 'property' in p['kind'].lower()]
 
-    # 1. Streams Table (if any stream ports)
+    # 1. Stream I/O Table (if any stream ports)
     if stream_ports:
-        md.append("## Streams\n")
+        md.append("## Stream I/O\n")
         md.append("| | Port Name | Type | Rate | Domain | Description |")
         md.append("| :-: | :--- | :--- | :--- | :--- | :--- |")
         for p in stream_ports:

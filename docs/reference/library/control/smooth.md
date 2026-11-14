@@ -9,7 +9,7 @@ description: "Exponential (one-pole low-pass) smoothing of Input with a time con
 
 Exponential (one-pole low-pass) smoothing of Input with a time constant in seconds: Input >> Smooth(time: 0.05) >> Output. The time is converted with the rate of the output, so it is independent of the sample rate. Type must be a floating point type.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

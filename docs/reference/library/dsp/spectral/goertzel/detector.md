@@ -9,7 +9,7 @@ description: "Goertzel single-frequency power detector: AudioIn >> Goertzel::Det
 
 Goertzel single-frequency power detector: AudioIn >> Goertzel::Detector(frequency: 440.0) >> TonePower. The frequency is in Hz and is converted against the rate of the output (the sample rate). Type must be floating point.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

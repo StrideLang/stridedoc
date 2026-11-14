@@ -9,7 +9,7 @@ description: "Impulse train generator."
 
 Impulse train generator.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

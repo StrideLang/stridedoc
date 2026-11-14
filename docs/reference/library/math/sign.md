@@ -9,7 +9,7 @@ description: "Returns 1.0 if input > 0, -1.0 if input < 0, and 0.0 if input == 0
 
 Returns 1.0 if input > 0, -1.0 if input < 0, and 0.0 if input == 0.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

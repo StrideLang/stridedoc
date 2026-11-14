@@ -9,7 +9,7 @@ description: "Transposes a matrix of any shape: Mat >> Transpose(rows: 2 columns
 
 Transposes a matrix of any shape: Mat >> Transpose(rows: 2 columns: 3) >> Transposed.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

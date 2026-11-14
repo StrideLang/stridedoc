@@ -9,7 +9,7 @@ description: "Limits the rate of change of a signal in units per second: Input >
 
 Limits the rate of change of a signal in units per second: Input >> SlewRateLimiter(up: 2.0 down: 5.0) >> Output. The limits are converted against the rate of the output, so they do not change with the sample rate.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

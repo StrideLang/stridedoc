@@ -9,7 +9,7 @@ description: "2nd-order multiplierless Cascaded Integrator-Comb (CIC) filter: Hi
 
 2nd-order multiplierless Cascaded Integrator-Comb (CIC) filter: HighRateIn >> Cic::Decimator2() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

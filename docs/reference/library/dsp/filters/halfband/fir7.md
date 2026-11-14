@@ -9,7 +9,7 @@ description: "Efficient 7-tap halfband FIR filter with 50% zero-tap reduction: A
 
 Efficient 7-tap halfband FIR filter with 50% zero-tap reduction: AudioIn >> Halfband::Fir7() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

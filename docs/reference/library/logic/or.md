@@ -9,7 +9,7 @@ description: "Logical OR operation on switch inputs: [A, B] >> Or() >> Out."
 
 Logical OR operation on switch inputs: [A, B] >> Or() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

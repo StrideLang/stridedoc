@@ -9,7 +9,7 @@ description: "Logical NOR operation on switch inputs: [A, B] >> Nor() >> Out."
 
 Logical NOR operation on switch inputs: [A, B] >> Nor() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Logical AND operation on switch inputs: [A, B] >> And() >> Out."
 
 Logical AND operation on switch inputs: [A, B] >> And() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

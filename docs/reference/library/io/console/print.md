@@ -9,7 +9,7 @@ description: "Prints the value of a stream to standard console output."
 
 Prints the value of a stream to standard console output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

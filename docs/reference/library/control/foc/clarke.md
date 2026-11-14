@@ -9,7 +9,7 @@ description: "Clarke transform: 3-phase currents [Ia, Ib, Ic] >> Clarke() >> [Ia
 
 Clarke transform: 3-phase currents [Ia, Ib, Ic] >> Clarke() >> [Ialpha, Ibeta].
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

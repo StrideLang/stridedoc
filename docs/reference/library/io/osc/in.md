@@ -9,7 +9,7 @@ description: "Receives OSC messages from a UDP network port."
 
 Receives OSC messages from a UDP network port.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

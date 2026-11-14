@@ -9,7 +9,7 @@ description: "Linearly interpolates from Input to Target based on factor: Input 
 
 Linearly interpolates from Input to Target based on factor: Input >> Lerp(target: Target factor: 0.5) >> Output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

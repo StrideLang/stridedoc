@@ -9,7 +9,7 @@ description: "Receives MIDI note on/off events."
 
 Receives MIDI note on/off events.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

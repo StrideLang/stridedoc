@@ -9,7 +9,7 @@ description: "Second-order band-pass filter: Input >> BandPass(frequency: 1000.0
 
 Second-order band-pass filter: Input >> BandPass(frequency: 1000.0 q: 2.0) >> Output. A BiQuad with FilterDesign::ModeBandPass. The frequency is in Hz and is converted against the rate of the output. The data type must be floating point.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

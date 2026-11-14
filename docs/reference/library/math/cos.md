@@ -9,7 +9,7 @@ description: "Cosine function of angle in radians."
 
 Cosine function of angle in radians.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

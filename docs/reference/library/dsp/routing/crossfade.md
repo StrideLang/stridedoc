@@ -9,7 +9,7 @@ description: "Linear crossfade between two audio streams."
 
 Linear crossfade between two audio streams.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

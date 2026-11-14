@@ -9,7 +9,7 @@ description: "Logical NAND operation on switch inputs: [A, B] >> Nand() >> Out."
 
 Logical NAND operation on switch inputs: [A, B] >> Nand() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

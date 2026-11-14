@@ -9,7 +9,7 @@ description: "Rotates a 3D vector by orientation quaternion: Vec3D >> Quaternion
 
 Rotates a 3D vector by orientation quaternion: Vec3D >> Quaternion::Rotate(rotation: Quat) >> RotatedVec. Rotation in space is three dimensional, so the vector has 3 components.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

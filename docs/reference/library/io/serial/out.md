@@ -9,7 +9,7 @@ description: "Writes signal values to platform serial output stream."
 
 Writes signal values to platform serial output stream.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

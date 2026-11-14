@@ -9,7 +9,7 @@ description: "Full-wave signal rectifier."
 
 Full-wave signal rectifier.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Outputs on if all switches in the input array are on: Input >> All
 
 Outputs on if all switches in the input array are on: Input >> AllOn() >> Output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

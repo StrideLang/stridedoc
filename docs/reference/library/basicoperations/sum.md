@@ -9,7 +9,7 @@ description: "Adds all signals in the input array: Input >> Sum() >> Output."
 
 Adds all signals in the input array: Input >> Sum() >> Output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

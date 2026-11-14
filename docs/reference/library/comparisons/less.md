@@ -9,7 +9,7 @@ description: "Compares two input values: outputs on if Input[0] < Input[1], else
 
 Compares two input values: outputs on if Input[0] < Input[1], else off.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Hamming window function: Index >> Hamming(size: 512) >> Weight."
 
 Hamming window function: Index >> Hamming(size: 512) >> Weight.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

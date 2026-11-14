@@ -9,7 +9,7 @@ description: "Converts MIDI note number to frequency in Hertz."
 
 Converts MIDI note number to frequency in Hertz.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

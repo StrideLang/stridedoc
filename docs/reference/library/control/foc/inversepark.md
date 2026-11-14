@@ -9,7 +9,7 @@ description: "Inverse Park transform: [Vd, Vq] >> InversePark(angle: Theta) >> [
 
 Inverse Park transform: [Vd, Vq] >> InversePark(angle: Theta) >> [Valpha, Vbeta].
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

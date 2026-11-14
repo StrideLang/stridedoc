@@ -9,7 +9,7 @@ description: "Ring-buffer fractional delay line with linear interpolation: Audio
 
 Ring-buffer fractional delay line with linear interpolation: AudioIn >> FractionalDelay::Line(delay: 0.0025) >> DelayedOut. The delay is in seconds, converted against the rate of the output, up to 4096 samples (4096 / rate seconds).
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

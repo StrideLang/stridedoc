@@ -9,7 +9,7 @@ description: "Transmits OSC messages over UDP to a network host."
 
 Transmits OSC messages over UDP to a network host.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Attack-Decay envelope generator."
 
 Attack-Decay envelope generator.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

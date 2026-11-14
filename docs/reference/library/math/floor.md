@@ -9,7 +9,7 @@ description: "Returns input value rounded down to the nearest integer."
 
 Returns input value rounded down to the nearest integer.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Periodically wraps input signal within [min, max): Input >> Wrap(m
 
 Periodically wraps input signal within [min, max): Input >> Wrap(min: 0.0 max: 1.0) >> Output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

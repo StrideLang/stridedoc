@@ -9,7 +9,7 @@ description: "Transmits MIDI Continuous Controller (CC) messages."
 
 Transmits MIDI Continuous Controller (CC) messages.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

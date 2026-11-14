@@ -9,7 +9,7 @@ description: "Divides Input[0] by Input[1]."
 
 Divides Input[0] by Input[1].
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

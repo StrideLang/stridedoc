@@ -9,7 +9,7 @@ description: "Statistical Signal-to-Noise Ratio assertion for stream differentia
 
 Statistical Signal-to-Noise Ratio assertion for stream differential testing.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

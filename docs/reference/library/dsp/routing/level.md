@@ -10,7 +10,7 @@ description: "Scales the input signal and applies an offset to it. Formula: outp
 Scales the input signal and applies an offset to it.
 Formula: output = input * gain + offset
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

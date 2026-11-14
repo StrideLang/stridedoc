@@ -9,7 +9,7 @@ description: "A random whole number from min to max, both included: RandomInt(mi
 
 A random whole number from min to max, both included: RandomInt(min: 1 max: 6) >> Die;
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Logical NOT operation: inverts a switch input."
 
 Logical NOT operation: inverts a switch input.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

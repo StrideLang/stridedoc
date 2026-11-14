@@ -9,7 +9,7 @@ description: "Logs structured timestamped telemetry messages."
 
 Logs structured timestamped telemetry messages.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

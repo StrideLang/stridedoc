@@ -9,7 +9,7 @@ description: "Second-order notch filter: Input >> Notch(frequency: 50.0 q: 10.0)
 
 Second-order notch filter: Input >> Notch(frequency: 50.0 q: 10.0) >> Output (e.g. mains hum removal). A BiQuad with FilterDesign::ModeNotch. The frequency is in Hz and is converted against the rate of the output. The data type must be floating point.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

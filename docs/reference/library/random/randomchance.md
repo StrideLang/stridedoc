@@ -9,7 +9,7 @@ description: "on with the given chance, in percent: RandomChance(percent: 25) >>
 
 on with the given chance, in percent: RandomChance(percent: 25) >> Lucky;
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

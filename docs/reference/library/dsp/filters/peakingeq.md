@@ -9,7 +9,7 @@ description: "Second-order peaking equaliser: Input >> PeakingEq(frequency: 1000
 
 Second-order peaking equaliser: Input >> PeakingEq(frequency: 1000.0 q: 1.0 gain: 6.0) >> Output. A BiQuad with FilterDesign::ModePeak; gain is in dB. The frequency is in Hz and is converted against the rate of the output. The data type must be floating point.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

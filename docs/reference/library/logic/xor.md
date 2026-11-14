@@ -9,7 +9,7 @@ description: "Logical exclusive OR (XOR) operation on switch inputs: [A, B] >> X
 
 Logical exclusive OR (XOR) operation on switch inputs: [A, B] >> Xor() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

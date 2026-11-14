@@ -9,7 +9,7 @@ description: "Converts decibels (dB) to linear amplitude ratio."
 
 Converts decibels (dB) to linear amplitude ratio.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

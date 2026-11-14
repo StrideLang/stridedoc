@@ -9,7 +9,7 @@ description: "Band-limited sawtooth generator (differentiated parabolic wave, DP
 
 Band-limited sawtooth generator (differentiated parabolic wave, DPW): Saw(frequency: 220.0) >> Out. Output in [-1, 1). The frequency is in Hz and is converted against the rate of the output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

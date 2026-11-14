@@ -9,7 +9,7 @@ description: "Real-time local maximum detector with a switch output: Input >> Pe
 
 Real-time local maximum detector with a switch output: Input >> PeakDetector::Detector(threshold: 0.5) >> Peak.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

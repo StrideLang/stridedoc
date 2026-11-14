@@ -9,7 +9,7 @@ description: "Wedge (exterior) product of two vectors of any dimension: VecA >> 
 
 Wedge (exterior) product of two vectors of any dimension: VecA >> Wedge(with: VecB) >> Bivector. For 2 components the output is the scalar a0 b1 - a1 b0 (the 2D cross product); for 3 components it holds the cross product components [x y z] = [w(1,2), -w(0,2), w(0,1)] of the output w; for n components it has n (n - 1) / 2 components.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

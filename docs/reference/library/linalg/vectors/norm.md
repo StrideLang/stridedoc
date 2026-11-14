@@ -9,7 +9,7 @@ description: "Euclidean norm of a vector of any dimension: Vec >> Norm() >> Leng
 
 Euclidean norm of a vector of any dimension: Vec >> Norm() >> Length. This is also the norm of a quaternion.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

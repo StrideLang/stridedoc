@@ -9,7 +9,7 @@ description: "Linear stereo panner splitting a mono signal into stereo left [0] 
 
 Linear stereo panner splitting a mono signal into stereo left [0] and right [1].
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

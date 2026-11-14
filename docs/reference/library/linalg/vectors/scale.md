@@ -9,7 +9,7 @@ description: "Scales a vector of any dimension: Vec >> Scale(factor: 2.0) >> Sca
 
 Scales a vector of any dimension: Vec >> Scale(factor: 2.0) >> Scaled.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

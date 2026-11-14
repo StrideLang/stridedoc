@@ -9,7 +9,7 @@ description: "Detects falling edge (on -> off): Input >> FallingEdge() >> Trigge
 
 Detects falling edge (on -> off): Input >> FallingEdge() >> Trigger.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

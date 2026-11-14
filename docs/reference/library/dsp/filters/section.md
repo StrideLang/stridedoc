@@ -9,7 +9,7 @@ description: "Second-order IIR section with explicit normalised coefficients: In
 
 Second-order IIR section with explicit normalised coefficients: Input >> Section(coefficients: Coeffs) >> Output. With the default coefficients [1, 0, 0, 0, 0] the section passes the input unchanged. The data type must be floating point.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

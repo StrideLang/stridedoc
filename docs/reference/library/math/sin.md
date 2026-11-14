@@ -9,7 +9,7 @@ description: "Sine function of angle in radians."
 
 Sine function of angle in radians.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

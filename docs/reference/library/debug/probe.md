@@ -9,7 +9,7 @@ description: "Lightweight signal probe that non-intrusively monitors a stream wh
 
 Lightweight signal probe that non-intrusively monitors a stream while passing it through
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

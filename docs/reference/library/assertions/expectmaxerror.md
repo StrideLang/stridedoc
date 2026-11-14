@@ -9,7 +9,7 @@ description: "Statistical maximum absolute error assertion for stream differenti
 
 Statistical maximum absolute error assertion for stream differential testing.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

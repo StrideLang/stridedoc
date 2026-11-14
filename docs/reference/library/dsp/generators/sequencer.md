@@ -9,7 +9,7 @@ description: "Step sequencer module."
 
 Step sequencer module.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

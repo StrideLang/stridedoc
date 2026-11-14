@@ -9,7 +9,7 @@ description: "Less-than-or-equal assertion module (Actual <= Expected). Declared
 
 Less-than-or-equal assertion module (Actual <= Expected). Declared for schema validation; handled with special treatment in the testing framework.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

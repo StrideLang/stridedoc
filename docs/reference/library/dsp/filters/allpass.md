@@ -9,7 +9,7 @@ description: "Second-order all-pass filter: Input >> AllPass(frequency: 1000.0) 
 
 Second-order all-pass filter: Input >> AllPass(frequency: 1000.0) >> Output. A BiQuad with FilterDesign::ModeAllPass. The frequency is in Hz and is converted against the rate of the output. The data type must be floating point.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

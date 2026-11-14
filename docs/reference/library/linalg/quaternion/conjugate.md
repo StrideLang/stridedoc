@@ -9,7 +9,7 @@ description: "Quaternion conjugate: Q >> Conjugate() >> QConjugate."
 
 Quaternion conjugate: Q >> Conjugate() >> QConjugate.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Blackman window function: Index >> Blackman(size: 512) >> Weight."
 
 Blackman window function: Index >> Blackman(size: 512) >> Weight.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

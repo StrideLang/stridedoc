@@ -9,7 +9,7 @@ description: "Normalizes a vector of any dimension to unit length: Vec >> Normal
 
 Normalizes a vector of any dimension to unit length: Vec >> Normalize() >> UnitVec.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

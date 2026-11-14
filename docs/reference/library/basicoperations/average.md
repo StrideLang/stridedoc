@@ -9,7 +9,7 @@ description: "Computes the arithmetic mean of all signals in the input array: In
 
 Computes the arithmetic mean of all signals in the input array: Input >> Average() >> Output.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

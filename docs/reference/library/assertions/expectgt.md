@@ -9,7 +9,7 @@ description: "Greater-than assertion module (Actual > Expected). Declared for sc
 
 Greater-than assertion module (Actual > Expected). Declared for schema validation; handled with special treatment in the testing framework.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

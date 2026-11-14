@@ -9,7 +9,7 @@ description: "Reads signal values from platform serial input stream."
 
 Reads signal values from platform serial input stream.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

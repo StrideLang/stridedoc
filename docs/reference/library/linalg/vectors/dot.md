@@ -9,7 +9,7 @@ description: "Dot product of two vectors of any dimension: VecA >> Dot(with: Vec
 
 Dot product of two vectors of any dimension: VecA >> Dot(with: VecB) >> Result. The dimension is the size of the input.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

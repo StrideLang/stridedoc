@@ -9,7 +9,7 @@ description: "Multiplies Input[0] by Input[1]."
 
 Multiplies Input[0] by Input[1].
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

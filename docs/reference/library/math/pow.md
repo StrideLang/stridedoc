@@ -9,7 +9,7 @@ description: "Computes Base raised to the power of Exponent: pow(Input[0], Input
 
 Computes Base raised to the power of Exponent: pow(Input[0], Input[1]).
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

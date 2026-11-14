@@ -9,7 +9,7 @@ description: "Hard peak clamping limiter: AudioIn >> Limiter::Fast(threshold: 0.
 
 Hard peak clamping limiter: AudioIn >> Limiter::Fast(threshold: 0.95) >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

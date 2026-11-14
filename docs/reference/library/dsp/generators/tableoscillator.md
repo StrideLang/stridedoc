@@ -9,7 +9,7 @@ description: "Table read oscillator."
 
 Table read oscillator.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

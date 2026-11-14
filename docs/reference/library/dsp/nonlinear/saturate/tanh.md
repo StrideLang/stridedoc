@@ -9,7 +9,7 @@ description: "Padé rational approximation of tanh(x) soft saturation: AudioIn >
 
 Padé rational approximation of tanh(x) soft saturation: AudioIn >> Saturate::Tanh() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

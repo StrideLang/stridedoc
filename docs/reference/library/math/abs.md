@@ -9,7 +9,7 @@ description: "Returns the absolute value of the input signal."
 
 Returns the absolute value of the input signal.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

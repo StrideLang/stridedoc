@@ -9,7 +9,7 @@ description: "Detects changes in a signal: outputs on when Input differs from pr
 
 Detects changes in a signal: outputs on when Input differs from previous tick: Input >> OnChange() >> Trigger.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

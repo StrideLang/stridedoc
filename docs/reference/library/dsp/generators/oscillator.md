@@ -9,7 +9,7 @@ description: "Bipolar output [-1.0, 1.0] scaled by amplitude."
 
 Bipolar output [-1.0, 1.0] scaled by amplitude.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

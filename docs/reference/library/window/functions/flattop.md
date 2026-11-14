@@ -9,7 +9,7 @@ description: "Flat-top measurement window function: Index >> FlatTop(size: 512) 
 
 Flat-top measurement window function: Index >> FlatTop(size: 512) >> Weight.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Returns the maximum of two input values in a list: [A, B] >> Max()
 
 Returns the maximum of two input values in a list: [A, B] >> Max() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

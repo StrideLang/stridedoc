@@ -9,7 +9,7 @@ description: "Second-order low-pass filter: Input >> LowPass(frequency: 800.0 q:
 
 Second-order low-pass filter: Input >> LowPass(frequency: 800.0 q: 0.7071) >> Output. A BiQuad with FilterDesign::ModeLowPass. The frequency is in Hz and is converted against the rate of the output. The data type must be floating point.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

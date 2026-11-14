@@ -9,7 +9,7 @@ description: "A discrete step counter that increments per tick and rolls over to
 
 A discrete step counter that increments per tick and rolls over to startValue upon exceeding stopValue.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

@@ -9,7 +9,7 @@ description: "Inverse Clarke transform: [Valpha, Vbeta] >> InverseClarke() >> [V
 
 Inverse Clarke transform: [Valpha, Vbeta] >> InverseClarke() >> [Va, Vb, Vc].
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

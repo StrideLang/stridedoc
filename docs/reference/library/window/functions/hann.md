@@ -9,7 +9,7 @@ description: "Hann window function: Index >> Hann(size: 512) >> Weight."
 
 Hann window function: Index >> Hann(size: 512) >> Weight.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

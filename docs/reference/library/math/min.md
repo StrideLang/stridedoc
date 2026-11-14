@@ -9,7 +9,7 @@ description: "Returns the minimum of two input values in a list: [A, B] >> Min()
 
 Returns the minimum of two input values in a list: [A, B] >> Min() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

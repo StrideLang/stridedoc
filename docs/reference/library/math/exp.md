@@ -9,7 +9,7 @@ description: "Computes the natural exponential: exp(Input)."
 
 Computes the natural exponential: exp(Input).
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

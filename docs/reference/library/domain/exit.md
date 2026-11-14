@@ -9,7 +9,7 @@ description: "When input is true, the current domain terminates without executin
 
 When input is true, the current domain terminates without executing any further.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

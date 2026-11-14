@@ -9,7 +9,7 @@ description: "Cubic polynomial soft saturator: AudioIn >> Saturate::SoftClip() >
 
 Cubic polynomial soft saturator: AudioIn >> Saturate::SoftClip() >> Out.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

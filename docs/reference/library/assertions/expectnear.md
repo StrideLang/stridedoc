@@ -9,7 +9,7 @@ description: "Approximate equality assertion within epsilon tolerance. Declared 
 
 Approximate equality assertion within epsilon tolerance. Declared for schema validation; handled with special treatment in the testing framework.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

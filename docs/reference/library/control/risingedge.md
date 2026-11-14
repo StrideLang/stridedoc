@@ -9,7 +9,7 @@ description: "Detects rising edge (off -> on): Input >> RisingEdge() >> Trigger.
 
 Detects rising edge (off -> on): Input >> RisingEdge() >> Trigger.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

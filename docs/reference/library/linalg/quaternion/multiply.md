@@ -9,7 +9,7 @@ description: "Quaternion Hamilton product: Q1 >> Multiply(with: Q2) >> QProduct.
 
 Quaternion Hamilton product: Q1 >> Multiply(with: Q2) >> QProduct.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |

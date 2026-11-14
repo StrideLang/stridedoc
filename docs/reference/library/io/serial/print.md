@@ -9,7 +9,7 @@ description: "Writes values formatted to the serial port."
 
 Writes values formatted to the serial port.
 
-## Streams
+## Stream I/O
 
 | | Port Name | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
