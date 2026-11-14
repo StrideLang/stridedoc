@@ -28,8 +28,8 @@ signal ModDepth    { default: 150.0 }
 # Modulator computes instantaneous offset:
 ModFreq 
   >> Generators::Oscillator() 
-  >> Multiply(value: ModDepth)
-  >> [_, CarrierFreq] >> Add()
+  >> [_, ModDepth] >> Multiply()
+  >> [_, CarrierFreq] >> Sum()
   >> Generators::Oscillator(amplitude: 0.5)
   >> AudioOut;
 ```
@@ -42,7 +42,7 @@ The standard second-order infinite impulse response (IIR) biquad transfer functi
 
 $$H(z) = \frac{b_0 + b_1 z^{-1} + b_2 z^{-2}}{a_0 + a_1 z^{-1} + a_2 z^{-2}}$$
 
-The `Dsp::Filters::BiQuad` module implements this standard Direct Form topology:
+The `Dsp::Filters::BiQuad` module implements this standard topology with Audio EQ Cookbook coefficient calculation:
 
 ```stride
 use DesktopAudio version 1.0;
@@ -53,15 +53,15 @@ import Dsp::Filters as Filters;
 # Band-limited sawtooth passed into a resonant 12 dB/octave biquad filter:
 110.0 
   >> Generators::BandLimitedSaw() 
-  >> Filters::BiQuad(centerFrequency: 1800.0, resonance: 4.0) 
+  >> Filters::BiQuad(frequency: 1800.0, q: 4.0) 
   >> AudioOut;
 ```
 
 ---
 
-## 3. Parallel Processing & Channel Bundles
+## 3. Parallel Processing & Channel Arrays
 
-Multichannel signal paths and polyphonic voice banks are evaluated using bundle notation `[...]`:
+Multichannel signal paths and polyphonic voice banks are evaluated using array notation `[...]`:
 
 ```stride
 use DesktopAudio version 1.0;

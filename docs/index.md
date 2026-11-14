@@ -45,11 +45,12 @@ import Dsp::Filters as Filters;
 # 1. Modulating oscillator operating at 110 Hz
 # 2. Additive offset applied to carrier center frequency (440 Hz)
 # 3. Carrier oscillator passed through a resonant low-pass filter
-[110.0, 150.0] 
+110.0 
   >> Generators::Oscillator() 
-  >> [_, 440.0] >> Add()
+  >> [_, 150.0] >> Multiply()
+  >> [_, 440.0] >> Sum()
   >> Generators::Oscillator(amplitude: 0.7) 
-  >> Filters::BiQuad(centerFrequency: 1200.0, resonance: 2.5) 
+  >> Filters::BiQuad(mode: 0, frequency: 1200.0, q: 2.5) 
   >> AudioOut;
 ```
 

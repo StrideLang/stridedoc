@@ -18,16 +18,16 @@ Pipelines can be connected sequentially. The compiler resolves signal types and 
 import Dsp::Filters as Filters;
 
 AudioIn 
-  >> Filters::BiQuad(centerFrequency: 1000.0, resonance: 1.5)
+  >> Filters::BiQuad(frequency: 1000.0, q: 1.5)
   >> Clamp(min: -0.9, max: 0.9)
   >> AudioOut;
 ```
 
 ---
 
-## 2. Bundles & Parallel Dataflow
+## 2. Arrays & Parallel Dataflow
 
-Bracket syntax `[...]` designates **bundles**—ordered collections of signals evaluated in parallel:
+Bracket syntax `[...]` designates **arrays**—ordered collections of signals evaluated in parallel:
 
 ```stride
 # Fan-out: A single signal dispatched to multiple destinations
@@ -37,7 +37,7 @@ InputSignal >> [ BranchA, BranchB ];
 [ LeftChannel, RightChannel ] >> StereoProcessor() >> [ AudioOut[0], AudioOut[1] ];
 ```
 
-The underscore token `_` serves as a positional placeholder when feeding into a subset of a bundle's input slots:
+The underscore token `_` serves as a positional placeholder when feeding into a subset of an array's input slots:
 
 ```stride
 import Dsp::Generators as Generators;
@@ -53,7 +53,7 @@ Frequency >> [_, 0.5] >> Generators::Oscillator() >> AudioOut;
 Stride organizes source components across defined architectural layers:
 
 ### 1. Global Prelude (Auto-Imported)
-Foundational primitives (`Sin()`, `Abs()`, `Floor()`, `Clamp()`, `Equal()`, `Select()`, `Sum()`, `OnChange()`) reside in the root prelude (`strideroot/library/1.0/*.stride`) and are available in every file without import statements:
+Foundational primitives (`Sin()`, `Abs()`, `Floor()`, `Clamp()`, `Equal()`, `Select()`, `Sum()`, `OnChange()`, `RandomInt()`) reside in the root prelude (`strideroot/library/1.0/*.stride`) and are available in every file without import statements:
 
 ```stride
 # Calling Global Prelude primitives directly:
@@ -62,9 +62,15 @@ Input >> Sin() >> Clamp(min: -1.0, max: 1.0) >> Output;
 
 ### 2. Standard Library Packages
 Domain-specific modules are grouped into explicit packages:
-- **`package Dsp`**: Digital signal processing, audio filters, synthesis generators, and routing.
-- **`package IO`**: Console telemetry, serial communication, OSC networking, and MIDI events.
-- **`package Math`**: Mathematical constants (`Math::Pi`, `Math::TwoPi`, `Math::E`).
+- **`package Control`**: Industrial & embedded control systems (PID, FOC Clarke/Park, Schmitt trigger hysteresis, slew rate limiters).
+- **`package Dsp`**: Multi-rate digital filters, synthesis generators, delay lines, dynamics, waveshapers, spectral detectors, musical units.
+- **`package Estimation`**: Real-time state estimation (1D recursive Kalman filters and local peak detection).
+- **`package IO`**: Console telemetry, serial communication, OSC networking, MIDI events, and packet framing.
+- **`package LinAlg`**: N-dimensional vector operations (dot, norm, normalize, scale, wedge), matrix transforms, and unit quaternions.
+- **`package Math`**: Standard mathematical constants (`Math::Pi`, `Math::TwoPi`, `Math::E`).
+- **`package Sensors`**: Signal conditioning (debouncing, deadband scaling, linear ADC calibration, complementary sensor fusion).
+- **`package Test`**: Real-time stream boundary assertions and guards.
+- **`package Window`**: Spectral and FIR window functions (Hann, Hamming, Blackman, Flat-Top).
 
 ### Package Declarations
 Files declare their logical package explicitly:
