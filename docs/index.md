@@ -106,7 +106,7 @@ stridec --target=thumbv6m-none-eabi -mcpu=cortex-m0plus -O3 \
 <div class="citation-block">
   <h4>Academic Provenance & Publications</h4>
   <p>
-    Stride was designed and developed by Andrés Cabrera and Joseph Tilbian at the University of California, Santa Barbara.
+    Stride was initially developed at UCSB (University of California, Santa Barbara) by Andrés Cabrera and Joseph Tilbian.
   </p>
   <p>
     • J. Tilbian and A. Cabrera. <em>Stride: A declarative and reactive language for sound synthesis and beyond.</em> In Proceedings of the International Computer Music Conference (ICMC), Utrecht, 2016.<br>
@@ -114,6 +114,6 @@ stridec --target=thumbv6m-none-eabi -mcpu=cortex-m0plus -O3 \
     • J. Tilbian, A. Cabrera, S. Martin, and L. Olczyk. <em>Stride on Saturn M7 for Interactive Musical Instrument Design.</em> In Proceedings of the International Conference on New Interfaces for Musical Expression (NIME), Copenhagen, 2017.
   </p>
   <p style="margin-top: 0.75rem; font-size: 0.8rem;">
-    Licensed under the terms of the 3-Clause BSD License.
+    Released under the AGPLv3 License (formerly 3-Clause BSD).
   </p>
 </div>

@@ -100,4 +100,4 @@ To host the documentation under a custom domain (e.g. `docs.stridelang.org` or `
 
 ## License
 
-Released under the 3-Clause BSD License.
+Released under the AGPLv3 License (formerly 3-Clause BSD). Initially developed at UCSB (University of California, Santa Barbara).
