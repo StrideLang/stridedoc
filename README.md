@@ -27,8 +27,7 @@ stridedoc/
 │   │   ├── why-stride.md
 │   │   ├── getting-started.md
 │   │   ├── language-tour.md
-│   │   ├── systems-and-domains.md
-│   │   └── audio-dsp.md
+│   │   └── systems-and-domains.md
 │   └── reference/              # Extracted Standard Library documentation
 │       └── library/
 ├── package.json
