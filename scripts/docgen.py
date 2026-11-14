@@ -552,12 +552,10 @@ def generate_markdown_for_declaration(
     # 1. Stream I/O Table (if any stream ports)
     if stream_ports:
         md.append("## Stream I/O\n")
-        md.append("| I/O | Port Name | Description |")
+        md.append("| I/O | Details | Description |")
         md.append("| :-: | :--- | :--- |")
         for p in stream_ports:
             badge = format_port_badge(p)
-            # Port name: use the port entity symbol (e.g. InputPort, OutputPort) instead of bound entity
-            port_ident = p['id'] if p['id'] else (p['name'] if p['name'] else p['entity'])
             # Resolve from entity
             ent = entity_map.get(p['entity'], {})
             s_type = ent.get('type') or ent.get('kind') or 'signal'
@@ -565,8 +563,16 @@ def generate_markdown_for_declaration(
             domain_val = ent.get('domain', '') or p.get('domain', '')
             bubbles = render_attr_bubbles(s_type, rate_val, domain_val, ports_by_id)
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
-            md.append(f"| {badge} | `{port_ident}`{bubbles} | {desc} |")
+            details_cell = bubbles if bubbles else "—"
+            md.append(f"| {badge} | {details_cell} | {desc} |")
         md.append("")
+        md.append('<div class="port-legend">')
+        md.append('  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>')
+        md.append('  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>')
+        md.append('  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>')
+        md.append('  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>')
+        md.append('  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>')
+        md.append('</div>\n')
 
     # 2. Properties Table (if any properties)
     if properties:
@@ -586,10 +592,9 @@ def generate_markdown_for_declaration(
             desc = p['meta'].replace('\n', ' ') if p['meta'] else (ent.get('meta', '').replace('\n', ' ') if ent.get('meta') else "—")
             md.append(f"| {prop_badge}{def_str}{bubbles} | {desc} |")
         md.append("")
-
-    # Compact Legend if ports/properties present
-    if stream_ports or properties:
         md.append('<div class="port-legend">')
+        md.append('  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>')
+        md.append('  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>')
         md.append('  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>')
         md.append('  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>')
         md.append('  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>')
@@ -647,7 +652,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
     for item in ref_dir.iterdir():
         if item.is_dir():
             shutil.rmtree(item)
-        elif item.name != "index.md":
+        elif item.name not in ("index.md", "symbols.md"):
             item.unlink()
 
     prelude_groups = {}
@@ -655,6 +660,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
 
     package_groups = {}  # top_pkg -> { group_key -> [items] }
     package_order = {}   # top_pkg -> [group_keys]
+    all_symbols = []     # flat collection for the alphabetical symbol index
 
     IGNORED_DIRS = {'doc', '.strdcache', 'tests', 'local'}
     GITHUB_REPO_URL = "https://github.com/StrideLang/strideroot"
@@ -772,6 +778,14 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
                     'link': f"{link_prefix}/{file_slug}"
                 })
 
+                all_symbols.append({
+                    'name': decl_name,
+                    'namespace': pkg_name if not is_prelude else None,
+                    'kind': decl.get('kind', 'module').capitalize(),
+                    'desc': decl.get('meta', '').split('\n')[0].strip(),
+                    'link': f"{link_prefix}/{file_slug}"
+                })
+
     def build_sidebar_items(target_dict, order_list):
         section_items = []
         for g_key in order_list:
@@ -822,6 +836,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
         f"- **Upstream Repository**: [`StrideLang/strideroot`]({GITHUB_REPO_URL})\n",
         f"- **Active Ref**: `{git_ref}` (unambiguous source line links are embedded in each definition)\n",
         "## Architectural Layers & Namespace Organization\n",
+        "> **Alphabetical Directory**: Looking for a specific function, filter, or operator? Browse the [Standard Library Symbol Index (A–Z)](/reference/library/symbols).\n",
         "The Stride standard library is organized across defined architectural layers:\n",
         "### 1. Global Prelude (Auto-Imported)\n",
         "Foundational primitives loaded automatically into the root namespace of every file (`strideroot/library/1.0/*.stride`). These modules and operations are called bare in global scope without imports (e.g. `Sin()`, `Sum()`, `Equal()`, `Select()`):\n"
@@ -847,6 +862,48 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
 
     index_md.append("\n")
     (ref_dir / "index.md").write_text("\n".join(index_md), encoding='utf-8')
+
+    # Generate Alphabetical Symbol Index Page
+    all_symbols.sort(key=lambda s: s['name'].lower())
+    grouped_symbols = {}
+    for s in all_symbols:
+        first_char = s['name'][0].upper()
+        if not first_char.isalpha():
+            first_char = '#'
+        if first_char not in grouped_symbols:
+            grouped_symbols[first_char] = []
+        grouped_symbols[first_char].append(s)
+
+    alpha_letters = sorted([k for k in grouped_symbols.keys() if k != '#'])
+    if '#' in grouped_symbols:
+        alpha_letters.append('#')
+
+    alpha_bar = " &bull; ".join(f"[{letter}](#{letter.lower() if letter != '#' else 'symbols'})" for letter in alpha_letters)
+
+    symbols_md = [
+        "---",
+        "title: Standard Library Symbol Index (A–Z)",
+        "description: Complete alphabetical index of all modules, stream processors, reactions, and constants in the Stride standard library.",
+        "---\n",
+        "# Standard Library Symbol Index\n",
+        f"Complete alphabetical directory of all **{len(all_symbols)} definitions** in the Stride standard library.\n",
+        f'<div class="symbol-alpha-bar">{alpha_bar}</div>\n'
+    ]
+
+    for letter in alpha_letters:
+        symbols_md.append(f"## {letter}\n")
+        symbols_md.append("| Symbol | Namespace | Kind | Description |")
+        symbols_md.append("| :--- | :--- | :--- | :--- |")
+        for s in grouped_symbols[letter]:
+            s_name = s['name']
+            s_link = s['link']
+            s_ns = f"`{s['namespace']}`" if s['namespace'] else "*(Global Prelude)*"
+            s_kind = s['kind']
+            s_desc = s['desc'].replace('|', '\\|') if s['desc'] else "—"
+            symbols_md.append(f"| [`{s_name}`]({s_link}) | {s_ns} | {s_kind} | {s_desc} |")
+        symbols_md.append("")
+
+    (ref_dir / "symbols.md").write_text("\n".join(symbols_md), encoding='utf-8')
 
     return sidebar_config
 

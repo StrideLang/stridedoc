@@ -11,11 +11,19 @@ Receives MIDI note on/off events.
 
 ## Stream I/O
 
-| I/O | Port Name | Description |
+| I/O | Details | Description |
 | :-: | :--- | :--- |
-| <span class="port-badge stream-out">» frequency</span> | `FrequencyPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» frequency</span></span></div> | Note pitch converted to frequency in Hz |
-| <span class="port-badge stream-out">» velocity</span> | `VelocityPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» velocity</span></span></div> | Note velocity normalized to [0.0, 1.0] |
-| <span class="port-badge stream-out">» gate</span> | `GatePort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span></div> | Gate switch on while note is held down |
+| <span class="port-badge stream-out">» frequency</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» frequency</span></span></div> | Note pitch converted to frequency in Hz |
+| <span class="port-badge stream-out">» velocity</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» velocity</span></span></div> | Note velocity normalized to [0.0, 1.0] |
+| <span class="port-badge stream-out">» gate</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span></div> | Gate switch on while note is held down |
+
+<div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
+  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
+</div>
 
 ## Properties
 
@@ -24,6 +32,8 @@ Receives MIDI note on/off events.
 | <span class="port-badge prop-in">↓ channel</span> <span class="prop-default">= <code>0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>signal</code></span></div> | MIDI channel (1-16, 0 for all channels) |
 
 <div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>
+  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
   <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
   <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
   <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>

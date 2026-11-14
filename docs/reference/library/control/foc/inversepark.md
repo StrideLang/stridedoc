@@ -11,10 +11,18 @@ Inverse Park transform: [Vd, Vq] >> InversePark(angle: Theta) >> [Valpha, Vbeta]
 
 ## Stream I/O
 
-| I/O | Port Name | Description |
+| I/O | Details | Description |
 | :-: | :--- | :--- |
-| <span class="port-badge stream-in">» vdq</span> | `VdqPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» valphabeta</span></span></div> | Rotating direct-quadrature frame voltages [Vd, Vq] |
-| <span class="port-badge stream-out">» valphabeta</span> | `ValphabetaPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» valphabeta</span></span></div> | Stationary frame voltages [Valpha, Vbeta] |
+| <span class="port-badge stream-in">» vdq</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» valphabeta</span></span></div> | Rotating direct-quadrature frame voltages [Vd, Vq] |
+| <span class="port-badge stream-out">» valphabeta</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» valphabeta</span></span></div> | Stationary frame voltages [Valpha, Vbeta] |
+
+<div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
+  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
+</div>
 
 ## Properties
 
@@ -23,6 +31,8 @@ Inverse Park transform: [Vd, Vq] >> InversePark(angle: Theta) >> [Valpha, Vbeta]
 | <span class="port-badge prop-in">↓ angle</span> <span class="prop-default">= <code>0.0</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» valphabeta</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» valphabeta</span></span></div> | Electrical rotor angle in radians |
 
 <div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>
+  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
   <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
   <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
   <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>

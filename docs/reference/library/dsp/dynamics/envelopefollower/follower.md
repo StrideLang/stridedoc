@@ -11,10 +11,18 @@ Peak envelope follower with attack and release times in seconds: AudioIn >> Enve
 
 ## Stream I/O
 
-| I/O | Port Name | Description |
+| I/O | Details | Description |
 | :-: | :--- | :--- |
-| <span class="port-badge stream-in">» In</span> | `InputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Input audio signal stream |
-| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Extracted unipolar envelope signal |
+| <span class="port-badge stream-in">» In</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Input audio signal stream |
+| <span class="port-badge stream-out">» Out</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Extracted unipolar envelope signal |
+
+<div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
+  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
+</div>
 
 ## Properties
 
@@ -24,6 +32,8 @@ Peak envelope follower with attack and release times in seconds: AudioIn >> Enve
 | <span class="port-badge prop-in">↓ release</span> <span class="prop-default">= <code>0.1</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Release time constant in seconds: how fast the envelope falls (default 0.1). 0 follows falling levels instantly |
 
 <div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>
+  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
   <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
   <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
   <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>

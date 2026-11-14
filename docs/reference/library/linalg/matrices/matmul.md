@@ -11,10 +11,18 @@ Matrix product of any compatible shapes: MatA >> MatMul(with: MatB inner: 3 colu
 
 ## Stream I/O
 
-| I/O | Port Name | Description |
+| I/O | Details | Description |
 | :-: | :--- | :--- |
-| <span class="port-badge stream-in">» a</span> | `MatrixAPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Row-major matrix A with m rows and `inner` columns |
-| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Row-major result C with m rows and `columns` columns. Its size is m * columns |
+| <span class="port-badge stream-in">» a</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Row-major matrix A with m rows and `inner` columns |
+| <span class="port-badge stream-out">» Out</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Row-major result C with m rows and `columns` columns. Its size is m * columns |
+
+<div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
+  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
+</div>
 
 ## Properties
 
@@ -25,6 +33,8 @@ Matrix product of any compatible shapes: MatA >> MatMul(with: MatB inner: 3 colu
 | <span class="port-badge prop-in">↓ columns</span> <span class="prop-default">= <code>2</code></span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>Int</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Number of columns of B, which is the number of columns of the result (default 2) |
 
 <div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>
+  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
   <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
   <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
   <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>

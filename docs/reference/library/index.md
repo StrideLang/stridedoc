@@ -15,6 +15,8 @@ The Stride standard library provides verified primitives for signal flow, multi-
 
 ## Architectural Layers & Namespace Organization
 
+> **Alphabetical Directory**: Looking for a specific function, filter, or operator? Browse the [Standard Library Symbol Index (A–Z)](/reference/library/symbols).
+
 The Stride standard library is organized across defined architectural layers:
 
 ### 1. Global Prelude (Auto-Imported)

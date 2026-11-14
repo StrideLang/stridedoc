@@ -11,12 +11,14 @@ Logical OR operation on switch inputs: [A, B] >> Or() >> Out.
 
 ## Stream I/O
 
-| I/O | Port Name | Description |
+| I/O | Details | Description |
 | :-: | :--- | :--- |
-| <span class="port-badge stream-in">» In</span> | `InputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Two-element switch list: [A, B] |
-| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Switch output of A OR B |
+| <span class="port-badge stream-in">» In</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Two-element switch list: [A, B] |
+| <span class="port-badge stream-out">» Out</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Switch output of A OR B |
 
 <div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
+  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
   <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
   <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
   <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>

@@ -11,10 +11,18 @@ Wedge (exterior) product of two vectors of any dimension: VecA >> Wedge(with: Ve
 
 ## Stream I/O
 
-| I/O | Port Name | Description |
+| I/O | Details | Description |
 | :-: | :--- | :--- |
-| <span class="port-badge stream-in">» a</span> | `VectorAPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | First vector with n components. n is the size of this port |
-| <span class="port-badge stream-out">» Out</span> | `OutputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | The n * (n - 1) / 2 components a[i] * b[j] - a[j] * b[i], one for each pair of axes i < j, in lexicographic order: (0,1), (0,2), ..., (1,2), ... The size of this port must be n * (n - 1) / 2 |
+| <span class="port-badge stream-in">» a</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | First vector with n components. n is the size of this port |
+| <span class="port-badge stream-out">» Out</span> | <div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-rate" title="Evaluation Rate"><span class="bubble-key">rate</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | The n * (n - 1) / 2 components a[i] * b[j] - a[j] * b[i], one for each pair of axes i < j, in lexicographic order: (0,1), (0,2), ..., (1,2), ... The size of this port must be n * (n - 1) / 2 |
+
+<div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge stream-in">» In</span> Stream Input</span>
+  <span class="port-legend-item"><span class="port-badge stream-out">» Out</span> Stream Output</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
+</div>
 
 ## Properties
 
@@ -23,6 +31,8 @@ Wedge (exterior) product of two vectors of any dimension: VecA >> Wedge(with: Ve
 | <span class="port-badge prop-in">↓ with</span><div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><span class="port-badge stream-out">» Out</span></span><span class="attr-bubble bubble-domain" title="Clock Domain"><span class="bubble-key">domain</span><span class="port-badge stream-out">» Out</span></span></div> | Second vector, with the same size as the first |
 
 <div class="port-legend">
+  <span class="port-legend-item"><span class="port-badge prop-in">↓ In</span> Property Input</span>
+  <span class="port-legend-item"><span class="port-badge prop-out">↑ Out</span> Property Output</span>
   <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
   <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
   <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>

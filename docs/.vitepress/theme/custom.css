@@ -242,6 +242,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
+  margin-top: 0;
+}
+
+.port-badge + .attr-bubble-group,
+.prop-default + .attr-bubble-group {
   margin-top: 0.35rem;
 }
 
@@ -307,30 +312,36 @@
 }
 
 .bubble-key.type-key {
-  background-color: rgba(37, 99, 235, 0.14);
+  background-color: rgba(37, 99, 235, 0.12);
   color: #1d4ed8;
+  border: 1px solid rgba(37, 99, 235, 0.25);
 }
 .dark .bubble-key.type-key {
-  background-color: rgba(96, 165, 250, 0.18);
+  background-color: rgba(96, 165, 250, 0.16);
   color: #60a5fa;
+  border-color: rgba(96, 165, 250, 0.30);
 }
 
 .bubble-key.rate-key {
-  background-color: rgba(13, 148, 136, 0.14);
+  background-color: rgba(13, 148, 136, 0.12);
   color: #0f766e;
+  border: 1px solid rgba(13, 148, 136, 0.25);
 }
 .dark .bubble-key.rate-key {
-  background-color: rgba(45, 212, 191, 0.18);
+  background-color: rgba(45, 212, 191, 0.16);
   color: #2dd4bf;
+  border-color: rgba(45, 212, 191, 0.30);
 }
 
 .bubble-key.domain-key {
-  background-color: rgba(124, 58, 237, 0.14);
+  background-color: rgba(124, 58, 237, 0.12);
   color: #6d28d9;
+  border: 1px solid rgba(124, 58, 237, 0.25);
 }
 .dark .bubble-key.domain-key {
-  background-color: rgba(167, 139, 250, 0.18);
+  background-color: rgba(167, 139, 250, 0.16);
   color: #a78bfa;
+  border-color: rgba(167, 139, 250, 0.30);
 }
 
 .port-legend {
@@ -358,13 +369,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.15rem;
-  height: 1.15rem;
-  border-radius: 50%;
+  width: auto;
+  min-width: 0;
+  padding: 0.12rem 0.48rem;
+  border-radius: 9999px;
   font-family: var(--vp-font-family-mono);
   font-weight: 700;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   line-height: 1;
+  text-transform: lowercase;
+  white-space: nowrap;
+}
+
+.port-legend-item .port-badge {
+  padding: 0.12rem 0.48rem;
+  font-size: 0.72rem;
 }
 
 /* Compact Table Formatting */
@@ -378,6 +397,40 @@
 .vp-doc th, 
 .vp-doc td {
   padding: 0.35rem 0.65rem !important;
+}
+
+/* Symbol A-Z Alphabetical Jump Bar */
+.symbol-alpha-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.6rem 0.85rem;
+  margin: 1.25rem 0 2rem;
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  align-items: center;
+}
+
+.symbol-alpha-bar a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 0.3rem;
+  border-radius: 4px;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.symbol-alpha-bar a:hover {
+  background-color: var(--vp-c-bg-elv);
+  color: var(--vp-c-brand-1);
 }
 
 /* Windmill Hero & Metaphor Section */

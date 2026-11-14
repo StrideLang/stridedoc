@@ -33,6 +33,7 @@ const docSidebar = [
     text: 'Reference',
     items: [
       { text: 'Standard Library Overview', link: '/reference/library/' },
+      { text: 'Symbol Index (A–Z)', link: '/reference/library/symbols' },
       ...referenceCategories
     ]
   }
