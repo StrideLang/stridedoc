@@ -956,7 +956,7 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
         "description: Specification of modules, stream processors, filters, generators, and arithmetic operations in the Stride standard library.",
         "---\n",
         "# Standard Library Reference\n",
-        "The Stride standard library provides verified primitives for signal flow, multi-rate digital signal processing (DSP), mathematical operations, and IO communications.\n",
+        "The Stride standard library provides verified primitives for signal flow, multi-rate stream processing, control systems, mathematical operations, and IO communications.\n",
         "## Source Repository & Versioning\n",
         f"- **Upstream Repository**: [`StrideLang/strideroot`]({GITHUB_REPO_URL})\n",
         f"- **Active Ref**: `{git_ref}` (unambiguous source line links are embedded in each definition)\n",

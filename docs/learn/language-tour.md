@@ -17,10 +17,10 @@ Pipelines can be connected sequentially. The compiler resolves signal types and 
 ```stride
 import Dsp::Filters as Filters;
 
-AudioIn 
+SignalIn 
   >> Filters::BiQuad(frequency: 1000.0, q: 1.5)
   >> Clamp(min: -0.9, max: 0.9)
-  >> AudioOut;
+  >> SignalOut;
 ```
 
 ---
@@ -34,7 +34,7 @@ Bracket syntax `[...]` designates **arrays**—ordered collections of signals ev
 InputSignal >> [ BranchA, BranchB ];
 
 # Fan-in: Multi-channel signals routed into a multi-port processor
-[ LeftChannel, RightChannel ] >> StereoProcessor() >> [ AudioOut[0], AudioOut[1] ];
+[ LeftChannel, RightChannel ] >> StereoProcessor() >> [ SignalOut[0], SignalOut[1] ];
 ```
 
 The underscore token `_` serves as a positional placeholder when feeding into a subset of an array's input slots:
@@ -43,7 +43,7 @@ The underscore token `_` serves as a positional placeholder when feeding into a 
 import Dsp::Generators as Generators;
 
 # Routes Frequency into port 0, setting port 1 to constant 0.5:
-Frequency >> [_, 0.5] >> Generators::Oscillator() >> AudioOut;
+Frequency >> [_, 0.5] >> Generators::Oscillator() >> StreamOut;
 ```
 
 ---
@@ -116,11 +116,11 @@ module Tremolo {
     ports: [
         mainInputPort InputPort {
             entity: Input
-            meta: "Input audio signal"
+            meta: "Input stream signal"
         },
         mainOutputPort OutputPort {
             entity: Output
-            meta: "Modulated audio stream output"
+            meta: "Modulated stream output"
         },
         propertyInputPort RateProperty {
             name: "rate"
@@ -152,8 +152,26 @@ module Tremolo {
 ## 5. Rate Typing & Domain Boundaries
 
 Every signal in Stride is associated with a discrete rate type:
-* `AudioRate`: Evaluated synchronously at the primary audio sampling frequency (e.g., 48 kHz).
-* `ControlRate`: Evaluated at a sub-sampled control period (e.g., 1 kHz).
-* `none`: Static constants or discrete asynchronous events.
+* `AudioRate`: Evaluated synchronously at high streaming rates (e.g., 44.1 kHz, 48 kHz for audio or fast sensor streams).
+* `ControlRate`: Evaluated at a sub-sampled control period (e.g., 1 kHz for telemetry, PID, or motor control).
+* `none`: Static constants, discrete asynchronous events, or state machine transitions.
 
 Signals operating at distinct rates or hosted on separate processing cores cannot be directly connected through synchronous stream operators. They must be routed through formal **Domains** using explicitly declared synchronization primitives.
+
+---
+
+## 6. Finite State Machines & Discrete Logic
+
+In addition to continuous dataflow streams, Stride natively represents discrete state logic through **Finite State Machines (FSMs)**. States, transitions, guards, and transition actions are declared as first-class language constructs:
+
+```stride
+# A state machine transition with guard conditions and actions
+transition PlacePiece[Index in 0:8] {
+    label: "Place Piece"
+    guard: [ IsEmpty[Index], Not(GameOver) ] >> And()
+    onTransition: [ Place(supply: PlayerPiece, location: Index); ]
+    targetState: NextTurn
+}
+```
+
+This allows Stride to describe not only physical signal processors, but also discrete systems such as **board games**—which can be naturally formulated as finite state machines with formal turn structures, move validation guards, and board states.

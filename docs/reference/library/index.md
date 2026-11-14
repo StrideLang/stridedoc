@@ -5,7 +5,7 @@ description: Specification of modules, stream processors, filters, generators, a
 
 # Standard Library Reference
 
-The Stride standard library provides verified primitives for signal flow, multi-rate digital signal processing (DSP), mathematical operations, and IO communications.
+The Stride standard library provides verified primitives for signal flow, multi-rate stream processing, control systems, mathematical operations, and IO communications.
 
 ## Source Repository & Versioning
 

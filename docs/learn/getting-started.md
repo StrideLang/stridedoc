@@ -47,6 +47,8 @@ Language support, diagnostics, and syntax highlighting are available via the off
 
 ## 4. Writing and Compiling a Program
 
+To demonstrate Stride's stream syntax and compilation flow, consider a continuous signal generator pipeline. While Stride is used across embedded control systems, sensor processing, and discrete finite state machines, streaming to a host audio output provides a convenient, immediate way to verify real-time execution on a desktop machine:
+
 Create a source file named `oscillator.stride`:
 
 ```stride
@@ -54,12 +56,12 @@ use DesktopAudio version 1.0;
 
 import Dsp::Generators as Generators;
 
-# Connect a 440 Hz generator to the primary audio output:
+# Connect a 440 Hz generator to the primary stream output:
 440.0 >> Generators::Oscillator(amplitude: 0.2) >> AudioOut;
 ```
 
-### JIT Execution (Host Audio)
-To execute the pipeline immediately using the local audio framework:
+### JIT Execution (Desktop Host)
+To execute the pipeline immediately using the local desktop runtime:
 
 ```bash
 stride oscillator.stride

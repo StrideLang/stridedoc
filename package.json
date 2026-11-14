@@ -11,10 +11,13 @@
   "keywords": [
     "stride",
     "dsl",
-    "audio",
+    "dataflow",
+    "state-machines",
+    "fsm",
+    "embedded",
     "dsp",
-    "documentation",
-    "embedded"
+    "audio",
+    "documentation"
   ],
   "author": "Stride Language Contributors",
   "license": "BSD-3-Clause",

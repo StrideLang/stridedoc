@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: Stride
-  text: Signals. Streams. Architectures.
-  tagline: A domain-specific programming language for real-time sound synthesis, digital signal processing, and embedded systems.
+  text: Streams. State Machines. Architectures.
+  tagline: A domain-specific programming language for declarative dataflow streams, finite state machines, and multi-rate reactive systems.
   image:
     src: /windmill-hero.jpg
     alt: Stride Windmill Metaphor
@@ -25,7 +25,7 @@ features:
   - title: Multi-Rate Evaluation
     details: Signals declare or inherit discrete evaluation rates. Clock domains, sample-rate transitions, and event decoupling are verified at compile time.
   - title: Hardware Independence
-    details: Declarative platform and system abstractions isolate signal processing topology from microcontrollers (ARM Cortex-M, AVR, RISC-V) and host audio backends.
+    details: Declarative platform and system abstractions isolate computation topologies from microcontrollers (ARM Cortex-M, AVR, RISC-V), hardware peripherals, and host runtime environments.
   - title: Native Code Generation
     details: Lowers via LLVM directly into ISO C99 interface headers, static libraries, and relocatable machine object files (.o). Zero garbage collection and zero heap allocation in signal loops.
 ---
@@ -36,7 +36,7 @@ features:
     A windmill is a classical mechanical transducer: it harnesses the continuous, physical flow of the wind and converts it directly into deterministic, synchronous work.
   </p>
   <p>
-    Stride operates on the same principle. Rather than managing signal processing through mutable imperative state or dynamic object graphs, Stride captures the continuous flow of signals through streams (<code>&gt;&gt;</code>) and compiles them into verified, statically scheduled native machine code.
+    Stride operates on the same principle. Rather than managing computation through mutable imperative state or dynamic object graphs, Stride captures the continuous flow of signals through streams (<code>&gt;&gt;</code>) and discrete transitions through reactive state machines, compiling them into verified, statically scheduled native machine code.
   </p>
 </div>
 
@@ -44,7 +44,7 @@ features:
 
   <div class="showcase-card">
     <h4>1. Continuous Stream Processing</h4>
-    <p>Connecting signal producers, scaling operations, and multi-rate filters into an audio-rate output stream:</p>
+    <p>Connecting signal producers, scaling operations, and multi-rate filters into a stream pipeline (e.g., audio DSP, sensor conditioning, or telemetry):</p>
 
 ```stride
 use DesktopAudio version 1.0;
@@ -65,11 +65,11 @@ import Dsp::Filters as Filters;
 
   <div class="showcase-card">
     <h4>2. Multi-Rate Domain & Event Reactions</h4>
-    <p>Decoupling asynchronous hardware triggers from deterministic audio-rate signal streams:</p>
+    <p>Decoupling asynchronous hardware triggers from deterministic high-rate signal streams:</p>
 
 ```stride
 # Asynchronous button input triggers an atomic parameter change
-# without locking or interrupting the high-rate audio domain
+# without locking or interrupting the high-rate processing domain
 reaction ToggleMute {
     ports: [
         propertyInputPort TriggerPort { name: "trigger" entity: MuteTrigger }
@@ -87,15 +87,30 @@ reaction ToggleMute {
   </div>
 
   <div class="showcase-card">
-    <h4>3. Direct Native Compilation</h4>
+    <h4>3. State Machines & Discrete Logic</h4>
+    <p>Stride can also describe discrete systems such as board games, which are modeled as finite state machines with turn rules and transition guards:</p>
+
+```stride
+# Finite state machine transition for a turn-based board game
+transition PlacePiece[Index in 0:8] {
+    label: "Place Piece"
+    guard: [ IsEmpty[Index], Not(GameOver) ] >> And()
+    onTransition: [ Place(supply: PlayerPiece, location: Index); ]
+    targetState: NextTurn
+}
+```
+  </div>
+
+  <div class="showcase-card">
+    <h4>4. Direct Native Compilation</h4>
     <p>Compiling the same Stride algorithm directly for an ARM Cortex-M0+ microcontroller (Raspberry Pi Pico RP2040):</p>
 
 ```bash
 # Compiles Stride source to relocatable machine object code and C99 interface header
 stridec --target=thumbv6m-none-eabi -mcpu=cortex-m0plus -O3 \
-        --emit-header=synth.h \
-        -o synth.o \
-        synth.stride
+        --emit-header=system.h \
+        -o system.o \
+        system.stride
 ```
   </div>
 

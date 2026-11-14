@@ -10,10 +10,10 @@ flowchart TD
         subgraph Host["Platform: PC Host (Desktop / Server)"]
             direction TB
             FrameworkHost["Framework: JIT / C++ Runtime"]
-            DomAudio["Domain: AudioDomain<br/>(Real-time Host Audio)"]
-            DomControl["Domain: ControlDomain<br/>(Asynchronous UI & Logic)"]
+            DomStream["Domain: StreamDomain<br/>(Real-time Signal / Audio / Telemetry)"]
+            DomControl["Domain: ControlDomain<br/>(State Machine & Control Logic)"]
 
-            FrameworkHost --> DomAudio
+            FrameworkHost --> DomStream
             FrameworkHost --> DomControl
         end
 
@@ -40,8 +40,8 @@ flowchart TD
 | :--- | :--- | :--- | :--- |
 | **Platform** | **Hardware Support** | Hardware descriptions, device pinouts, peripherals, registers, memory layouts, DMA controllers, interrupt vectors. | `RP2040`, `RP2350`, `STM32F4`, `Local_x86_64` |
 | **Framework** | **Toolchain & Runtime** | Code emission targets, compiler backends, platform modules, language operator lowerings, runtime library bindings. | `JIT`, `Cpp`, `RtAudio`, `Wiring`, `PicoSDK` |
-| **System** | **Deployment Topology** | Groups platforms and frameworks into a whole; declares abstract **Connections** between disparate execution targets. | `DesktopApp`, `DesktopAudioApp`, `DualCoreBldcSystem` |
-| **Domain** | **Computation Group** | Execution context for signals, streams, and state machines; bound to a **Framework**; requires and provides **Resources**. | `AudioDomain`, `ControlDomain`, `GuiDomain`, `RootDomain` |
+| **System** | **Deployment Topology** | Groups platforms and frameworks into a whole; declares abstract **Connections** between disparate execution targets. | `DesktopApp`, `DualCoreBldcSystem`, `GameEngineSystem` |
+| **Domain** | **Computation Group** | Execution context for signals, streams, and state machines; bound to a **Framework**; requires and provides **Resources**. | `StreamDomain`, `ControlDomain`, `GameStateDomain`, `RootDomain` |
 
 ---
 
@@ -67,8 +67,8 @@ platform _PicoPlatform {
 
 A **Domain** represents a single thread of execution, core, or rate context:
 
-* Real-time audio domains run inside high-priority interrupts or dedicated DSP cores without heap allocations.
-* Control domains run asynchronously or inside background scheduler loops.
+* **Real-time stream domains** (such as high-rate audio DSP, sensor telemetry, or motor control) run inside high-priority interrupts or dedicated DSP cores without dynamic memory allocation.
+* **Discrete state machine & control domains** (such as turn-based game logic, protocol parsers, or user interfaces) run asynchronously or inside background scheduler loops.
 
 When streams cross domain boundaries, Stride enforces synchronization mechanisms:
 - **Semaphores & Mutexes**: For buffer pool leases and atomic resource locks.

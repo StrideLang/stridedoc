@@ -41,14 +41,14 @@ const docSidebar = [
 export default withMermaid(
   defineConfig({
     title: "Stride",
-    description: "A domain-specific programming language for dataflow streams, real-time digital signal processing, and embedded systems",
+    description: "A domain-specific programming language for declarative dataflow streams, finite state machines, and multi-rate embedded systems",
     base: "/stridedoc/", // Ready for GitHub Pages deployment under https://<org>.github.io/stridedoc/
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/stridedoc/logo.svg' }],
     ['meta', { name: 'theme-color', content: '#18181b' }],
     ['meta', { name: 'og:title', content: 'The Stride Programming Language' }],
-    ['meta', { name: 'og:description', content: 'A domain-specific programming language for dataflow streams, real-time digital signal processing, and embedded systems.' }]
+    ['meta', { name: 'og:description', content: 'A domain-specific programming language for declarative dataflow streams, finite state machines, and multi-rate embedded systems.' }]
   ],
 
   markdown: {
