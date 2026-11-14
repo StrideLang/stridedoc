@@ -1,26 +1,26 @@
 ---
 title: Debounce
-description: "Suppresses mechanical switch bounce: RawButton >> Debounce(samples: 10) >> CleanButton."
+description: "Suppresses mechanical switch bounce: RawButton >> Debounce(time: 0.01) >> CleanButton. The output follows the input once it has been differe"
 ---
 
 # Debounce
 
 <span class="stride-badge">Module</span> `package Sensors::Conditioning` &bull; Namespace: **`Sensors::Conditioning`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Sensors/Conditioning.stride#L8" target="_blank" rel="noopener" title="View source on GitHub">[Conditioning.stride:8]</a>
 
-Suppresses mechanical switch bounce: RawButton >> Debounce(samples: 10) >> CleanButton.
+Suppresses mechanical switch bounce: RawButton >> Debounce(time: 0.01) >> CleanButton. The output follows the input once it has been different for the given time in seconds, converted against the rate of the output.
 
 ## Streams
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | `OutputPort.rate` | `OutputPort.domain` | Raw digital or binary input signal (0 or 1) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | `OutputPort.rate` | `OutputPort.domain` | Debounced output signal |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Raw digital input switch |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `switch` | `OutputPort.rate` | `OutputPort.domain` | Debounced output switch |
 
 ## Properties
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `samples` | `signal` | `10` | — | `OutputPort.domain` | Number of consecutive stable samples required to accept state change |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `time` | `Real` | `0.01` | — | `OutputPort.domain` | Time in seconds the input must stay different from the output before the output follows it (default 0.01) |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -34,5 +34,5 @@ Suppresses mechanical switch bounce: RawButton >> Debounce(samples: 10) >> Clean
 ```stride
 import Sensors::Conditioning as Conditioning;
 
-Signal >> Conditioning::Debounce(samples: 10) >> Output;
+Signal >> Conditioning::Debounce(time: 0.01) >> Output;
 ```

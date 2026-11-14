@@ -13,8 +13,8 @@ Receives MIDI note on/off events.
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `FrequencyPort` | `signal` | — | — | Note pitch converted to frequency in Hz |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `VelocityPort` | `signal` | — | — | Note velocity normalized to [0.0, 1.0] |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `FrequencyPort` | `FrequencyPort.type` | — | — | Note pitch converted to frequency in Hz |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `VelocityPort` | `VelocityPort.type` | — | — | Note velocity normalized to [0.0, 1.0] |
 | <span class="port-icon stream-out" title="Stream Output">»</span> | `GatePort` | `switch` | — | — | Gate switch on while note is held down |
 
 ## Properties

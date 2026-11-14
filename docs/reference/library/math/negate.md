@@ -1,13 +1,13 @@
 ---
-title: Inverse
-description: "Inverts (changes the sign of) an input value: -Input."
+title: Negate
+description: "Negates (changes the sign of) an input value: -Input. Input >> Negate() >> Output. (For the multiplicative inverse use 1.0 / Input.)"
 ---
 
-# Inverse
+# Negate
 
-<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L316" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:316]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/MathPrelude.stride#L317" target="_blank" rel="noopener" title="View source on GitHub">[MathPrelude.stride:317]</a>
 
-Inverts (changes the sign of) an input value: -Input.
+Negates (changes the sign of) an input value: -Input. Input >> Negate() >> Output. (For the multiplicative inverse use 1.0 / Input.)
 
 ## Streams
 
@@ -25,5 +25,5 @@ Inverts (changes the sign of) an input value: -Input.
 
 ```stride
 # Available in global prelude without import:
-Signal >> Inverse() >> Output;
+Signal >> Negate() >> Output;
 ```

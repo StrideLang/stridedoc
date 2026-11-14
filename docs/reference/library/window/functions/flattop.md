@@ -5,7 +5,7 @@ description: "Flat-top measurement window function: Index >> FlatTop(size: 512) 
 
 # FlatTop
 
-<span class="stride-badge">Module</span> `package Window::Functions` &bull; Namespace: **`Window::Functions`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Window/Functions.stride#L153" target="_blank" rel="noopener" title="View source on GitHub">[Functions.stride:153]</a>
+<span class="stride-badge">Module</span> `package Window::Functions` &bull; Namespace: **`Window::Functions`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Window/Functions.stride#L169" target="_blank" rel="noopener" title="View source on GitHub">[Functions.stride:169]</a>
 
 Flat-top measurement window function: Index >> FlatTop(size: 512) >> Weight.
 
@@ -13,14 +13,14 @@ Flat-top measurement window function: Index >> FlatTop(size: 512) >> Weight.
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `IndexPort` | `signal` | `WeightPort.rate` | `WeightPort.domain` | Sample index n (0 to size - 1) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `WeightPort` | `signal` | `WeightPort.rate` | `WeightPort.domain` | Window coefficient w[n] |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `IndexPort` | `WeightPort.type` | `WeightPort.rate` | `WeightPort.domain` | Sample index n (0 to size - 1) |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `WeightPort` | `WeightPort.type` | `WeightPort.rate` | `WeightPort.domain` | Window coefficient w[n] |
 
 ## Properties
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `size` | `signal` | `512.0` | — | `WeightPort.domain` | Window size / length N |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `size` | `WeightPort.type` | `512.0` | — | `WeightPort.domain` | Window size / length N |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

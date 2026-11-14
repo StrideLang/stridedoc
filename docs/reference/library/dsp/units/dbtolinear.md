@@ -13,8 +13,8 @@ Converts decibels (dB) to linear amplitude ratio.
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `DbPort` | `signal` | — | `DbPort.domain` | Amplitude in decibels (dB) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `LinearPort` | `signal` | — | `LinearPort.domain` | Linear amplitude ratio |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `DbPort` | `LinearPort.type` | — | `DbPort.domain` | Amplitude in decibels (dB) |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `LinearPort` | `LinearPort.type` | — | `LinearPort.domain` | Linear amplitude ratio |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

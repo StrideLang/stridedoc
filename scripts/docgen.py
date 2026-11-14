@@ -65,7 +65,7 @@ class StrideDocParser:
     """Parses token streams into structured metadata for modules, loops, constants, and types."""
 
     DECLARATION_KEYWORDS = {
-        'module', 'loop', 'block', 'object', 'constant', 'platform', 'framework', 'system', 'type'
+        'module', 'loop', 'block', 'object', 'constant', 'platform', 'framework', 'system', 'type', 'reaction'
     }
 
     PORT_TYPES = {
@@ -643,11 +643,11 @@ def process_strideroot(strideroot_path: Path, output_docs_dir: Path, git_ref: st
             if is_root:
                 if pkg is None or pkg == 'QualityPolicy':
                     top_pkg = None
-                    group_stem = file_path.stem
-                    group_key = f"{group_stem} (Group)"
+                    clean_stem = file_path.stem[:-7] if file_path.stem.endswith("Prelude") else file_path.stem
+                    group_key = f"{clean_stem} (Group)"
                     pkg_name = 'Stride'
                     is_prelude = True
-                    cat_path = group_stem.lower()
+                    cat_path = clean_stem.lower()
                 else:
                     top_pkg = pkg
                     group_key = f"{pkg} (Root)"

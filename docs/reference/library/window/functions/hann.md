@@ -13,14 +13,14 @@ Hann window function: Index >> Hann(size: 512) >> Weight.
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `IndexPort` | `signal` | `WeightPort.rate` | `WeightPort.domain` | Sample index n (0 to size - 1) |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `WeightPort` | `signal` | `WeightPort.rate` | `WeightPort.domain` | Window coefficient w[n] |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `IndexPort` | `WeightPort.type` | `WeightPort.rate` | `WeightPort.domain` | Sample index n (0 to size - 1) |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `WeightPort` | `WeightPort.type` | `WeightPort.rate` | `WeightPort.domain` | Window coefficient w[n] |
 
 ## Properties
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `size` | `signal` | `512.0` | — | `WeightPort.domain` | Window size / length N |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `size` | `WeightPort.type` | `512.0` | — | `WeightPort.domain` | Window size / length N |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

@@ -13,15 +13,15 @@ Attack-Decay envelope generator.
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | — | The module's primary output port. |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | — | — | The module's primary output port. |
 | <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `trigger` | — | `OutputPort.domain` | Triggers the envelope |
 
 ## Properties
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `attack` | `signal` | `0.2` | — | — | Attack time in seconds |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `decay` | `signal` | `3.0` | — | — | Decay time in seconds |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `attack` | `OutputPort.type` | `0.2` | — | — | Attack time in seconds |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `decay` | `OutputPort.type` | `3.0` | — | — | Decay time in seconds |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

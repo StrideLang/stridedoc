@@ -19,8 +19,8 @@ Bipolar output [-1.0, 1.0] scaled by amplitude.
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | `440.0` | — | — | The frequency of the oscillator. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `amplitude` | `signal` | `1.0` | — | — | The amplitude of the oscillator. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `OutputPort.type` | `440.0` | — | — | The frequency of the oscillator. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `amplitude` | `OutputPort.type` | `1.0` | — | — | The amplitude of the oscillator. |
 | <span class="port-icon prop-in" title="Property Input">↓</span> | `phase` | `signal` | — | — | — | The starting phase of the oscillator. |
 | <span class="port-icon prop-in" title="Property Input">↓</span> | `reset` | `signal` | — | — | — | Resets the oscillator to the starting phase. |
 

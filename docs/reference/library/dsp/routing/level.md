@@ -21,8 +21,8 @@ Formula: output = input * gain + offset
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `gain` | `GainPort.type` | `1.0` | `GainPort.rate` | `GainPort.domain` | Amplifies or attenuates the signal. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `offset` | `OffsetPort.type` | `0.0` | `OffsetPort.rate` | `OffsetPort.domain` | Adds an offset to the signal after applying the gain. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `gain` | `OutputPort.type` | `1.0` | — | `OutputPort.domain` | Amplifies or attenuates the signal (default 1.0). |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `offset` | `OutputPort.type` | `0.0` | — | `OutputPort.domain` | Adds an offset to the signal after applying the gain (default 0.0). |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>

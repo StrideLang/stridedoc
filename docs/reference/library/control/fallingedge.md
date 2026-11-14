@@ -5,7 +5,7 @@ description: "Detects falling edge (on -> off): Input >> FallingEdge() >> Trigge
 
 # FallingEdge
 
-<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Control.stride#L76" target="_blank" rel="noopener" title="View source on GitHub">[Control.stride:76]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/ControlPrelude.stride#L76" target="_blank" rel="noopener" title="View source on GitHub">[ControlPrelude.stride:76]</a>
 
 Detects falling edge (on -> off): Input >> FallingEdge() >> Trigger.
 

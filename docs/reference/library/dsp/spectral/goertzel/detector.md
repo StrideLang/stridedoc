@@ -1,27 +1,26 @@
 ---
 title: Detector
-description: "Goertzel single-frequency power detector: AudioIn >> Goertzel::Detector(frequency: 440.0) >> TonePower."
+description: "Goertzel single-frequency power detector: AudioIn >> Goertzel::Detector(frequency: 440.0) >> TonePower. The frequency is in Hz and is conver"
 ---
 
 # Detector
 
 <span class="stride-badge">Module</span> `package Dsp::Spectral::Goertzel` &bull; Namespace: **`Dsp::Spectral::Goertzel`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Dsp/Spectral/Goertzel.stride#L7" target="_blank" rel="noopener" title="View source on GitHub">[Goertzel.stride:7]</a>
 
-Goertzel single-frequency power detector: AudioIn >> Goertzel::Detector(frequency: 440.0) >> TonePower.
+Goertzel single-frequency power detector: AudioIn >> Goertzel::Detector(frequency: 440.0) >> TonePower. The frequency is in Hz and is converted against the rate of the output (the sample rate). Type must be floating point.
 
 ## Streams
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | `PowerPort.rate` | `PowerPort.domain` | Audio or sensor input stream |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `PowerPort` | `signal` | `PowerPort.rate` | `PowerPort.domain` | Instantaneous signal power at target frequency |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `PowerPort.type` | `PowerPort.rate` | `PowerPort.domain` | Audio or sensor input stream |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `PowerPort` | `PowerPort.type` | `PowerPort.rate` | `PowerPort.domain` | Instantaneous signal power at target frequency |
 
 ## Properties
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | `440.0` | — | `PowerPort.domain` | Target tone frequency in Hz to detect |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `sampleRate` | `signal` | `44100.0` | — | `PowerPort.domain` | Sample rate in Hz (default 44100.0) |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `PowerPort.type` | `440.0` | — | `PowerPort.domain` | Target tone frequency in Hz to detect |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -35,5 +34,5 @@ Goertzel single-frequency power detector: AudioIn >> Goertzel::Detector(frequenc
 ```stride
 import Dsp::Spectral::Goertzel as Goertzel;
 
-Signal >> Goertzel::Detector(frequency: 440.0, sampleRate: 44100.0) >> Output;
+Signal >> Goertzel::Detector(frequency: 440.0) >> Output;
 ```

@@ -13,7 +13,7 @@ Transmits MIDI Continuous Controller (CC) messages.
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `ValuePort` | `signal` | — | — | Continuous controller value to send [0.0, 1.0] |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `ValuePort` | `ValuePort.type` | — | — | Continuous controller value to send [0.0, 1.0] |
 
 ## Properties
 

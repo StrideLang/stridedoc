@@ -156,10 +156,6 @@
           {
             "text": "Probe",
             "link": "/reference/library/debug/probe"
-          },
-          {
-            "text": "Watch",
-            "link": "/reference/library/debug/watch"
           }
         ]
       },
@@ -236,10 +232,6 @@
             "link": "/reference/library/math/floor"
           },
           {
-            "text": "Inverse",
-            "link": "/reference/library/math/inverse"
-          },
-          {
             "text": "Lerp",
             "link": "/reference/library/math/lerp"
           },
@@ -258,6 +250,10 @@
           {
             "text": "Multiply",
             "link": "/reference/library/math/multiply"
+          },
+          {
+            "text": "Negate",
+            "link": "/reference/library/math/negate"
           },
           {
             "text": "Pow",
@@ -300,6 +296,20 @@
           {
             "text": "Optimal",
             "link": "/reference/library/qualitypolicy/optimal"
+          }
+        ]
+      },
+      {
+        "text": "Random (Group)",
+        "collapsed": true,
+        "items": [
+          {
+            "text": "RandomChance",
+            "link": "/reference/library/random/randomchance"
+          },
+          {
+            "text": "RandomInt",
+            "link": "/reference/library/random/randomint"
           }
         ]
       }
@@ -350,30 +360,36 @@
     "collapsed": false,
     "items": [
       {
-        "text": "Dsp (Root)",
-        "collapsed": true,
-        "items": [
-          {
-            "text": "Level",
-            "link": "/reference/library/dsp/level"
-          },
-          {
-            "text": "Pan",
-            "link": "/reference/library/dsp/pan"
-          }
-        ]
-      },
-      {
         "text": "Dsp::FilterDesign",
         "collapsed": true,
         "items": [
           {
-            "text": "HighPassCoefficients",
-            "link": "/reference/library/dsp/filterdesign/highpasscoefficients"
+            "text": "Coefficients",
+            "link": "/reference/library/dsp/filterdesign/coefficients"
           },
           {
-            "text": "LowPassCoefficients",
-            "link": "/reference/library/dsp/filterdesign/lowpasscoefficients"
+            "text": "ModeAllPass",
+            "link": "/reference/library/dsp/filterdesign/modeallpass"
+          },
+          {
+            "text": "ModeBandPass",
+            "link": "/reference/library/dsp/filterdesign/modebandpass"
+          },
+          {
+            "text": "ModeHighPass",
+            "link": "/reference/library/dsp/filterdesign/modehighpass"
+          },
+          {
+            "text": "ModeLowPass",
+            "link": "/reference/library/dsp/filterdesign/modelowpass"
+          },
+          {
+            "text": "ModeNotch",
+            "link": "/reference/library/dsp/filterdesign/modenotch"
+          },
+          {
+            "text": "ModePeak",
+            "link": "/reference/library/dsp/filterdesign/modepeak"
           }
         ]
       },
@@ -650,6 +666,10 @@
         "collapsed": false,
         "items": [
           {
+            "text": "AllPass",
+            "link": "/reference/library/dsp/filters/allpass"
+          },
+          {
             "text": "BandPass",
             "link": "/reference/library/dsp/filters/bandpass"
           },
@@ -658,12 +678,28 @@
             "link": "/reference/library/dsp/filters/biquad"
           },
           {
+            "text": "HighPass",
+            "link": "/reference/library/dsp/filters/highpass"
+          },
+          {
             "text": "LowPass",
             "link": "/reference/library/dsp/filters/lowpass"
           },
           {
+            "text": "Notch",
+            "link": "/reference/library/dsp/filters/notch"
+          },
+          {
+            "text": "PeakingEq",
+            "link": "/reference/library/dsp/filters/peakingeq"
+          },
+          {
             "text": "Rectify",
             "link": "/reference/library/dsp/filters/rectify"
+          },
+          {
+            "text": "Section",
+            "link": "/reference/library/dsp/filters/section"
           }
         ]
       },
@@ -882,20 +918,16 @@
         "collapsed": true,
         "items": [
           {
-            "text": "MatMul2x2",
-            "link": "/reference/library/linalg/matrices/matmul2x2"
+            "text": "MatMul",
+            "link": "/reference/library/linalg/matrices/matmul"
           },
           {
-            "text": "Transform2D",
-            "link": "/reference/library/linalg/matrices/transform2d"
+            "text": "Transform",
+            "link": "/reference/library/linalg/matrices/transform"
           },
           {
-            "text": "Transform3D",
-            "link": "/reference/library/linalg/matrices/transform3d"
-          },
-          {
-            "text": "Transpose2x2",
-            "link": "/reference/library/linalg/matrices/transpose2x2"
+            "text": "Transpose",
+            "link": "/reference/library/linalg/matrices/transpose"
           }
         ]
       },
@@ -912,12 +944,8 @@
             "link": "/reference/library/linalg/quaternion/multiply"
           },
           {
-            "text": "Norm",
-            "link": "/reference/library/linalg/quaternion/norm"
-          },
-          {
-            "text": "RotateVector3D",
-            "link": "/reference/library/linalg/quaternion/rotatevector3d"
+            "text": "Rotate",
+            "link": "/reference/library/linalg/quaternion/rotate"
           }
         ]
       },
@@ -926,32 +954,24 @@
         "collapsed": false,
         "items": [
           {
-            "text": "Cross3D",
-            "link": "/reference/library/linalg/vectors/cross3d"
+            "text": "Dot",
+            "link": "/reference/library/linalg/vectors/dot"
           },
           {
-            "text": "Dot2D",
-            "link": "/reference/library/linalg/vectors/dot2d"
+            "text": "Norm",
+            "link": "/reference/library/linalg/vectors/norm"
           },
           {
-            "text": "Dot3D",
-            "link": "/reference/library/linalg/vectors/dot3d"
+            "text": "Normalize",
+            "link": "/reference/library/linalg/vectors/normalize"
           },
           {
-            "text": "Norm2D",
-            "link": "/reference/library/linalg/vectors/norm2d"
+            "text": "Scale",
+            "link": "/reference/library/linalg/vectors/scale"
           },
           {
-            "text": "Norm3D",
-            "link": "/reference/library/linalg/vectors/norm3d"
-          },
-          {
-            "text": "Normalize2D",
-            "link": "/reference/library/linalg/vectors/normalize2d"
-          },
-          {
-            "text": "Normalize3D",
-            "link": "/reference/library/linalg/vectors/normalize3d"
+            "text": "Wedge",
+            "link": "/reference/library/linalg/vectors/wedge"
           }
         ]
       }

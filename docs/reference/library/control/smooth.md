@@ -1,13 +1,13 @@
 ---
 title: Smooth
-description: "Applies first-order exponential smoothing to Input: Input >> Smooth(coefficient: 0.95) >> Output."
+description: "Exponential (one-pole low-pass) smoothing of Input with a time constant in seconds: Input >> Smooth(time: 0.05) >> Output. The time is conve"
 ---
 
 # Smooth
 
-<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Control.stride#L160" target="_blank" rel="noopener" title="View source on GitHub">[Control.stride:160]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/ControlPrelude.stride#L160" target="_blank" rel="noopener" title="View source on GitHub">[ControlPrelude.stride:160]</a>
 
-Applies first-order exponential smoothing to Input: Input >> Smooth(coefficient: 0.95) >> Output.
+Exponential (one-pole low-pass) smoothing of Input with a time constant in seconds: Input >> Smooth(time: 0.05) >> Output. The time is converted with the rate of the output, so it is independent of the sample rate. Type must be a floating point type.
 
 ## Streams
 
@@ -20,7 +20,7 @@ Applies first-order exponential smoothing to Input: Input >> Smooth(coefficient:
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `coefficient` | `OutputPort.type` | `0.95` | `OutputPort.rate` | `OutputPort.domain` | Smoothing coefficient between 0.0 (no smoothing) and 1.0 (freeze) |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `time` | `OutputPort.type` | `0.01` | — | `OutputPort.domain` | Time constant in seconds: the time the output takes to cover 63% of a step in the input. 0 disables smoothing. |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -33,5 +33,5 @@ Applies first-order exponential smoothing to Input: Input >> Smooth(coefficient:
 
 ```stride
 # Available in global prelude without import:
-Signal >> Smooth(coefficient: 0.95) >> Output;
+Signal >> Smooth(time: 0.01) >> Output;
 ```

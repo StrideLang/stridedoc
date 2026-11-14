@@ -5,7 +5,7 @@ description: "Periodically wraps input signal within [min, max): Input >> Wrap(m
 
 # Wrap
 
-<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L557" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:557]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/MathPrelude.stride#L558" target="_blank" rel="noopener" title="View source on GitHub">[MathPrelude.stride:558]</a>
 
 Periodically wraps input signal within [min, max): Input >> Wrap(min: 0.0 max: 1.0) >> Output.
 

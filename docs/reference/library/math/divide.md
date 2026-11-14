@@ -5,7 +5,7 @@ description: "Divides Input[0] by Input[1]."
 
 # Divide
 
-<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Math.stride#L256" target="_blank" rel="noopener" title="View source on GitHub">[Math.stride:256]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Math (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/MathPrelude.stride#L257" target="_blank" rel="noopener" title="View source on GitHub">[MathPrelude.stride:257]</a>
 
 Divides Input[0] by Input[1].
 

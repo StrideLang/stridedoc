@@ -1,28 +1,27 @@
 ---
 title: LowPass
-description: "Lowpass filter."
+description: "Second-order low-pass filter: Input >> LowPass(frequency: 800.0 q: 0.7071) >> Output. A BiQuad with FilterDesign::ModeLowPass. The frequency"
 ---
 
 # LowPass
 
-<span class="stride-badge">Module</span> `package Dsp::Filters` &bull; Namespace: **`Dsp::Filters`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Dsp/Filters/LowPass.stride#L7" target="_blank" rel="noopener" title="View source on GitHub">[LowPass.stride:7]</a>
+<span class="stride-badge">Module</span> `package Dsp::Filters` &bull; Namespace: **`Dsp::Filters`** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Dsp/Filters/LowPass.stride#L10" target="_blank" rel="noopener" title="View source on GitHub">[LowPass.stride:10]</a>
 
-Lowpass filter.
+Second-order low-pass filter: Input >> LowPass(frequency: 800.0 q: 0.7071) >> Output. A BiQuad with FilterDesign::ModeLowPass. The frequency is in Hz and is converted against the rate of the output. The data type must be floating point.
 
 ## Streams
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | — | `InputPort.domain` | Input signal |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | — | `OutputPort.domain` | Filtered output signal |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Input signal |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Filtered output signal |
 
 ## Properties
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `signal` | `1000.0` | — | — | The cutoff frequency of the filter. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `qFactor` | `signal` | `0.7071` | — | — | The Q value of the filter. |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `gain` | `signal` | `1.0` | — | — | Filter passband gain. |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `frequency` | `OutputPort.type` | `1000.0` | `OutputPort.rate` | `OutputPort.domain` | Cutoff frequency in Hz (default 1000.0) |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `q` | `OutputPort.type` | `0.7071` | — | `OutputPort.domain` | Quality factor (default 0.7071). 0.7071 is maximally flat (Butterworth); higher values add a resonant peak at the cutoff |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
@@ -36,5 +35,5 @@ Lowpass filter.
 ```stride
 import Dsp::Filters as Filters;
 
-Signal >> Filters::LowPass(frequency: 1000.0, qFactor: 0.7071, gain: 1.0) >> Output;
+Signal >> Filters::LowPass(frequency: 1000.0, q: 0.7071) >> Output;
 ```

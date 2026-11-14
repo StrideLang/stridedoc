@@ -5,7 +5,7 @@ description: "Sample and hold: samples Input when trigger is on and holds the va
 
 # Latch
 
-<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/Control.stride#L114" target="_blank" rel="noopener" title="View source on GitHub">[Control.stride:114]</a>
+<span class="stride-badge">Module</span> Global Prelude &bull; Group: **Control (Group)** <a class="stride-source-link" href="https://github.com/StrideLang/strideroot/blob/main/library/1.0/ControlPrelude.stride#L114" target="_blank" rel="noopener" title="View source on GitHub">[ControlPrelude.stride:114]</a>
 
 Sample and hold: samples Input when trigger is on and holds the value when off: Input >> Latch(trigger: Gate) >> Output.
 

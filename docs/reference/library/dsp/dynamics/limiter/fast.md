@@ -13,14 +13,14 @@ Hard peak clamping limiter: AudioIn >> Limiter::Fast(threshold: 0.95) >> Out.
 
 | | Port identifier | Type | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `signal` | `OutputPort.rate` | `OutputPort.domain` | Input audio signal stream |
-| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `signal` | `OutputPort.rate` | `OutputPort.domain` | Peak-limited audio signal stream |
+| <span class="port-icon stream-in" title="Stream Input">»</span> | `InputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Input audio signal stream |
+| <span class="port-icon stream-out" title="Stream Output">»</span> | `OutputPort` | `OutputPort.type` | `OutputPort.rate` | `OutputPort.domain` | Peak-limited audio signal stream |
 
 ## Properties
 
 | | Property | Type | Default | Rate | Domain | Description |
 | :-: | :--- | :--- | :--- | :--- | :--- | :--- |
-| <span class="port-icon prop-in" title="Property Input">↓</span> | `threshold` | `signal` | `0.95` | — | `OutputPort.domain` | Maximum peak ceiling amplitude (default 0.95) |
+| <span class="port-icon prop-in" title="Property Input">↓</span> | `threshold` | `OutputPort.type` | `0.95` | — | `OutputPort.domain` | Maximum peak ceiling amplitude (default 0.95) |
 
 <div class="port-legend">
   <span class="port-legend-item"><span class="port-icon stream-in">»</span> Stream In</span>
