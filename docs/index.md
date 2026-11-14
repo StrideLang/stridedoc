@@ -114,6 +114,6 @@ stridec --target=thumbv6m-none-eabi -mcpu=cortex-m0plus -O3 \
     • J. Tilbian, A. Cabrera, S. Martin, and L. Olczyk. <em>Stride on Saturn M7 for Interactive Musical Instrument Design.</em> In Proceedings of the International Conference on New Interfaces for Musical Expression (NIME), Copenhagen, 2017.
   </p>
   <p style="margin-top: 0.75rem; font-size: 0.8rem;">
-    Released under the AGPLv3 License (formerly 3-Clause BSD).
+    Released under the AGPLv3 License.
   </p>
 </div>

@@ -96,8 +96,7 @@ export default withMermaid(
     ],
 
     footer: {
-      message: 'Released under the AGPLv3 License (formerly 3-Clause BSD). Initially developed at UCSB.',
-      copyright: 'Copyright © 2017-present The Regents of the University of California & Stride Contributors.'
+      message: 'Released under the AGPLv3 License.'
     }
   }
 }));
