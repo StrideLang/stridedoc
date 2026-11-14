@@ -4,21 +4,21 @@ Stride formalizes the division between physical hardware, toolchains, computatio
 
 ```mermaid
 flowchart TD
-    subgraph System ["System: Multi-Domain Topology"]
-        subgraph PlatformHost ["Platform: PC Desktop (Hardware)"]
-            FrameworkJIT ["Framework: JIT / Cpp (Toolchain)"]
-            FrameworkJIT --> DomAudio ["Domain: AudioDomain (Real-time)"]
-            FrameworkJIT --> DomControl ["Domain: ControlDomain (Asynchronous)"]
+    subgraph System["System: Multi-Domain Topology"]
+        subgraph PlatformHost["Platform: PC Desktop (Hardware)"]
+            FrameworkJIT["Framework: JIT / Cpp (Toolchain)"]
+            FrameworkJIT --> DomAudio["Domain: AudioDomain (Real-time)"]
+            FrameworkJIT --> DomControl["Domain: ControlDomain (Asynchronous)"]
         end
 
-        subgraph PlatformMCU ["Platform: RP2350 / STM32 (Microcontroller)"]
-            FrameworkMCU ["Framework: PicoSDK / BareMetal (Toolchain)"]
-            FrameworkMCU --> DomDSP ["Domain: DspDomain (Cortex-M33 Core 0)"]
-            FrameworkMCU --> DomIO ["Domain: IoDomain (Hazard3 Core 1)"]
+        subgraph PlatformMCU["Platform: RP2350 / STM32 (Microcontroller)"]
+            FrameworkMCU["Framework: PicoSDK / BareMetal (Toolchain)"]
+            FrameworkMCU --> DomDSP["Domain: DspDomain (Cortex-M33 Core 0)"]
+            FrameworkMCU --> DomIO["Domain: IoDomain (Hazard3 Core 1)"]
         end
 
-        DomControl -.->|"Connection (Serial / USB / Protobuf)"| DomDSP
-        DomDSP -.->|"Connection (Shared SRAM / DMA)"| DomIO
+        DomControl -.->|Connection: Serial / USB / Protobuf| DomDSP
+        DomDSP -.->|Connection: Shared SRAM / DMA| DomIO
     end
 ```
 
