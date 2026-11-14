@@ -13,12 +13,12 @@ Condition assertion (true). Declared for schema validation; handled with special
 
 | I/O | Port Name | Description |
 | :-: | :--- | :--- |
-| <span class="port-badge stream-in">» In</span> | `InputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">T</span><code>switch</code></span></div> | Condition value expected to be true (on) |
+| <span class="port-badge stream-in">» In</span> | `InputPort`<div class="attr-bubble-group"><span class="attr-bubble bubble-type" title="Type"><span class="bubble-key">type</span><code>switch</code></span></div> | Condition value expected to be true (on) |
 
 <div class="port-legend">
-  <span class="port-legend-item"><span class="bubble-key type-key">T</span> Type</span>
-  <span class="port-legend-item"><span class="bubble-key rate-key">R</span> Rate</span>
-  <span class="port-legend-item"><span class="bubble-key domain-key">D</span> Domain</span>
+  <span class="port-legend-item"><span class="bubble-key type-key">type</span> Type</span>
+  <span class="port-legend-item"><span class="bubble-key rate-key">rate</span> Rate</span>
+  <span class="port-legend-item"><span class="bubble-key domain-key">domain</span> Domain</span>
 </div>
 
 ## Usage
