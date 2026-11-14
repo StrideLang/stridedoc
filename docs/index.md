@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Stride
-  text: Streams. State Machines. Architectures.
+  text: Declarative Dataflow & Reactive Architecture
   tagline: A domain-specific programming language for declarative dataflow streams, finite state machines, and multi-rate reactive systems.
   image:
     src: /windmill-hero.jpg
