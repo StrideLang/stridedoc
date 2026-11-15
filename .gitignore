@@ -5,6 +5,7 @@ node_modules/
 # VitePress cache and build outputs
 docs/.vitepress/cache/
 docs/.vitepress/dist/
+docs/.vitepress/.temp/
 
 # Python cache
 __pycache__/
