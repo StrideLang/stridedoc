@@ -147,12 +147,24 @@ module GainOffset {
 
 ## 5. Rate Typing & Domain Boundaries
 
-Every signal in Stride is associated with a discrete rate type:
-* `AudioRate`: Evaluated synchronously at high streaming rates (e.g., 44.1 kHz, 48 kHz for audio or fast sensor streams).
-* `ControlRate`: Evaluated at a sub-sampled control period (e.g., 1 kHz for telemetry, PID, or motor control).
-* `none`: Static constants, discrete asynchronous events, or state machine transitions.
+A **Domain** in Stride represents an execution context and scheduling environment for signals, streams, and state machines. It establishes the temporal rhythm—such as a hardware timer interrupt, an operating system thread, or a dedicated microcontroller core—in which its computations occur.
 
-Signals operating at distinct rates or hosted on separate processing cores cannot be directly connected through synchronous stream operators. They must be routed through formal **Domains** using explicitly declared synchronization primitives.
+Each domain has an **associated rate** defining its discrete evaluation frequency, from high-rate continuous streams down to lower-rate control loops or asynchronous event domains.
+
+### Automatic Upsampling and Downsampling
+
+Because rates and domain memberships are analyzed statically at compile time, the compiler automatically reconciles multi-rate stream boundaries:
+
+- **Downsampling**: When a high-rate stream connects into a lower-rate domain, Stride automatically decimates or samples the stream at the destination rate without requiring manual phase-timer math.
+- **Upsampling**: When a low-rate control parameter feeds into a higher-rate stream, the compiler automatically performs sample-and-hold propagation or interpolation.
+
+```stride
+# Connecting streams across different rate domains:
+# The compiler automatically manages rate adaptation across the boundary
+ControlParam >> SmoothingFilter() >> HighRateStream;
+```
+
+This static rate staging ensures that high-priority streaming loops remain deterministic while control logic executes only as frequently as needed.
 
 ---
 
