@@ -4,15 +4,33 @@ A technical overview of the grammar, type system, stream operators, and compilat
 
 ---
 
-## 1. Stream Operations & Dataflow
+## 1. Declarations & Streams
 
-Computation in Stride is formulated as directed dataflow graphs. The forward stream operator `>>` routes signal values from producers to consumers:
+At the language level, Stride programs are structured around two fundamental syntactical constructs:
+
+1. **Declarations**: Define the entities of the system—signals, switches, buffers, and callables—specifying their types, rates, clock domains, and initial default values.
+2. **Streams**: Define the active computation and dataflow routing using the forward stream operator `>>`, directing values from producers through transformations to consumers.
+
+### How Declarations and Streams Interact
+
+Declared entities serve as the sources, destinations, and control flags for streams. Streams read from declared inputs, transform values through arithmetic operators or callables, and continuously update declared outputs or state switches:
 
 ```stride
-Source >> Transform >> Destination;
+# 1. Declarations: Define stateful entities and parameters
+signal SensorRaw   {}
+signal SensorClean { default: 0.0 }
+signal Threshold   { default: 75.0 }
+switch Overheated  { default: off }
+
+# 2. Streams: Connect, transform, and update declared entities
+# Filter raw input and route into the clean signal:
+SensorRaw >> LowPass(frequency: 20.0) >> SensorClean;
+
+# Evaluate condition and update the state switch:
+[ SensorClean, Threshold ] >> Greater() >> Overheated;
 ```
 
-Pipelines can be connected sequentially. The compiler resolves signal types and validates rate compatibility at each connection:
+Pipelines can be connected sequentially or nested. The compiler resolves signal types and statically validates rate compatibility at each connection in the stream graph:
 
 ```stride
 import Dsp::Filters as Filters;
