@@ -1,57 +1,48 @@
-# Design Rationale & Objectives
+# Design Rationale
 
-Stride is a domain-specific programming language designed for **declarative dataflow streams**, **finite state machines (FSMs)**, and **deterministic multi-rate reactive systems**.
-
----
-
-## 1. Background & Technical Motivation
-
-Building real-time reactive systems—spanning continuous signal streams, sensor loops, embedded controllers, and discrete state transitions—presents engineering challenges that general-purpose languages are not specialized to resolve:
-
-1. **High-Level Dataflow & Reactive Environments**:
-   - Provide intuitive visual or declarative routing for streams and events.
-   - Suffer from non-deterministic execution times, garbage collection pauses, dynamic typing overhead, and heavyweight runtime interpreters unsuitable for bare-metal microcontrollers without an operating system.
-
-2. **Systems Languages (C and C++)**:
-   - Provide direct hardware access, zero runtime overhead, and optimal code density.
-   - Demand significant manual boilerplate: managing circular ring buffers, state synchronization across interrupt boundaries, sample rate conversions, and manual vectorization.
-   - Lack language-level abstractions for multi-rate domains, stream pipelines, and first-class state machines.
-
-**Stride formalizes dataflow streams and state machines into a statically checked language**:
-- **Declarative Stream Syntax**: Direct representation of signal graphs using forward stream routing (`>>`) and connection operators.
-- **Finite State Machines**: First-class language constructs for states, guarded transitions, and atomic reactions.
-- **Static Rate Analysis**: Signal rates (high-rate streams, control periods, asynchronous event triggers) and buffer capacities are evaluated at compile time.
-- **Zero Runtime Overhead**: The compilation pipeline lowers Stride AST representations directly to LLVM IR, emitting optimized native machine code (`.o`) and standard C interface headers without requiring a runtime interpreter or dynamic heap allocation in execution loops.
+Stride is a domain-specific programming language designed for **declarative dataflow streams**, **finite state machines**, and **deterministic multi-rate reactive systems**.
 
 ---
 
-## 2. Core Architectural Pillars
+## Technical Motivation
+
+Real-time reactive systems—combining continuous signal streams, sensor loops, embedded controllers, and discrete state transitions—face a fundamental trade-off:
+
+1. **High-Level Dataflow & Reactive Environments**: Provide intuitive stream routing and event handling, but introduce garbage collection pauses, dynamic typing overhead, and heavyweight runtime interpreters unsuitable for bare-metal microcontrollers.
+2. **Systems Languages (C and C++)**: Deliver bare-metal access, zero runtime overhead, and optimal code density, but require substantial manual boilerplate for ring buffers, rate conversions, cross-interrupt synchronization, and state machine state tracking.
+
+**Stride resolves this trade-off through compile-time analysis**:
+- **Declarative Streams**: Direct representation of signal graphs using forward stream routing (`>>`) and parallel evaluation bundles (`[...]`).
+- **First-Class State Machines**: Native syntax for states, transitions, guard conditions, and reaction handlers.
+- **Static Rate Inference**: Multi-rate stream alignment, automatic up/downsampling, and buffer sizing validated at compile time.
+- **Zero Runtime Overhead**: The compilation pipeline lowers the AST via LLVM directly into native machine code (`.o`, `.a`) and standard C99 interface headers (`.h`), with zero dynamic heap allocation in execution loops.
+
+---
+
+## Core Architectural Pillars
 
 ### Deterministic Scheduling & Static Allocation
-In real-time systems, non-deterministic latency spikes cause buffer underruns and dropped events. Stride requires that all signal buffers, block delays, and domain memory limits be fully resolvable at compile time. Memory layouts for active domains are allocated statically in contiguous SRAM or zero-latency scratchpad memory (zpad).
+Hard real-time systems cannot tolerate unpredictable latency spikes or memory fragmentation. Stride requires that all buffer capacities, delay lines, and domain state sizes be resolved at compile time. Domain memory layouts are statically allocated in contiguous SRAM or scratchpad memory, eliminating heap allocation during execution.
 
 ### Multi-Rate Domain Isolation
-Reactive systems frequently operate across heterogeneous clock domains and execution models:
-- **High-Rate Synchronous Streams**: Strict sample-synchronous deadlines (e.g., audio DSP, RF processing, high-speed ADC sampling).
-- **Control Loops & Telemetry**: Medium-rate discrete-time loops (e.g., 1 kHz robotics, PID, motor control).
-- **Discrete State Machines & Events**: Asynchronous event handlers, protocol framing, and discrete logic.
+Reactive systems operate across distinct temporal scales:
+- **Synchronous Streams**: Strict sample-synchronous deadlines (e.g., audio DSP, sensor sampling).
+- **Periodic Control Loops**: Medium-rate discrete-time loops (e.g., 1 kHz robotics, PID controllers).
+- **Asynchronous Events**: Event triggers, protocol framing, and discrete state transitions.
 
-Stride partitions execution into **Domains**. Each domain corresponds to an isolated thread of execution, microcontroller core, or hardware timer interrupt. Streams crossing domain boundaries are governed by formal synchronization protocols (counting semaphores, double-buffered ping-pong buffers, or bounded lock-free FIFOs), preventing race conditions and sample tearing.
+Stride partitions execution into **Domains**, mapping each to an OS thread, CPU core, or hardware timer interrupt. Cross-domain streams use formal synchronization (bounded lock-free FIFOs, double-buffer ping-pong DMA, or semaphores) to eliminate race conditions and sample tearing.
 
-### Finite State Machines & Discrete Logic
-Beyond continuous streams, Stride natively represents discrete state transitions through formal **Finite State Machines (FSMs)**. States, transitions, guards, and transition actions are declarative language constructs rather than imperative ad-hoc control flow.
+### First-Class State Machines & Discrete Logic
+Continuous dataflow streams and discrete state machines coexist natively. States, transitions, guards, and transition actions are explicit language constructs rather than imperative control flow. This cleanly models hybrid systems—from signal processors with operational modes to discrete state machines such as communication protocols, sequencers, and board games.
 
-This allows Stride to cleanly model both continuous physical transducers and discrete symbolic systems. For example, Stride can describe **board games**, which are naturally modeled as finite state machines: player turns, board topologies, legal move guards, piece supplies, and win conditions are expressed as states and guarded transitions that compile into high-performance native code.
+### Audio & Signal Processing as a Reference Domain
+Digital audio processing serves as a primary benchmark for Stride. Sample-synchronous deadlines (44.1 kHz / 48 kHz) demand zero-jitter execution, low latency, and zero tolerance for dropouts. The static scheduling, multi-rate inference, and deterministic memory layouts proven in audio apply directly to motor control, sensor telemetry, and embedded robotics.
 
-### Audio & Signal Processing as a Demanding Use Case
-Digital audio processing and sound synthesis represent a prominent and demanding use case for Stride. Because real-time audio streams require strict, sample-synchronous deadlines (e.g., 44.1 kHz or 48 kHz without jitter or buffer underruns), audio serves as an effective demonstration of Stride's zero-overhead static scheduling, multi-rate domain isolation, and deterministic memory layout. The same mechanisms apply across industrial control, sensor conditioning, and robotics.
-
-### Heterogeneous Multi-Core Compilation
-Modern microcontrollers (such as the RP2040, RP2350, and STM32 series) feature asymmetric or dual-core configurations (e.g., dual Cortex-M33, Cortex-M0+, or coupled RISC-V cores). Stride's `system` and `platform` definitions allow different domains within the same application to target distinct processing cores and hardware peripherals simultaneously.
+### Heterogeneous & Multi-Core Targets
+Modern microcontrollers (such as the RP2040, RP2350, and STM32 series) feature asymmetric or multi-core architectures. Stride's `platform` and `system` declarations allow different domains within a single application to target separate cores and peripheral buses simultaneously.
 
 ### Native Toolchain Integration
-Stride compiles directly into standard compilation units:
-- Native machine object files (`.o`) relocatable across ARM, RISC-V, and x86 architectures.
-- Clean ISO C99 headers (`.h`) declaring standardized lifecycle entry points: `<Domain>_init(void)` and `<Domain>_process(...)`.
-- Direct integration into build systems including **CMake**, **Bazel**, and **Google Pigweed**.
-
+Stride integrates directly into standard C and C++ workflows:
+- Compiles to native object files (`.o`, `.a`) across ARM Cortex-M, RISC-V, WebAssembly, and host x86_64/AArch64 targets.
+- Emits clean ISO C99 headers declaring lifecycle entry points (`<Domain>_init(void)` and `<Domain>_process(...)`).
+- Integrates into build pipelines via standard **CMake** modules (`find_package(Stride)` and `stride_target_sources()`).

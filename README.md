@@ -24,9 +24,9 @@ stridedoc/
 │   │   └── logo.svg            # Stride vector logo
 │   ├── index.md                # Marketing Landing Page
 │   ├── learn/                  # Narrative guides & tutorials
-│   │   ├── why-stride.md
 │   │   ├── getting-started.md
-│   │   └── language-tour.md
+│   │   ├── language-tour.md
+│   │   └── why-stride.md
 │   └── reference/              # Extracted Standard Library documentation
 │       └── library/
 ├── package.json

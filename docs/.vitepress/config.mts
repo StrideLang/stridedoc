@@ -17,9 +17,9 @@ const docSidebar = [
   {
     text: 'Guides',
     items: [
-      { text: 'Design Rationale', link: '/learn/why-stride' },
       { text: 'Getting Started', link: '/learn/getting-started' },
-      { text: 'Language Tour', link: '/learn/language-tour' }
+      { text: 'Language Tour', link: '/learn/language-tour' },
+      { text: 'Design Rationale', link: '/learn/why-stride' }
     ]
   },
   {
