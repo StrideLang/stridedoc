@@ -42,7 +42,7 @@ export default withMermaid(
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/stridedoc/logo.svg' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800&display=swap' }],
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600&display=swap' }],
     ['meta', { name: 'theme-color', content: '#18181b' }],
     ['meta', { name: 'og:title', content: 'The Stride Programming Language' }],
     ['meta', { name: 'og:description', content: 'A domain-specific programming language for declarative dataflow streams, finite state machines, and multi-rate embedded systems.' }]
