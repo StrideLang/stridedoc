@@ -48,104 +48,82 @@ Frequency >> [_, 0.5] >> Generators::Oscillator() >> StreamOut;
 
 ---
 
-## 3. Package Structure & Namespace Resolution
+## 3. Packages & Imports
 
-Stride organizes source components across defined architectural layers:
-
-### 1. Global Prelude (Auto-Imported)
-Foundational primitives (`Sin()`, `Abs()`, `Floor()`, `Clamp()`, `Equal()`, `Select()`, `Sum()`, `OnChange()`, `RandomInt()`) reside in the root prelude (`strideroot/library/1.0/*.stride`) and are available in every file without import statements:
+Stride provides a global prelude of core mathematical and logical primitives (`Sin()`, `Clamp()`, `Abs()`, `Select()`, `Sum()`, etc.) that are automatically available everywhere without import statements:
 
 ```stride
-# Calling Global Prelude primitives directly:
-Input >> Sin() >> Clamp(min: -1.0, max: 1.0) >> Output;
+# Global prelude primitives require no imports:
+SignalIn >> Sin() >> Clamp(min: -1.0, max: 1.0) >> SignalOut;
 ```
 
-### 2. Standard Library Packages
-Domain-specific modules are grouped into explicit packages:
-- **`package Control`**: Industrial & embedded control systems (PID, FOC Clarke/Park, Schmitt trigger hysteresis, slew rate limiters).
-- **`package Dsp`**: Multi-rate digital filters, synthesis generators, delay lines, dynamics, waveshapers, spectral detectors, musical units.
-- **`package Estimation`**: Real-time state estimation (1D recursive Kalman filters and local peak detection).
-- **`package IO`**: Console telemetry, serial communication, OSC networking, MIDI events, and packet framing.
-- **`package LinAlg`**: N-dimensional vector operations (dot, norm, normalize, scale, wedge), matrix transforms, and unit quaternions.
-- **`package Math`**: Standard mathematical constants (`Math::Pi`, `Math::TwoPi`, `Math::E`).
-- **`package Sensors`**: Signal conditioning (debouncing, deadband scaling, linear ADC calibration, complementary sensor fusion).
-- **`package Test`**: Real-time stream boundary assertions and guards.
-- **`package Window`**: Spectral and FIR window functions (Hann, Hamming, Blackman, Flat-Top).
-
-### Package Declarations
-Files declare their logical package explicitly:
+Additional modules and libraries are organized into packages and brought into scope using `import`:
 
 ```stride
-package Dsp::Generators;
+# Import with an alias for clean namespacing:
+import Dsp::Filters as Filters;
+import Dsp::Generators as Generators;
+import IO::Console as Console;
+
+# In use:
+440.0 >> Generators::Oscillator() >> Filters::LowPass(frequency: 1000.0) >> SignalOut;
+SignalOut >> Console::Print();
 ```
 
-### Import Semantics
-
-1. **Sub-package Import with Alias**:
-   ```stride
-   import Dsp::Generators as Generators;
-   import Dsp::Filters as Filters;
-
-   Input >> Generators::Oscillator(frequency: 440.0) >> Filters::LowPass(frequency: 1200.0) >> Output;
-   ```
-
-2. **Package Root Import**:
-   ```stride
-   import Dsp;
-
-   # Access members via package qualification:
-   Input >> Dsp::Level(gain: 0.8) >> Output;
-   ```
-
-3. **IO and Math Package Imports**:
-   ```stride
-   import IO::Console as Console;
-   import Math;
-
-   Signal * Math::Pi >> Console::Print();
-   ```
+Source files declare their package namespace with `package Name;`.
 
 ---
 
-## 4. Modules, Ports, and Properties
+## 4. Callables: Modules, Reactions, and Loops
 
-A **Module** encapsulates computational state, internal signals, and processing logic. Its external interface is defined strictly through **Ports**:
+In Stride, encapsulated units of processing logic that can be invoked inside streams are called **Callables**. Stride provides three distinct types of callables: **`module`**, **`reaction`**, and **`loop`**.
+
+### Callables in Use
+
+All three callables are invoked directly within stream pipelines using `>>`:
 
 ```stride
-module Tremolo {
+# 1. Module: Synchronous stream processing
+InputSignal >> GainOffset(gain: 2.0, offset: 0.5) >> OutputSignal;
+
+# 2. Reaction: Event-triggered or condition-driven execution
+ButtonPress >> ToggleMute() >> MuteState;
+
+# 3. Loop: Iterative evaluation within a single tick
+VectorBundle >> SumArray() >> TotalReduction;
+```
+
+### Key Differences
+
+| Callable Type | Execution Model | Typical Use Cases |
+| :--- | :--- | :--- |
+| **`module`** | **Synchronous / Continuous** | Evaluates on every tick of its rate domain. Transforms streaming inputs to outputs with deterministic, sample-synchronous timing (e.g. digital filters, oscillators, scaling). |
+| **`reaction`** | **Asynchronous / Event-Driven** | Executes only when triggered by an incoming event, switch edge, or buffer condition. Updates state atomically without busy-waiting (e.g. parameter updates, button handling, state changes). |
+| **`loop`** | **Iterative / Multi-Step** | Iterates multiple times within a single tick until a termination condition is reached (`terminateWhen:`). Ideal for array reductions, matrix iterations, or batch operations. |
+
+### Declaring a Callable
+
+Callables define their external interface through **ports** (main streaming inputs/outputs and named property parameters), internal **entities** (signals, switches, or local state), and internal **streams**:
+
+```stride
+module GainOffset {
     ports: [
-        mainInputPort InputPort {
-            entity: Input
-            meta: "Input stream signal"
-        },
-        mainOutputPort OutputPort {
-            entity: Output
-            meta: "Modulated stream output"
-        },
-        propertyInputPort RateProperty {
-            name: "rate"
-            entity: ModulationRate
-            default: 5.0
-            meta: "Modulation frequency in Hz"
-        }
+        mainInputPort InputPort { entity: Input }
+        mainOutputPort OutputPort { entity: Output }
+        propertyInputPort GainPort { name: "gain" entity: Gain default: 1.0 }
+        propertyInputPort OffsetPort { name: "offset" entity: Offset default: 0.0 }
     ]
     entities: [
         signal Input {}
         signal Output {}
-        signal ModulationRate { default: 5.0 }
-        signal LfoSignal {}
+        signal Gain { default: 1.0 }
+        signal Offset { default: 0.0 }
     ]
     streams: [
-        ModulationRate >> Generators::Oscillator() >> Abs() >> LfoSignal;
-        Input * LfoSignal >> Output;
+        Input * Gain + Offset >> Output;
     ]
-    meta: "Applies amplitude modulation to an incoming signal."
 }
 ```
-
-### Port Classifications
-- `mainInputPort` / `mainOutputPort`: Primary synchronous streaming data paths.
-- `propertyInputPort` / `propertyOutputPort`: Named configuration attributes accessible via keyword arguments (e.g., `rate: 5.0`).
 
 ---
 
@@ -175,3 +153,47 @@ transition PlacePiece[Index in 0:8] {
 ```
 
 This allows Stride to describe not only physical signal processors, but also discrete systems such as **board games**—which can be naturally formulated as finite state machines with formal turn structures, move validation guards, and board states.
+
+---
+
+## 7. Buffers & Frame Processing
+
+A **`buffer`** in Stride is a first-class entity for storing sliding or circular windows of stream data. Buffers bridge continuous sample-by-sample streams with block- or frame-based processing (such as spectral analysis, FIR filtering, or batch reductions).
+
+### Buffer Declaration
+
+A buffer specifies its storage capacity, and optionally a frame size and hop step:
+
+```stride
+buffer AnalysisBuffer {
+    capacity: 1024
+    frameSize: 256
+    hop: 128
+}
+```
+
+### Buffers in Streams
+
+1. **Continuous Streaming In**: Push streaming samples into the buffer:
+   ```stride
+   InputStream >> AnalysisBuffer;
+   ```
+
+2. **Zero-Copy Frame Peeking**: Once accumulated, `AnalysisBuffer.frame` provides a zero-copy view of the oldest samples in the active window directly into downstream loops or reactions:
+   ```stride
+   AnalysisBuffer.frame >> ProcessWindow() >> SpectrumOut;
+   ```
+
+3. **Event Notification (`ready`)**: The `ready` property fires a trigger tick whenever a new frame has completed:
+   ```stride
+   AnalysisBuffer.ready >> reaction {
+       AnalysisBuffer.frame >> ComputeFft();
+   };
+   ```
+
+4. **Stream Delay Lines**: A circular buffer can also serve as a direct FIFO delay line:
+   ```stride
+   buffer DelayRing { capacity: 64 }
+
+   InputStream >> DelayRing >> DelayedStream;
+   ```

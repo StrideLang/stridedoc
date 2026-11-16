@@ -71,7 +71,8 @@ export default withMermaid(
     siteTitle: 'Stride',
 
     nav: [
-      { text: 'Documentation', link: '/learn/getting-started', activeMatch: '^/(learn|reference)/' },
+      { text: 'Language Tour', link: '/learn/language-tour', activeMatch: '^/learn/language-tour' },
+      { text: 'Documentation', link: '/learn/getting-started', activeMatch: '^/(learn/(?!language-tour)|reference/)' },
       {
         text: 'Ecosystem',
         items: [
