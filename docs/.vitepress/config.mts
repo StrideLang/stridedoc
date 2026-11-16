@@ -23,12 +23,6 @@ const docSidebar = [
     ]
   },
   {
-    text: 'Architecture',
-    items: [
-      { text: 'Systems, Frameworks & Domains', link: '/learn/systems-and-domains' }
-    ]
-  },
-  {
     text: 'Reference',
     items: [
       { text: 'Standard Library Overview', link: '/reference/library/' },

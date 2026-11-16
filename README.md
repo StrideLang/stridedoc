@@ -26,8 +26,7 @@ stridedoc/
 │   ├── learn/                  # Narrative guides & tutorials
 │   │   ├── why-stride.md
 │   │   ├── getting-started.md
-│   │   ├── language-tour.md
-│   │   └── systems-and-domains.md
+│   │   └── language-tour.md
 │   └── reference/              # Extracted Standard Library documentation
 │       └── library/
 ├── package.json
