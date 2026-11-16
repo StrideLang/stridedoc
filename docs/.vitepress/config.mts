@@ -66,15 +66,7 @@ export default withMermaid(
 
     nav: [
       { text: 'Language Tour', link: '/learn/language-tour', activeMatch: '^/learn/language-tour' },
-      { text: 'Documentation', link: '/learn/getting-started', activeMatch: '^/(learn/(?!language-tour)|reference/)' },
-      {
-        text: 'Ecosystem',
-        items: [
-          { text: 'Toolchain (stridelang)', link: 'https://github.com/StrideLang/stridelang' },
-          { text: 'VS Code Extension', link: 'https://github.com/StrideLang/vscode-stride-lang' },
-          { text: 'Core Runtime (strideroot)', link: 'https://github.com/StrideLang/strideroot' }
-        ]
-      }
+      { text: 'Documentation', link: '/learn/getting-started', activeMatch: '^/(learn/(?!language-tour)|reference/)' }
     ],
 
     sidebar: {
