@@ -51,17 +51,11 @@ Bracket syntax `[...]` designates **arrays**—ordered collections of signals ev
 # Fan-out: A single signal dispatched to multiple destinations
 InputSignal >> [ BranchA, BranchB ];
 
+signal Out[2] {}
 # Fan-in: Multi-channel signals routed into a multi-port processor
 [ LeftChannel, RightChannel ] >> StereoProcessor() >> [ SignalOut[0], SignalOut[1] ];
-```
-
-The underscore token `_` serves as a positional placeholder when feeding into a subset of an array's input slots:
-
-```stride
-import Dsp::Generators as Generators;
-
-# Routes Frequency into port 0, setting port 1 to constant 0.5:
-Frequency >> [_, 0.5] >> Generators::Oscillator() >> StreamOut;
+# Which is equal to:
+[ LeftChannel, RightChannel ] >> StereoProcessor() >> SignalOut;
 ```
 
 ---
@@ -87,8 +81,6 @@ import IO::Console as Console;
 440.0 >> Generators::Oscillator() >> Filters::LowPass(frequency: 1000.0) >> SignalOut;
 SignalOut >> Console::Print();
 ```
-
-Source files declare their package namespace with `package Name;`.
 
 ---
 
@@ -147,9 +139,12 @@ module GainOffset {
 
 ## 5. Rate Typing & Domain Boundaries
 
-A **Domain** in Stride represents an execution context and scheduling environment for signals, streams, and state machines. It establishes the temporal rhythm—such as a hardware timer interrupt, an operating system thread, or a dedicated microcontroller core—in which its computations occur.
+A **Domain** in Stride represents an execution context and scheduling environment for signals, streams, and state machines. It establishes the execution model and temporal rhythm—such as a hardware timer interrupt, an operating system thread, or a dedicated microcontroller core—in which its computations occur.
 
-Each domain has an **associated rate** defining its discrete evaluation frequency, from high-rate continuous streams down to lower-rate control loops or asynchronous event domains.
+Domains operate under different execution semantics:
+- **Periodic Domains**: Evaluate at a fixed clock rate, spanning high-rate continuous streams (e.g. 48 kHz audio, high-speed ADC sampling) down to periodic control loops (e.g. 1 kHz PID or robotics).
+- **Event-Triggered Domains**: Execute on demand in response to discrete triggers, hardware interrupts, or external messages rather than a continuous clock.
+- **One-Shot Domains**: Execute exactly once—such as the main `RootDomain`, which handles startup initialization, static memory layout, and pre-computing lookup tables before continuous streaming domains start.
 
 ### Automatic Upsampling and Downsampling
 
@@ -164,7 +159,7 @@ Because rates and domain memberships are analyzed statically at compile time, th
 ControlParam >> SmoothingFilter() >> HighRateStream;
 ```
 
-This static rate staging ensures that high-priority streaming loops remain deterministic while control logic executes only as frequently as needed.
+This static rate staging ensures that high-priority streaming loops remain deterministic while control logic, event handlers, and one-shot initialization execute only when required.
 
 ---
 
