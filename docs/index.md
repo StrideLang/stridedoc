@@ -17,14 +17,12 @@ hero:
       link: /reference/library/
 
 features:
-  - title: Dataflow Stream Syntax
-    details: Programs are directed graphs of synchronous and asynchronous streams connected via <code>&gt;&gt;</code>. Stride is a code generator, not a dynamic graph interpreter.
+  - title: Declarative Dataflow Syntax
+    details: Programs are directed graphs connected via <code>&gt;&gt;</code>. Stride is a code generator, not a dynamic graph interpreter.
   - title: Multi-Rate Evaluation
     details: Signals declare or inherit discrete evaluation rates. Clock domains, sample-rate transitions, and event decoupling are verified at compile time.
   - title: Hardware Independence
     details: Declarative platform and system abstractions isolate computation topologies from microcontrollers (ARM Cortex-M, AVR, RISC-V), hardware peripherals, and host runtime environments.
-  - title: Native Code Generation
-    details: Lowers via LLVM directly into ISO C99 interface headers, static libraries, and relocatable machine object files (.o). Zero garbage collection and zero heap allocation in signal loops.
 ---
 
 <div class="showcase-grid">
